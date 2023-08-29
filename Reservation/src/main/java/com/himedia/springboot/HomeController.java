@@ -243,7 +243,30 @@ public class HomeController {
 	public String CompletePayment() {
 	    return "payment_complete"; 
 	}
-	
+ @GetMapping("/delete")
+ public String delete(HttpServletRequest req) {
+    int seqno = Integer.parseInt(req.getParameter("seqno"));
+    rdao.delete(seqno);
+    return "redirect:/";
+ }
+ // 추가 !@#!@#@!#@!#@!3
+ @GetMapping("/update")
+ public String update(HttpServletRequest req, Model model) {
+    int seqno = Integer.parseInt(req.getParameter("seqno"));
+    BoardDTO bdto = rdao.view(seqno);
+    model.addAttribute("bpost",bdto);
+    return "update";
+ }
+ // 추가
+ @PostMapping("/modify")
+ public String modify(HttpServletRequest req) {
+    int seqno = Integer.parseInt(req.getParameter("seqno"));
+    String title = req.getParameter("title");
+    String content = req.getParameter("content");
+    rdao.update(seqno, title, content);
+    return "redirect:/";
+ }
+
 	
 }
 	

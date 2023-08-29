@@ -19,6 +19,11 @@ public interface productDAO {
 		
 		productDTO prodview(int space_id);
 		
+		void deleteProd(int space_id);
+		
+		void prodUpdate(int p0, String p1, String p2, String p3, int p4, int p5, int p6, String p7, String p8, String p9,
+														String p10, String p11, String p12, String p13);
+		
 		// 승환
 		ArrayList<productDTO> get_space();
 		productDTO get_one_space(int space_id);

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>상품 추가</title>
+<title>상품 수정</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -70,36 +70,37 @@
 </head>
 <body>
 <header>
-  <h1>상품 추가</h1>
+  <h1>상품 수정</h1>
 </header>
-<form action="/prodInsert" method="post" enctype="multipart/form-data">
+<form action="/prodModify" method="post" enctype="multipart/form-data" id=frmUpdate name=frmUpdate>
 <div class="container">
   <div class="form-section">
+  		<input type=hidden id=space_id name=space_id value="${ppost.space_id}">
       <label for="space_name">상품 이름:</label>
-      <input type="text" id="space_name" name="space_name" required>
+      <input type="text" id="space_name" name="space_name" value="${ppost.space_name}" required>
       
       <label for="space_type">상품 타입:</label>
-      <input type="text" id="space_type" name="space_type" required>
+      <input type="text" id="space_type" name="space_type" value="${ppost.space_type}"required>
       
       <label for="location">위치:</label>
-      <input type="text" id="location" name="location" required>
+      <input type="text" id="location" name="location" value="${ppost.location}"required>
       
       <label for="extent">평수:</label>
-      <input type="number" id="extent" name="extent" required>
+      <input type="number" id="extent" name="extent" value="${ppost.extent}" required>
       
       <label for="capacity">수용인원:</label>
-      <input type="number" id="capacity" name="capacity" required>
+      <input type="number" id="capacity" name="capacity" value="${ppost.capacity}"required>
       
       <label for="price">시간당 가격:</label>
-      <input type="number" id="price" name="price" required>
+      <input type="number" id="price" name="price" value="${ppost.price}"required>
       
       <label for="mobile">전화번호:</label>
-      <input type="text" id="mobile" name="mobile" required>
+      <input type="text" id="mobile" name="mobile" value="${ppost.mobile}" required>
   </div>
   <div class="form-section">
       <div class="image-input">
         <label for="image1">이미지 첨부 1:</label>
-        <input type="file" id="image1" name="image1" accept="image/*">
+        <input type="file" id="image1" name="image1" accept="image/*" >
       </div>
       <div class="image-input">
         <label for="image2">이미지 첨부 2:</label>
@@ -122,9 +123,9 @@
 <div class="container">
   <div class="form-section">
       <label for="description">상세 설명:</label>
-      <textarea id="description" name="description" rows="30" required></textarea>
+      <textarea id="description" name="description" rows="30" required>${ppost.description}</textarea>
       <!-- 상세 설명과 관련된 필드들을 여기에 추가 -->
-      <input type="submit" value="추가" class="submit-button" id="btnSubmit">
+      <input type="submit" value="수정" class="submit-button" id="btnSubmit">
   </div>
 </div>
 </form>

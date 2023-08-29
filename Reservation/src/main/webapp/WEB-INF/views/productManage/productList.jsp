@@ -69,6 +69,10 @@
 
   #add-product-btn:hover {
     background-color: #0077cc; /* 더 진한 하늘색(파란색 계열) */
+    }
+    .selected {
+  background-color: #ffc107; /* 원하는 색상으로 변경하세요 */
+}
 </style>
 </head>
 <body>
@@ -76,7 +80,8 @@
   <h1>상품 리스트</h1>
 </header><br>
 <div class="add-product-button">
-  <button id="add-product-btn">상품 추가</button>
+  <button id="add-product-btn">상품추가</button>
+  <button id="btnDelete">상품삭제</button>
 </div>
 <div class="container">
   <c:forEach items="${plist}" var="prod">
@@ -96,13 +101,49 @@
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
-$(document).on('click','#add-product-btn',function(){
-	window.location.href = "/addProduct";
-	})
-$(document).on('dblclick', '.product', function(){
-  var space_id = $(this).data("space_id");
-  window.location.href = "/productView?id=" + space_id;
-});
+$(document).ready(function() {
+	  // 제품을 클릭했을 때 처리
+	  $(document).on('click', '.product', function() {
+	    // 이전에 선택된 항목의 클래스 제거
+	    $('.product.selected').removeClass('selected');
+
+	    // 현재 선택된 항목에 클래스 추가
+	    $(this).addClass('selected');
+	  });
 	
+	$(document).on('click','#btnDelete',function(){
+		var deleteProd = $('.product.selected');
+		if(deleteProd.length == 0) {
+			alert("삭제할 상품을 선택하세요.");
+			return;
+		}
+		var confirmDelete = confirm("정말로 선택한 상품을 삭제하시겠습니까?");
+		if(confirmDelete){
+			var space_id = deleteProd.data("space_id");
+			console.log("삭제 상품번호: "+ space_id);
+			$.ajax({
+				url:'/prodDelete',
+				data: {space_id:space_id},
+				type:'post',
+				dataType:'text',
+				success: function(data){
+					console.log("삭제성공");
+					deleteProd.remove();
+				},fail:function(){
+					console.log("실패");
+				}
+			})
+		}
+		
+	})
+});
+	$(document).on('click', '#add-product-btn', function() {
+	  window.location.href = "/addProduct";
+	});
+
+	$(document).on('dblclick', '.product', function() {
+	  var space_id = $(this).data("space_id");
+	  window.location.href = "/productView?id=" + space_id;
+	});
 </script>
 </html>

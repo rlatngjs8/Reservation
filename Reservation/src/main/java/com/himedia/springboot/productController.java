@@ -65,8 +65,52 @@ public class productController {
 				return "/productManage/addProduct";
 		}
 
-
+		// 상품삭제 버튼
+		@PostMapping("/prodDelete")
+		@ResponseBody
+		public String prodDelete(HttpServletRequest req) {
+				int space_id = Integer.parseInt(req.getParameter("space_id"));
+				pdao.deleteProd(space_id);
+				return "productList";
+		}
+		// 상품수정
+		@GetMapping("/prodEdit")
+		public String prodEdit(HttpServletRequest req, Model model) {
+				int space_id = Integer.parseInt(req.getParameter("space_id"));
+				productDTO pdto = pdao.prodview(space_id);
+				model.addAttribute("ppost",pdto);
+				return "/productManage/prodEdit";
+		}
 		
+		@PostMapping("/prodModify")
+		public String prodModify(HttpServletRequest req,
+             						@RequestParam(name = "image1") MultipartFile image1,
+                   @RequestParam(name = "image2") MultipartFile image2,
+                   @RequestParam(name = "image3") MultipartFile image3,
+                   @RequestParam(name = "image4") MultipartFile image4,
+                   @RequestParam(name = "image5") MultipartFile image5) {
+				int space_id = Integer.parseInt(req.getParameter("space_id"));
+//				int space_id = 1;
+				String space_name = req.getParameter("space_name");
+				String space_type = req.getParameter("space_type");
+				String location = req.getParameter("location");
+				int extent = Integer.parseInt(req.getParameter("extent"));
+				int capacity = Integer.parseInt(req.getParameter("capacity"));
+				int price = Integer.parseInt(req.getParameter("price"));
+				String mobile = req.getParameter("mobile");
+				
+				String img1 = saveImage(image1, space_name, 1);
+    String img2 = saveImage(image2, space_name, 2);
+    String img3 = saveImage(image3, space_name, 3);
+    String img4 = saveImage(image4, space_name, 4);
+    String img5 = saveImage(image5, space_name, 5);
+				
+				String description = req.getParameter("description");
+				pdao.prodUpdate(space_id, space_name, space_type, location, extent, capacity, price, mobile,
+												img1, img2, img3, img4, img5, description);
+				
+				return "redirect:/productManage/productList";
+		}
 		
 		
 //		@PostMapping("/prodInsert")
@@ -108,11 +152,17 @@ public class productController {
 		    String mobile = req.getParameter("mobile");
 		    String description = req.getParameter("description");
 
+//		    String spath=req.getServletContext().getRealPath("classpath:/static");
+//		    System.out.println("spath="+spath);
+		    
+		    
 		    String img1 = saveImage(image1, space_name, 1);
 		    String img2 = saveImage(image2, space_name, 2);
 		    String img3 = saveImage(image3, space_name, 3);
 		    String img4 = saveImage(image4, space_name, 4);
 		    String img5 = saveImage(image5, space_name, 5);
+		    
+		    System.out.println(img1);
 
 		    // 데이터베이스에 저장
 		    pdao.prodInsert(space_name, space_type, location, extent, capacity, price,
@@ -124,7 +174,7 @@ public class productController {
 		private String saveImage(MultipartFile imageFile, String fileName, int imageNumber) {
 		    if (imageFile != null && !imageFile.isEmpty()) {
 		        String extension = getExtension(imageFile.getOriginalFilename());
-		        String filePath = "C:/Users/1234/eclipse-workspace/Reservation/src/main/resources/static/img/" + fileName + imageNumber + extension;
+		        String filePath = "C:/Users/1234/git/Reservation/Reservation/src/main/resources/static/img/" + fileName + imageNumber + extension;
 		        try {
 		            imageFile.transferTo(new File(filePath));
 		        } catch (IOException e) {

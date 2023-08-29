@@ -26,5 +26,12 @@
 <select id="get_one_space" resultType="com.himedia.springboot.productDTO">
 	SELECT space_id, space_name, space_type, capacity, location, DESCRIPTION, price, mobile, extent ,img1,img2,img3,img4,img5 FROM spaces WHERE space_id = #{param1}
 </select>
-    
+<delete id="deleteProd" parameterType="int">
+	delete from spaces where space_id = #{space_id}
+</delete>
+<update id="prodUpdate">
+	update spaces set space_name=#{param1}, space_type=#{param2}, location=#{param3}, extent=#{param4},capacity=#{param5},
+			price=#{param6}, mobile=#{param7}, img1=#{param8}, img2=#{param9}, img3=#{param10}, img4=#{param11}, img5=#{param12}, description=#{param13}
+	where space_id = #{space_id}
+</update>
 </mapper>
