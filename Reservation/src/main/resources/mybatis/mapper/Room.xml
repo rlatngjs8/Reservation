@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.himedia.springboot.RoomDAO">
+<!-- 로그인, 회원목록 수헌 -->
+<insert id="signup" parameterType="java.util.HashMap">
+	insert into members set userid=#{param1},passcode=#{param2},name=#{param3},
+													birthday=#{param4},address=#{param5},email=#{param6},mobile=#{param7},created=now()
+</insert>
+<select id="login" resultType="int">
+	select count(*) from members where userid=#{param1} and passcode=#{param2}
+</select>
+<select id="getList" resultType="com.himedia.springboot.RoomDTO"> <!-- 회원목록 조회 -->
+	select num,userid,passcode,name,birthday,address,email,mobile,created from members limit #{param1}, #{param2}
+</select>
+<delete id="deleteMember" parameterType="int">
+	delete from members where num = #{num}
+</delete>
+
+<select id="getTotal" resultType="int">
+	select count(*) from members
+</select>
+<!-- 게시판 승환 -->
+<insert id="insert" parameterType="java.util.HashMap">
+	insert into board set title=#{param1}, content=#{param2}, writer=#{param3}, created=now(), updated=now()
+</insert>
+
+<update id="hitup">
+	update board set hit = hit + 1 where seqno=#{param1}
+</update>
+
+<delete id="delete">
+	delete from board where seqno=#{param1}	
+</delete>
+
+<select id="view" resultType="com.himedia.springboot.BoardDTO">
+	select seqno, title, content, writer, hit, created, updated from board
+	where seqno=#{param1}
+</select>
+
+<update id="update">
+	update board set title=#{param2}, content=#{param3}, updated=now() 
+	where seqno=#{param1}
+</update>
+
+<select id="getList1" resultType="com.himedia.springboot.BoardDTO">
+	select seqno, title, content, writer, hit, created, updated from board 
+	order by updated desc limit #{param1}, #{param2}
+</select>
+
+<select id="getTotal1" resultType="int">
+	select count(*) from board
+</select>
+
+
+
+<insert id="payment" parameterType="java.util.HashMap">
+	insert into payment set payment_option=#{param1},price=#{param2},
+	payment_date=#{param3}, payment_status=#{param4}
+</insert>
+</mapper>
