@@ -20,6 +20,7 @@
 <select id="getTotal" resultType="int">
 	select count(*) from members
 </select>
+
 <!-- 게시판 승환 -->
 <insert id="insert" parameterType="java.util.HashMap">
 	insert into board set title=#{param1}, content=#{param2}, writer=#{param3}, created=now(), updated=now()

@@ -175,6 +175,7 @@ a {
 
 <body>
 
+<!-- 클릭시, 메인 페이지로 이동. -->
 <h1 align=center><a href="/">Share Place</a></h1> <hr/>
 
 <div class="btn1"></div>
@@ -187,7 +188,8 @@ a {
                 <tr>
                     <td align="right">
                         <c:if test="${name == ''}">
-                            <button id="btnLogin">로그인</button>
+                        	<!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
+                            <button id="btnLogin" class="button">로그인</button>
                         </c:if>
                         <c:if test="${name != ''}">
                             <span>${name}</span> 님 환영합니다&nbsp;&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
@@ -223,6 +225,10 @@ a {
       </c:when>
       
    <c:when test="${name =='hwan'}">
+      <li><a href="/forAdmin">관리자페이지</a></li>
+      </c:when>
+      
+      <c:when test="${name =='gldigh123'}">
       <li><a href="/forAdmin">관리자페이지</a></li>
       </c:when>
       
