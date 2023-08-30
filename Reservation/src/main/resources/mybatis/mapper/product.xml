@@ -30,8 +30,8 @@
 	delete from spaces where space_id = #{space_id}
 </delete>
 <update id="prodUpdate">
-	update spaces set space_name=#{param1}, space_type=#{param2}, location=#{param3}, extent=#{param4},capacity=#{param5},
-			price=#{param6}, mobile=#{param7}, img1=#{param8}, img2=#{param9}, img3=#{param10}, img4=#{param11}, img5=#{param12}, description=#{param13}
-	where space_id = #{space_id}
+	update spaces set space_name=#{param2}, space_type=#{param3}, location=#{param4}, extent=#{param5},capacity=#{param6},
+			price=#{param7}, mobile=#{param8}, img1=#{param9}, img2=#{param10}, img3=#{param11}, img4=#{param12}, img5=#{param13}, description=#{param14}
+	where space_id = #{param1}
 </update>
 </mapper>

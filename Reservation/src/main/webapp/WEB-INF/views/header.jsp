@@ -149,8 +149,6 @@
 </style>
 
 <body>
-테스트
-테스트2
 <div class="btn1"></div>
 <div onclick="history.back();" class="page_cover"></div>
 

@@ -111,7 +111,7 @@ public class productController {
 				pdao.prodUpdate(space_id, space_name, space_type, location, extent, capacity, price, mobile,
 												img1, img2, img3, img4, img5, description);
 				
-				return "redirect:/productManage/productList";
+				return "redirect:/productList";
 		}
 		
 		

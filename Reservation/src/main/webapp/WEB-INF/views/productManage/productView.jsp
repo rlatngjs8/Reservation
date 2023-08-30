@@ -53,7 +53,6 @@
   
 </style>
 <body>
-테스트
   <header>
     <h1>상품 상세 보기</h1>
   </header><br>

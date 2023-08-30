@@ -124,11 +124,6 @@ public class HomeController {
      return "showMembers"; // 클라이언트로 응답 전송
  }
 	
- // 예약관리
- @GetMapping("/showReservation")
- public String reservaiton() {
- 		return "showReservation";
- }
  
  
  @GetMapping("/manager")				// ..승환님이 만든 버튼으로 링크
@@ -266,6 +261,12 @@ public class HomeController {
     rdao.update(seqno, title, content);
     return "redirect:/";
  }
+// 예약관리(수헌)
+// 예약조회
+@GetMapping("/showReservation")
+public String reservaiton() {
+	return "/ReservationManage/showReservation";
+}
 
 	
 }

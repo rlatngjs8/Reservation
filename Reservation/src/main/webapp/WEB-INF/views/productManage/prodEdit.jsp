@@ -100,23 +100,23 @@
   <div class="form-section">
       <div class="image-input">
         <label for="image1">이미지 첨부 1:</label>
-        <input type="file" id="image1" name="image1" accept="image/*" >
+        <input type="file" id="image1" name="image1" accept="image/*" >${ppost.img1}
       </div>
       <div class="image-input">
         <label for="image2">이미지 첨부 2:</label>
-        <input type="file" id="image2" name="image2" accept="image/*">
+        <input type="file" id="image2" name="image2" accept="image/*">${ppost.img2}
       </div>
       <div class="image-input">
         <label for="image3">이미지 첨부 3:</label>
-        <input type="file" id="image3" name="image3" accept="image/*">
+        <input type="file" id="image3" name="image3" accept="image/*">${ppost.img3}
       </div>
       <div class="image-input">
         <label for="image4">이미지 첨부 4:</label>
-        <input type="file" id="image4" name="image4" accept="image/*">
+        <input type="file" id="image4" name="image4" accept="image/*">${ppost.img4}
       </div>
       <div class="image-input">
         <label for="image5">이미지 첨부 5:</label>
-        <input type="file" id="image5" name="image5" accept="image/*">
+        <input type="file" id="image5" name="image5" accept="image/*">${ppost.img5}
       </div>
   </div>
 </div>
@@ -158,5 +158,6 @@ $(document).on('click','#btnSubmit',function(){
 		alert('상세설명을 입력하시오'); return false;
 	}	
 })
+
 </script>
 </html>
