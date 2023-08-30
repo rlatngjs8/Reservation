@@ -298,10 +298,6 @@ public String reservaiton(HttpServletRequest req, Model model) {
 	return "/ReservationManage/showReservation";
 }
 
-@GetMapping("/paytest")
-public String pay() {
-		return "paytest";
-}
-	
+
 }
 	

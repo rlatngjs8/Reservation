@@ -344,8 +344,7 @@ display: flex;
 
 
 .load {
-	width:200px;
-	height: 200px;
+	
 }
 
 
@@ -359,7 +358,6 @@ display: flex;
     border: none;
     font-size: 24px;
     cursor: pointer;
-    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
@@ -393,6 +391,7 @@ display: flex;
  height: 200px;
 
 
+
 } 
 
 .slide-container {
@@ -404,7 +403,9 @@ display: flex;
 
 
 
-
+.cDiv img{
+	margin-left:30px;
+}
 
 
 
@@ -497,35 +498,30 @@ display: flex;
 <div>
 	<div class="first">
 	
-		<div>
-			<a href="/PartyRoom"><img src="img/party.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<br>
+		<div class=cDiv>
+			<a href="/PartyRoom"><img src="img/파티룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<br>&nbsp;
 			<a>파티룸</a>
 		</div>
 		
-		<div>
-			<a href="/RecordingStudio"><img src="img/music.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class=cDiv>
+			<a href="/RecordingStudio"><img src="img/녹음실.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 			<br>
-			<a>녹음실</a>
+			<a>스튜디오/방송</a>
 		</div>
 		
-		<div>
-			<a href="/seminarRoom"><img src="img/meeting.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<br>
-			<a>회의실</a>
+		<div class=cDiv>
+			<a href="/seminarRoom">&nbsp;<img src="img/세미나룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<br>&nbsp;
+			<a>회의실/세미나</a>
 		</div>
 		
-		<div>
-			<a href="#"><img src="img/seminar.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<br>
-			<a>강의실</a>
+		<div class=cDiv>
+			<a href="/studyRoom"><img src="img/스터디룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<br>&nbsp;
+			<a>강의실/스터디룸</a>
 		</div>
-		
-		<div>
-			<a href="#"><img src="img/study.jpg"></a>
-			<br>
-			<a>스터디룸</a>
-		</div>
+	
 		
 	</div>
 </div>
@@ -603,7 +599,7 @@ display: flex;
   	
   
   
-  	<input type="button" id="load" name="load" value="더보기">
+  	<input type="button" id="load" name="load" class="load" value="더보기">
   
   
   
