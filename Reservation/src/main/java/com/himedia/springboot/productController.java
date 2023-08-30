@@ -26,6 +26,8 @@ public class productController {
 		@Autowired
 		private productDAO pdao;
 		
+		
+		
 		// 상품관리 열리자마자 리스트
 		@GetMapping("/productList")
 	 public String productlist(HttpServletRequest req, Model model) {
