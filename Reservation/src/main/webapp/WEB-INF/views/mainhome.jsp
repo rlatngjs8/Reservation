@@ -5,7 +5,7 @@
 <html>
 <head>
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <meta charset="UTF-8">
 <title>공간예약 시스템</title>
 </head>
@@ -48,14 +48,14 @@ body {
   justify-content: center;
   margin: 20px 0;
   padding: 0;
+
+  
 }
 
 .second {
     display: flex;
     list-style: none;
     justify-content: center;
-    margin: 20px 0;
-    padding: 0;
 }
 
 
@@ -81,6 +81,7 @@ body {
         transition: transform 0.3s ease;
         width:250px;
         height:240px;
+        border-radius: 20px;
     
 }
 
@@ -92,10 +93,12 @@ body {
     max-width: 90%;
     height: 100%;
     width: 1000px;
-    margin-right: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+
+
 
 
 
@@ -220,7 +223,6 @@ img css 삭제
 h3 {
    font-size: 24px;
    color: #333;
-   margin-bottom: 10px;
 }
 
 
@@ -237,19 +239,19 @@ h3 {
 .banner css 추가
 */
 .banner{
-   background-color:#f2f2f2;
-   padding: 10px;
-   text-align: center;
-   color:#333;
+	background-color:#E0F8F7;
+	padding: 40px;
+	text-align: center;
+	color:#333;
 }
 
 /*
 .banner a css 추가
 */
 .banner a{
-   text-decoration:none;
-   color:#0007bff;
-   font-weight: bold;
+	text-decoration:none;
+	color:#0007bff;
+	font-weight: bold;
 }
 
 
@@ -269,19 +271,15 @@ card1 css 추가
         transition: transform 0.3s ease;
         width:250px;
         height:240px;
+        border-radius: 30px;
+        margin-left: 70px;
+       
         
     }
     
 
 
-.new card img{
-    max-width: 90%;
-    height: 100%;
-    width: 1000px;
-    margin-right: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+
     
 /*
 .card1:hover css 추가
@@ -291,39 +289,18 @@ card1 css 추가
 .card1 img css 추가
 */
     .card1 img {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 10px; 
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    width: 200px;
+    height: 166.75px;
+    margin-bottom: 10px; 
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	
     }
     
-/*
-.card1-content css 추가
-*/
-
-/*
-.card1-title css 추가
-*/
-
-/*
-.card1-description css 추가
-*/
-
-/*
-.card1-link css 추가
-*/
-
-    
-/*
-.card1-link:hover css 추가
-*/
 
 
-
-/*
-.card1 p css 추가
-*/
 
 
 /*
@@ -332,33 +309,134 @@ card1 css 추가
 .mli img {
   width:60%;
 }
-.logo {
-   height:40px;
-   weight:40px;
-}
+
 
 .cDiv{
-   overflow: hidden;
+	overflow: hidden;
 }
+
+
+.card12{
+display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        margin: 10px;
+        border: 3px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        width:250px;
+        height:240px;
+         border-radius: 30px;
+
+}
+
+
+.card12 img{
+
+        width:200px;
+        height: 166.75px;
+        margin-bottom: 10px; 
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.load {
+	width:200px;
+	height: 200px;
+}
+
+
+
+
+
+
+
+.slide-button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    color: #000;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+
+.slide-container {
+ width: 300vw;
+ transition: all 1s;
+ 
+ 
+}
+.slide-box {
+ width: 100vw;
+ float: left;
+ 
+ 
+ 
+}
+.slide-box img {
+ width: 1000px;
+ height: 200px;
+
+
+} 
+
+.slide-container {
+  width: 300vw;
+  transition: all 1s;
+  transform: translateX(-100vw);
+  border-radius: 30px;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </style>
 <body>
 
 
-   
+	
 <!-- header (Share Place, 좌측 상단 햄버거 모양 버튼을 header.jsp로 만들었습니다.) -->
 <%@include file="header.jsp" %>
 
 
 
 
-
+<br>
 
 <!-- 이벤트 배너를 추가하고, "event"라는 링크를 걸었습니다. -->
 <div class="banner">
         <p>🎉 할인 이벤트 진행 중! <a href="event">자세히 보기</a></p>
     </div>
+<br><br>
 
 
 
@@ -367,33 +445,95 @@ card1 css 추가
 
 
 
+
+
+<div class="second" align="center">
+    <div style="overflow: hidden">
+        <div class="slide-container">
+        
+         <div class="slide-box">
+                <a href="event1"><img src="img/실험배너2 (1).jpg"></a>
+            </div>
+           
+            <div class="slide-box">
+                <a href="#"><img src="img/배너2.jpg"></a>
+            </div>
+        </div>
+         <button class="slide-button prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="slide-button next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
 
 <!-- 이미지 조정 및 룸에 대한 설명을 아이콘 아래에 표시 -->
 <div>
-<ul class="first">
-
-   <li><a href="#"><img src="img/party.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-   <br>
-      <a>파티룸</a>
-   <li><a href="#"><img src="img/music.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-   <br>
-      <a>녹음실</a>
-   <li><a href="#"><img src="img/meeting.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-   <br>
-      <a>회의실</a>
-   <li><a href="#"><img src="img/seminar.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-   <br>
-      <a>강의실</a>
-   <li><a href="#"><img src="img/study.jpg"></a>
-   <br>
-      <a>스터디룸</a>
-
-</ul>
+	<div class="first">
+	
+		<div>
+			<a href="/PartyRoom"><img src="img/party.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<br>
+			<a>파티룸</a>
+		</div>
+		
+		<div>
+			<a href="/RecordingStudio"><img src="img/music.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<br>
+			<a>녹음실</a>
+		</div>
+		
+		<div>
+			<a href="/seminarRoom"><img src="img/meeting.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<br>
+			<a>회의실</a>
+		</div>
+		
+		<div>
+			<a href="#"><img src="img/seminar.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<br>
+			<a>강의실</a>
+		</div>
+		
+		<div>
+			<a href="#"><img src="img/study.jpg"></a>
+			<br>
+			<a>스터디룸</a>
+		</div>
+		
+	</div>
 </div>
+
 
 <!-- slider 부분 삭제 -->
 
-<br><br><br>
+<br><br>
 <hr/>
 
     <div>
@@ -408,7 +548,7 @@ card1 css 추가
     <!-- 이미지 작업중입니다. -->
  <div class="second">
     
-   <!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
+	<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
     <div class="card">
          <a href="/#"><img src="img/newMeeting.jpg" alt="이미지 2"></a>
          <br>
@@ -429,9 +569,9 @@ card1 css 추가
         <p id="demo">안녕하세요. Party Room.</p>
     </div>
     <div class="card">
-       <a href="#"><img src="img/newStudy.jpg" alt="이미지 4"></a>
-       <br>
-       <p id="demo">안녕하세요. Study Room.</p>
+    	<a href="#"><img src="img/newStudy.jpg" alt="이미지 4"></a>
+    	<br>
+    	<p id="demo">안녕하세요. Study Room.</p>
     </div>
 </div>
 
@@ -439,43 +579,56 @@ card1 css 추가
  <br><br><br>
 
 
-   <div>
+	<div>
        <h3 class="newleft">방금 올라온 후기</h3>      
     </div>
 
     
     <div class="second">
     
-   <!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
+	<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
     <div class="card1">
-         <a href="/recentlyReview"><img src="img/second.jpg" alt="이미지 2"></a>
+         <a href="/recentlyReview"><img src="img/reviewMeetingRoom.jpg" alt="이미지 2"></a>
         <p id="demo">좋아요좋아요좋아요</p>
     </div>
     
     
     <div class="card1">
-        <a href="#"><img src="img/second.jpg" alt="이미지 2"></a>
+        <a href="#"><img src="img/reviewPartyRoom.jpg" alt="이미지 2"></a>
         <p id="demo">좋아요좋아요좋아요</p>
-    </div>
-    
-    
-    <div class="card1">
-        <a href="#"><img src="img/second.jpg" alt="이미지 2"></a>
-        <p id="demo">좋아요좋아요좋아요</p>
-    </div>
-    
-    <div class="card1">
-       <a href="#"><img src="img/second.jpg" alt="이미지 3"></a>
-       <p id="demo">좋아요좋아요좋아요</p>
-    </div>
-    
-    <div class="card1">
-       <a href="#"><img src="img/second.jpg" alt="이미지 3"></a>
-       <p id="demo">좋아요좋아요좋아요</p>
     </div>
     
   </div>
   
+  	
+  
+  
+  	<input type="button" id="load" name="load" value="더보기">
+  
+  
+  
+<div class="second">
+	
+
+	
+	
+	<div class="card12">
+		<a href="#"><img src="img/reviewRecordingStudio.jpg"></a>
+		<p id="demo">goodgoodgood</p>
+	</div>
+	
+	<div class="card12">
+		<a href="#"><img src="img/reviewStudyRoom.jpg"></a>
+		<p id="demo">goodgoodgood</p>
+	</div>
+	
+	<div class="card12">
+		<a href="#"><img src="img/second.jpg"></a>
+		<p id="demo">GoodGoodGood</p>
+	</div>
+	
+</div>
+
 
 
   
@@ -485,8 +638,10 @@ card1 css 추가
   
     
   
-   
-   <!-- a태그(id=move top btn)을 삭제 -->
+	
+	<!-- a태그(id=move top btn)을 삭제 -->
+ 
+ 
  
  
 
@@ -504,6 +659,53 @@ card1 css 추가
 <!-- script부분 전체 삭제 -->
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
+
+
+
+$(document).ready(function() {
+    $(".card12").hide();
+    var buttonText = ["더 보기", "접기"];
+    var toggleIndex = 0;
+
+    $("#load").click(function() {
+        var currentScroll = $(window).scrollTop(); // 현재 스크롤 위치 저장
+        $(".card12").slideToggle("fast", function() {
+            // 스크롤 위치를 이동하지 않도록 설정
+            
+            $(window).scrollTop(currentScroll);
+        });
+        
+        toggleIndex = 1 - toggleIndex;
+        $(this).val(buttonText[toggleIndex]);
+    });
+});
+
+
+
+
+
+
+
+
+$('.prev').on('click', function() {
+    $('.slide-container').css('transform', 'translateX(0vw)');
+});
+
+$('.next').on('click', function() {
+    $('.slide-container').css('transform', 'translateX(-100vw)');
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

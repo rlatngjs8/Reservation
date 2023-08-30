@@ -23,6 +23,7 @@ footer .inner {
 footer .menu {
   display: flex;
   justify-content: center;
+  list-style: none;
 }
 
 
@@ -55,6 +56,7 @@ footer .menu li a {
   font-weight: 700;
   padding: 15px;
   display: block;
+
 }
 
 
@@ -126,7 +128,9 @@ footer .logo {
 
 <footer>
   <div class="inner">
-    <ul class="menu1">
+  
+  <!-- menu1 이라는 class name을 menu로 변경 -->
+    <ul class="menu">
       <li><a href="javascript:void(0)">개인정보처리방침</a></li>
       <li><a href="javascript:void(0)">영상정보처리기기 운영관리 방침</a></li>
       <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>

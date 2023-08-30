@@ -119,7 +119,7 @@
     }
     
 #menu ul.nav li a:hover {
-	background:#eee;
+   background:#eee;
     }
     
 #menu ul.nav li .sub_mobile a {
@@ -129,7 +129,7 @@
     width:100%;
     z-index:999;
     background:#ccc;
-	}
+   }
 
 #menu ul.nav li .sub_mobile a:hover {
     background:#787878;
@@ -144,31 +144,60 @@
    border: 1px solid #c9c9c9;
 }
 
+a {
+  text-decoration: none;
+  color:black;
+}
+
+.button {
+  width: 70px;
+  height: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+
+
 
 
 </style>
 
 <body>
-테스트
-수헌 테스트
+
+<h1 align=center><a href="/">Share Place</a></h1> <hr/>
+
 <div class="btn1"></div>
 <div onclick="history.back();" class="page_cover"></div>
-<!-- 21312312312312 -->
+
 <div id="menu">
-   <ul class="nav">
-    <li>
-    <table>
-		<tr><td align="right">
-			<c:if test="${name == ''}">   	<!--name이 빈문자열이면 아래 실행-->
-				<button id=btnLogin>로그인</button>
-			</c:if>
-			<c:if test="${name != ''}">			 
-				<span>${name}</span> 님 환영합니다&nbsp;&nbsp;<button id="btnLogout">로그아웃</button>	<!-- logout 없음 만들어야함 -->
-		    <li><a href='/reservation'>예약현황</a></li>
-			</c:if>
-		</td></tr>
-		</table>
-    </li>
+    <ul class="nav">
+        <li>
+            <table>
+                <tr>
+                    <td align="right">
+                        <c:if test="${name == ''}">
+                            <button id="btnLogin">로그인</button>
+                        </c:if>
+                        <c:if test="${name != ''}">
+                            <span>${name}</span> 님 환영합니다&nbsp;&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
+                            <li><a href='/reservation'>예약현황</a></li>
+                            <li><a href='/modify_member_info'>회원정보수정</a></li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
+                        </c:if>
+                    </td>
+                </tr>
+            </table>
+        </li>
        
        
 <%--     <c:if test="${infoline != '' }"> --%>
@@ -181,24 +210,24 @@
     <li><a href="/review">Review</a></li>
 
     <li><a href="event">이벤트</a></li>
+
     
-    
-   	<c:choose>
-   	
-   	<c:when test="${name =='rlatngjs'}">  <!-- 관리자 메뉴 -->
-   	<li><a href="/manager">관리자페이지</a></li>
-   	</c:when>
-   	
-   	<c:when test="${name =='nayeon'}">
-   	<li><a href="/manager">관리자페이지</a></li>
-   	</c:when>
-   	
-	<c:when test="${name =='hwan'}">
-   	<li><a href="/manager">관리자페이지</a></li>
-   	</c:when>
-   	
-	</c:choose>
-	  
+      <c:choose>
+      
+      <c:when test="${name =='rlatngjs'}">  <!-- 관리자 메뉴 -->
+      <li><a href="/forAdmin">관리자페이지</a></li>
+      </c:when>
+      
+      <c:when test="${name =='nayeon'}">
+      <li><a href="/forAdmin">관리자페이지</a></li>
+      </c:when>
+      
+   <c:when test="${name =='hwan'}">
+      <li><a href="/forAdmin">관리자페이지</a></li>
+      </c:when>
+      
+   </c:choose>
+     
     </ul>
     </li>
     </ul>
@@ -212,35 +241,39 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 
+$(document).on('click','#btnLogin',function(){
+    window.location.href = "/login";
+ })
+ $(document).on('click','#btnLogout',function(){
+    window.location.href = "/logout";
+ })
 
 
 
 
+$(document).ready(function() {
+   $("#menu1 ul.sub_mobile").hide();
+   
+$(".btn1").click(function() {
+  $("#menu,.page_cover,html").addClass("open");
+  window.location.hash = "#open";
+})
+})
 
-	$(document).ready(function() {
-		$("#menu1 ul.sub_mobile").hide();
+window.onhashchange = function() {
+  if (location.hash != "#open") {
+    $("#menu,.page_cover,html").removeClass("open");
+  }
+};
 
-		$(".btn1").click(function() {
-			$("#menu,.page_cover,html").addClass("open");
-			window.location.hash = "#open";
-		})
-	})
 
-	window.onhashchange = function() {
-		if (location.hash != "#open") {
-			$("#menu,.page_cover,html").removeClass("open");
-		}
-	};
+$("#menu ul.nav li").click(function(){
+$("ul",this).slideToggle("fast");
+})
+;
 
-	$("#menu ul.nav li").click(function() {
-		$("ul", this).slideToggle("fast");
-	});
-	$(document).on('click','#btnLogin',function(){
-		window.location.href = "/login";
-	})
-	$(document).on('click','#btnLogout',function(){
-		window.location.href = "/logout";
-	})
+
+
 </script>
 
 
