@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+						 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.himedia.springboot.ReservationDAO">
+<select id="getList2" resultType="com.himedia.springboot.ReservationDTO">
+	select a.seqno, b.userid, b.name, b.mobile, c.space_name, a.useday, a.startTime, a.endTime, a.totalPrice, a.purchaseTime
+		from re_info a inner join members b on a.userid = b.userid inner join spaces c on a.space_name = c.space_name limit #{param1}, #{param2}
+</select>
+<select id="getTotal2" resultType="int">
+	select count(*) from re_info
+</select>
+</mapper>
