@@ -168,6 +168,17 @@ a {
   }
 
 
+@font-face {
+    font-family: 'KIMM_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.top{
+	font-family:'KIMM_Bold',sans-serif;
+}
+
 
 
 
@@ -176,7 +187,7 @@ a {
 <body>
 
 <!-- 클릭시, 메인 페이지로 이동. -->
-<h1 align=center><a href="/">Share Place</a></h1> <hr/>
+<h1 align=center class="top"><a href="/">Share Place</a></h1> <hr/>
 
 <div class="btn1"></div>
 <div onclick="history.back();" class="page_cover"></div>

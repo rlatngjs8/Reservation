@@ -77,7 +77,7 @@ body {
 	<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
     <div class="card">
          <a href="#"><img src="img/${rooms[0].img1}" alt="이미지 6"></a>
-		
+		<br>
 		<p id="demo">${rooms[0].space_name}
 	
 	

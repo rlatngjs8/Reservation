@@ -268,8 +268,20 @@ public String reservaiton() {
 	return "/ReservationManage/showReservation";
 }
 
+@GetMapping("/event")
+public String goEventPage() {
+	return "/event";
+}
 
-	
+@GetMapping("/event1")
+public String goEvent1Page() {
+	return "/event1";
+}
+
+@GetMapping("/event2")
+public String goEvent2Page() {
+	return "/event2";
+}
 
 }
 	

@@ -54,6 +54,7 @@
         </ol>
         <p>더 많은 정보나 문의 사항은 <a href="asdf@gmail.com">event@example.com</a>으로 문의</p>
     </div>
+    <br><br>
 
 <%@include file="footer.jsp" %>
 

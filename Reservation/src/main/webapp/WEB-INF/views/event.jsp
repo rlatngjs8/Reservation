@@ -93,7 +93,7 @@
   			<div class="bn">
   			
   			<br>
-  				<a href="#">신규 고객 30% 추가 적립</a>
+  				<a href="event2">신규 고객 30% 추가 적립</a>
   				<br>
   									
   			</div>
