@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -263,8 +262,39 @@ public class HomeController {
  }
 // 예약관리(수헌)
 // 예약조회
+ 
+@Autowired
+private ReservationDAO redao;
 @GetMapping("/showReservation")
-public String reservaiton() {
+public String reservaiton(HttpServletRequest req, Model model) {
+		int start,psize;
+		String page = req.getParameter("pageno");
+		if(page == null || page.equals("")) {
+			page="1";
+		}
+		int pno = Integer.parseInt(page);
+		start = (pno -1) * 10;
+		psize = 10;
+		ArrayList<ReservationDTO> alReservation = redao.getList2(start, psize);
+		
+		int cnt=redao.getTotal2();
+		int pagecount = (int) Math.ceil(cnt/10.0);
+		
+		String pagestr="";
+		for(int i=1; i<=pagecount; i++) {
+			if(pno == i) {
+				pagestr += i+"&nbsp;";
+			} else {
+				pagestr+="<a href='/ReservationManage/showReservation?pageno="+i+"'>"+i+"</a>&nbsp;";				
+				// 안되면 주소 수정
+			}
+			System.out.println(pagestr);
+		}
+		System.out.println(alReservation.size());
+		System.out.println("cnt=" + cnt);
+		model.addAttribute("pagestr",pagestr);
+		model.addAttribute("rlist",alReservation);
+	
 	return "/ReservationManage/showReservation";
 }
 
@@ -273,6 +303,7 @@ public String goEventPage() {
 	return "/event";
 }
 
+<<<<<<< HEAD
 @GetMapping("/event1")
 public String goEvent1Page() {
 	return "/event1";
@@ -283,5 +314,7 @@ public String goEvent2Page() {
 	return "/event2";
 }
 
+=======
+>>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
 }
 	

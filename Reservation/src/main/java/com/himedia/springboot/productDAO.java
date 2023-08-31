@@ -10,7 +10,6 @@ public interface productDAO {
 		//상품 목록불러오기
 		ArrayList<productDTO> getList(int start, int psize);
 		int getTotal();
-		
 		//상품 추가
 //		void prodInsert(String p1, String p2, String p3,int p4, int p5, int p6, 
 //												String p7, String p8, String p9, String p10, String p11, String p12, String p13);
