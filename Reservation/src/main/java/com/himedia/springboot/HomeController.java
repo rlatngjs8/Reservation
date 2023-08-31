@@ -302,19 +302,7 @@ public String reservaiton(HttpServletRequest req, Model model) {
 public String goEventPage() {
 	return "/event";
 }
-
-<<<<<<< HEAD
-@GetMapping("/event1")
-public String goEvent1Page() {
-	return "/event1";
 }
 
-@GetMapping("/event2")
-public String goEvent2Page() {
-	return "/event2";
-}
 
-=======
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
-}
 	
