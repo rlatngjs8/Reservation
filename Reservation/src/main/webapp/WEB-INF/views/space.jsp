@@ -96,7 +96,12 @@
 		    cursor: pointer;
 		}
 		
-		.selected-time {
+		.selected-start-time {
+		    background-color: #333; /* 검정색 배경 */
+		    color: #fff; /* 흰색 글자색 */
+		}
+		
+		.selected-end-time {
 		    background-color: #333; /* 검정색 배경 */
 		    color: #fff; /* 흰색 글자색 */
 		}
@@ -211,7 +216,7 @@
                 <p>${space.extent}m²</p>
                 <h3 style="margin-left: auto;">시간당 가격:${space.price }원</h3>
             </div>
-            
+         	
             <!-- -@@@@@@@@@@@@@@@@@@@@예약 진행 -->
             <div class="reservation-window" id="reservationWindow">
                 <h2>예약 진행</h2>
@@ -221,32 +226,33 @@
 				</div>
 				<h3>시간 선택</h3>
 				<h4>시간당 가격: ${space.price}원</h4>
+				<div class="price-text" id="currentPrice">현재 가격: 0원</div>
 				<div class="time-picker">
 					<table>
 				        <tr>
-				            <td class="time-cell">09:00 AM</td>
-				            <td class="time-cell">10:00 AM</td>
-				            <td class="time-cell">11:00 AM</td>
-				          	<td class="time-cell">12:00 PM</td>
-				            <td class="time-cell">01:00 PM</td>
+				            <td class="time-cell">09:00</td>
+				            <td class="time-cell">10:00</td>
+				            <td class="time-cell">11:00</td>
+				          	<td class="time-cell">12:00</td>
+				            <td class="time-cell">13:00</td>
 				        </tr>
 				        <tr>
-				            <td class="time-cell">02:00 PM</td>
-				            <td class="time-cell">03:00 PM</td>
-				            <td class="time-cell">04:00 PM</td>
-				          	<td class="time-cell">05:00 PM</td>
-				            <td class="time-cell">06:00 PM</td>
+				            <td class="time-cell">14:00</td>
+				            <td class="time-cell">15:00</td>
+				            <td class="time-cell">16:00</td>
+				          	<td class="time-cell">17:00</td>
+				            <td class="time-cell">18:00</td>
 				        </tr>
 				        <tr>
-				            <td class="time-cell">07:00 PM</td>
-				            <td class="time-cell">08:00 PM</td>
-				            <td class="time-cell">09:00 PM</td>
-				          	<td class="time-cell">10:00 PM</td>
+				            <td class="time-cell">19:00</td>
+				            <td class="time-cell">20:00</td>
+				            <td class="time-cell">21:00</td>
+				          	<td class="time-cell">22:00</td>
 				        </tr>
 				    </table>
-				    <div class="price-text" id="totalPrice">총 가격: 0원</div>
 				    <c:if test="${not empty sessionScope.username}">
-				    <button id="addReT">추가하기 </button>
+				    <button id="addReT">추가하기</button> 
+				    
 					</c:if> 
 					<c:if test="${empty sessionScope.username}">
 				    <button id="addReF">추가하기</button>
@@ -254,16 +260,18 @@
 					
 				    <div id="addedSlots"></div> <!-- 추가버튼을 누르면 들어가는 곳  -->
 				</div>
-				
+			
 				<br>
+				<div class="price-text" id="totalPrice">총 가격: 0원</div>
 				<c:if test="${not empty sessionScope.username}">
-				    <button id="btnReT">지금 예약하기</button>
+				    <button id="btnReT">지금 진짜 예약하기</button>
 				</c:if>
 				<c:if test="${empty sessionScope.username}">
 				    <button id="btnReF">지금 예약하기</button>
 				</c:if>
             </div>
-            
+     	
+                        
             <div id='imgurlList'>
                 
             </div>
@@ -292,93 +300,153 @@
                 </script>
                 <p>자세한 주소는 호스트 승인 후, 메시지로 문의 가능합니다.</p>
                 <p>전화번호: ${space.mobile}</p>
+                
             </div>
             
-            <div class='review'> Review
+			<!-- 리뷰 영역 -->
+			<div id="reviews">
+			    <h3>리뷰</h3>
+			    <h2><a href='review'>리뷰 작성하기</a></h2>
+			    <ul>
+			        <!-- 리뷰 데이터 반복 표시 -->
+			        <c:forEach items="${reviewList}" var="review">
+			            <li>
+			                <p>${review.content}</p>
+			                <p>작성자: ${review.author}</p>
+			                <p>평점: ${review.rating}</p>
+			            </li>
+			        </c:forEach>
+			    </ul>
+			</div>
             
-            </div>
+            
         </section>
     </main>
     <footer>
         <p>Contact us at example@example.com for inquiries.</p>
+        <P><a href='/board'>1대1 문의하기 </a></P>
     </footer>
+    
 </body>
 <script>
-let selectedTimeSlots = [];
-$(document).ready(function () {
+let selectedStartTime = null;
+let selectedEndTime = null;
+let totalAddedPrice = 0; 
 
+let arrayDate = [];
+let arrayStartTime= [];
+let arrayEndTime = [];
+let arrayAddedPrice = [];
+
+
+$(document).ready(function () {
 
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         minDate: new Date(),
         onSelect: function(dateText, inst) {
+            // 날짜 선택 후 초기화
             $("#selectedDate").text("선택한 날짜: " + dateText);
         }
     });
 
     $(".time-cell").click(function() {
-        $(this).toggleClass("selected-time");
-
-        // 선택한 시간 변수에 저장
-        selectedTime = [];
-        $(".selected-time").each(function() {
-            selectedTime.push($(this).text());
-        });
-
-        // calculatePrice(); // calculatePrice 함수 호출 추가
+        // 첫 번째 선택한 시간인지 확인
+        if (selectedStartTime === null) {
+            selectedStartTime = $(this).text();
+            $(this).addClass("selected-start-time");
+        } 
+        // 두 번째 선택한 시간인지 확인
+        else if (selectedEndTime === null) {
+            selectedEndTime = $(this).text();
+            $(this).addClass("selected-end-time");
+            highlightTimeRange();
+            calculateTotalPrice();
+        } 
+        // 세 번째 선택한 시간인지 확인 (첫 번째로 다시 선택)
+        else {
+            resetTimeSelection();
+            selectedStartTime = $(this).text();
+            $(this).addClass("selected-start-time");
+        }
     });
 
-    // 추가하기 버튼 클릭 시
     $("#addReT").click(function() {
-        // 선택한 날짜와 시간 가져오기
         const selectedDate = $("#datepicker").val();
-        const selectedTimes = $(".selected-time").map(function() {
-            return $(this).text();
-        }).get();
 
-        let errorMessage = "";
-
-        if (selectedDate === "" && selectedTimes.length === 0) {
-            errorMessage = "날짜와 시간을 선택해주세요.";
-        } else if (selectedDate === "") {
-            errorMessage = "날짜를 선택해주세요.";
-        } else if (selectedTimes.length === 0) {
-            errorMessage = "시간을 선택해주세요.";
+        if (selectedDate === "" || selectedStartTime === null || selectedEndTime === null) {
+            alert("날짜와 시작 시간, 끝 시간을 선택해주세요.");
+            return;
         }
 
-        if (errorMessage !== "") {
-            alert(errorMessage);
-            return; // 함수 종료
-        }
+        const hourPrice = parseInt("${space.price}"); // 시간당 가격 설정, 필요에 따라 수정
+        const startTime = selectedStartTime.split(":");
+        const endTime = selectedEndTime.split(":");
+        const startHour = parseInt(startTime[0]);
+        const startMinute = parseInt(startTime[1]);
+        const endHour = parseInt(endTime[0]);
+        const endMinute = parseInt(endTime[1]);
 
-        // 선택한 날짜와 시간을 배열에 추가
-        selectedTimeSlots.push({ date: selectedDate, times: selectedTimes });
+        const diffInMinutes = (endHour * 60 + endMinute) - (startHour * 60 + startMinute);
+        const addedPrice = Math.abs((diffInMinutes / 60) * hourPrice); // 절대값 적용
 
-        // 화면에 추가한 내용 표시
-        const addedSlots = selectedTimeSlots.map(slot => {
-            return "<p>" + slot.date + ": " + slot.times.join(', ') + "</p>";
-        });
-
-        $("#addedSlots").html(addedSlots.join(''));
-
-        // 선택된 시간 초기화
-        $(".selected-time").removeClass("selected-time");
-
-        calculateTotalPrice(); // 총 가격 계산 함수 호출 추가
+        totalAddedPrice += addedPrice; // 총 가격에 추가한 가격 더하기
+		
+        // 배열에 값 추가
+        arrayDate.push(selectedDate);
+        arrayStartTime.push(selectedStartTime);
+        arrayEndTime.push(selectedEndTime);
+        arrayAddedPrice.push(addedPrice);
+        
+        
+        const addedSlot = "<p>" + selectedDate + ": " + selectedStartTime + " - " + selectedEndTime +
+        " (추가 금액: " + addedPrice + "원)</p>";
+        
+        $("#addedSlots").append(addedSlot);
+        resetTimeSelection();
+        $("#totalPrice").text("총 가격: " + totalAddedPrice + "원"); // 변경된 총 가격 표시
+        $("#currentPrice").text("현재 가격: 0원"); // 현재 가격 초기화
+        
     });
 });
 
+// 선택한 시간 범위 강조 표시
+function highlightTimeRange() {
+    const startTimeIndex = $(".time-cell").index($(".selected-start-time"));
+    const endTimeIndex = $(".time-cell").index($(".selected-end-time"));
+
+    $(".time-cell").removeClass("highlighted-time-range");
+    for (let i = startTimeIndex; i <= endTimeIndex; i++) {
+        $($(".time-cell")[i]).addClass("highlighted-time-range");
+    }
+}
+
+// 선택한 시간 초기화
+function resetTimeSelection() {
+    $(".time-cell").removeClass("selected-start-time selected-end-time highlighted-time-range");
+    selectedStartTime = null;
+    selectedEndTime = null;
+}
+
+// 가격 계산 함수 (변경되어야 할 부분 포함)
 function calculateTotalPrice() {
     const hourPrice = parseInt("${space.price}"); // 시간당 가격 설정, 필요에 따라 수정
 
-    let total = 0;
-    for (let i = 0; i < selectedTimeSlots.length; i++) {
-        const selectedHours = selectedTimeSlots[i].times.length;
-        const slotTotalPrice = selectedHours * hourPrice;
-        total += slotTotalPrice;
-    }
+    // 선택한 시간 범위 계산
+    const startTime = selectedStartTime.split(":");
+    const endTime = selectedEndTime.split(":");
+    const startHour = parseInt(startTime[0]);
+    const startMinute = parseInt(startTime[1]);
+    const endHour = parseInt(endTime[0]);
+    const endMinute = parseInt(endTime[1]);
 
-    $("#totalPrice").text("총 가격: " + total + "원");
+    // 시간 차이 계산
+    const diffInMinutes = (endHour * 60 + endMinute) - (startHour * 60 + startMinute);
+
+    // 절대값 계산
+    const totalPrice = Math.abs((diffInMinutes / 60) * hourPrice); // 절대값 적용
+
+    $("#currentPrice").text("현재 가격: " + totalPrice.toFixed(2) + "원");
 }
 
 var selectedTime = "";
@@ -397,6 +465,7 @@ function get_space() {
     });
 }
 
+
 // 이미지 슬라이더
 $(function () {
     $('.bxslider').bxSlider({
@@ -410,19 +479,6 @@ $(function () {
     });
 });
 
-function btnReT() {
-   	console.log('btnReT 불러옴');
-    $.ajax({
-        url: '/ReInsert',    
-        data: {},
-        type: 'post',
-        dataType: 'json',
-        success: function(data) {
-            console.log(data);
-        }
-    });	
-}
-
 
 //-------------------------------------------------
 
@@ -433,13 +489,54 @@ window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
   reservationWindow.style.top = reservationWindowTop + scrollY + 'px';
 });
+/*
+function ReInsert() {
+	console.log("reinsert 불러옴")
+	$.ajax({
+		url: '/ReInsert',
+		data{},
+		type 'post',
+		dateType: 'text',
+		success: function(data){
+			console.log(data);
+		}
+	});
+	
+}
+*/
+function ReInsert() {
+    console.log("reinsert 불러옴");
+    
+    const reservationData = {
+        arrayDate: arrayDate,
+        arrayStartTime: arrayStartTime,
+        arrayEndTime: arrayEndTime,
+        arrayAddedPrice: arrayAddedPrice
+    };
+    console.log(reservationData);
+
+    $.ajax({
+        url: '/ReInsert',
+        type: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify(reservationData),
+        success: function(response) {
+            // 처리가 성공적으로 완료될 때 수행할 동작
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // 처리 중 에러가 발생한 경우 수행할 동작
+        }
+    });
+}
+
+
 
 $(document).on('click', '#addReF', function() {
     alert("로그인을 해주세요.");
 });
 
 $(document).on('click', '#btnReT', function() {
-    
+	ReInsert();
 });
 
 $(document).on('click', '#btnReF', function() {

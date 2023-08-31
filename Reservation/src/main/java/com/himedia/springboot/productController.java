@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -195,46 +197,46 @@ public class productController {
 		    return "";
 		}
 	// 공백있으면 언더바로 변경
-private String sanitizeFileName(String fileName) {
-    // 파일명에서 유효하지 않은 문자 제거 및 공백을 언더스코어로 대체
-    return fileName.replaceAll("[^a-zA-Z0-9]", "").replace(" ", "_");
-	}
-
-// 리스트 더블클릭 view로 링크
-@GetMapping("/productView")
-public String prodView(HttpServletRequest req, Model model) {
-		int space_id = Integer.parseInt(req.getParameter("id"));
-		productDTO prodview = pdao.prodview(space_id);
-		model.addAttribute("product",prodview);
-		return "/productManage/productView";
+	private String sanitizeFileName(String fileName) {
+	    // 파일명에서 유효하지 않은 문자 제거 및 공백을 언더스코어로 대체
+	    return fileName.replaceAll("[^a-zA-Z0-9]", "").replace(" ", "_");
 		}
 
-// 승환 (상세페이지)
-@GetMapping("/space")
-public String space(HttpServletRequest req, Model model) {
-	HttpSession session= req.getSession();
-	
-    int space_id = 4;
-    
-    
-    productDTO pdto = pdao.get_one_space(space_id);
-    model.addAttribute("space", pdto);
-    
-    return "space";
-}
+// 리스트 더블클릭 view로 링크
+	@GetMapping("/productView")
+	public String prodView(HttpServletRequest req, Model model) {
+			int space_id = Integer.parseInt(req.getParameter("id"));
+			productDTO prodview = pdao.prodview(space_id);
+			model.addAttribute("product",prodview);
+			return "/productManage/productView";
+			}
 
-@GetMapping("/check_login")	
-   @ResponseBody
-   public Map<String, Object> checkLoginStatus(HttpServletRequest request) {
-       Map<String, Object> response = new HashMap<>();
-       
-       // 세션에서 로그인 상태 확인
-       HttpSession session = request.getSession(false);
-       boolean loggedIn = session != null && session.getAttribute("user") != null;
-       
-       response.put("loggedIn", loggedIn);
-       return response;
-   }
+// 승환 (상세페이지)
+	@GetMapping("/space")
+	public String space(HttpServletRequest req, Model model) {
+		HttpSession session= req.getSession();
+		
+	    int space_id = 13;
+	    
+	    
+	    productDTO pdto = pdao.get_one_space(space_id);
+	    model.addAttribute("space", pdto);
+	    
+	    return "space";
+	}
+
+//@GetMapping("/check_login")	
+//   @ResponseBody
+//   public Map<String, Object> checkLoginStatus(HttpServletRequest request) {
+//       Map<String, Object> response = new HashMap<>();
+//       
+//       // 세션에서 로그인 상태 확인
+//       HttpSession session = request.getSession(false);
+//       boolean loggedIn = session != null && session.getAttribute("user") != null;
+//       
+//       response.put("loggedIn", loggedIn);
+//       return response;
+//   }
 
 @PostMapping("/get_space")
 @ResponseBody
@@ -263,39 +265,59 @@ public String get_space(){
 	return ja.toJSONString();
 }
 
-@GetMapping("/PartyRoom")
-public String showPartyRooms(Model model) {
-	ArrayList<productDTO> alemp = pdao.get_space();
-	model.addAttribute("rooms",alemp);
-	
-	
-	return "PartyRoom";
+@PostMapping("/ReInsert")
+public String processReservation(@RequestBody ReservationData reservationData, Model model) {
+    List<String> arrayDate = reservationData.getArrayDate();
+    List<String> arrayStartTime = reservationData.getArrayStartTime();
+    List<String> arrayEndTime = reservationData.getArrayEndTime();
+    List<Integer> arrayAddedPrice = reservationData.getArrayAddedPrice();
+
+    // Model에 데이터 추가
+    model.addAttribute("arrayDate", arrayDate);
+    model.addAttribute("arrayStartTime", arrayStartTime);
+    model.addAttribute("arrayEndTime", arrayEndTime);
+    model.addAttribute("arrayAddedPrice", arrayAddedPrice);
+
+    // 처리한 데이터를 보여줄 페이지로 이동
+    return "redirect:/payment"; // 보여줄 페이지 이름으로 변경하세요
 }
 
-@GetMapping("/RecordingStudio")
-public String showRecordingStudio(Model model) {
-	ArrayList<productDTO> alemp = pdao.get_space();
-	model.addAttribute("rooms",alemp);
-	
-	
-	return "RecordingStudio";
+@GetMapping("/payment")
+public String payment () {
+	return "payment";
 }
 
-@GetMapping("/seminarRoom")
-public String showSeminarRooms(Model model) {
-	ArrayList<productDTO> alemp = pdao.get_space();
-	model.addAttribute("rooms",alemp);
-	
-	return "seminarRoom";
+@GetMapping("/review")
+public String review () {
+	return "review";
 }
 
-@GetMapping("/studyRoom")
-public String showStudyRooms(Model model) {
-	ArrayList<productDTO> alemp = pdao.get_space();
-	model.addAttribute("rooms",alemp);
-	
-	return "studyRoom";
+@PostMapping("review_insert")
+public String review_insert(HttpServletRequest req, Model model) {
+	int rating = Integer.parseInt(req.getParameter("rating"));
+	String review_content = req.getParameter("review_content");
+	return "review_insert";
 }
 
+	
+//	@PostMapping("/ReInsert")
+//	public String processReservation(@RequestBody ReservationData reservationData, Model model) {
+//	    int totalAddedPrice = reservationData.getAddedPrice();
+//	    String selectedDate = reservationData.getSelectedDate();
+//	    String selectedStartTime = reservationData.getSelectedStartTime();
+//	    String selectedEndTime = reservationData.getSelectedEndTime();
+//	
+//	    // Model에 데이터 추가
+//	    model.addAttribute("totalAddedPrice", totalAddedPrice);
+//	    model.addAttribute("selectedDate", selectedDate);
+//	    model.addAttribute("selectedStartTime", selectedStartTime);
+//	    model.addAttribute("selectedEndTime", selectedEndTime);
+//	
+//	    // 처리한 데이터를 보여줄 페이지로 이동
+//	    return "payment"; // 보여줄 페이지 이름으로 변경하세요
+//	}
 
+	
+	
+	
 }
