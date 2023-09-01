@@ -34,4 +34,9 @@
 			price=#{param7}, mobile=#{param8}, img1=#{param9}, img2=#{param10}, img3=#{param11}, img4=#{param12}, img5=#{param13}, description=#{param14}
 	where space_id = #{param1}
 </update>
+
+<insert id="review_insert">	
+	insert into reviews set rating=#{param1}, review_content=#{param2}, userid=#{param3}, space_id=#{param4} , created=now()
+</insert>
+
 </mapper>
