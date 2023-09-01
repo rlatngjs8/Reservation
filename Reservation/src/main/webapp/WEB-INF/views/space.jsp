@@ -707,7 +707,7 @@ $(document).on('click', '#btnReT', function() {
 $(document).on('click', '#btnReF', function() {
     alert("로그인을 해주세요.");
 });
-
+//
 
 
 </script>
