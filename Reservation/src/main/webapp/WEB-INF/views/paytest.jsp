@@ -7,6 +7,11 @@
   <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 </head>
 <body>
+  <p>Date: <c:out value="${arrayDate}" /></p>
+	<p>Start Time: <c:out value="${arrayStartTime}" /></p>
+	<p>End Time: <c:out value="${arrayEndTime}" /></p>
+	<p>Added Price: <c:out value="${arrayAddedPrice}" /></p>
+<!-- 	 여기부터는 토스뱅크api -->
   <!-- 결제위젯, 이용약관 영역 -->
   <div id="payment-method"></div>
   <div id="agreement"></div>

@@ -91,6 +91,11 @@
     #btnSubmit:hover {
         background-color: #0056b3;
     }
+    #commentContent {
+        width: 50%; /* 원하는 넓이로 조절하세요 */
+        padding: 10px;
+        resize: vertical;
+    }
 </style>
 </head>
 <body>
@@ -130,7 +135,7 @@
 <h2>댓글 작성</h2>
 <form id="commentForm" action="/addComment" method="post">
 		<input type="hidden" name="seqno" value="${bpost.seqno}"> 
-    <textarea id="commentContent" rows="4" cols="30" placeholder="댓글 내용" name="comment"></textarea>
+    <textarea id="commentContent" rows="4" cols="20" placeholder="댓글 내용" name="comment"></textarea>
     <br>
     <button type="submit" id=btnSubmit>댓글 작성</button>
 </form>

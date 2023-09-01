@@ -100,7 +100,7 @@
   <div class="form-section">
       <div class="image-input">
         <label for="image1">이미지 첨부 1:</label>
-        <input type="file" id="image1" name="image1" accept="image/*" >${ppost.img1}
+        <input type="file" id="image1" name="image1" accept="image/*">${ppost.img1}
       </div>
       <div class="image-input">
         <label for="image2">이미지 첨부 2:</label>
