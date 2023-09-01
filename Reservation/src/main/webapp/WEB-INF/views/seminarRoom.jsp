@@ -63,7 +63,7 @@
        	<br>
         <a class="demo1">${rooms[16].location.substring(3,9)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-        <a class="ra">#모임공간,#회의실,#세미나,#스튜디오dfffffffff</a>
+        <a class="ra">#모임공간,#회의실,#세미나,#스튜디오dff</a>
 		<a class="demo2">${rooms[16].price}원/시간</a>
     </div>
    </div>
