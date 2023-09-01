@@ -4,10 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script
@@ -163,6 +162,11 @@ footer {
 	/* 기존 스타일 유지 */
 	margin: 0; /* 기존 여백 제거 */
 }
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    border-bottom-right-radius: 50px;
+}
+
 </style>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -323,10 +327,217 @@ footer {
 	/* 기존 스타일 유지 */
 	margin: 0; /* 기존 여백 제거 */
 }
+.container {
+      width: 400px;
+      background-color: #fff;
+      padding: 20px 30px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: center;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .post {
+      display: none;
+    }
+
+    .text {
+      font-size: 25px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .edit {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      font-size: 16px;
+      color: #666;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .edit:hover {
+      text-decoration: underline;
+    }
+
+    .star-widget input {
+      display: none;
+    }
+
+    .star-widget label {
+      font-size: 40px;
+      color: #444;
+      padding: 10px;
+      float: right;
+      transition: all 0.2s ease;
+    }
+
+    .star-widget input:not(:checked) ~ label:hover,
+    .star-widget input:not(:checked) ~ label:hover ~ label {
+      color: #fd4;
+    }
+
+    .star-widget input:checked ~ label {
+      color: #fd4;
+    }
+
+    .star-widget input#rate-5:checked ~ label {
+      color: #fe7;
+      text-shadow: 0 0 20px #952;
+    }
+
+    .star-widget input:checked ~ form {
+      display: block;
+    }
+
+    form header {
+      font-size: 25px;
+      color: #fe7;
+      font-weight: 500;
+      margin: 5px 0 20px;
+      transition: all 0.2s ease;
+    }
+
+    form .textarea textarea {
+      height: 150px;
+      width: 100%;
+      outline: none;
+      color: #333;
+      border: 1px solid #ccc;
+      background: #f8f8f8;
+      padding: 10px;
+      font-size: 17px;
+      resize: none;
+    }
+
+    .btn button {
+      height: 45px;
+      border: 1px solid #444;
+      outline: none;
+      background: #222;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 500;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn button:hover {
+      background: #1b1b1b;
+    }
+
+    /* Dialog Styles */
+    #dialog-form {
+      display: none;
+    }
+
+    .ui-dialog {
+     
+     max-width: 450px;
+     max-height: 500px;
+   	 background-color: #ffffff;
+    }
+
+    .ui-dialog-titlebar {
+      display: none;
+    }
+
+    .ui-dialog-content {
+      padding: 0;
+      overflow: hidden;
+       /* Disable scrollbar */
+    }
+
+    .ui-dialog-buttonpane {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 20px 20px;
+      background-color: transparent;
+      border-top: none;
+    }
+
+    .ui-dialog-buttonset {
+      margin: 0;
+    }
+
+    .ui-dialog-buttonset button {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #999;
+      font-size: 17px;
+      font-weight: 500;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+      margin-left: 10px;
+    }
+
+    .ui-dialog-buttonset button.close-button {
+      font-size: 20px;
+      margin-left: auto;
+    }
+
+    .ui-dialog-buttonset button:hover {
+      color: #1b1b1b;
+    }
+
+    .ui-dialog-content .star-widget {
+      padding: 20px 30px;
+    }
+
+    .star-widget {
+      width: 386px; /* Adjust the width as desired */
+      height: 100px; /* Adjust the height as desired */
+      padding: 20px 30px;
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
+
+    .ui-dialog-content form header {
+      margin: 0 0 20px;
+    }
+
+    .ui-dialog-content form .textarea {
+      height: 150px;
+      margin-bottom: 20px;
+    }
+
+    .ui-dialog-content .btn {
+      margin: 0;
+    }
+
+    .review-header { 
+      font-size: 20px;
+      color: #0;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+    
+    #review_content {
+        width: 97%; /* 원하는 넓이로 조절하세요 */
+        height: 100%;
+        padding: 0px;
+        resize: none;
+    }
+    
+    element.style {
+    border-width: 4px;
+    height: auto;
+    width: 1000px;
+    top: 1519.8px;
+    left: 404.55px;
+    z-index: 101;
+}
+
 </style>
 </head>
 <body>
-	<input type=hidden id=space_id value="${space.space_id }">
+	<input type='hidden' id='user_id' value="${sessionScope.userid}">
+	<input type="hidden" id="space_id" value="${space.space_id }">
 	<header
 		style="display: flex; justify-content: flex-end; align-items: center;">
 		<h1>${space.space_name}</h1>
@@ -472,9 +683,43 @@ footer {
 
 			<!-- -------------------------------------------------------------------- -->
 			<!-- 리뷰 영역 -->
-			<div id="reviews">
+			<div id="reviews" style="border-width: 4px;">
 				<h3>리뷰</h3>
-				<button id="open-dialog-button">리뷰 작성하기</button>
+				<div class="container" >
+				    <div id="dialog-form" title="Write a Review">
+				      <div class="dialog-content" >
+				        <div class="star-widget">
+						  <div class="review-header" style="text-align: center" >리뷰 작성하기</div>
+						  <input type="radio" name="rate" id="rate-5" value="5">
+						  <label for="rate-5" class="fas fa-star"></label>
+						  <input type="radio" name="rate" id="rate-4" value="4">
+						  <label for="rate-4" class="fas fa-star"></label>
+						  <input type="radio" name="rate" id="rate-3" value="3">
+						  <label for="rate-3" class="fas fa-star"></label>
+						  <input type="radio" name="rate" id="rate-2" value="2">
+						  <label for="rate-2" class="fas fa-star"></label>
+						  <input type="radio" name="rate" id="rate-1" value="1">
+						  <label for="rate-1" class="fas fa-star"></label>
+						</div>
+				        <br><br><br>
+				        <form action="#">
+				          <div class="textarea" style="text-align: center;">
+				            <textarea id="review_content" cols="20" rows="18" style="height: 250px; border: 2px solid #333; border-width: 4px; " placeholder="리뷰를 작성하세요"></textarea>
+				          </div>
+				        </form>
+				      </div>
+				    </div>
+				    <div class="new-btn">
+				    <!-- 로그인 했을때 동작함 -->
+				      <c:if test="${not empty sessionScope.username}"> 
+						<button id="open-dialog-button">리뷰 작성하기</button>
+					  </c:if>
+					  		<!--  로그인 안했을 떄  동작함 -->
+				     <c:if test="${empty sessionScope.username}">
+				 	   <button id="not_login" >리뷰 작성하기</button>
+					</c:if> 
+				    </div>
+				</div>
 			</div>
 
 
@@ -700,6 +945,10 @@ $(document).on('click', '#addReF', function() {
     alert("로그인을 해주세요.");
 });
 
+$(document).on('click', '#not_login', function() {
+    alert("로그인을 해주세요.");
+});
+
 $(document).on('click', '#btnReT', function() {
 	ReInsert();
 });
@@ -707,6 +956,74 @@ $(document).on('click', '#btnReT', function() {
 $(document).on('click', '#btnReF', function() {
     alert("로그인을 해주세요.");
 });
+
+////////////
+
+    const openDialogBtn = document.querySelector("#open-dialog-button");
+    const dialogForm = $("#dialog-form");
+
+    openDialogBtn.onclick = () => {
+      dialogForm.dialog("open");
+    };
+
+    dialogForm.dialog({
+      autoOpen: false,
+      modal: true,
+      width: 450,
+      height: 500,
+      closeText: "X",
+      resizable: false, // Disable resizing
+      buttons: [
+        {
+          text: "등록하기",
+          click: function() {
+            const rating = $("input[name='rate']:checked").val();
+            const review_content = $("#review_content").val();
+            const userid = $('#user_id').val();
+            const space_id = $('#space_id').val();
+            
+            // 별점이 체크되지 않았을 경우 예외 처리
+            if (rating === undefined) {
+              alert("별점을 선택해주세요.");
+              return;
+            }
+            
+			const reviewData = {
+			        rating: rating,
+			        review_content: review_content,
+			        userid: userid,
+			        space_id: space_id
+			    };
+			
+			console.log(reviewData);
+			
+			 $.ajax({
+			        url: '/review_insert',
+			        type: 'post',
+			        data: reviewData,
+			        success: function(response) {
+			            console.log('리뷰 등록 성공:', response);
+			            // 여기에 리뷰 등록 후 작업을 추가할 수 있습니다.
+			        },
+			        error: function(error) {
+			            console.error('리뷰 등록 실패:', error);
+			            // 실패 시 에러 처리를 수행하거나 사용자에게 알림을 보여줄 수 있습니다.
+			        }
+			    });
+			
+            $(this).dialog("close");
+          }
+        }
+      ]
+    });
+
+    // 별점 선택 위젯 설정
+    $("#dialog-rating").selectmenu();
+
+    // 오른쪽 위에 X 버튼을 생성하여 다이얼로그 닫기
+
+
+
 
 
 

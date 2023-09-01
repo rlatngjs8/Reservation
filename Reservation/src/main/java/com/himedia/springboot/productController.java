@@ -217,11 +217,10 @@ public class productController {
 		HttpSession session= req.getSession();
 		
 	    int space_id = 13;
-	    
-	    
 	    productDTO pdto = pdao.get_one_space(space_id);
 	    model.addAttribute("space", pdto);
-	    
+	    String userid = (String) session.getAttribute("userid");
+	    model.addAttribute("a", userid);
 	    return "space";
 	}
 
