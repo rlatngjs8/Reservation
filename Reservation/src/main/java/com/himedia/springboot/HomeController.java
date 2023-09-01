@@ -129,73 +129,7 @@ public class HomeController {
  public String manaager() {
  		return "manager";
  }
-	// 게시판 - 승환
- @GetMapping("/board") 
-	public String Board(HttpServletRequest req, Model model) {
-		int start,psize,pno;
-		HttpSession session= req.getSession();
-		String userid=(String)session.getAttribute("userid");
-		
-		if(userid==null || userid.equals("")) {
-			// 홈페이지 처음 들어간 경우.
-			model.addAttribute("name","");
-		} else {
-			//로그인 성공한 경우
-			model.addAttribute("name",(String) session.getAttribute("username"));
-		}
-		
-		String page = req.getParameter("pageno");
-		
-		if(page == null || page.equals("")) {
-			pno=1;
-		} else {
-			pno = Integer.parseInt(page);
-		}
-		
-		start = (pno - 1) * 10;
-		psize = 10;
-		ArrayList<BoardDTO> alBoard = rdao.getList1(start, psize);
 
-		int cnt = rdao.getTotal1();
-		int pagecount = (int) Math.ceil(cnt/10.0);
-		System.out.println("pagecount=" + pagecount);
-		
-		String pagestr = "";
-		for(int i = 1; i <= pagecount; i++ ) {
-			if(pno == i) {
-				pagestr += i + "&nbsp";
-			} else {
-				pagestr += "<a href='/board?pageno=" + i + "'>" + i + "</a>&nbsp;";
-			}
-		}
-		model.addAttribute("pagestr",pagestr);
-		model.addAttribute("blist",alBoard);
-		return "/board";
-	}
-	
-	@PostMapping("/insert")
-	public String insert(HttpServletRequest req) {
-		HttpSession session= req.getSession();
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
-		String writer = (String)session.getAttribute("userid");
-		rdao.insert(title, content, writer);
-		return "redirect:/board";	
-	}
-	
-	@GetMapping("/write")
-	public String write() {
-		return "write";
-	}
-	
-	@GetMapping("/view")
-	public String view(HttpServletRequest req, Model model) {
-		int seqno = Integer.parseInt(req.getParameter("seqno"));
-		BoardDTO bdto = rdao.view(seqno);
-		rdao.hitup(seqno);
-		model.addAttribute("bpost", bdto);
-		return "view";
-	}
 	
 //	@GetMapping("/mainhome")
 //	public String mainhome(HttpServletRequest req,Model model) {
@@ -237,66 +171,6 @@ public class HomeController {
 	public String CompletePayment() {
 	    return "payment_complete"; 
 	}
- @GetMapping("/delete")
- public String delete(HttpServletRequest req) {
-    int seqno = Integer.parseInt(req.getParameter("seqno"));
-    rdao.delete(seqno);
-    return "redirect:/";
- }
- // 추가 !@#!@#@!#@!#@!3
- @GetMapping("/update")
- public String update(HttpServletRequest req, Model model) {
-    int seqno = Integer.parseInt(req.getParameter("seqno"));
-    BoardDTO bdto = rdao.view(seqno);
-    model.addAttribute("bpost",bdto);
-    return "update";
- }
- // 추가
- @PostMapping("/modify")
- public String modify(HttpServletRequest req) {
-    int seqno = Integer.parseInt(req.getParameter("seqno"));
-    String title = req.getParameter("title");
-    String content = req.getParameter("content");
-    rdao.update(seqno, title, content);
-    return "redirect:/";
- }
-// 예약관리(수헌)
-// 예약조회
- 
-@Autowired
-private ReservationDAO redao;
-@GetMapping("/showReservation")
-public String reservaiton(HttpServletRequest req, Model model) {
-		int start,psize;
-		String page = req.getParameter("pageno");
-		if(page == null || page.equals("")) {
-			page="1";
-		}
-		int pno = Integer.parseInt(page);
-		start = (pno -1) * 10;
-		psize = 10;
-		ArrayList<ReservationDTO> alReservation = redao.getList2(start, psize);
-		
-		int cnt=redao.getTotal2();
-		int pagecount = (int) Math.ceil(cnt/10.0);
-		
-		String pagestr="";
-		for(int i=1; i<=pagecount; i++) {
-			if(pno == i) {
-				pagestr += i+"&nbsp;";
-			} else {
-				pagestr+="<a href='/ReservationManage/showReservation?pageno="+i+"'>"+i+"</a>&nbsp;";				
-				// 안되면 주소 수정
-			}
-			System.out.println(pagestr);
-		}
-		System.out.println(alReservation.size());
-		System.out.println("cnt=" + cnt);
-		model.addAttribute("pagestr",pagestr);
-		model.addAttribute("rlist",alReservation);
-	
-	return "/ReservationManage/showReservation";
-}
 
 @GetMapping("/event")
 public String goEventPage() {
