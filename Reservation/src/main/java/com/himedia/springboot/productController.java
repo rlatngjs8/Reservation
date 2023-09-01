@@ -287,17 +287,9 @@ public String payment () {
 	return "payment";
 }
 
-@GetMapping("/review")
-public String review () {
-	return "review";
-}
 
-@PostMapping("review_insert")
-public String review_insert(HttpServletRequest req, Model model) {
-	int rating = Integer.parseInt(req.getParameter("rating"));
-	String review_content = req.getParameter("review_content");
-	return "review_insert";
-}
+
+
 
 	
 //	@PostMapping("/ReInsert")

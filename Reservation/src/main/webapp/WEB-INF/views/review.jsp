@@ -5,7 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>리뷰 작성</title>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -54,8 +56,15 @@
     </style>
 </head>
 <body>
+	<c:if test="${not empty sessionScope.username}">
+        	<p>로그인한 아이디: ${sessionScope.userid}</p>   	
+	</c:if>
+	
+	<input type='hidden' id='user_id' value="${sessionScope.userid}">
+	<input type='hidden' id='space_id' value="${space.space_id }">
     <div class="container">
-        <h1 class="mb-4">리뷰 작성</h1>
+        <h1 class="mb-4">${space.space_id }</h1>
+        
             <div class="rating">
                 <div class="star-rating">
                     <input type="radio" id="5-stars" name="rating" value="5" />
@@ -73,41 +82,78 @@
             <br><br>
             
             <div class="form-group">
-                <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
+            	<input type='text' id="content">
             </div>
-    	<button id="btn_insert" class="btn btn-primary" >등록하기</button>
+            <!-- 로그인 했을때 동작함 -->
+        <c:if test="${not empty sessionScope.username}">
+        	<p>로그인한 아이디: ${sessionScope.username}</p>
+	    	<button id="btn_insert" class="btn btn-primary" >존나 등록하기</button>
+		</c:if>
+		<!--  로그인 안했을 떄  동작함 -->
+		<c:if test="${empty sessionScope.username}">
+			
+	 	   <button id="btn_false" class="btn btn-primary" >등록하기</button>
+		</c:if> 
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-    $(document).on('click','#btn_insert',function(){
-        const rating = document.querySelector('.star-rating input:checked').value;
-        const content = document.getElementById('content').value;
+   <script>
+    const rating = $('.star-rating').val();
+    const review_content = $('#content').val();
+    const userid = $('#user_id').val(); // userid 가져오기
+	const space_id = $('#space_id').val() // space_id 가져오기
+	
+	$(document).ready(function(){
+	    console.log(userid,space_id);
+	})
+	
+	$(document).on('click', '#btn_insert', function() {
+		
+	    const reviewData = {
+	        rating: rating,
+	        review_content: $('#content').val(),
+	        userid: userid,
+	        space_id: space_id
+	    };
+	
+	    console.log(reviewData);
+	
+	    $.ajax({
+	        url: '/review_insert',
+	        type: 'post',
+	        data: reviewData,
+	        success: function(response) {
+	            console.log('리뷰 등록 성공:', response);
+	            // 여기에 리뷰 등록 후 작업을 추가할 수 있습니다.
+	        },
+	        error: function(error) {
+	            console.error('리뷰 등록 실패:', error);
+	            // 실패 시 에러 처리를 수행하거나 사용자에게 알림을 보여줄 수 있습니다.
+	        }
+	    });
+	});
+	
+	$(document).on('click', '#btn_false', function() {
+	    alert("로그인을 해주세요.");
+	});
+	
+	
+/*	
+	function get_space() { 
+	    console.log('space 불러옴');
+	    $.ajax({
+	        url: '/get_space',    
+	        data: {},
+	        type: 'post',
+	        dataType: 'json',
+	        success: function(data) {
+	            console.log(data);
+	        }
+	    });
+	}
+	
+*/
+</script>
 
-        const reviewData = {
-            rating: rating,
-            review_content: review_content
-        };
-
-        $.ajax({
-            url: '/review_insert',
-            type: 'post',
-            data: reviewData,
-            success: function(response) {
-                // 요청이 성공한 경우 수행할 작업
-                console.log('리뷰 등록 성공:', response);
-                // 여기에 리뷰 등록 후 작업을 추가할 수 있습니다.
-            },
-            error: function(error) {
-                // 요청이 실패한 경우 수행할 작업
-                console.error('리뷰 등록 실패:', error);
-                // 실패 시 에러 처리를 수행하거나 사용자에게 알림을 보여줄 수 있습니다.
-            }
-        });
-    });
-    
-    
-    </script>
 </body>
 </html>

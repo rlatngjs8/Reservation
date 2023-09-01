@@ -32,5 +32,5 @@ public interface RoomDAO {
 
 // 결제 상태 변경 메서드 (미결제 -> 결제완료, 결제취소 등)
 	void updatePaymentStatus(String roomId, String paymentStatus);
-
+	ArrayList<RoomDTO> getList4();
 }

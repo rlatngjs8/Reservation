@@ -168,6 +168,7 @@
     </style>
 </head>
 <body>
+	<input type=hidden id=space_id value="${space.space_id }">
     <header style="display: flex; justify-content: flex-end; align-items: center;">
         <h1>${space.space_name}</h1>
         <div style="margin-left: auto;">
@@ -307,6 +308,7 @@
 			<div id="reviews">
 			    <h3>리뷰</h3>
 			    <h2><a href='review'>리뷰 작성하기</a></h2>
+			    <button id="review">리뷰 작성하기</button>
 			    <ul>
 			        <!-- 리뷰 데이터 반복 표시 -->
 			        <c:forEach items="${reviewList}" var="review">
@@ -529,7 +531,11 @@ function ReInsert() {
     });
 }
 
-
+$(document).on('click', '#review', function() {
+	const space_id = $("#space_id").val();
+    document.location = '/review?space_id=' + space_id;
+    return false;
+});
 
 $(document).on('click', '#addReF', function() {
     alert("로그인을 해주세요.");
