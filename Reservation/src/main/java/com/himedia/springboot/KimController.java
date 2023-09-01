@@ -170,4 +170,5 @@ public class KimController {
 	     return "redirect:/Q&A";
 	 }
 	 //asdasdasjdas
+	 //asdasdadmznxczxjczxbjczx
 }
