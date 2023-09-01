@@ -573,7 +573,7 @@ card1 css 추가
 		<div class="card">
 			<a href="/#"><img src="img/16.jpg" alt="이미지 2"></a>
 
-			<p id="demo">안녕하세요. Meeting Room.</p>
+			<p id="demo"></p>
 		</div>
 
 

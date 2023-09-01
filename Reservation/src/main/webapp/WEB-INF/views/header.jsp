@@ -228,19 +228,19 @@ a {
       <c:choose>
       
       <c:when test="${name =='rlatngjs'}">  <!-- 관리자 메뉴 -->
-      <li><a href="/forAdmin">관리자페이지</a></li>
+      <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       
       <c:when test="${name =='nayeon'}">
-      <li><a href="/forAdmin">관리자페이지</a></li>
+      <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       
    <c:when test="${name =='hwan'}">
-      <li><a href="/forAdmin">관리자페이지</a></li>
+      <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       
       <c:when test="${name =='gldigh123'}">
-      <li><a href="/forAdmin">관리자페이지</a></li>
+      <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       
    </c:choose>
