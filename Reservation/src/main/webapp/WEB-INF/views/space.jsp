@@ -1019,7 +1019,7 @@ $(document).on('click', '#btnReF', function() {
 
     // 별점 선택 위젯 설정
     $("#dialog-rating").selectmenu();
-
+	//
     // 오른쪽 위에 X 버튼을 생성하여 다이얼로그 닫기
 
 
