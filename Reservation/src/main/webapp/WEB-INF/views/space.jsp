@@ -164,9 +164,168 @@ footer {
 	margin: 0; /* 기존 여백 제거 */
 }
 </style>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d35ff5a43bbc9d6ce4be2d8cd14ddba0"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${space.space_name}</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color: #333;
+	color: white;
+	text-align: center;
+	padding: 10px;
+}
+
+main {
+	padding: 20px;
+}
+
+.space-details {
+	border: 1px solid #ccc;
+	padding: 20px;
+	margin: 10px;
+	background-color: #f9f9f9;
+	word-wrap: break-word;
+}
+
+.space-image img {
+	max-width: 100%;
+	height: auto;
+}
+
+.space-introduction {
+	margin-top: 20px;
+}
+
+.space-rules, .location-info {
+	margin-top: 20px;
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+	word-wrap: break-word;
+}
+
+footer {
+	background-color: #333;
+	color: white;
+	text-align: center;
+	padding: 10px;
+}
+
+/* 추가된 스타일 */
+.reservation-window {
+	position: absolute;
+	top: 100px;
+	right: 20px;
+	width: 350px;
+	background-color: #ffffff; /* 흰색 배경 */
+	border: 1px solid #333; /* 검정색 테두리 */
+	padding: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: top 0.3s ease;
+	color: #333; /* 검정색 글자색 */
+}
+
+#datepicker {
+	width: 150px; /* 원하는 크기로 조정하세요 */
+	padding: 5px; /* 내부 여백 조정 */
+	font-size: 14px; /* 글자 크기 조정 */
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.time-picker table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+}
+
+.time-cell {
+	text-align: center;
+	padding: 10px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+
+.selected-start-time {
+	background-color: #333; /* 검정색 배경 */
+	color: #fff; /* 흰색 글자색 */
+}
+
+.selected-end-time {
+	background-color: #333; /* 검정색 배경 */
+	color: #fff; /* 흰색 글자색 */
+}
+
+.price-text {
+	font-weight: bold;
+	font-size: 18px;
+	margin-top: 10px;
+	color: #333; /* 검정색 글자색 */
+}
+
+#btnReT, #btnReF {
+	background-color: #333; /* 검정색 배경 */
+	color: #fff; /* 흰색 글자색 */
+	border: none;
+	padding: 10px 20px;
+	margin-top: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#addReT, #addReF {
+	background-color: #333; /* 검정색 배경 */
+	color: #fff; /* 흰색 글자색 */
+	border: none;
+	padding: 5px 5px;
+	margin-top: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#btnReT:hover, #btnReF:hover {
+	background-color: #fff; /* 흰색 배경 */
+	color: #333; /* 검정색 글자색 */
+}
+
+#addedSlots {
+	font-size: 14px; /* 원하는 크기로 조정 */
+}
+
+.time-picker {
+	/* 기존 스타일 유지 */
+	position: relative; /* 부모 요소를 기준으로 위치 지정 */
+}
+
+.price-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 20px; /* 적절한 여백 조절 */
+}
+
+#totalPrice {
+	/* 기존 스타일 유지 */
+	margin: 0; /* 기존 여백 제거 */
+}
+</style>
 </head>
 <body>
-테스트테스트테스트나우미난ㅇ
 	<input type=hidden id=space_id value="${space.space_id }">
 	<header
 		style="display: flex; justify-content: flex-end; align-items: center;">
@@ -189,7 +348,8 @@ footer {
 		<section class="space-details" style="max-width: 70%;">
 			<h2>${space.space_name}</h2>
 
-			<div id="wrapper">			<!-- 상품이미지 -->
+			<div id="wrapper">
+				<!-- 상품이미지 -->
 				<div class="bxslider">
 					<div>
 						<img src="img/${space.img1}" title="slider 1">
@@ -209,7 +369,9 @@ footer {
 				</div>
 			</div>
 
-			<div class="space-introduction" style="display: flex; align-items: center;"> <!-- 상품 인원, 가격 -->
+			<div class="space-introduction"
+				style="display: flex; align-items: center;">
+				<!-- 상품 인원, 가격 -->
 				<h3></h3>
 				<img src="img/user.png"
 					style="width: 50px; height: 50px; margin-right: 10px;">
@@ -302,29 +464,17 @@ footer {
                     level: 3
                 };
                 var map = new kakao.maps.Map(container, options);
-                </script>
+        </script>
 				<p>자세한 주소는 호스트 승인 후, 메시지로 문의 가능합니다.</p>
 				<p>전화번호: ${space.mobile}</p>
 
 			</div>
 
+			<!-- -------------------------------------------------------------------- -->
 			<!-- 리뷰 영역 -->
 			<div id="reviews">
 				<h3>리뷰</h3>
-				<h2>
-					<a href='review'>리뷰 작성하기</a>
-				</h2>
-				<button id="review">리뷰 작성하기</button>
-				<ul>
-					<!-- 리뷰 데이터 반복 표시 -->
-					<c:forEach items="${reviewList}" var="review">
-						<li>
-							<p>${review.content}</p>
-							<p>작성자: ${review.author}</p>
-							<p>평점: ${review.rating}</p>
-						</li>
-					</c:forEach>
-				</ul>
+				<button id="open-dialog-button">리뷰 작성하기</button>
 			</div>
 
 
@@ -557,5 +707,8 @@ $(document).on('click', '#btnReT', function() {
 $(document).on('click', '#btnReF', function() {
     alert("로그인을 해주세요.");
 });
+
+
+
 </script>
 </html>
