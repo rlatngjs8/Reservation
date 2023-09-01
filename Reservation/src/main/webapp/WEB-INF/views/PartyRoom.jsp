@@ -11,13 +11,8 @@
 </head>
 <style>
 
-.demo{
-	text-align:left;
-}
 
-.location{
-	text-align:left;
-}
+
 
 
 </style>
@@ -48,24 +43,31 @@
 	<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
     <div class="card">
          <a href="#"><img src="img/${rooms[0].img1}" alt="이미지 6"></a>
-		<br><br>
 		<a class="demo">${rooms[0].space_name}</a>
 		<br>
-		<a class="demo">${rooms[0].location.substring(5, rooms[0].location.indexOf('도'))}</a>
+		<a class="demo1">${rooms[0].location.substring(5, rooms[0].location.indexOf('도'))}</a>
+		
 		<a class="location"><img src="img/위치아이콘.png"></a>
-		<a class="demo">${rooms[0].price}원</a>
+		<br>
+		<a class="ra">#강남,#무료주차,#발렛,#돌잔치,스몰웨딩</a>
+		<a class="demo2">${rooms[0].price}원/시간</a>
 	
 	
     </div>
     
       <div class="card">
          <a href="#"><img src="img/${rooms[1].img1}" alt="이미지 6"></a>
-         <br><br>
-        <a class="demo">${rooms[1].space_name}</a>
+ 
+        <a class="demo3">${rooms[1].space_name}</a>
         <br>
-        <a class="demo">${rooms[1].location.substring(0, rooms[1].location.indexOf('2'))}</a>
+        <a class="demo1">${rooms[1].location.substring(0, rooms[1].location.indexOf('2'))}</a>
+        
         <a class="location"><img src="img/위치아이콘.png"></a>
-		<a class="demo">${rooms[1].price}원</a>
+        <br>
+        <a class="ra">#강남,#브라이덜샤워,#소모임,#자연광</a>
+		<a class="demo2">${rooms[1].price}원/시간</a>
+
+
 
     </div>
     
@@ -78,37 +80,38 @@
 	
 	 <div class="card">
          <a href="#"><img src="img/${rooms[3].img1}" alt="이미지 6"></a>
-          <br><br>
-        <a class="demo">${rooms[3].space_name}</a>
-        <br>
-        <a class="demo">${rooms[3].location.substring(0, rooms[3].location.indexOf('을지병원')+4)}</a>
+        
+        <a class="demo3">${rooms[3].space_name}</a>
+        <br><br>
+        <a class="demo1">${rooms[3].location.substring(0, rooms[3].location.indexOf('을지병원')+4)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-      
-		<a class="demo">${rooms[3].price}원</a>
+      	<a class="ra">#학동역,#루프탑,#바베큐,#하이엔드</a>
+		<a class="demo2">${rooms[3].price}원/시간</a>
   
     </div>
     
       <div class="card">
          <a href="#"><img src="img/${rooms[4].img1}" alt="이미지 6"></a>
-          <br><br>
-        <a class="demo">${rooms[4].space_name}</a>
-        <br>
-        <a class="demo">${rooms[4].location.substring(0, rooms[4].location.indexOf('매봉역')+4)}</a>
+          
+        <a class="demo3">${rooms[4].space_name}</a>
+        <br><br>
+        <a class="demo1">${rooms[4].location.substring(0, rooms[4].location.indexOf('매봉역')+4)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-        
-		<a class="demo">${rooms[4].price}원</a>
+        <a class="ra">#브라이덜샤워,#쇼케이스,#포로포즈</a>
+		<a class="demo2">${rooms[4].price}원/시간</a>
 
     </div>
     
 	
 	<div class="card">
          <a href="#"><img src="img/${rooms[5].img3}" alt="이미지 6"></a>
-         <br><br>
-        <a class="demo">${rooms[5].space_name}</a>
-        <br>
-        <a class="demo">${rooms[5].location.substring(0, rooms[5].location.indexOf('학동역')+3)}</a>
+        
+        <a class="demo3">${rooms[5].space_name}</a>
+        <br><br>
+        <a class="demo1">${rooms[5].location.substring(0, rooms[5].location.indexOf('학동역')+3)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-		<a class="demo">${rooms[5].price}원</a>
+        <a class="ra">#렌탈스튜디오,#사진촬영,#무료주차</a>
+		<a class="demo2">${rooms[5].price}원/시간</a>
 
 
     </div>
@@ -119,24 +122,25 @@
 	
 	 <div class="card">
          <a href="#"><img src="img/${rooms[15].img1}" alt="이미지 6"></a>
-          <br><br>
-        <a class="demo">${rooms[15].space_name}</a>
-        <br>
-        <a class="demo">${rooms[15].location.substring(0, rooms[5].location.indexOf('선유도')+4)}</a>
+      
+        <a class="demo3">${rooms[15].space_name}</a>
+        <br><br>
+        <a class="demo1">${rooms[15].location.substring(0, rooms[5].location.indexOf('선유도')+4)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-		<a class="demo">${rooms[15].price}원</a>
+        <a class="ra">#영등포,#파티룸,#모임공간,#선유도</a>
+		<a class="demo2">${rooms[15].price}원/시간</a>
    
     </div>		
     
     	  <div class="card">
          <a href="#"><img src="img/${rooms[2].img1}" alt="이미지 6"></a>
-         <br><br>
-        <a class="demo">${rooms[2].space_name}</a>
-        <br>
-        <a class="demo">${rooms[2].location.substring(0, rooms[2].location.indexOf('압구정')+3)}</a>
+   
+        <a class="demo3">${rooms[2].space_name}</a>
+        <br><br>
+        <a class="demo1">${rooms[2].location.substring(0, rooms[2].location.indexOf('압구정')+3)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-
-		<a class="demo">${rooms[2].price}원</a>
+		<a class="ra">#압구정,#가로수길,#인생샷,#생일파티</a>
+		<a class="demo2">${rooms[2].price}원/시간</a>
     </div>
 	</div>
 
@@ -158,45 +162,52 @@ $(document)
 var locationText = "${rooms[0].location.substring(5, rooms[0].location.indexOf('도'))}";
     var formattedLocation = "[" + locationText + "]";
 
-    var secondDemoElement = document.querySelectorAll(".demo")[1];
+    var secondDemoElement = document.querySelectorAll(".demo1")[0];
     secondDemoElement.innerHTML = formattedLocation;
 
+    
+    
+    
     let l = "${rooms[1].location.substring(0, rooms[1].location.indexOf('2'))}";
     let d = "[" + l + "]";
     
-    let s = document.querySelectorAll(".demo")[4];
+    let s = document.querySelectorAll(".demo1")[1];
     s.innerHTML = d;
+    
+    
+    
+    
     
     
     l = "${rooms[3].location.substring(0, rooms[3].location.indexOf('을지병원')+4)}";
     d = "[" + l + "]";
     
-    s=document.querySelectorAll(".demo")[7]
+    s=document.querySelectorAll(".demo1")[2]
     s.innerHTML = d;
     
     
     l = "${rooms[4].location.substring(0, rooms[4].location.indexOf('매봉역')+4)}"
     d = "[" + l + "]";
     
-    s=document.querySelectorAll(".demo")[10]
+    s=document.querySelectorAll(".demo1")[3]
     s.innerHTML = d;
     
     l = "${rooms[5].location.substring(0, rooms[5].location.indexOf('학동역')+3)}"
     d = "[" + l + "]";
     
-    s=document.querySelectorAll(".demo")[13]
+    s=document.querySelectorAll(".demo1")[4]
     s.innerHTML = d;
     
     l = "${rooms[15].location.substring(0, rooms[5].location.indexOf('선유도')+4)}"
     d = "[" + l + "]";
     
-    s=document.querySelectorAll(".demo")[16]
+    s=document.querySelectorAll(".demo1")[5]
     s.innerHTML = d;
     
    	l = "${rooms[5].location.substring(0, rooms[5].location.indexOf('학동역')+3)}"
    	d = "[" + l + "]";
    	
-   	s=document.querySelectorAll(".demo")[19]
+   	s=document.querySelectorAll(".demo1")[6]
     s.innerHTML = d;
     
    

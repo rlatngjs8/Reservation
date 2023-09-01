@@ -25,5 +25,6 @@ public interface productDAO {
 		
 		// 승환
 		ArrayList<productDTO> get_space();
+		
 		productDTO get_one_space(int space_id);
 }

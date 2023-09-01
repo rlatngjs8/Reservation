@@ -318,6 +318,29 @@ public String review_insert(HttpServletRequest req, Model model) {
 //	}
 
 	
+@GetMapping("/PartyRoom")
+public String showPartyRooms(Model model) {
+	ArrayList<productDTO> alemp =pdao.get_space();
+		
+	model.addAttribute("rooms",alemp);
+			
+	return "/PartyRoom";
+}
 	
+@GetMapping("/RecordingStudio")
+public String showRecordingStudios(Model model) {
+	ArrayList<productDTO> alemp = pdao.get_space();
+	model.addAttribute("rooms",alemp);
+	
+	return "/RecordingStudio";
+}
+
+@GetMapping("/seminarRoom")
+public String showSeminarRooms(Model model) {
+	ArrayList<productDTO> alemp = pdao.get_space();
+	model.addAttribute("rooms",alemp);
+	
+	return "/seminarRoom";
+}
 	
 }

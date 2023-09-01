@@ -4,6 +4,30 @@ body {
 }
 
 
+
+@font-face {
+    font-family: 'GyeonggiBatang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.ra {
+    position:relative;
+    right:110px;
+    top:17px;
+    font-family: 'GyeonggiBatang', sans-serif; 
+    font-size: 17px;
+    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+
+
 .second {
 
     display: flex;
@@ -26,7 +50,7 @@ body {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
         width:500px;
-        height:400px;
+        height:430px;
         
 }
 
@@ -56,10 +80,12 @@ body {
 	
 }
 
-.card a {
+.demo, .demo1, .demo2, .demo3 {
 	font-family:'LINESeedKR-Bd';
 	font-size:20px;
 	
+	
+
 }
 
 .location img{
@@ -69,3 +95,34 @@ body {
 	top:14px;
 	
 }
+
+
+
+
+
+
+
+
+
+.demo1{
+	align:center;
+	position:relative;
+	
+	top:20px;
+}
+
+.demo2{
+	text-align:right;
+}
+
+.location{
+	position:relative;
+    display: inline-block; 
+    margin-left: 10px; 
+    bottom:60px;
+}
+
+.location img {
+    width: 30px;
+    height: 30px;
+   

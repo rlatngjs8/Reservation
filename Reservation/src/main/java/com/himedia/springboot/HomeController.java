@@ -302,6 +302,16 @@ public String reservaiton(HttpServletRequest req, Model model) {
 public String goEventPage() {
 	return "/event";
 }
+
+@GetMapping("/event1")
+public String goEventPage1() {
+	return "/event1";
+}
+
+@GetMapping("/event2")
+public String goEventPage2() {
+	return "/event2";
+}
 }
 
 
