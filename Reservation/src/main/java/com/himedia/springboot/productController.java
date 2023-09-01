@@ -271,6 +271,8 @@ public String processReservation(@RequestBody ReservationData reservationData, M
     List<String> arrayStartTime = reservationData.getArrayStartTime();
     List<String> arrayEndTime = reservationData.getArrayEndTime();
     List<Integer> arrayAddedPrice = reservationData.getArrayAddedPrice();
+    System.out.println(arrayDate);
+    
 
     // Model에 데이터 추가
     model.addAttribute("arrayDate", arrayDate);
@@ -279,12 +281,23 @@ public String processReservation(@RequestBody ReservationData reservationData, M
     model.addAttribute("arrayAddedPrice", arrayAddedPrice);
 
     // 처리한 데이터를 보여줄 페이지로 이동
-    return "redirect:/payment"; // 보여줄 페이지 이름으로 변경하세요
+    return "paytest"; // 보여줄 페이지 이름으로 변경하세요
 }
 
-@GetMapping("/payment")
-public String payment () {
-	return "payment";
+@GetMapping("/paytest")			// jsp 이름변경하면 이거 바꿔줘야함. 위에도 마찬가지
+public String pay(Model model) {
+	 List<String> arrayDate = (List<String>) model.getAttribute("arrayDate");
+  List<String> arrayStartTime = (List<String>) model.getAttribute("arrayStartTime");
+  List<String> arrayEndTime = (List<String>) model.getAttribute("arrayEndTime");
+  List<Integer> arrayAddedPrice = (List<Integer>) model.getAttribute("arrayAddedPrice");
+  System.out.println(arrayAddedPrice);
+  if (arrayDate != null && arrayStartTime != null && arrayEndTime != null && arrayAddedPrice != null) {
+    model.addAttribute("arrayDate", arrayDate);
+    model.addAttribute("arrayStartTime", arrayStartTime);
+    model.addAttribute("arrayEndTime", arrayEndTime);
+    model.addAttribute("arrayAddedPrice", arrayAddedPrice);
+}
+		return "paytest";
 }
 
 
