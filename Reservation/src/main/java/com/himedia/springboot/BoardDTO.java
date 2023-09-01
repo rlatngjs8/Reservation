@@ -50,4 +50,13 @@ public class BoardDTO {
 	int hit;
 	String created;
 	String updated;
+	String comment;
+public String getComment() {
+		return comment;
+}
+public void setComment(String comment) {
+		this.comment = comment;
+}
+	
+	
 }

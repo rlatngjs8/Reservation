@@ -24,7 +24,7 @@ public interface RoomDAO {
 	void update(int seqno, String p1, String p2);
 	ArrayList<BoardDTO> getList1(int start, int psize);
 	int getTotal1();
-	
+	void comment(int seqno, String comment);
 	
 	void reservaion(String p1, String p2,String p3);
 	
@@ -32,5 +32,7 @@ public interface RoomDAO {
 
 // 결제 상태 변경 메서드 (미결제 -> 결제완료, 결제취소 등)
 	void updatePaymentStatus(String roomId, String paymentStatus);
+	
+	
 
 }

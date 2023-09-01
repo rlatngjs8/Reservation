@@ -35,9 +35,13 @@
 </delete>
 
 <select id="view" resultType="com.himedia.springboot.BoardDTO">
-	select seqno, title, content, writer, hit, created, updated from board
+	select seqno, title, content, writer, hit, created, updated, comment from board
 	where seqno=#{param1}
 </select>
+
+<update id="comment">
+	update board set comment=#{param2} where seqno=#{param1} 
+</update>
 
 <update id="update">
 	update board set title=#{param2}, content=#{param3}, updated=now() 

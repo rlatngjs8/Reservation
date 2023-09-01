@@ -54,6 +54,43 @@
     a.button:hover {
         background-color: #ddd;
     }
+    h2 {
+        margin-top: 40px;
+    }
+
+    ul#commentList {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    ul#commentList li {
+        background-color: #f2f2f2;
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+    }
+
+    #commentForm {
+        margin-top: 20px;
+    }
+
+    #commentContent {
+        width: 100%;
+        padding: 10px;
+        resize: vertical;
+    }
+
+    #btnSubmit {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+
+    #btnSubmit:hover {
+        background-color: #0056b3;
+    }
 </style>
 </head>
 <body>
@@ -75,17 +112,42 @@
     </td>
 </tr>
 </table>
+<h2>댓글 목록</h2>
+<table id="commentTable">
+    <thead style="background-color: #f2f2f2; padding: 8px;">
+        <tr>
+            <th>작성자</th>
+            <th>내용</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>관리자</td>
+            <td>${bpost.comment}</td>
+        </tr>
+    </tbody>
+</table>
+<h2>댓글 작성</h2>
+<form id="commentForm" action="/addComment" method="post">
+		<input type="hidden" name="seqno" value="${bpost.seqno}"> 
+    <textarea id="commentContent" rows="4" cols="30" placeholder="댓글 내용" name="comment"></textarea>
+    <br>
+    <button type="submit" id=btnSubmit>댓글 작성</button>
+</form>
+
+
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document).ready(function() {
     let loggedIn = ${not empty sessionScope.username}; // 로그인된 상태인지 확인
     let writer = "${bpost.writer}"; // 작성자의 아이디를 변수에 저장
+    let manager = "rlatngjs";	// 매니저 아이디
     
     if (loggedIn) {
         let loggedInUsername = "${sessionScope.username}";
 
-        if (writer === loggedInUsername) {
+        if (writer === loggedInUsername || loggedInUsername == manager) {
             // 작성자와 로그인한 사용자의 아이디가 같은 경우
             $("#btnUpdate").show();
             $("#btnDelete").show();
@@ -116,6 +178,5 @@ $(document)
     document.location = '/update?seqno=' + $('#seqno').text();
     return false;
 });
-
 </script>
 </html>

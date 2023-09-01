@@ -8,4 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ReservationDAO {
 		ArrayList<ReservationDTO> getList2(int start, int psize);
 		int getTotal2();
+		
+		void reDelete(int seqno);
 }

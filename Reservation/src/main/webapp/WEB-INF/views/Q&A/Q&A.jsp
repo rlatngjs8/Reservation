@@ -61,7 +61,7 @@
 </style>
 </head>
 <body>
-<h1>게시판</h1>
+<h1>Q&A</h1>
 <table>
     <tr>
        <td style="text-align: right;">

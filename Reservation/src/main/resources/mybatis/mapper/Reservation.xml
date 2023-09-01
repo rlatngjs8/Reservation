@@ -9,4 +9,7 @@
 <select id="getTotal2" resultType="int">
 	select count(*) from re_info
 </select>
+<delete id="reDelete" parameterType="int">
+	delete from re_info where seqno = #{seqno}
+</delete>
 </mapper>
