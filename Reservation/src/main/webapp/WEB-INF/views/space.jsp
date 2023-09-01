@@ -9,10 +9,8 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d35ff5a43bbc9d6ce4be2d8cd14ddba0"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d35ff5a43bbc9d6ce4be2d8cd14ddba0"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${space.space_name}</title>
@@ -51,172 +49,7 @@ main {
 	margin-top: 20px;
 }
 
-.space-rules, .location-info {
-	margin-top: 20px;
-	border-top: 1px solid #ccc;
-	padding-top: 10px;
-	word-wrap: break-word;
-}
-
-footer {
-	background-color: #333;
-	color: white;
-	text-align: center;
-	padding: 10px;
-}
-
-/* 추가된 스타일 */
-.reservation-window {
-	position: absolute;
-	top: 100px;
-	right: 20px;
-	width: 350px;
-	background-color: #ffffff; /* 흰색 배경 */
-	border: 1px solid #333; /* 검정색 테두리 */
-	padding: 20px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	transition: top 0.3s ease;
-	color: #333; /* 검정색 글자색 */
-}
-
-#datepicker {
-	width: 150px; /* 원하는 크기로 조정하세요 */
-	padding: 5px; /* 내부 여백 조정 */
-	font-size: 14px; /* 글자 크기 조정 */
-	border: 1px solid #ccc;
-	border-radius: 5px;
-}
-
-.time-picker table {
-	width: 100%;
-	border-collapse: collapse;
-	border: 1px solid #ccc;
-}
-
-.time-cell {
-	text-align: center;
-	padding: 10px;
-	border: 1px solid #ccc;
-	cursor: pointer;
-}
-
-.selected-start-time {
-	background-color: #333; /* 검정색 배경 */
-	color: #fff; /* 흰색 글자색 */
-}
-
-.selected-end-time {
-	background-color: #333; /* 검정색 배경 */
-	color: #fff; /* 흰색 글자색 */
-}
-
-.price-text {
-	font-weight: bold;
-	font-size: 18px;
-	margin-top: 10px;
-	color: #333; /* 검정색 글자색 */
-}
-
-#btnReT, #btnReF {
-	background-color: #333; /* 검정색 배경 */
-	color: #fff; /* 흰색 글자색 */
-	border: none;
-	padding: 10px 20px;
-	margin-top: 10px;
-	cursor: pointer;
-	transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#addReT, #addReF {
-	background-color: #333; /* 검정색 배경 */
-	color: #fff; /* 흰색 글자색 */
-	border: none;
-	padding: 5px 5px;
-	margin-top: 10px;
-	cursor: pointer;
-	transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#btnReT:hover, #btnReF:hover {
-	background-color: #fff; /* 흰색 배경 */
-	color: #333; /* 검정색 글자색 */
-}
-
-#addedSlots {
-	font-size: 14px; /* 원하는 크기로 조정 */
-}
-
-.time-picker {
-	/* 기존 스타일 유지 */
-	position: relative; /* 부모 요소를 기준으로 위치 지정 */
-}
-
-.price-container {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-top: 20px; /* 적절한 여백 조절 */
-}
-
-#totalPrice {
-	/* 기존 스타일 유지 */
-	margin: 0; /* 기존 여백 제거 */
-}
-
-.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
-    border-bottom-right-radius: 50px;
-}
-
-</style>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d35ff5a43bbc9d6ce4be2d8cd14ddba0"></script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${space.space_name}</title>
-<style>
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
-}
-
-header {
-	background-color: #333;
-	color: white;
-	text-align: center;
-	padding: 10px;
-}
-
-main {
-	padding: 20px;
-}
-
-.space-details {
-	border: 1px solid #ccc;
-	padding: 20px;
-	margin: 10px;
-	background-color: #f9f9f9;
-	word-wrap: break-word;
-}
-
-.space-image img {
-	max-width: 100%;
-	height: auto;
-}
-
-.space-introduction {
-	margin-top: 20px;
-}
-
-.space-rules, .location-info {
+.space-rules, .location-info, .review, .review_content {
 	margin-top: 20px;
 	border-top: 1px solid #ccc;
 	padding-top: 10px;
@@ -524,14 +357,29 @@ footer {
         resize: none;
     }
     
-    element.style {
-    border-width: 4px;
-    height: auto;
-    width: 1000px;
-    top: 1519.8px;
-    left: 404.55px;
-    z-index: 101;
-}
+	.review {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+	}
+	
+	.review h4 {
+	    font-size: 18px;
+	    font-weight: bold;
+	}
+	
+	.review p {
+	    font-size: 14px;
+	}
+	
+	.yellow-star {
+        color: yellow;
+        text-shadow: 0 0 5px black;
+    }
+
+	
+
 
 </style>
 </head>
@@ -678,13 +526,20 @@ footer {
         </script>
 				<p>자세한 주소는 호스트 승인 후, 메시지로 문의 가능합니다.</p>
 				<p>전화번호: ${space.mobile}</p>
-
 			</div>
 
 			<!-- -------------------------------------------------------------------- -->
 			<!-- 리뷰 영역 -->
 			<div id="reviews" style="border-width: 4px;">
 				<h3>리뷰</h3>
+				<!-- 로그인 했을때 동작함 -->
+				<c:if test="${not empty sessionScope.username}"> 
+					<button id="open-dialog-button">리뷰 작성하기</button>
+				</c:if>
+				<!--  로그인 안했을 떄  동작함 -->
+				<c:if test="${empty sessionScope.username}">
+					<button id="not_login" >리뷰 작성하기</button>
+				</c:if>
 				<div class="container" >
 				    <div id="dialog-form" title="Write a Review">
 				      <div class="dialog-content" >
@@ -702,24 +557,16 @@ footer {
 						  <label for="rate-1" class="fas fa-star"></label>
 						</div>
 				        <br><br><br>
-				        <form action="#">
 				          <div class="textarea" style="text-align: center;">
 				            <textarea id="review_content" cols="20" rows="18" style="height: 250px; border: 2px solid #333; border-width: 4px; " placeholder="리뷰를 작성하세요"></textarea>
 				          </div>
-				        </form>
 				      </div>
 				    </div>
-				    <div class="new-btn">
-				    <!-- 로그인 했을때 동작함 -->
-				      <c:if test="${not empty sessionScope.username}"> 
-						<button id="open-dialog-button">리뷰 작성하기</button>
-					  </c:if>
-					  		<!--  로그인 안했을 떄  동작함 -->
-				     <c:if test="${empty sessionScope.username}">
-				 	   <button id="not_login" >리뷰 작성하기</button>
-					</c:if> 
-				    </div>
 				</div>
+			</div>
+			
+			<div id="review_content">
+			<!--  후기 작성 내용이 들어가는 div -->
 			</div>
 
 
@@ -745,7 +592,8 @@ let arrayAddedPrice = [];
 
 
 $(document).ready(function () {
-
+	review_get();
+	
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         minDate: new Date(),
@@ -957,6 +805,33 @@ $(document).on('click', '#btnReF', function() {
     alert("로그인을 해주세요.");
 });
 
+function review_get() {
+    console.log('리뷰 불러옴');
+    const space_id = $('#space_id').val();
+    $.ajax({
+        url: '/review_get',
+        data: { space_id: space_id },
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            $("#review_content").empty();
+            for (let i = 0; i < data.length; i++) {
+                let review =
+                    "<div class='review'>" +
+                    "<h4>작성자: " + data[i]['userid'] + "</h4>" +
+                    "<p>평점: " + generateStarRating(data[i]['rating']) + "</p>" + // 수정된 부분
+                    "<p>리뷰 내용: " + data[i]['review_content'] + "</p>" +
+                    "<p>작성일: " + data[i]['created'] + "</p>" +
+                    "</div>";
+                $('#review_content').append(review);
+            }
+        }
+    });
+}
+
+
+
 ////////////
 
     const openDialogBtn = document.querySelector("#open-dialog-button");
@@ -1022,8 +897,18 @@ $(document).on('click', '#btnReF', function() {
 	//
     // 오른쪽 위에 X 버튼을 생성하여 다이얼로그 닫기
 
-
-///ㅅㄷㅅㄷ
+//별그리기
+function generateStarRating(rating) {
+    let starsHtml = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+            starsHtml += '<i class="fas fa-star yellow-star"></i>'; // 노란색 별
+        } else {
+            starsHtml += '<i class="far fa-star"></i>'; // 빈 별
+        }
+    }
+    return starsHtml;
+}
 
 
 
