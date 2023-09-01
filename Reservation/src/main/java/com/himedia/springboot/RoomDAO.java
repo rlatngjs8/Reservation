@@ -15,7 +15,10 @@ public interface RoomDAO {
 	int getTotal();
 	// 회원리스트 삭제
 	void deleteMember(int num);
-	
+	// 회원정보 뽑기
+	ArrayList<RoomDTO> getListOne(String userid);
+	// 회원정보 수정
+	void userUpdate(String passcode, String email, String address, String mobile, String userid);
 	// 게시판 DAO -승환
 	void hitup(int seqno);
 	void insert(String p1, String p2, String p3);

@@ -176,11 +176,28 @@ public class KimController {
 	 		HttpSession session= req.getSession();
 	 		String userid = (String) session.getAttribute("userid");
     String passcode = (String) session.getAttribute("passcode");
+    ArrayList<RoomDTO> member = rdao.getListOne(userid);
+    
+    
 
     // 모델에 사용자 ID와 비밀번호 추가
     model.addAttribute("userid", userid);
     model.addAttribute("passcode", passcode);
+    // 나머지 추가
+    model.addAttribute("member",member);
 	 		return "changeUser";
+	 }
+	 @PostMapping("/userEdit")
+	 public String userEdit(HttpServletRequest req, Model model) {
+	 		String userid = req.getParameter("userid");
+	 		String passcode = req.getParameter("passcode");
+	 		String email = req.getParameter("email");
+	 		String address = req.getParameter("address");
+	 		String mobile = req.getParameter("mobile");
+    
+    rdao.userUpdate(passcode,email,address,mobile,userid);
+	 		// 데이터 안들어감 수정해야함
+	 		return "redirect:/";
 	 }
 }
 

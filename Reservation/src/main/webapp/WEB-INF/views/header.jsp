@@ -210,12 +210,7 @@ a {
                     </td>
                 </tr>
             </table>
-        </li>
-       
-       
-<%--     <c:if test="${infoline != '' }"> --%>
-<%--     </c:if> --%>
-    
+        </li>  
     
     <li><a href="/q&a">Q&A</a></li>
     <li><a>서브 메뉴</a>

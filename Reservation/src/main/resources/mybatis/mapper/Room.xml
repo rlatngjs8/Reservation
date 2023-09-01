@@ -64,5 +64,12 @@
 	payment_date=#{param3}, payment_status=#{param4}
 </insert>
 
+<select id="getListOne" resultType="com.himedia.springboot.RoomDTO"> <!-- 회원목록 조회 -->
+	select num,userid,passcode,name,birthday,address,email,mobile,created from members where userid=#{userid}
+</select>
+<!-- 회원정보수정 -->
+<update id="userUpdate">
+	update members set passcode=#{param2}, email=#{param3}, address=#{param4}, mobile=#{param5} where userid=#{param1}
+</update>
 
 </mapper>

@@ -58,6 +58,9 @@
         <input type="text" id="loginid" name="loginid" placeholder="로그인 아이디" autofocus>
         <input type="password" id="loginpw" name="loginpw" placeholder="패스워드">
         <input type="submit" value="로그인">&nbsp;&nbsp;<a href="/signup">회원가입</a>
+        <c:forEach items="${member}" var="member">
+        <input type="hidden" name="name" value="${member.name}">
+        </c:forEach>
     </div>
     <c:if test="${loginFailed}">
         <script>
