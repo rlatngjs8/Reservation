@@ -173,4 +173,5 @@ public class KimController {
 	 public String mypage() {
 	 		return "myPage/myPage";
 	 }
+//	 123
 }
