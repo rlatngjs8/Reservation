@@ -169,6 +169,5 @@ public class KimController {
 //	     return redirectUrl; // 리다이렉트 URL을 직접 리턴
 	     return "redirect:/Q&A";
 	 }
-	 //asdasdasjdas
-	 //asdasdadmznxczxjczxbjczx
+	 //밈ㄴ암넝
 }
