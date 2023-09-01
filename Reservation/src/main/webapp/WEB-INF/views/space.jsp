@@ -166,7 +166,7 @@ footer {
 </style>
 </head>
 <body>
-테스트
+테스트테스트테스트나우미난ㅇ
 	<input type=hidden id=space_id value="${space.space_id }">
 	<header
 		style="display: flex; justify-content: flex-end; align-items: center;">
