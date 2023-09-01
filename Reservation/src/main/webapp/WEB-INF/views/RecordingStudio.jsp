@@ -32,7 +32,7 @@
 	</div>
 	
 	<div>
-	<a href="/PartyRoom"><span class="otherRoom4"><strong> 파티룸 </strong></span></a>
+	<a href="/PartyRoom"><span class="otherRoom4"><strong> 파티룸ff </strong></span></a>
 	</div>
 
 
