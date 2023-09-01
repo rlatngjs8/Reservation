@@ -27,6 +27,13 @@
 
 	<h1 class="top">녹음실/스튜디오</h1>
 
+<div>
+	<a href="/seminarRoom"><span class="otherRoom3"><strong> 세미나룸 </strong></span></a>
+	</div>
+	
+	<div>
+	<a href="/PartyRoom"><span class="otherRoom4"><strong> 파티룸 </strong></span></a>
+	</div>
 
 
 

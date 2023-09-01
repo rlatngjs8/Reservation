@@ -27,8 +27,14 @@
 <%@include file="header.jsp" %>
 
 	<h1 class="top">파티룸</h1>
-
-
+	
+	<div>
+	<a href="/RecordingStudio"><span class="otherRoom"><strong> 스튜디오/방송 </strong></span></a>
+	</div>
+	
+	<div>
+	<a href="/seminarRoom"><span class="otherRoom2"><strong> 회의실/세미나</strong></span></a>
+	</div>
 
 
 
@@ -72,11 +78,7 @@
     </div>
     
     
-    </div>
 
-
-	<div class="second">
-	
 	
 	 <div class="card">
          <a href="#"><img src="img/${rooms[3].img1}" alt="이미지 6"></a>
@@ -90,19 +92,10 @@
   
     </div>
     
-      <div class="card">
-         <a href="#"><img src="img/${rooms[4].img1}" alt="이미지 6"></a>
-          
-        <a class="demo3">${rooms[4].space_name}</a>
-        <br><br>
-        <a class="demo1">${rooms[4].location.substring(0, rooms[4].location.indexOf('매봉역')+4)}</a>
-        <a class="location"><img src="img/위치아이콘.png"></a>
-        <a class="ra">#브라이덜샤워,#쇼케이스,#포로포즈</a>
-		<a class="demo2">${rooms[4].price}원/시간</a>
 
-    </div>
-    
-	
+        </div>
+        
+	<div class="second">
 	<div class="card">
          <a href="#"><img src="img/${rooms[5].img3}" alt="이미지 6"></a>
         
@@ -115,9 +108,9 @@
 
 
     </div>
-</div>
+
 		
-	<div class="second">
+	
 	
 	
 	 <div class="card">
@@ -145,7 +138,20 @@
 	</div>
 
 
+		<div class="second1">
+      <div class="card">
+         <a href="#"><img src="img/${rooms[4].img1}" alt="이미지 6"></a>
+          
+        <a class="demo3">${rooms[4].space_name}</a>
+        <br><br>
+        <a class="demo1">${rooms[4].location.substring(0, rooms[4].location.indexOf('매봉역')+4)}</a>
+        <a class="location"><img src="img/위치아이콘.png"></a>
+        <a class="ra">#브라이덜샤워,#쇼케이스,#포로포즈</a>
+		<a class="demo2">${rooms[4].price}원/시간</a>
 
+    </div>
+	</div>
+<br><br><br>
 
 
 <%@include file="footer.jsp" %>

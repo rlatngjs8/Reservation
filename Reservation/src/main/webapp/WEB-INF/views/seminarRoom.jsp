@@ -27,6 +27,15 @@
 <%@include file="header.jsp" %>
 
 	<h1 class="top">회의실/세미나룸</h1>
+	
+	
+	<div>
+	<a href="/RecordingStudio"><span class="otherRoom3"><strong> 스튜디오/방송 </strong></span></a>
+	</div>
+	
+	<div>
+	<a href="/PartyRoom"><span class="otherRoom4"><strong> 파티룸 </strong></span></a>
+	</div>
 
 
 
@@ -77,6 +86,7 @@
         <br>
         <a class="demo1">${rooms[17].location.substring(0, rooms[17].location.indexOf(' '))}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
+        <a class="ra">#회의실,#TV모니터,#남부터미널역</a>
 		<a class="demo2">${rooms[17].price}원/시간</a>
   
     </div>
@@ -87,6 +97,7 @@
         <br>
         <a class="demo1">${rooms[18].location.substring(0, rooms[18].location.indexOf(' '))}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
+        <a class="ra">#스크린,#조명,#음향,#빔프로젝터,#세미나</a>
 		<a class="demo2">${rooms[18].price}원/시간</a>
 
     </div>
@@ -98,6 +109,7 @@
         <br>
         <a class="demo1">${rooms[19].location.substring(0, rooms[19].location.indexOf(' '))}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
+        <a class="ra">#주차공간,#대형 모니터,#와이파이,#워크샵</a>
 		<a class="demo2">${rooms[19].price}원/시간</a>
 
 
