@@ -161,6 +161,7 @@
 		    margin: 0; /* 기존 여백 제거 */
 		}
 		
+		
         
         
 		        
@@ -303,22 +304,12 @@
                 <p>전화번호: ${space.mobile}</p>
                 
             </div>
-            
+            <!-- -------------------------------------------------------------------- -->
 			<!-- 리뷰 영역 -->
 			<div id="reviews">
 			    <h3>리뷰</h3>
-			    <h2><a href='review'>리뷰 작성하기</a></h2>
-			    <button id="review">리뷰 작성하기</button>
-			    <ul>
-			        <!-- 리뷰 데이터 반복 표시 -->
-			        <c:forEach items="${reviewList}" var="review">
-			            <li>
-			                <p>${review.content}</p>
-			                <p>작성자: ${review.author}</p>
-			                <p>평점: ${review.rating}</p>
-			            </li>
-			        </c:forEach>
-			    </ul>
+			    <button id="open-dialog-button">리뷰 작성하기</button>
+				
 			</div>
             
             
@@ -548,5 +539,8 @@ $(document).on('click', '#btnReT', function() {
 $(document).on('click', '#btnReF', function() {
     alert("로그인을 해주세요.");
 });
+
+
+
 </script>
 </html>

@@ -42,5 +42,10 @@ public class YoonController {
 		return "redirect:/space";
 	}
 	
+	@GetMapping("/test")
+	public String test() {
+		return "test";
+	}
+	
 
 }
