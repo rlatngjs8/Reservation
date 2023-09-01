@@ -62,13 +62,14 @@ public class HomeController {
    
    @PostMapping("/doLogin")      // 로그인 화면 변경. 잘모르겠음   로그인버튼 눌렀을때   
    public String doLogin(HttpServletRequest req, Model model) {
-      String loginid = req.getParameter("loginid");      //인풋의 name써야함
-      String pwd = req.getParameter("loginpw");         // 마찬가지
-      int n = rdao.login(loginid, pwd);      // xml에서 int로 받아오기때문에
+      String userid = req.getParameter("loginid");      //인풋의 name써야함
+      String passcode = req.getParameter("loginpw");         // 마찬가지
+      int n = rdao.login(userid, passcode);      // xml에서 int로 받아오기때문에
       if(n == 1) {                        // 받아온값이 1이면 (갯수가 1개라서)
          HttpSession session = req.getSession();
-         session.setAttribute("userid", loginid);   // 유저아이디에 로그인아이디
-         session.setAttribute("username", loginid);
+         session.setAttribute("userid", userid);   // 유저아이디에 로그인아이디
+         session.setAttribute("username", userid);
+         session.setAttribute("passcode", passcode);
          return "redirect:/";      // /url로 가서 메소드까지 실행하고 리턴
       } else {
             model.addAttribute("loginFailed", true);

@@ -63,4 +63,6 @@
 	insert into payment set payment_option=#{param1},price=#{param2},
 	payment_date=#{param3}, payment_status=#{param4}
 </insert>
+
+
 </mapper>

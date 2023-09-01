@@ -91,7 +91,6 @@
 		</c:if>
 		<!--  로그인 안했을 떄  동작함 -->
 		<c:if test="${empty sessionScope.username}">
-			
 	 	   <button id="btn_false" class="btn btn-primary" >등록하기</button>
 		</c:if> 
     </div>

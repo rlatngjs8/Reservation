@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,17 +18,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      background-color: #000;
+      min-height: 100vh;
+      background-color: #f0f0f0;
     }
 
     .container {
       width: 400px;
-      background-color: #111;
+      background-color: #fff;
       padding: 20px 30px;
-      border: 1px solid #444;
+      border: 1px solid #ddd;
       border-radius: 5px;
       text-align: center;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
 
     .post {
@@ -35,7 +38,7 @@
 
     .text {
       font-size: 25px;
-      color: #666;
+      color: #333;
       font-weight: 500;
     }
 
@@ -55,7 +58,6 @@
 
     .star-widget input {
       display: none;
-      
     }
 
     .star-widget label {
@@ -94,11 +96,11 @@
 
     form .textarea textarea {
       height: 150px;
-      width: 330px;
+      width: 100%;
       outline: none;
-      color: #eee;
-      border: 1px solid #333;
-      background: #252;
+      color: #333;
+      border: 1px solid #ccc;
+      background: #f8f8f8;
       padding: 10px;
       font-size: 17px;
       resize: none;
@@ -109,7 +111,7 @@
       border: 1px solid #444;
       outline: none;
       background: #222;
-      color: #999;
+      color: #fff;
       font-size: 17px;
       font-weight: 500;
       text-transform: uppercase;
@@ -178,13 +180,14 @@
     .ui-dialog-content .star-widget {
       padding: 20px 30px;
     }
-    
+
     .star-widget {
-	  width: 386px; /* Adjust the width as desired */
-	  height: 100px; /* Adjust the height as desired */
-	  padding: 20px 30px;
-	  box-sizing: border-box;
-	}
+      width: 386px; /* Adjust the width as desired */
+      height: 100px; /* Adjust the height as desired */
+      padding: 20px 30px;
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
 
     .ui-dialog-content form header {
       margin: 0 0 20px;
@@ -198,6 +201,14 @@
     .ui-dialog-content .btn {
       margin: 0;
     }
+
+    .review-header {
+      font-size: 20px;
+      color: #fe7;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
   </style>
 </head>
 <body>
@@ -205,6 +216,7 @@
     <div id="dialog-form" title="Write a Review">
       <div class="dialog-content">
         <div class="star-widget">
+          <div class="review-header">리뷰 작성하기</div>
           <input type="radio" name="rate" id="rate-5">
           <label for="rate-5" class="fas fa-star"></label>
           <input type="radio" name="rate" id="rate-4">

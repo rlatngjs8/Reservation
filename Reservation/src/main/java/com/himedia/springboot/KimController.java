@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -169,9 +171,16 @@ public class KimController {
 //	     return redirectUrl; // 리다이렉트 URL을 직접 리턴
 	     return "redirect:/Q&A";
 	 }
-	 @GetMapping("/myPage")
-	 public String mypage() {
-	 		return "myPage/myPage";
+	 @GetMapping("/changeUser")
+	 public String changeUser(HttpServletRequest req, Model model) {
+	 		HttpSession session= req.getSession();
+	 		String userid = (String) session.getAttribute("userid");
+    String passcode = (String) session.getAttribute("passcode");
+
+    // 모델에 사용자 ID와 비밀번호 추가
+    model.addAttribute("userid", userid);
+    model.addAttribute("passcode", passcode);
+	 		return "changeUser";
 	 }
-//	 123
 }
+
