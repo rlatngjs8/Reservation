@@ -66,13 +66,13 @@
     <tr>
        <td style="text-align: right;">
        <!-- 로그인 상태일 때 -->
-      <c:if test="${not empty sessionScope.username}">
+      <c:if test="${not empty sessionScope.userid}">
        <a href="/logout">로그아웃</a>
-       <p>로그인한 아이디: ${sessionScope.username}</p>
+       <p>로그인한 아이디: ${sessionScope.userid}</p>
       </c:if>
       
       <!-- 로그인되지 않은 상태일 때 -->
-      <c:if test="${empty sessionScope.username}">
+      <c:if test="${empty sessionScope.userid}">
         <a href="/login">로그인</a>
         <a href="/signup">회원가입</a>
       </c:if>
@@ -108,12 +108,12 @@
     <td id="prevNext"> <!-- Modified -->
         <%--${prev}&nbsp;${next} --%>
         ${pagestr}
-        <c:if test="${not empty sessionScope.username}">
+        <c:if test="${not empty sessionScope.userid}">
       <p><a href="/write">글쓰기</a></p>
       </c:if>
       
       <!-- 로그인되지 않은 상태일 때 -->
-      <c:if test="${empty sessionScope.username}">
+      <c:if test="${empty sessionScope.userid}">
       <p>로그인을 진행해주세요</p>
       </c:if>
       

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시물 보기</title>
+<title>${userid}-${bpost.title}</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -99,21 +99,19 @@
 </style>
 </head>
 <body>
-<h1>게시물 보기</h1>
+<h1>상세문의 내역</h1>
 <table>
-<tr><td>게시물번호</td><td id="seqno">${bpost.seqno }</td></tr>
-<tr><td>제목</td><td>${bpost.title }</td></tr>
+<tr><td>제목</td><td>${bpost.title}</td></tr>
 <tr><td>내용</td><td><textarea rows="10" cols="50" readonly>${bpost.content }</textarea></td></tr>
 <tr><td>작성자</td><td>${bpost.writer}</td></tr>
 <tr><td>조회수</td><td>${bpost.hit }</td></tr>
 <tr><td>작성시간</td><td>${bpost.created }</td></tr>
-<tr><td>수정시각</td><td>${bpost.updated }</td></tr>
 <tr>
-    <td><a href="/">목록으로</a></td>
+    <td><a href="/myPage">돌아가기</a></td>
     <td style='text-align: right;'>
-        <a href="/write" class="button" id=btnWrite>글쓰기</a>
-    		<button id="btnUpdate">수정</button>
-        	<button id="btnDelete">삭제</button>
+    <!--수정,삭제 기능	안넣음 , 추가기능은 상세페이지에서  -->
+<!--     		<button id="btnUpdate">수정</button> -->
+<!--         <button id="btnDelete">삭제</button> -->
     </td>
 </tr>
 </table>
@@ -132,13 +130,6 @@
         </tr>
     </tbody>
 </table>
-<h2>댓글 작성</h2>
-<form id="commentForm" action="/addComment" method="post">
-		<input type="hidden" name="seqno" value="${bpost.seqno}"> 
-    <textarea id="commentContent" rows="4" cols="20" placeholder="댓글 내용" name="comment"></textarea>
-    <br>
-    <button type="submit" id=btnSubmit>댓글 작성</button>
-</form>
 
 
 </body>
@@ -172,16 +163,16 @@ $(document).ready(function() {
     }
 });
 
-$(document)
-.on('click', '#btnDelete', function() {
-    if (!confirm('정말로 지울까요?')) return false;
+// $(document)
+// .on('click', '#btnDelete', function() {
+//     if (!confirm('정말로 지울까요?')) return false;
 
-    document.location = '/delete?seqno=' + $('#seqno').text();
-    return false;
-})
-.on('click', '#btnUpdate', function() {
-    document.location = '/update?seqno=' + $('#seqno').text();
-    return false;
-});
+//     document.location = '/delete?seqno=' + $('#seqno').text();
+//     return false;
+// })
+// .on('click', '#btnUpdate', function() {
+//     document.location = '/update?seqno=' + $('#seqno').text();
+//     return false;
+// });
 </script>
 </html>

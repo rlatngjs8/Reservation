@@ -204,15 +204,15 @@ a {
                         </c:if>
                         <c:if test="${name != ''}">
                             <span>${name}</span> 님 환영합니다&nbsp;&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
-                            <li><a href='/reservation'>예약현황</a></li>
-                            <li><a href='/modify_member_info'>회원정보수정</a></li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
+<!--                             <li><a href='/reservation'>예약현황</a></li> -->
+                            <li><a href='/myPage'>마이페이지</a></li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
                         </c:if>
                     </td>
                 </tr>
             </table>
         </li>  
     
-    <li><a href="/q&a">Q&A</a></li>
+<!--     <li><a href="/q&a">Q&A</a></li> -->
     <li><a>서브 메뉴</a>
     <ul class="sub_mobile">
     <li><a href="/review">Review</a></li>
@@ -222,19 +222,19 @@ a {
     
       <c:choose>
       
-      <c:when test="${name =='rlatngjs'}">  <!-- 관리자 메뉴 -->
+      <c:when test="${userid =='rlatngjs'}">  <!-- 관리자 메뉴 -->
       <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       
-      <c:when test="${name =='nayeon'}">
+      <c:when test="${userid =='nayeon'}">
       <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       
-   <c:when test="${name =='hwan'}">
+   <c:when test="${userid =='hwan'}">
       <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       
-      <c:when test="${name =='gldigh123'}">
+      <c:when test="${userid =='gldigh123'}">
       <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       
