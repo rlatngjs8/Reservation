@@ -2,14 +2,17 @@ package com.himedia.springboot;
 
 import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.mysql.cj.xdevapi.JsonArray;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -177,7 +180,7 @@ public class KimController {
 	 }
 	 @GetMapping("/myPage")
 	 public String changeUser(HttpServletRequest req, Model model) {
-	 	HttpSession session= req.getSession();
+	 			HttpSession session= req.getSession();
 	 			String userid = (String) session.getAttribute("userid");
 	    String passcode = (String) session.getAttribute("passcode");
 	    ArrayList<RoomDTO> member = rdao.getListOne(userid);
@@ -303,6 +306,55 @@ public class KimController {
 
 	 		return "reviewManage/review";
 	 }
+	@GetMapping("/paymentCompleted")
+	public String payCom(HttpServletRequest req, Model model) {
+			HttpSession session= req.getSession();
+//			int seqno = (int) session.getAttribute("seqno");
+			int seqno = 4;
+			ArrayList<ReservationDTO> alReser = redao.payCom(seqno);
+			
+			model.addAttribute("seqno",seqno);
+			model.addAttribute("pay", alReser);
+			
+			return "paymentCompleted";
+	}
+	@GetMapping("/sales")
+	public String sales() {	
+			return "sales";
+	}
+//	@PostMapping("/getSalesData")
+//	@ResponseBody
+//	public String salesData(HttpServletRequest req, Model model) {
+// 	String start = req.getParameter("start");
+// 	String end = req.getParameter("end");
+// 	System.out.println("start="+start);
+// 	System.out.println("end="+end);
+//// 	LocalDateTime startTime = LocalDateTime.parse(start.replace("T", " "));
+////  LocalDateTime endTime = LocalDateTime.parse(end.replace("T", " "));
+// 	
+// 	ArrayList<ReservationDTO> sales = redao.sales(start, end);
+// 	model.addAttribute("sales", sales);
+// 	return "sales";
+//	}
 	
+	@PostMapping("/getSalesData")
+	@ResponseBody
+	public String salesData(HttpServletRequest req) {
+			String start = req.getParameter("start");
+			String end = req.getParameter("end");
+			System.out.println("start="+start);
+			System.out.println("end="+end);
+			
+			ArrayList<ReservationDTO> sales = redao.sales(start, end);
+			System.out.println(sales.size());
+			JSONArray ja = new JSONArray();
+			for(int i = 0; i<sales.size();i++) {
+					JSONObject jo = new JSONObject();
+					jo.put("purchaseTime", sales.get(i).getPurchaseTime());
+					jo.put("totalPrice", sales.get(i).getTotalPrice());
+					ja.add(jo);
+			}
+			return ja.toJSONString();
+	}
 }
 
