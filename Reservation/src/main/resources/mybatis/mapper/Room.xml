@@ -16,6 +16,9 @@
 <delete id="deleteMember" parameterType="int">
 	delete from members where num = #{num}
 </delete>
+<delete id="deleteMember1" parameterType="String">
+	delete from members where userid= #{userid}
+</delete>
 
 <select id="getTotal" resultType="int">
 	select count(*) from members
@@ -57,10 +60,16 @@
 	select count(*) from board
 </select>
 
-
-
 <insert id="payment" parameterType="java.util.HashMap">
 	insert into payment set payment_option=#{param1},price=#{param2},
 	payment_date=#{param3}, payment_status=#{param4}
 </insert>
+
+<select id="getListOne" resultType="com.himedia.springboot.RoomDTO"> <!-- 회원목록 조회 -->
+	select num,userid,passcode,name,birthday,address,email,mobile,created from members where userid=#{userid}
+</select>
+<!-- 회원정보수정 -->
+<update id="userUpdate">
+	update members set passcode=#{param1}, email=#{param2}, address=#{param3}, mobile=#{param4} where userid=#{param5}
+</update>
 </mapper>

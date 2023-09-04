@@ -4,16 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d35ff5a43bbc9d6ce4be2d8cd14ddba0"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d35ff5a43bbc9d6ce4be2d8cd14ddba0"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${space.space_name}</title>
@@ -52,7 +49,7 @@ main {
 	margin-top: 20px;
 }
 
-.space-rules, .location-info {
+.space-rules, .location-info, .review, .review_content {
 	margin-top: 20px;
 	border-top: 1px solid #ccc;
 	padding-top: 10px;
@@ -163,170 +160,232 @@ footer {
 	/* 기존 스타일 유지 */
 	margin: 0; /* 기존 여백 제거 */
 }
-</style>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d35ff5a43bbc9d6ce4be2d8cd14ddba0"></script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${space.space_name}</title>
-<style>
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
-}
+.container {
+      width: 400px;
+      background-color: #fff;
+      padding: 20px 30px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: center;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
 
-header {
-	background-color: #333;
-	color: white;
-	text-align: center;
-	padding: 10px;
-}
+    .post {
+      display: none;
+    }
 
-main {
-	padding: 20px;
-}
+    .text {
+      font-size: 25px;
+      color: #333;
+      font-weight: 500;
+    }
 
-.space-details {
-	border: 1px solid #ccc;
-	padding: 20px;
-	margin: 10px;
-	background-color: #f9f9f9;
-	word-wrap: break-word;
-}
+    .edit {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      font-size: 16px;
+      color: #666;
+      font-weight: 500;
+      cursor: pointer;
+    }
 
-.space-image img {
-	max-width: 100%;
-	height: auto;
-}
+    .edit:hover {
+      text-decoration: underline;
+    }
 
-.space-introduction {
-	margin-top: 20px;
-}
+    .star-widget input {
+      display: none;
+    }
 
-.space-rules, .location-info {
-	margin-top: 20px;
-	border-top: 1px solid #ccc;
-	padding-top: 10px;
-	word-wrap: break-word;
-}
+    .star-widget label {
+      font-size: 40px;
+      color: #444;
+      padding: 10px;
+      float: right;
+      transition: all 0.2s ease;
+    }
 
-footer {
-	background-color: #333;
-	color: white;
-	text-align: center;
-	padding: 10px;
-}
+    .star-widget input:not(:checked) ~ label:hover,
+    .star-widget input:not(:checked) ~ label:hover ~ label {
+      color: #fd4;
+    }
 
-/* 추가된 스타일 */
-.reservation-window {
-	position: absolute;
-	top: 100px;
-	right: 20px;
-	width: 350px;
-	background-color: #ffffff; /* 흰색 배경 */
-	border: 1px solid #333; /* 검정색 테두리 */
-	padding: 20px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	transition: top 0.3s ease;
-	color: #333; /* 검정색 글자색 */
-}
+    .star-widget input:checked ~ label {
+      color: #fd4;
+    }
 
-#datepicker {
-	width: 150px; /* 원하는 크기로 조정하세요 */
-	padding: 5px; /* 내부 여백 조정 */
-	font-size: 14px; /* 글자 크기 조정 */
-	border: 1px solid #ccc;
-	border-radius: 5px;
-}
+    .star-widget input#rate-5:checked ~ label {
+      color: #fe7;
+      text-shadow: 0 0 20px #952;
+    }
 
-.time-picker table {
-	width: 100%;
-	border-collapse: collapse;
-	border: 1px solid #ccc;
-}
+    .star-widget input:checked ~ form {
+      display: block;
+    }
 
-.time-cell {
-	text-align: center;
-	padding: 10px;
-	border: 1px solid #ccc;
-	cursor: pointer;
-}
+    form header {
+      font-size: 25px;
+      color: #fe7;
+      font-weight: 500;
+      margin: 5px 0 20px;
+      transition: all 0.2s ease;
+    }
 
-.selected-start-time {
-	background-color: #333; /* 검정색 배경 */
-	color: #fff; /* 흰색 글자색 */
-}
+    form .textarea textarea {
+      height: 150px;
+      width: 100%;
+      outline: none;
+      color: #333;
+      border: 1px solid #ccc;
+      background: #f8f8f8;
+      padding: 10px;
+      font-size: 17px;
+      resize: none;
+    }
 
-.selected-end-time {
-	background-color: #333; /* 검정색 배경 */
-	color: #fff; /* 흰색 글자색 */
-}
+    .btn button {
+      height: 45px;
+      border: 1px solid #444;
+      outline: none;
+      background: #222;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 500;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-.price-text {
-	font-weight: bold;
-	font-size: 18px;
-	margin-top: 10px;
-	color: #333; /* 검정색 글자색 */
-}
+    .btn button:hover {
+      background: #1b1b1b;
+    }
 
-#btnReT, #btnReF {
-	background-color: #333; /* 검정색 배경 */
-	color: #fff; /* 흰색 글자색 */
-	border: none;
-	padding: 10px 20px;
-	margin-top: 10px;
-	cursor: pointer;
-	transition: background-color 0.3s ease, color 0.3s ease;
-}
+    /* Dialog Styles */
+    #dialog-form {
+      display: none;
+    }
 
-#addReT, #addReF {
-	background-color: #333; /* 검정색 배경 */
-	color: #fff; /* 흰색 글자색 */
-	border: none;
-	padding: 5px 5px;
-	margin-top: 10px;
-	cursor: pointer;
-	transition: background-color 0.3s ease, color 0.3s ease;
-}
+    .ui-dialog {
+     
+     max-width: 450px;
+     max-height: 500px;
+   	 background-color: #ffffff;
+    }
 
-#btnReT:hover, #btnReF:hover {
-	background-color: #fff; /* 흰색 배경 */
-	color: #333; /* 검정색 글자색 */
-}
+    .ui-dialog-titlebar {
+      display: none;
+    }
 
-#addedSlots {
-	font-size: 14px; /* 원하는 크기로 조정 */
-}
+    .ui-dialog-content {
+      padding: 0;
+      overflow: hidden;
+       /* Disable scrollbar */
+    }
 
-.time-picker {
-	/* 기존 스타일 유지 */
-	position: relative; /* 부모 요소를 기준으로 위치 지정 */
-}
+    .ui-dialog-buttonpane {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 20px 20px;
+      background-color: transparent;
+      border-top: none;
+    }
 
-.price-container {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-top: 20px; /* 적절한 여백 조절 */
-}
+    .ui-dialog-buttonset {
+      margin: 0;
+    }
 
-#totalPrice {
-	/* 기존 스타일 유지 */
-	margin: 0; /* 기존 여백 제거 */
-}
+    .ui-dialog-buttonset button {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #999;
+      font-size: 17px;
+      font-weight: 500;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+      margin-left: 10px;
+    }
+
+    .ui-dialog-buttonset button.close-button {
+      font-size: 20px;
+      margin-left: auto;
+    }
+
+    .ui-dialog-buttonset button:hover {
+      color: #1b1b1b;
+    }
+
+    .ui-dialog-content .star-widget {
+      padding: 20px 30px;
+    }
+
+    .star-widget {
+      width: 386px; /* Adjust the width as desired */
+      height: 100px; /* Adjust the height as desired */
+      padding: 20px 30px;
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
+
+    .ui-dialog-content form header {
+      margin: 0 0 20px;
+    }
+
+    .ui-dialog-content form .textarea {
+      height: 150px;
+      margin-bottom: 20px;
+    }
+
+    .ui-dialog-content .btn {
+      margin: 0;
+    }
+
+    .review-header { 
+      font-size: 20px;
+      color: #0;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+    
+    #review_content {
+        width: 97%; /* 원하는 넓이로 조절하세요 */
+        height: 100%;
+        padding: 0px;
+        resize: none;
+    }
+    
+	.review {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+	}
+	
+	.review h4 {
+	    font-size: 18px;
+	    font-weight: bold;
+	}
+	
+	.review p {
+	    font-size: 14px;
+	}
+	
+	.yellow-star {
+        color: yellow;
+        text-shadow: 0 0 5px black;
+    }
+
+	
+
+
 </style>
 </head>
 <body>
-	<input type=hidden id=space_id value="${space.space_id }">
+	<input type='hidden' id='user_id' value="${sessionScope.userid}">
+	<input type="hidden" id="space_id" value="${space.space_id }">
 	<header
 		style="display: flex; justify-content: flex-end; align-items: center;">
 		<h1>${space.space_name}</h1>
@@ -467,14 +526,47 @@ footer {
         </script>
 				<p>자세한 주소는 호스트 승인 후, 메시지로 문의 가능합니다.</p>
 				<p>전화번호: ${space.mobile}</p>
-
 			</div>
 
 			<!-- -------------------------------------------------------------------- -->
 			<!-- 리뷰 영역 -->
-			<div id="reviews">
+			<div id="reviews" style="border-width: 4px;">
 				<h3>리뷰</h3>
-				<button id="open-dialog-button">리뷰 작성하기</button>
+				<!-- 로그인 했을때 동작함 -->
+				<c:if test="${not empty sessionScope.username}"> 
+					<button id="open-dialog-button">리뷰 작성하기</button>
+				</c:if>
+				<!--  로그인 안했을 떄  동작함 -->
+				<c:if test="${empty sessionScope.username}">
+					<button id="not_login" >리뷰 작성하기</button>
+				</c:if>
+				<div class="container" >
+				    <div id="dialog-form" title="Write a Review">
+				      <div class="dialog-content" >
+				        <div class="star-widget">
+						  <div class="review-header" style="text-align: center" >리뷰 작성하기</div>
+						  <input type="radio" name="rate" id="rate-5" value="5">
+						  <label for="rate-5" class="fas fa-star"></label>
+						  <input type="radio" name="rate" id="rate-4" value="4">
+						  <label for="rate-4" class="fas fa-star"></label>
+						  <input type="radio" name="rate" id="rate-3" value="3">
+						  <label for="rate-3" class="fas fa-star"></label>
+						  <input type="radio" name="rate" id="rate-2" value="2">
+						  <label for="rate-2" class="fas fa-star"></label>
+						  <input type="radio" name="rate" id="rate-1" value="1">
+						  <label for="rate-1" class="fas fa-star"></label>
+						</div>
+				        <br><br><br>
+				          <div class="textarea" style="text-align: center;">
+				            <textarea id="review_content" cols="20" rows="18" style="height: 250px; border: 2px solid #333; border-width: 4px; " placeholder="리뷰를 작성하세요"></textarea>
+				          </div>
+				      </div>
+				    </div>
+				</div>
+			</div>
+			
+			<div id="review_content">
+			<!--  후기 작성 내용이 들어가는 div -->
 			</div>
 
 
@@ -500,7 +592,8 @@ let arrayAddedPrice = [];
 
 
 $(document).ready(function () {
-
+	review_get();
+	
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         minDate: new Date(),
@@ -700,6 +793,10 @@ $(document).on('click', '#addReF', function() {
     alert("로그인을 해주세요.");
 });
 
+$(document).on('click', '#not_login', function() {
+    alert("로그인을 해주세요.");
+});
+
 $(document).on('click', '#btnReT', function() {
 	ReInsert();
 });
@@ -707,6 +804,111 @@ $(document).on('click', '#btnReT', function() {
 $(document).on('click', '#btnReF', function() {
     alert("로그인을 해주세요.");
 });
+
+function review_get() {
+    console.log('리뷰 불러옴');
+    const space_id = $('#space_id').val();
+    $.ajax({
+        url: '/review_get',
+        data: { space_id: space_id },
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            $("#review_content").empty();
+            for (let i = 0; i < data.length; i++) {
+                let review =
+                    "<div class='review'>" +
+                    "<h4>작성자: " + data[i]['userid'] + "</h4>" +
+                    "<p>평점: " + generateStarRating(data[i]['rating']) + "</p>" + // 수정된 부분
+                    "<p>리뷰 내용: " + data[i]['review_content'] + "</p>" +
+                    "<p>작성일: " + data[i]['created'] + "</p>" +
+                    "</div>";
+                $('#review_content').append(review);
+            }
+        }
+    });
+}
+
+
+
+////////////
+
+    const openDialogBtn = document.querySelector("#open-dialog-button");
+    const dialogForm = $("#dialog-form");
+
+    openDialogBtn.onclick = () => {
+      dialogForm.dialog("open");
+    };
+
+    dialogForm.dialog({
+      autoOpen: false,
+      modal: true,
+      width: 450,
+      height: 500,
+      closeText: "X",
+      resizable: false, // Disable resizing
+      buttons: [
+        {
+          text: "등록하기",
+          click: function() {
+            const rating = $("input[name='rate']:checked").val();
+            const review_content = $("#review_content").val();
+            const userid = $('#user_id').val();
+            const space_id = $('#space_id').val();
+            
+            // 별점이 체크되지 않았을 경우 예외 처리
+            if (rating === undefined) {
+              alert("별점을 선택해주세요.");
+              return;
+            }
+            
+			const reviewData = {
+			        rating: rating,
+			        review_content: review_content,
+			        userid: userid,
+			        space_id: space_id
+			    };
+			
+			console.log(reviewData);
+			
+			 $.ajax({
+			        url: '/review_insert',
+			        type: 'post',
+			        data: reviewData,
+			        success: function(response) {
+			            console.log('리뷰 등록 성공:', response);
+			            // 여기에 리뷰 등록 후 작업을 추가할 수 있습니다.
+			        },
+			        error: function(error) {
+			            console.error('리뷰 등록 실패:', error);
+			            // 실패 시 에러 처리를 수행하거나 사용자에게 알림을 보여줄 수 있습니다.
+			        }
+			    });
+			
+            $(this).dialog("close");
+          }
+        }
+      ]
+    });
+
+    // 별점 선택 위젯 설정
+    $("#dialog-rating").selectmenu();
+	//
+    // 오른쪽 위에 X 버튼을 생성하여 다이얼로그 닫기
+
+//별그리기
+function generateStarRating(rating) {
+    let starsHtml = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+            starsHtml += '<i class="fas fa-star yellow-star"></i>'; // 노란색 별
+        } else {
+            starsHtml += '<i class="far fa-star"></i>'; // 빈 별
+        }
+    }
+    return starsHtml;
+}
 
 
 

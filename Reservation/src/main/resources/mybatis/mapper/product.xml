@@ -37,6 +37,10 @@
 
 <insert id="review_insert">	
 	insert into reviews set rating=#{param1}, review_content=#{param2}, userid=#{param3}, space_id=#{param4} , created=now()
-</insert>
+</insert> 
+
+<select id="select_review" resultType="com.himedia.springboot.ReviewDTO">
+	SELECT * FROM Reviews WHERE space_id = #{param1};
+</select>
 
 </mapper>

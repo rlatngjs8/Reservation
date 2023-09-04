@@ -2,11 +2,13 @@ package com.himedia.springboot;
 
 import java.util.ArrayList;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -15,11 +17,14 @@ import jakarta.servlet.http.HttpSession;
 public class KimController {
 //예약관리(수헌)
 //예약조회
-
+	@Autowired
+	private SqlSessionTemplate sqlSessionTemplate;
 		@Autowired
 		private ReservationDAO redao;
 		@Autowired
 		private RoomDAO rdao;
+		@Autowired
+		private BoardDAO bdao;
 		
 		@GetMapping("/showReservation")
 		public String reservaiton(HttpServletRequest req, Model model) {
@@ -70,13 +75,12 @@ public class KimController {
 			int start,psize,pno;
 			HttpSession session= req.getSession();
 			String userid=(String)session.getAttribute("userid");
-			
 			if(userid==null || userid.equals("")) {
 				// 홈페이지 처음 들어간 경우.
 				model.addAttribute("name","");
 			} else {
 				//로그인 성공한 경우
-				model.addAttribute("name",(String) session.getAttribute("username"));
+				model.addAttribute("name",(String) session.getAttribute("userid"));
 			}
 			
 			String page = req.getParameter("pageno");
@@ -89,6 +93,7 @@ public class KimController {
 			
 			start = (pno - 1) * 10;
 			psize = 10;
+			
 			ArrayList<BoardDTO> alBoard = rdao.getList1(start, psize);
 
 			int cnt = rdao.getTotal1();
@@ -170,8 +175,95 @@ public class KimController {
 	     return "redirect:/Q&A";
 	 }
 	 @GetMapping("/myPage")
-	 public String mypage() {
-	 		return "myPage/myPage";
+	 public String changeUser(HttpServletRequest req, Model model) {
+	 	HttpSession session= req.getSession();
+	 	String userid = (String) session.getAttribute("userid");
+	    String passcode = (String) session.getAttribute("passcode");
+	    ArrayList<RoomDTO> member = rdao.getListOne(userid);
+	    
+	    
+	
+	    // 모델에 사용자 ID와 비밀번호 추가
+	    model.addAttribute("userid", userid);
+	    model.addAttribute("passcode", passcode);
+	    // 나머지 추가
+	    model.addAttribute("member",member);
+	    
+		
+		ArrayList<BoardDTO> alBoard = bdao.getBoard(userid);
+
+		model.addAttribute("blist",alBoard);
+	    
+		return "myPage";
+	}
+	 @PostMapping("/userEdit")
+	 public String userEdit(HttpServletRequest req, Model model) {
+	 		String userid = req.getParameter("userid");
+	 		String passcode = req.getParameter("passcode");
+	 		String email = req.getParameter("email");
+	 		String address = req.getParameter("address");
+	 		String mobile = req.getParameter("mobile");
+	 		
+	 	System.out.println(passcode);   
+    rdao.userUpdate(passcode,email,address,mobile,userid);
+	 		return "redirect:/";
 	 }
-//	 123
+	 @PostMapping("/checkPasscode")
+	 @ResponseBody
+	 public String checkPasscode(HttpServletRequest req, Model model) {
+		 String userid = req.getParameter("userid");
+		 System.out.println(userid);
+		 String passcode = req.getParameter("passcode");
+		 System.out.println(passcode);
+		 int n = rdao.login(userid, passcode);
+		 System.out.println("n="+ n);
+		 if(n == 1) {
+//			model.addAttribute("passcodeMatched",true);
+			 return "true";
+		 } else {
+//			model.addAttribute("passcodeMatched",false);
+			 return "false";
+		 }
+	 }
+	 @PostMapping("/deleteCheck")
+	 @ResponseBody
+	 public String delMember(HttpServletRequest req, Model model) {
+		 String userid = req.getParameter("userid");
+		 String passcode = req.getParameter("passcode");
+		 int n = rdao.login(userid, passcode);
+		 if(n == 1) {
+//			model.addAttribute("passcodeMatched",true);
+			 return "true";
+		 } else {
+//			model.addAttribute("passcodeMatched",false);
+			 return "false";
+		 }
+	 }
+	 @PostMapping("/delMember")
+	 @ResponseBody
+	 public String delMember1(HttpServletRequest req) {
+		 String userid= req.getParameter("userid");
+		 boolean success =rdao.deleteMember1(userid);
+		 System.out.println("success="+success);
+		 
+		 if(success) {
+			 HttpSession s = req.getSession();
+			 s.invalidate();
+			 return "success";
+		 } else {
+			 return "fail";
+		 }
+	 }
+	 @GetMapping("/Q&Aview")
+	 public String qnaview(HttpServletRequest req, Model model){
+		 HttpSession session= req.getSession();
+		 String userid = (String) session.getAttribute("userid");
+		 
+		 BoardDTO bdto = bdao.viewBoardDTO(userid);
+			bdao.hitup(userid);
+			model.addAttribute("bpost", bdto);
+		 
+		 return"Q&Aview";
+	 }
 }
+

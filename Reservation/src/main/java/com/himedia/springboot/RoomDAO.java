@@ -1,6 +1,7 @@
 package com.himedia.springboot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,7 +16,11 @@ public interface RoomDAO {
 	int getTotal();
 	// 회원리스트 삭제
 	void deleteMember(int num);
-	
+	boolean deleteMember1(String userid);
+	// 회원정보 뽑기
+	ArrayList<RoomDTO> getListOne(String userid);
+	// 회원정보 수정
+	void userUpdate(String passcode, String email, String address, String mobile, String userid);
 	// 게시판 DAO -승환
 	void hitup(int seqno);
 	void insert(String p1, String p2, String p3);
@@ -32,7 +37,7 @@ public interface RoomDAO {
 
 // 결제 상태 변경 메서드 (미결제 -> 결제완료, 결제취소 등)
 	void updatePaymentStatus(String roomId, String paymentStatus);
-	
+
 	
 
 }

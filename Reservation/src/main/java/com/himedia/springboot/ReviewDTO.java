@@ -5,7 +5,21 @@ public class ReviewDTO {
 	int rating;
 	String review_content;
 	int space_id;
+	String created;
+	int review_id;
 	
+	public int getReview_id() {
+		return review_id;
+	}
+	public void setReview_id(int review_id) {
+		this.review_id = review_id;
+	}
+	public String getCreated() {
+		return created;
+	}
+	public void setCreated(String created) {
+		this.created = created;
+	}
 	public int getSpace_id() {
 		return space_id;
 	}
