@@ -40,7 +40,7 @@
 </insert> 
 
 <select id="select_review" resultType="com.himedia.springboot.ReviewDTO">
-	SELECT * FROM Reviews WHERE space_id = #{param1};
+	SELECT * FROM Reviews WHERE space_id = #{param1} ORDER BY created DESC;
 </select>
 
 </mapper>
