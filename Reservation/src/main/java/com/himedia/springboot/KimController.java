@@ -177,7 +177,7 @@ public class KimController {
 	 }
 	 @GetMapping("/myPage")
 	 public String changeUser(HttpServletRequest req, Model model) {
-	 	HttpSession session= req.getSession();
+	 			HttpSession session= req.getSession();
 	 			String userid = (String) session.getAttribute("userid");
 	    String passcode = (String) session.getAttribute("passcode");
 	    ArrayList<RoomDTO> member = rdao.getListOne(userid);
@@ -303,6 +303,17 @@ public class KimController {
 
 	 		return "reviewManage/review";
 	 }
-	
+	@GetMapping("/paymentCompleted")
+	public String payCom(HttpServletRequest req, Model model) {
+			HttpSession session= req.getSession();
+//			int seqno = (int) session.getAttribute("seqno");
+			int seqno = 4;
+			ArrayList<ReservationDTO> alReser = redao.payCom(seqno);
+			
+			model.addAttribute("seqno",seqno);
+			model.addAttribute("pay", alReser);
+			
+			return "paymentCompleted";
+	}
 }
 

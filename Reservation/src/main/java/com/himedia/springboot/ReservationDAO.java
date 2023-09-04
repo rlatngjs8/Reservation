@@ -12,4 +12,6 @@ public interface ReservationDAO {
 		void reDelete(int seqno);
 		
 		ArrayList<ReservationDTO> selectList(String userid);
+		
+		ArrayList<ReservationDTO> payCom(int seqno);
 }

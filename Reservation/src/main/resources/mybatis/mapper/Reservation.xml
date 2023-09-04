@@ -15,4 +15,8 @@
 <select id="selectList" resultType="com.himedia.springboot.ReservationDTO">
 	select * from re_info where userid=#{userid}
 </select>
+<select id="payCom" resultType="com.himedia.springboot.ReservationDTO">
+	select a.seqno, b.userid, b.name, b.mobile, c.space_name, a.useday, a.startTime, a.endTime, a.totalPrice, a.purchaseTime
+		from re_info a inner join members b on a.userid = b.userid inner join spaces c on a.space_name = c.space_name where seqno=#{seqno}
+</select>
 </mapper>
