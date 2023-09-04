@@ -68,7 +68,7 @@
         <br>
         <a class="demo1">${rooms[1].location.substring(0, rooms[1].location.indexOf('2'))}</a>
         
-        <a class="location"><img src="img/위치아이콘.png"></a>
+        <a class="location"><img src="img/위치아이콘.pn잊g"></a>
         <br>
         <a class="ra">#강남,#브라이덜샤워,#소모임,#자연광</a>
 		<a class="demo2">${rooms[1].price}원/시간</a>
