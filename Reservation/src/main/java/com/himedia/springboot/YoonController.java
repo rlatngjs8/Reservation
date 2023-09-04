@@ -55,8 +55,6 @@ public class YoonController {
 	public String review_get(HttpServletRequest req, Model model) {
 		int space_id = Integer.parseInt(req.getParameter("space_id"));
 	    ArrayList<ReviewDTO> review_get = pdao.select_review(space_id);
-	    System.out.println("size [" + review_get.size() + "]");
-	    System.out.println(space_id);
 	    JSONArray ja = new JSONArray();
 	    for (int i = 0; i < review_get.size(); i++) {
 	        JSONObject jo = new JSONObject();

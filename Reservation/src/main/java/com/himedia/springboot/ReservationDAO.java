@@ -10,4 +10,6 @@ public interface ReservationDAO {
 		int getTotal2();
 		
 		void reDelete(int seqno);
+		
+		ArrayList<ReservationDTO> selectList(String userid);
 }

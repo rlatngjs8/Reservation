@@ -42,7 +42,7 @@
     <a href="/productList">상품관리</a>
     <a href="/salesManagement">매출관리</a>
     <a href="/Q&A">Q&A</a>
-    <a href="/reviewManagement">상품후기</a>
+    <a href="/review">상품후기</a>
 </div>
 </body>
 </html>
