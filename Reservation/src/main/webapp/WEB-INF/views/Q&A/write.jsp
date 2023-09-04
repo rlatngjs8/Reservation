@@ -16,7 +16,7 @@
 <td style='text-align:right;'>
 	<input type=submit id=btnSubmit name=btnSubmit value='작성완료'>&nbsp;&nbsp;
 </td></tr>
-</table>
+</table> 
 </form>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
