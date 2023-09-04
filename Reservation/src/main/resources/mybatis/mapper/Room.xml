@@ -71,7 +71,7 @@
 <!-- 회원정보수정 -->
 <update id="userUpdate">
 	update members set passcode=#{param1}, email=#{param2}, address=#{param3}, mobile=#{param4} where userid=#{param5}
-</update>
+</update> 
 
 <select id="get_space" resultType="com.himedia.springboot.productDTO">
 	SELECT space_id, space_name, location, DESCRIPTION,img1,img2,img3,img4,img5 FROM spaces
