@@ -377,6 +377,12 @@ footer {
         color: yellow;
         text-shadow: 0 0 5px black;
     }
+    
+	    /* 선택한 시간대를 강조 표시하는 스타일 */
+	.duplicate-time-range {
+	    background-color: #ffcccb; /* 강조 색상 설정 */
+	}
+    
 
 	
 
@@ -390,13 +396,13 @@ footer {
 		style="display: flex; justify-content: flex-end; align-items: center;">
 		<h1>${space.space_name}</h1>
 		<div style="margin-left: auto;">
-			<c:if test="${not empty sessionScope.username}">
+			<c:if test="${not empty sessionScope.userid}">
 				<a href="/logout">로그아웃</a>
-				<p>로그인한 아이디: ${sessionScope.username}</p>
+				<p>로그인한 아이디: ${sessionScope.name}</p>
 			</c:if>
 
 			<!-- 로그인되지 않은 상태일 때 -->
-			<c:if test="${empty sessionScope.username}">
+			<c:if test="${empty sessionScope.userid}">
 				<a href="/login">로그인</a>
 				<a href="/signup">회원가입</a>
 			</c:if>
@@ -474,11 +480,11 @@ footer {
 							<td class="time-cell">22:00</td>
 						</tr>
 					</table>
-					<c:if test="${not empty sessionScope.username}">
+					<c:if test="${not empty sessionScope.userid}">
 						<button id="addReT">추가하기</button>
 
 					</c:if>
-					<c:if test="${empty sessionScope.username}">
+					<c:if test="${empty sessionScope.userid}">
 						<button id="addReF">추가하기</button>
 					</c:if>
 
@@ -488,10 +494,10 @@ footer {
 
 				<br>
 				<div class="price-text" id="totalPrice">총 가격: 0원</div>
-				<c:if test="${not empty sessionScope.username}">
+				<c:if test="${not empty sessionScope.userid}">
 					<button id="btnReT">지금 진짜 예약하기</button>
 				</c:if>
-				<c:if test="${empty sessionScope.username}">
+				<c:if test="${empty sessionScope.userid}">
 					<button id="btnReF">지금 예약하기</button>
 				</c:if>
 			</div>
@@ -533,11 +539,11 @@ footer {
 			<div id="reviews" style="border-width: 4px;">
 				<h3>리뷰</h3>
 				<!-- 로그인 했을때 동작함 -->
-				<c:if test="${not empty sessionScope.username}"> 
+				<c:if test="${not empty sessionScope.userid}"> 
 					<button id="open-dialog-button">리뷰 작성하기</button>
 				</c:if>
 				<!--  로그인 안했을 떄  동작함 -->
-				<c:if test="${empty sessionScope.username}">
+				<c:if test="${empty sessionScope.userid}">
 					<button id="not_login" >리뷰 작성하기</button>
 				</c:if>
 				<div class="container" >
@@ -565,7 +571,7 @@ footer {
 				</div>
 			</div>
 			
-			<div id="review_content">
+			<div id="review">
 			<!--  후기 작성 내용이 들어가는 div -->
 			</div>
 
@@ -604,25 +610,58 @@ $(document).ready(function () {
     });
 
     $(".time-cell").click(function() {
+        const selectedDate = $("#datepicker").val();
+        const currentTime = $(this).text();
+        
         // 첫 번째 선택한 시간인지 확인
         if (selectedStartTime === null) {
-            selectedStartTime = $(this).text();
+            selectedStartTime = currentTime;
             $(this).addClass("selected-start-time");
         } 
-        // 두 번째 선택한 시간인지 확인
+        // 두 번째 선택한 시간인지 확인 
         else if (selectedEndTime === null) {
-            selectedEndTime = $(this).text();
-            $(this).addClass("selected-end-time");
-            highlightTimeRange();
-            calculateTotalPrice();
+            if (currentTime < selectedStartTime) {
+                // 현재 선택한 시간이 시작 시간보다 작으면 시작 시간을 현재 시간으로 설정하고 엔드 시간에 이전 시작 시간을 설정
+                selectedEndTime = selectedStartTime;
+                selectedStartTime = currentTime;
+            } else {
+                selectedEndTime = currentTime;
+            }
+            
+            // 중복 체크
+            const isDuplicate = checkForDuplicates(selectedDate, selectedStartTime, selectedEndTime);
+            
+            if (isDuplicate) {
+                alert("이미 선택한 시간대입니다. 다른 시간대를 선택해주세요.");
+                resetTimeSelection();
+            } else {
+                $(this).addClass("selected-end-time");
+                highlightTimeRange();
+                calculateTotalPrice();
+            }
         } 
         // 세 번째 선택한 시간인지 확인 (첫 번째로 다시 선택)
         else {
             resetTimeSelection();
-            selectedStartTime = $(this).text();
+            selectedStartTime = currentTime;
             $(this).addClass("selected-start-time");
         }
     });
+
+    // 중복 시간 체크 함수
+    function checkForDuplicates(selectedDate, startTime, endTime) {
+        for (let i = 0; i < arrayDate.length; i++) {
+            if (selectedDate === arrayDate[i] && 
+                ((startTime >= arrayStartTime[i] && startTime <= arrayEndTime[i]) ||
+                 (endTime >= arrayStartTime[i] && endTime <= arrayEndTime[i]))) {
+                return true; // 중복된 시간대가 있으면 true 반환
+            }
+        }
+        return false; // 중복된 시간대가 없으면 false 반환
+    }
+
+
+
 
     $("#addReT").click(function() {
         const selectedDate = $("#datepicker").val();
@@ -757,6 +796,24 @@ function ReInsert() {
 	
 }
 */
+
+
+function setCookie(name, value) {
+	document.cookie = name + "=" + JSON.stringify(value) + "; path=/";
+}
+console.log(arrayDate);
+console.log(arrayStartTime);
+console.log(arrayEndTime);
+console.log(arrayAddedPrice);
+
+setCookie("arrayDate", arrayDate);
+setCookie("arrayStartTime", arrayStartTime);
+setCookie("arrayEndTime", arrayEndTime);
+setCookie("arrayAddedPrice", arrayAddedPrice);
+
+console.log(setCookie)
+
+/*
 function ReInsert() {
     console.log("reinsert 불러옴");
     
@@ -781,7 +838,8 @@ function ReInsert() {
             // 처리 중 에러가 발생한 경우 수행할 동작
         }
     });
-}
+}*/
+//----------------------------------------
 
 $(document).on('click', '#review', function() {
 	const space_id = $("#space_id").val();
@@ -798,7 +856,7 @@ $(document).on('click', '#not_login', function() {
 });
 
 $(document).on('click', '#btnReT', function() {
-	ReInsert();
+	window.location.href = "/paytest";
 });
 
 $(document).on('click', '#btnReF', function() {
@@ -815,7 +873,7 @@ function review_get() {
         dataType: 'json',
         success: function (data) {
             console.log(data);
-            $("#review_content").empty();
+            $("#review").empty();
             for (let i = 0; i < data.length; i++) {
                 let review =
                     "<div class='review'>" +
@@ -824,7 +882,7 @@ function review_get() {
                     "<p>리뷰 내용: " + data[i]['review_content'] + "</p>" +
                     "<p>작성일: " + data[i]['created'] + "</p>" +
                     "</div>";
-                $('#review_content').append(review);
+                $('#review').append(review);
             }
         }
     });
@@ -845,8 +903,7 @@ function review_get() {
       autoOpen: false,
       modal: true,
       width: 450,
-      height: 500,
-      closeText: "X",
+      height: 510,
       resizable: false, // Disable resizing
       buttons: [
         {
@@ -857,6 +914,7 @@ function review_get() {
             const userid = $('#user_id').val();
             const space_id = $('#space_id').val();
             
+            console.log(review_content);
             // 별점이 체크되지 않았을 경우 예외 처리
             if (rating === undefined) {
               alert("별점을 선택해주세요.");
@@ -877,7 +935,7 @@ function review_get() {
 			        type: 'post',
 			        data: reviewData,
 			        success: function(response) {
-			            console.log('리뷰 등록 성공:', response);
+			            console.log('리뷰 등록 성공:');
 			            // 여기에 리뷰 등록 후 작업을 추가할 수 있습니다.
 			        },
 			        error: function(error) {

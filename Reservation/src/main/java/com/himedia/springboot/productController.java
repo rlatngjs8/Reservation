@@ -264,38 +264,67 @@ public String get_space(){
 	return ja.toJSONString();
 }
 
+//@PostMapping("/ReInsert")
+//@ResponseBody
+//public String processReservation(@RequestBody ReservationData reservationData, Model model) {
+//    List<String> arrayDate = reservationData.getArrayDate();
+//    List<String> arrayStartTime = reservationData.getArrayStartTime();
+//    List<String> arrayEndTime = reservationData.getArrayEndTime();
+//    List<Integer> arrayAddedPrice = reservationData.getArrayAddedPrice();
+//    System.out.println("arrayDate :" + arrayDate);
+//    System.out.println("arrayStartTime :" + arrayStartTime);
+//    System.out.println("arrayEndTime :" + arrayEndTime);
+//    System.out.println("arrayAddedPrice :" + arrayAddedPrice );
+//    
+//    
+//
+//    // Model에 데이터 추가
+//    model.addAttribute("arrayDate", arrayDate);
+//    model.addAttribute("arrayStartTime", arrayStartTime);
+//    model.addAttribute("arrayEndTime", arrayEndTime);
+//    model.addAttribute("arrayAddedPrice", arrayAddedPrice);
+//
+//    // 처리한 데이터를 보여줄 페이지로 이동
+//    return "paytest"; // 보여줄 페이지 이름으로 변경하세요
+//}
+
 @PostMapping("/ReInsert")
+@ResponseBody
 public String processReservation(@RequestBody ReservationData reservationData, Model model) {
     List<String> arrayDate = reservationData.getArrayDate();
     List<String> arrayStartTime = reservationData.getArrayStartTime();
     List<String> arrayEndTime = reservationData.getArrayEndTime();
     List<Integer> arrayAddedPrice = reservationData.getArrayAddedPrice();
-    System.out.println(arrayDate);
-    
-
-    // Model에 데이터 추가
-    model.addAttribute("arrayDate", arrayDate);
-    model.addAttribute("arrayStartTime", arrayStartTime);
-    model.addAttribute("arrayEndTime", arrayEndTime);
-    model.addAttribute("arrayAddedPrice", arrayAddedPrice);
-
-    // 처리한 데이터를 보여줄 페이지로 이동
-    return "paytest"; // 보여줄 페이지 이름으로 변경하세요
+    System.out.println("arrayDate :" + arrayDate);
+    System.out.println("arrayStartTime :" + arrayStartTime);
+    System.out.println("arrayEndTime :" + arrayEndTime);
+    System.out.println("arrayAddedPrice :" + arrayAddedPrice );
+    JSONArray ja = new JSONArray();
+    for( int i = 0 ; i < arrayDate.size(); i++ ) {
+		JSONObject jo = new JSONObject();
+		jo.put("arrayDate", arrayDate);
+		jo.put("arrayStartTime", arrayStartTime);
+		jo.put("arrayEndTime", arrayEndTime);
+		jo.put("arrayAddedPrice", arrayAddedPrice);
+		ja.add(jo);
+	}
+    return ja.toJSONString();
 }
+
 
 @GetMapping("/paytest")			// jsp 이름변경하면 이거 바꿔줘야함. 위에도 마찬가지
 public String pay(Model model) {
-	 List<String> arrayDate = (List<String>) model.getAttribute("arrayDate");
-  List<String> arrayStartTime = (List<String>) model.getAttribute("arrayStartTime");
-  List<String> arrayEndTime = (List<String>) model.getAttribute("arrayEndTime");
-  List<Integer> arrayAddedPrice = (List<Integer>) model.getAttribute("arrayAddedPrice");
-  System.out.println(arrayAddedPrice);
-  if (arrayDate != null && arrayStartTime != null && arrayEndTime != null && arrayAddedPrice != null) {
-    model.addAttribute("arrayDate", arrayDate);
-    model.addAttribute("arrayStartTime", arrayStartTime);
-    model.addAttribute("arrayEndTime", arrayEndTime);
-    model.addAttribute("arrayAddedPrice", arrayAddedPrice);
-}
+//  List<String> arrayDate = (List<String>) model.getAttribute("arrayDate");
+//  List<String> arrayStartTime = (List<String>) model.getAttribute("arrayStartTime");
+//  List<String> arrayEndTime = (List<String>) model.getAttribute("arrayEndTime");
+//  List<Integer> arrayAddedPrice = (List<Integer>) model.getAttribute("arrayAddedPrice");
+//  System.out.println(arrayAddedPrice);
+//  if (arrayDate != null && arrayStartTime != null && arrayEndTime != null && arrayAddedPrice != null) {
+//    model.addAttribute("arrayDate", arrayDate);
+//    model.addAttribute("arrayStartTime", arrayStartTime);
+//    model.addAttribute("arrayEndTime", arrayEndTime);
+//    model.addAttribute("arrayAddedPrice", arrayAddedPrice);
+//}
 		return "paytest";
 }
 
