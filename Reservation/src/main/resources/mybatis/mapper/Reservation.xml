@@ -19,4 +19,7 @@
 	select a.seqno, b.userid, b.name, b.mobile, c.space_name, a.useday, a.startTime, a.endTime, a.totalPrice, a.purchaseTime
 		from re_info a inner join members b on a.userid = b.userid inner join spaces c on a.space_name = c.space_name where seqno=#{seqno}
 </select>
+<select id="sales" resultType="com.himedia.springboot.ReservationDTO">
+    SELECT seqno, purchaseTime, totalPrice FROM re_info WHERE purchaseTime BETWEEN #{param1} AND #{param2} ORDER BY purchaseTime DESC
+</select>
 </mapper>

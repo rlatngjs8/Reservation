@@ -1,5 +1,6 @@
 package com.himedia.springboot;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -14,4 +15,6 @@ public interface ReservationDAO {
 		ArrayList<ReservationDTO> selectList(String userid);
 		
 		ArrayList<ReservationDTO> payCom(int seqno);
+		
+		ArrayList<ReservationDTO> sales(String start, String end);
 }
