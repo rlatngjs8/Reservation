@@ -219,7 +219,7 @@ a {
                         </c:when>
                             <c:otherwise>
                     
-                            <a><span>${userid}</span> 님 환영합니다</a>&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
+                            <a><span>${name}</span> 님 환영합니다</a>&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
                              <li><a href='/myPage'>마이페이지</a></li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
                             </c:otherwise>
                              </c:choose>
