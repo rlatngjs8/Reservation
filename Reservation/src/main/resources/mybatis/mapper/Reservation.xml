@@ -19,4 +19,12 @@
 	select a.seqno, b.userid, b.name, b.mobile, c.space_name, a.useday, a.startTime, a.endTime, a.totalPrice, a.purchaseTime
 		from re_info a inner join members b on a.userid = b.userid inner join spaces c on a.space_name = c.space_name where seqno=#{seqno}
 </select>
+
+<insert id="insert_temp_reservation">
+	insert into temp_reservation set start_time=#{param1}, end_time=#{param2}, reservation_date=#{param3}, total_price=#{param4}, space_id=#{param5}, userid =#{param6}
+</insert>
+
+<select id="select_temp_reservation">
+	select * from temp_reservation where userid=#{userid} 
+</select>
 </mapper>

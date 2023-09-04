@@ -23,6 +23,9 @@ public class YoonController {
 	@Autowired
 	private RoomDAO rdao;
 	
+	@Autowired
+	private ReservationDAO resdao; 
+	
 //	@GetMapping("/review")
 //	public String review (HttpServletRequest req,Model model) {
 //		HttpSession session = req.getSession();
@@ -68,7 +71,39 @@ public class YoonController {
 	    }
 	    return ja.toJSONString();
 	}
-
 	
-	//213123
+	@PostMapping("insert_temp_reservation")
+	public String insert_temp_reservation(HttpServletRequest req, Model model) {
+		int start_time = Integer.parseInt(req.getParameter("start_time"));
+		int end_time = Integer.parseInt(req.getParameter("end_time"));
+		String reservation_date = req.getParameter("reservation_date");
+		int total_price = Integer.parseInt(req.getParameter("total_price"));
+		int space_id = Integer.parseInt(req.getParameter("space_id"));
+		String userid = req.getParameter("userid");
+		resdao.insert_temp_reservation(start_time, end_time, reservation_date, total_price, space_id, userid);
+		return "redirect:/space";
+	}
+	
+	@PostMapping("/get_temp_reservation")
+	@ResponseBody
+	public String get_temp_reservation(HttpServletRequest req, Model model){
+		HttpSession session = req.getSession();		
+		String userid = (String)session.getAttribute("userid");
+		model.addAttribute("userid",userid);
+		System.out.println(userid);
+		ArrayList<temp_reservationDTO> temp_reservation = resdao.select_temp_reservation(userid);
+		System.out.println("size ["+ temp_reservation.size()+"]");
+		JSONArray ja = new JSONArray();
+		for( int i = 0 ; i < temp_reservation.size(); i++ ) {
+			JSONObject jo = new JSONObject();
+			jo.put("start_time", temp_reservation.get(i).getStart_time());
+			jo.put("end_time", temp_reservation.get(i).getEnd_time());
+			jo.put("reservation_date", temp_reservation.get(i).getReservation_date());
+			jo.put("total_price", temp_reservation.get(i).getTotal_price());
+			jo.put("space_id", temp_reservation.get(i).getSpace_id());
+			jo.put("userid", temp_reservation.get(i).getUserid());
+			ja.add(jo);
+		}
+		return ja.toJSONString();
+	}
 }

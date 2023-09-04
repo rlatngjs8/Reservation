@@ -6,11 +6,37 @@
   <!-- 결제위젯 SDK 추가 -->
   <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 </head>
+<style>
+	.temp_res {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+	}
+	.temp_res {
+		margin-top: 20px;
+		border-top: 1px solid #ccc;
+		padding-top: 10px;
+		word-wrap: break-word;
+	}
+	.reservation-item {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ddd;
+	}
+	
+	.reservation-item p {
+	    font-weight: bold;
+	}
+	
+</style>
 <body>
-  	<p>Date: <c:out value="${arrayDate}" /></p>
-	<p>Start Time: <c:out value="${arrayStartTime}" /></p>
-	<p>End Time: <c:out value="${arrayEndTime}" /></p>
-	<p>Added Price: <c:out value="${arrayAddedPrice}" /></p>
+	<input type='hidden' id='userid' name="userid" value="${userid}">
+	<div id="temp_res">
+	<!-- 장바구니 데이터 들어가는곳 -->
+	</div>
+
 <!-- 	 여기부터는 토스뱅크api -->
   <!-- 결제위젯, 이용약관 영역 -->
   <div id="payment-method"></div>
@@ -19,21 +45,41 @@
   <button id="payment-button">결제하기</button>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-	function getCookie(name) {
-    const cookieValue = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-    return cookieValue ? JSON.parse(cookieValue[2]) : null;
-}
+  let totalPrice = 0;
+  $(document).ready(function () {
+	 get_temp_reservation();
+	});
 
-const arrayDate = getCookie("arrayDate");
-const arrayStartTime = getCookie("arrayStartTime");
-const arrayEndTime = getCookie("arrayEndTime");
-const arrayAddedPrice = getCookie("arrayAddedPrice");
+	//총 가격이 안나옴 -------------------------------------
+  let real_totalPrice = 0;
 
-// 읽어온 데이터 사용
-console.log(arrayDate);
-console.log(arrayStartTime);
-console.log(arrayEndTime);
-console.log(arrayAddedPrice);
+  
+  function get_temp_reservation() { //데이터 불러오기
+	    console.log('임시예약 데이터 불러옴');
+	    $.ajax({
+	        url: '/get_temp_reservation',
+	        data: {},
+	        type: 'post',
+	        dataType: 'json',
+	        success: function (data) {
+	            console.log(data);
+	            $("#temp_res").empty();
+	            for (let i = 0; i < data.length; i++) {
+	            	real_totalPrice += data[i]['total_price'];
+	                let temp_data =
+	                	"<div style='background-color: #f2f2f2; padding: 10px; margin: 10px; border: 1px solid #ddd;'>" +
+	                	"<p style='font-weight: bold;'>구매자 id: " + data[i]['userid'] + "<p>" +
+	                	"<p>시작 시간: " + data[i]['start_time'] + "</p>" +
+	                	"<p>끝 시간: " + data[i]['end_time'] + "</p>" +
+	                	"<p>날짜: " + data[i]['reservation_date'] + "</p>" +
+	                	"<p>상품 정보: " + data[i]['space_id'] + "</p>" +
+	                	"<p>상품 정보: " + data[i]['total_price'] + "</p>" +
+	                	"</div>";
+	                $('#temp_res').append(temp_data);
+	            }
+	        }
+	    });
+	}
 
   
   
@@ -52,7 +98,7 @@ console.log(arrayAddedPrice);
     // https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액-옵션
     paymentWidget.renderPaymentMethods(
       "#payment-method", 
-      { value: 12398712025742395 },
+      { value: real_totalPricee },
       { variantKey: "DEFAULT" } // 렌더링하고 싶은 결제 UI의 variantKey
     )
 
