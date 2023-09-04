@@ -7,8 +7,15 @@ public class ReviewDTO {
 	int space_id;
 	String created;
 	int review_id;
+	String space_name;
 	
-	public int getReview_id() {
+	public String getSpace_name() {
+		return space_name;
+}
+public void setSpace_name(String space_name) {
+		this.space_name = space_name;
+}
+public int getReview_id() {
 		return review_id;
 	}
 	public void setReview_id(int review_id) {

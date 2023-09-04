@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -177,7 +178,7 @@ public class KimController {
 	 @GetMapping("/myPage")
 	 public String changeUser(HttpServletRequest req, Model model) {
 	 	HttpSession session= req.getSession();
-	 	String userid = (String) session.getAttribute("userid");
+	 			String userid = (String) session.getAttribute("userid");
 	    String passcode = (String) session.getAttribute("passcode");
 	    ArrayList<RoomDTO> member = rdao.getListOne(userid);
 	    
@@ -191,8 +192,11 @@ public class KimController {
 	    
 		
 		ArrayList<BoardDTO> alBoard = bdao.getBoard(userid);
-
 		model.addAttribute("blist",alBoard);
+		
+		ArrayList<ReservationDTO> alRe = redao.selectList(userid);
+		model.addAttribute("relist",alRe);
+			
 	    
 		return "myPage";
 	}
@@ -206,7 +210,7 @@ public class KimController {
 	 		
 	 	System.out.println(passcode);   
     rdao.userUpdate(passcode,email,address,mobile,userid);
-	 		return "redirect:/";
+	 		return "redirect:/myPage";
 	 }
 	 @PostMapping("/checkPasscode")
 	 @ResponseBody
@@ -265,5 +269,40 @@ public class KimController {
 		 
 		 return"Q&Aview";
 	 }
+	 
+	 @Autowired
+	 private reviewDAO revDAO;
+	 @GetMapping("/review")
+	 public String review(HttpServletRequest req, Model model) {
+	 		int start, psize;
+				String page = req.getParameter("pageno");
+				if (page == null || page.equals("")) {
+						page = "1";
+				}
+				int pno = Integer.parseInt(page);
+				start = (pno - 1) * 10;
+				psize = 10;
+				ArrayList<ReviewDTO> alReview = revDAO.getReview(start, psize);
+
+				int cnt = revDAO.getTotal4();
+				int pagecount = (int) Math.ceil(cnt / 10.0);
+
+				String pagestr = "";
+				for (int i = 1; i <= pagecount; i++) {
+						if (pno == i) {
+								pagestr += i + "&nbsp;";
+						} else {
+								pagestr += "<a href='/review?pageno=" + i + "'>" + i + "</a>&nbsp;";
+								// 안되면 주소 수정
+						}
+						System.out.println(pagestr);
+				}
+				model.addAttribute("pagestr", pagestr);
+				model.addAttribute("rlist", alReview);
+				System.out.println(alReview.size());
+
+	 		return "reviewManage/review";
+	 }
+	
 }
 

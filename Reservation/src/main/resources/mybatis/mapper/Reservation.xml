@@ -12,4 +12,7 @@
 <delete id="reDelete" parameterType="int">
 	delete from re_info where seqno = #{seqno}
 </delete>
+<select id="selectList" resultType="com.himedia.springboot.ReservationDTO">
+	select * from re_info where userid=#{userid}
+</select>
 </mapper>
