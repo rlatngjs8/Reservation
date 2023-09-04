@@ -60,10 +60,15 @@
 </head>
 <body>
 <h1>회원정보 조회</h1>
+
+
 <div id="header">
   <img src="img/이전메뉴.png" alt="이전 메뉴" id="prevMenu">
   <div id="btnDelete">회원정보 삭제</div>
 </div>
+
+
+
 <table>
 <thead>
   <tr>

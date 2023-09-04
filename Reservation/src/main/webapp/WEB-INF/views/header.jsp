@@ -196,6 +196,13 @@ a {
 <!-- 클릭시, 메인 페이지로 이동. -->
 <h1 align=center class="top"><a href="/">Share Place</a></h1> <hr/>
 
+
+
+<!-- 로그인 하지 않은 상태로 다른 페이지로 이동시, userid에 빈 문자열이 들어가서 수정했습니다. -->
+
+<c:set var="userid" value="${sessionScope.userid}" /> <!-- 세션에서 userid 값을 가져옴 -->
+<c:set var="member" value="${rdao.getListOne(userid)}" /> <!-- RoomDAO를 사용하여 사용자 이름을 가져옴 -->
+
 <div class="btn1"></div>
 <div onclick="history.back();" class="page_cover"></div>
 
@@ -205,18 +212,20 @@ a {
             <table>
                 <tr>
                     <td align="right">
-                        <c:if test="${name == ''}">
+                        <c:choose>
+                            <c:when test="${empty userid}">
                         	<!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
-                            <button id="btnLogin" class="button">로그인</button>
-                        </c:if>
-                        
-                        <c:if test="${name != ''}">
-                        
-                            <a><span>${name}</span> 님 환영합니다</a>&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
-                            
+                             <button id="btnLogin" class="button">로그인</button>
+                        </c:when>
+                            <c:otherwise>
+                    
+                            <a><span>${userid}</span> 님 환영합니다</a>&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
+                             <li><a href='/myPage'>마이페이지</a></li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
+                            </c:otherwise>
+                             </c:choose>
 <!--                             <li><a href='/reservation'>예약현황</a></li> -->
-                            <li><a href='/myPage'>마이페이지</a></li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
-                        </c:if>
+                           
+                       
                     </td>
                 </tr>
             </table>

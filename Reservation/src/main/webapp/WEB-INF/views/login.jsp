@@ -49,6 +49,26 @@
         margin-top: 20px;
         color: black;
     }
+    
+    
+  
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0074d9; 
+    color: #ffffff; 
+    text-decoration: none; 
+    border: none; 
+    border-radius: 5px; /
+    cursor: pointer;
+    font-size: 16px; 
+}
+
+/* 버튼에 호버 효과를 추가합니다. */
+.button:hover {
+    background-color: #0056b3; /* 호버 시 배경색 변경 */
+}
+    
 </style>
 </head>
 <body>
@@ -57,7 +77,7 @@
         <h2>로그인</h2>
         <input type="text" id="loginid" name="loginid" placeholder="로그인 아이디" autofocus>
         <input type="password" id="loginpw" name="loginpw" placeholder="패스워드">
-        <input type="submit" value="로그인">&nbsp;&nbsp;<a href="/signup">회원가입</a>
+        <input type="submit" value="로그인" class="button">&nbsp;&nbsp;<a href="/signup" class="button">회원가입</a>
         <c:forEach items="${member}" var="member">
         <input type="hidden" name="name" value="${member.name}">
         </c:forEach>

@@ -60,21 +60,109 @@
     #btnDelete:hover {
         background-color: #d32f2f;
     }
+    
+.btnSearch {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.btnSearch:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.btnSearch:active {
+	top:1px;
+}
+
+
+
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 200px; 
+  height:120px;
+  left:790px;
+  top:25px;
+  
+  margin-bottom:10px;
+}
+
+.custom-select select {
+  margin-top:5px;
+  width: 150px;
+  border: 1px solid #ccc;
+}
+.custom-select::after {
+
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+#prevMenu{
+	position:relative;
+	left : 80px;
+	top:20px;
+	
+	box-shadow: 0px 5px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#ECE0F8;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:9px;
+	font-style:italic;
+	padding:5px 11px;
+	text-decoration:none;
+	text-shadow:0px 4px 0px #3d768a;
+
+}
+.prevMenu:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.prevMenu:active {
+	position:relative;
+	top:1px;
+}
 </style>
 </head>
 <body>
 <h1>예약현황</h1>
-<button id="btnDelete">선택된 예약 삭제</button>
-<div class="search-container">
+
+<input type="button" id="prevMenu" value="이전메뉴" class="prevMenu">
+
+<div class="custom-select" align=center>
     <select id="searchType">
-        <option value="seqno">예약번호</option>
-        <option value="userid">아이디</option>
-        <option value="mobile">전화번호</option>
-        <option value="space_name">상품명</option>
+        <option value="seqno" class="seqno" >예약번호</option>
+        <option value="userid" class="userid">아이디</option>
+        <option value="mobile" class="mobile">전화번호</option>
+        <option value="space_name" class="space_name">상품명</option>
     </select>
+    <br><br>
     <input type="text" id="searchKeyword" placeholder="검색할 키워드를 입력하세요">
-    <button id="btnSearch">검색</button>
+    <br><br>
+    <button id="btnSearch" class="btnSearch">검색</button>
 </div>
+
+<br><br><br><br>
+
+
 <div class="table-container">
     <table>
         <thead>
@@ -98,12 +186,21 @@
         </tbody>
     </table>
 </div>
+<button id="btnDelete">선택된 예약 삭제</button>
 </body>
 <script src="http://code.jquery.com/jquery-Latest.js"></script>
 <script>
 $(document).ready(function() {
+	$(document).on('click', '#prevMenu', function(){
+		
+		window.location.href="/manager";
+	})
+	
+	
+	
     $(document).on('click', '.select-checkbox', function() {
         $(this).closest('tr').toggleClass('selected-row');
+    
     });
 
     $('#btnDelete').click(function() {
