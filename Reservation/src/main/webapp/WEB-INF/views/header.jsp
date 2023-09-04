@@ -12,7 +12,10 @@
 
 #menu.open {
   left: 0px;
+
 }
+
+
 
 .page_cover.open {
   display: block;
@@ -81,7 +84,7 @@
 
 
 .page_cover {
-  width: 100%;
+  width: 400%;
   height: 100%;
   position: fixed;
   top: 0px;
@@ -179,6 +182,10 @@ a {
 	font-family:'KIMM_Bold',sans-serif;
 }
 
+.bla{
+	
+}
+
 
 
 
@@ -202,8 +209,11 @@ a {
                         	<!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
                             <button id="btnLogin" class="button">로그인</button>
                         </c:if>
+                        
                         <c:if test="${name != ''}">
-                            <span>${name}</span> 님 환영합니다&nbsp;&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
+                        
+                            <a><span>${name}</span> 님 환영합니다</a>&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
+                            
 <!--                             <li><a href='/reservation'>예약현황</a></li> -->
                             <li><a href='/myPage'>마이페이지</a></li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
                         </c:if>

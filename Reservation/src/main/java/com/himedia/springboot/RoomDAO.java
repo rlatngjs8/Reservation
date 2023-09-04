@@ -35,9 +35,12 @@ public interface RoomDAO {
 	
 	void savePaymentInfo(String p1, String p2);
 
+	
 // 결제 상태 변경 메서드 (미결제 -> 결제완료, 결제취소 등)
 	void updatePaymentStatus(String roomId, String paymentStatus);
 
+	ArrayList<RoomDTO> get_space();
 	
+	void insertComment(String userid, String comment);
 
 }

@@ -197,7 +197,7 @@ $(document)
 	s = document.s = document.querySelectorAll(".demo1")[4];
 	s.innerHTML = d;
 
-	l = "${rooms[12].location.substring(0, rooms[12].location.indexOf('혜화역')+4)}";
+	l = "${rooms[12].location.substring(0, rooms[12].location.indexOf('혜화역')+4)}".trim();
 	d = "[" + l + "]";
 	
 	s = document.s = document.querySelectorAll(".demo1")[5];

@@ -165,7 +165,7 @@ $(document)
 })
 
 
-var locationText = "${rooms[0].location.substring(5, rooms[0].location.indexOf('도'))}";
+var locationText = "${rooms[0].location.substring(5, rooms[0].location.indexOf('도'))}".trim();
     var formattedLocation = "[" + locationText + "]";
 
     var secondDemoElement = document.querySelectorAll(".demo1")[0];
@@ -174,7 +174,7 @@ var locationText = "${rooms[0].location.substring(5, rooms[0].location.indexOf('
     
     
     
-    let l = "${rooms[1].location.substring(0, rooms[1].location.indexOf('2'))}";
+    let l = "${rooms[1].location.substring(0, rooms[1].location.indexOf('2'))}".trim();
     let d = "[" + l + "]";
     
     let s = document.querySelectorAll(".demo1")[1];
@@ -192,7 +192,7 @@ var locationText = "${rooms[0].location.substring(5, rooms[0].location.indexOf('
     s.innerHTML = d;
     
     
-    l = "${rooms[4].location.substring(0, rooms[4].location.indexOf('매봉역')+4)}"
+    l = "${rooms[4].location.substring(0, rooms[4].location.indexOf('매봉역')+4)}".trim();
     d = "[" + l + "]";
     
     s=document.querySelectorAll(".demo1")[3]

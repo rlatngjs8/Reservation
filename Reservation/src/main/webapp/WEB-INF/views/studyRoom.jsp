@@ -26,14 +26,14 @@
 
 <%@include file="header.jsp" %>
 
-	<h1 class="top">파티룸</h1>
+	<h1 class="top">강의실/스터디룸</h1>
 	
 	<div>
-	<a href="/RecordingStudio"><span class="otherRoom"><strong> 스튜디오/방송 </strong></span></a>
+	<a href="/RecordingStudio"><span class="otherRoom5"><strong> 스튜디오/방송 </strong></span></a>
 	</div>
 	
 	<div>
-	<a href="/seminarRoom"><span class="otherRoom2"><strong> 회의실/세미나</strong></span></a>
+	<a href="/seminarRoom"><span class="otherRoom6"><strong> 회의실/세미나</strong></span></a>
 	</div>
 
 
@@ -51,27 +51,27 @@
          <a href="#"><img src="img/${rooms[20].img1}" alt="이미지 6"></a>
 		<a class="demo">${rooms[20].space_name}</a>
 		<br>
-
+		<a class="demo1">${rooms[20].location.substring(0, rooms[20].location.indexOf('독'))}</a>
 		
 		<a class="location"><img src="img/위치아이콘.png"></a>
 		<br>
-		<a class="ra">#강남,#무료주차,#발렛,#돌잔치,스몰웨딩</a>
+		<a class="ra">#홍대강의실,#유튜브,#인강스튜디오</a>
 		<a class="demo2">${rooms[20].price}원/시간</a>
 	
 	
     </div>
     
       <div class="card">
-         <a href="#"><img src="img/${rooms[1].img1}" alt="이미지 6"></a>
+         <a href="#"><img src="img/${rooms[21].img1}" alt="이미지 6"></a>
  
-        <a class="demo3">${rooms[1].space_name}</a>
+        <a class="demo3">${rooms[21].space_name}</a>
         <br>
-        <a class="demo1">${rooms[1].location.substring(0, rooms[1].location.indexOf('2'))}</a>
+        <a class="demo1">${rooms[21].location.substring(0, rooms[21].location.indexOf('효'))}</a>
         
-        <a class="location"><img src="img/위치아이콘.pn잊g"></a>
+        <a class="location"><img src="img/위치아이콘.png"></a>
         <br>
-        <a class="ra">#강남,#브라이덜샤워,#소모임,#자연광</a>
-		<a class="demo2">${rooms[1].price}원/시간</a>
+        <a class="ra">#사당역강의실,#강남강의실,#세미나실</a>
+		<a class="demo2">${rooms[21].price}원/시간</a>
 
 
 
@@ -81,14 +81,15 @@
 
 	
 	 <div class="card">
-         <a href="#"><img src="img/${rooms[3].img1}" alt="이미지 6"></a>
+         <a href="#"><img src="img/${rooms[22].img1}" alt="이미지 6"></a>
         
-        <a class="demo3">${rooms[3].space_name}</a>
-        <br><br>
-        <a class="demo1">${rooms[3].location.substring(0, rooms[3].location.indexOf('을지병원')+4)}</a>
+        <a class="demo3">${rooms[22].space_name}</a>
+        <br>
+        <a class="demo1">${rooms[22].location.substring(0, rooms[22].location.indexOf('1'))}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-      	<a class="ra">#학동역,#루프탑,#바베큐,#하이엔드</a>
-		<a class="demo2">${rooms[3].price}원/시간</a>
+        <br>
+      	<a class="ra">#책걸상,#아이패드,#라디에이터,#프린트</a>
+		<a class="demo2">${rooms[22].price}원/시간</a>
   
     </div>
     
@@ -97,14 +98,14 @@
         
 	<div class="second">
 	<div class="card">
-         <a href="#"><img src="img/${rooms[5].img3}" alt="이미지 6"></a>
+         <a href="#"><img src="img/${rooms[23].img1}" alt="이미지 6"></a>
         
-        <a class="demo3">${rooms[5].space_name}</a>
+        <a class="demo3">${rooms[23].space_name}</a>
         <br><br>
-        <a class="demo1">${rooms[5].location.substring(0, rooms[5].location.indexOf('학동역')+3)}</a>
+        <a class="demo1">${rooms[23].location.substring(0, rooms[23].location.indexOf('길'))}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-        <a class="ra">#렌탈스튜디오,#사진촬영,#무료주차</a>
-		<a class="demo2">${rooms[5].price}원/시간</a>
+        <a class="ra">#강의실,#스터디룸,#부천모임,#동아리</a>
+		<a class="demo2">${rooms[23].price}원/시간</a>
 
 
     </div>
@@ -114,43 +115,21 @@
 	
 	
 	 <div class="card">
-         <a href="#"><img src="img/${rooms[15].img1}" alt="이미지 6"></a>
+         <a href="#"><img src="img/${rooms[24].img1}" alt="이미지 6"></a>
       
-        <a class="demo3">${rooms[15].space_name}</a>
+        <a class="demo3">${rooms[24].space_name}</a>
         <br><br>
-        <a class="demo1">${rooms[15].location.substring(0, rooms[5].location.indexOf('선유도')+4)}</a>
+        <a class="demo1">${rooms[24].location.substring(0, rooms[24].location.indexOf('인')+6)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-        <a class="ra">#영등포,#파티룸,#모임공간,#선유도</a>
-		<a class="demo2">${rooms[15].price}원/시간</a>
+        <a class="ra">#60명 수용,#대형 빔프로젝터,#무선마이크</a>
+		<a class="demo2">${rooms[24].price}원/시간</a>
    
     </div>		
     
-    	  <div class="card">
-         <a href="#"><img src="img/${rooms[2].img1}" alt="이미지 6"></a>
-   
-        <a class="demo3">${rooms[2].space_name}</a>
-        <br><br>
-        <a class="demo1">${rooms[2].location.substring(0, rooms[2].location.indexOf('압구정')+3)}</a>
-        <a class="location"><img src="img/위치아이콘.png"></a>
-		<a class="ra">#압구정,#가로수길,#인생샷,#생일파티</a>
-		<a class="demo2">${rooms[2].price}원/시간</a>
-    </div>
 	</div>
 
 
-		<div class="second1">
-      <div class="card">
-         <a href="#"><img src="img/${rooms[4].img1}" alt="이미지 6"></a>
-          
-        <a class="demo3">${rooms[4].space_name}</a>
-        <br><br>
-        <a class="demo1">${rooms[4].location.substring(0, rooms[4].location.indexOf('매봉역')+4)}</a>
-        <a class="location"><img src="img/위치아이콘.png"></a>
-        <a class="ra">#브라이덜샤워,#쇼케이스,#포로포즈</a>
-		<a class="demo2">${rooms[4].price}원/시간</a>
 
-    </div>
-	</div>
 <br><br><br>
 
 
@@ -165,66 +144,37 @@ $(document)
 })
 
 
-var locationText = "${rooms[0].location.substring(5, rooms[0].location.indexOf('도'))}";
-    var formattedLocation = "[" + locationText + "]";
-
-    var secondDemoElement = document.querySelectorAll(".demo1")[0];
-    secondDemoElement.innerHTML = formattedLocation;
-
-    
-    
-    
-    let l = "${rooms[1].location.substring(0, rooms[1].location.indexOf('2'))}";
+    let l = "${rooms[20].location.substring(0, rooms[20].location.indexOf('독'))}".trim();
     let d = "[" + l + "]";
     
-    let s = document.querySelectorAll(".demo1")[1];
+    let s = document.querySelectorAll(".demo1")[0];
     s.innerHTML = d;
-    
-    
-    
-    
-    
-    
-    l = "${rooms[3].location.substring(0, rooms[3].location.indexOf('을지병원')+4)}";
-    d = "[" + l + "]";
-    
-    s=document.querySelectorAll(".demo1")[2]
-    s.innerHTML = d;
-    
-    
-    l = "${rooms[4].location.substring(0, rooms[4].location.indexOf('매봉역')+4)}"
-    d = "[" + l + "]";
-    
-    s=document.querySelectorAll(".demo1")[3]
-    s.innerHTML = d;
-    
-    l = "${rooms[5].location.substring(0, rooms[5].location.indexOf('학동역')+3)}"
-    d = "[" + l + "]";
-    
-    s=document.querySelectorAll(".demo1")[4]
-    s.innerHTML = d;
-    
-    l = "${rooms[15].location.substring(0, rooms[5].location.indexOf('선유도')+4)}"
-    d = "[" + l + "]";
-    
-    s=document.querySelectorAll(".demo1")[5]
-    s.innerHTML = d;
-    
-   	l = "${rooms[5].location.substring(0, rooms[5].location.indexOf('학동역')+3)}"
-   	d = "[" + l + "]";
-   	
-   	s=document.querySelectorAll(".demo1")[6]
-    s.innerHTML = d;
-    
    
     
+    l = "${rooms[21].location.substring(0, rooms[21].location.indexOf('효'))}".trim();
+    d = "[" + l + "]";
+    
+    s = document.querySelectorAll(".demo1")[1];
+    s.innerHTML = d;
+    
+    l = "${rooms[22].location.substring(0, rooms[22].location.indexOf('1'))}".trim();
+    d= "[" + l + "]";
+    
+    s = document.querySelectorAll(".demo1")[2];
+    s.innerHTML = d;
+    
+    l = "${rooms[23].location.substring(0, rooms[23].location.indexOf('길'))}".trim();
+    d = "[" + l + "]";
+    
+    s = document.querySelectorAll(".demo1")[3];
+    s.innerHTML = d;
     
     
+    l = "${rooms[24].location.substring(0, rooms[24].location.indexOf('인')+6)}".trim();
+    d= "[" + l +"]";
     
-    
-    
-    
-    
+    s=document.querySelectorAll(".demo1")[4];
+    s.innerHTML = d;
     
     
     

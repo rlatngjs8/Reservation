@@ -15,18 +15,7 @@ body {
 	text-align: center;
 }
 
-.room-info {
-	text-align: center;
-	margin: 10px;
-	border: 1px solid #ccc;
-	padding: 10px;
-	background-color: #f5f5f5;
-}
 
-.room-info img {
-	display: grid;
-	margin: 0 auto;
-}
 
 /*
 .first li css 삭제
@@ -229,6 +218,7 @@ h3 {
 	text-align: left;
 	margin-left: 10%;
 	font-family: 'Cafe24Supermagic-Bold-v1.0';
+	font-size : 40px;
 }
 
 /*
@@ -571,30 +561,30 @@ card1 css 추가
 
 		<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
 		<div class="card">
-			<a href="/#"><img src="img/16.jpg" alt="이미지 2"></a>
+			<a href="/#"><img src="img/${rooms[3].img2}" alt="이미지 6"></a>
 
-			<p id="demo"></p>
+			<p id="demo">${rooms[3].space_name}</p>
 		</div>
 
 
 		<div class="card">
-			<a href="#"><img src="img/24.jpg" alt="이미지 2"></a>
+			<a href="#"><img src="img/${rooms[6].img2}" alt="이미지 6"></a>
 
-			<p id="demo">안녕하세요. Music Room.</p>
+			<p id="demo">${rooms[6].space_name}</p>
 		</div>
 
 
 		<div class="card">
-			<a href="#"><img src="img/45.jpg" alt="이미지 2"></a>
+			<a href="#"><img src="img/${rooms[11].img2}" alt="이미지 6"></a>
 
-			<p id="demo">안녕하세요. Party Room.</p>
+			<p id="demo">${rooms[11].space_name}</p>
 		</div>
 
 
 		<div class="card">
-			<a href="#"><img src="img/36.jpg" alt="이미지 4"></a>
+			<a href="#"><img src="img/${rooms[0].img2}" alt="이미지 6"></a>
 
-			<p id="demo">안녕하세요. Study Room.</p>
+			<p id="demo">${rooms[0].space_name}</p>
 		</div>
 	</div>
 
@@ -603,16 +593,16 @@ card1 css 추가
 
 	<div class="second">
 		<div class="card">
-			<a href="#"><img src="img/29.jpg" alt="이미지 4"></a>
+			<a href="#"><img src="img/${rooms[1].img2}" alt="이미지 6"></a>
 
-			<p id="demo">안녕하세요. Study Room.</p>
+			<p id="demo">${rooms[1].space_name}</p>
 		</div>
 
 
 		<div class="card">
-			<a href="#"><img src="img/21.jpg" alt="이미지 4"></a>
+			<a href="#"><img src="img/${rooms[15].img1}" alt="이미지 6"></a>
 
-			<p id="demo">안녕하세요. Study Room.</p>
+			<p id="demo">${rooms[15].space_name}</p>
 		</div>
 
 
@@ -633,13 +623,13 @@ card1 css 추가
 		<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
 		<div class="card1">
 			<a href="#"><img src="img/40.jpg" alt="이미지 2"></a>
-			<p id="demo">좋아요좋아요좋아요asdfasdfafsdfsadfsdafsadfsadfdsafasdsafdasdfa</p>
+			<p id="demo">후기1</p>
 		</div>
 
 
 		<div class="card1">
 			<a href="#"><img src="img/14.jpg" alt="이미지 2"></a>
-			<p id="demo">좋아요좋아요좋아요</p>
+			<p id="demo">후기1</p>
 		</div>
 
 	</div>
@@ -647,7 +637,7 @@ card1 css 추가
 
 
 	<div class="wrap">
-		<input type="button" id="load" name="load" class="load" value="더보기">
+		<input type="button" id="load" name="load"  value="더보기">
 	</div>
 
 	<br>

@@ -30,6 +30,11 @@ public class HomeController {
          // 로그인 성공한 경우
          model.addAttribute("name",(String) session.getAttribute("name"));
       }
+      	// 데이터베이스에서 받아서 mainhome 페이지에서 사용하기위해
+      	ArrayList<RoomDTO> alemp = rdao.get_space();
+      	model.addAttribute("rooms",alemp);
+      	
+      
       
       return "mainhome";
    }
@@ -149,10 +154,13 @@ public String goEventPage() {
 public String goEvent1Page() {
 	return "/event1";
 }
+
+
 @GetMapping("/event2")
 public String goEvent2Page() {
 	return "/event2";
 }
+
 
 }
 
