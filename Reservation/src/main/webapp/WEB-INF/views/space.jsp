@@ -838,7 +838,7 @@ function insert_temp_reservation() {
     };
    
     console.log(reservationData);
-    
+     
 	 $.ajax({
          url: '/insert_temp_reservation',
          type: 'post',
