@@ -66,6 +66,7 @@
 
     .form-group {
         margin-bottom: 15px;
+        margin-left: 5%;
     }
 
     label {
@@ -123,16 +124,38 @@
         border-radius: 3px;
         cursor: pointer;
         margin-left: 10px; /* 버튼과 입력란 사이 간격 조정 */
+    	border-radius: 5px;
     }
-
+	
+	button {
+		border-radius: 10px;
+	}
     /* 비밀번호 확인 입력란 스타일 추가 */
     #passcodeCheck {
         width: 60%; /* 입력란 넓이 조정 */
     }
     
+    
+    
+    @font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a,label,button,h2,th,td {
+font-family: 'CookieRun-Regular';
+}
+
+h3{
+	display:inline;
+}
+    
 </style>
 </head>
 <body>
+
 <div class="sidebar">
     <ul>
         <li><a href="#" onclick="showSection('userInfo')">나의 정보</a></li>
@@ -140,36 +163,43 @@
         <li><a href="#" onclick="showSection('purchaseHistory')">구매내역</a></li>
         <li><a href="#" onclick="showSection('myQuestions')">나의 문의내역</a></li>
         <li><a href="#" onclick="showSection('userDelete')">회원탈퇴</a></li>
+        <li><a href="/" onclick="goHome">메인 화면으로</a></li>
     </ul>
 </div>
+
+
 <div class="container" id="userInfo">
     <h2>나의 정보</h2>
+    <hr/>
+    <br>
     <c:forEach items="${member}" var="member">
         <div class="form-group">
-            <p>ID: ${member.userid}</p>
+            <h3>ID:</h3><a> ${member.userid}</a>
         </div>
         <div class="form-group">
-            <p>이름: ${member.name}</p>
+            <h3>이름:</h3><a> ${member.name}</a>
         </div>
         <div class="form-group">
-            <p>생년월일: ${member.birthday}</p>
+            <h3>생년월일:</h3><a> ${member.birthday}</a>
         </div>
         <div class="form-group">
-            <p>주소: ${member.address}</p>
+            <h3>주소:</h3> <a>${member.address}</a>
         </div>
         <div class="form-group">
-            <p>이메일: ${member.email}</p>
+            <h3>이메일:</h3><a> ${member.email}</a>
         </div>
         <div class="form-group">
-            <p>휴대전화: ${member.mobile}</p>
+            <h3>휴대전화:</h3><a> ${member.mobile}</a>
         </div>
         <div class="form-group">
-            <p>가입일: ${member.created.substring(0,10)}</p>
+            <h3>가입일:</h3><a> ${member.created.substring(0,10)}</a>
         </div>
     </c:forEach>
 </div>
 <div class="container" id="userEdit" style="display: none;">
     <h2>회원정보 수정</h2>
+    <hr/>
+    <br>
     <div class="form-group" id="checkForm">
         <form action="checkPasscode" method="post">
             <input type="hidden" name="userid" id="useridCheck" value="${userid}">
@@ -206,6 +236,8 @@
 </div>
 <div class="container" id="purchaseHistory" style="display: none;">
     <h2>구매내역</h2>
+    <hr/>
+    <br>
     <table>
         <thead>
         <tr>
@@ -228,6 +260,8 @@
 </div>
 <div class="container" id="myQuestions" style="display: none;">
     <h2>문의내역</h2>
+    <hr/>
+    <br>
     <table id="tblBoard">
         <thead>
         <tr>
@@ -248,6 +282,8 @@
 </div>
 <div class="container" id="userDelete" style="display: none;">
     <h2>회원탈퇴</h2>
+    <hr/>
+    <br>
     <div class="form-group" id="delCheckForm">
         <form action="deleteCheck" method="post">
             <input type="hidden" name="userid" id="useridCheck1" value="${userid}">

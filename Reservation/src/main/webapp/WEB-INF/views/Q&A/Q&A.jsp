@@ -84,6 +84,10 @@
 	position:relative;
 	top:1px;
 }
+
+
+
+
 @font-face {
     font-family: 'Cafe24Supermagic-Bold-v1.0';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');

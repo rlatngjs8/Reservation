@@ -3,7 +3,7 @@
 						 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.himedia.springboot.productDAO">
 <select id="getList" resultType="com.himedia.springboot.productDTO">
-	select space_id, space_name, space_type,location,mobile from spaces limit #{param1},#{param2}
+	select space_id, space_name, space_type,location,mobile,img1 from spaces limit #{param1},#{param2}
 </select>
 <select id="getTotal" resultType="int">
 	select count(*) from spaces

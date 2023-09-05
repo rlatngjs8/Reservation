@@ -12,9 +12,19 @@
         margin: 0;
         padding: 0;
     }
+    
+        @font-face {
+    font-family: 'SBAggroB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+    
     h1 {
         text-align: center;
         margin-top: 20px;
+        font-family: 'SBAggroB';
     }
     .table-container {
         display: flex;
@@ -27,10 +37,20 @@
         background-color: #fff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+    
+    	@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+    
     th, td {
         padding: 10px;
         text-align: center;
         border-bottom: 1px solid #ddd;
+        font-family: 'GmarketSansMedium';
     }
     th {
         background-color: #f2f2f2;
@@ -54,6 +74,7 @@
         color: white;
         border: none;
         cursor: pointer;
+        border-radius:10px;
         
         
     }
@@ -93,7 +114,7 @@
   width: 200px; 
   height:120px;
   left:790px;
-  top:25px;
+  top:60px;
   
   margin-bottom:10px;
 }
@@ -112,10 +133,19 @@
   pointer-events: none;
 }
 
+
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 #prevMenu{
 	position:relative;
-	left : 80px;
-	top:20px;
+	left : 200px;
+	top:60px;
 	
 	box-shadow: 0px 5px 14px -7px #276873;
 	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
@@ -124,8 +154,8 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
-	font-size:9px;
+	font-family: 'CookieRun-Regular';
+	font-size:11px;
 	font-style:italic;
 	padding:5px 11px;
 	text-decoration:none;
@@ -143,22 +173,12 @@
 </style>
 </head>
 <body>
+<br><br><br><br>
 <h1>예약현황</h1>
 
 <input type="button" id="prevMenu" value="이전메뉴" class="prevMenu">
 
-<div class="custom-select" align=center>
-    <select id="searchType">
-        <option value="seqno" class="seqno" >예약번호</option>
-        <option value="userid" class="userid">아이디</option>
-        <option value="mobile" class="mobile">전화번호</option>
-        <option value="space_name" class="space_name">상품명</option>
-    </select>
-    <br><br>
-    <input type="text" id="searchKeyword" placeholder="검색할 키워드를 입력하세요">
-    <br><br>
-    <button id="btnSearch" class="btnSearch">검색</button>
-</div>
+
 
 <br><br><br><br>
 

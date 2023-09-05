@@ -26,7 +26,7 @@
 
 <%@include file="header.jsp" %>
 
-	<h1 class="top">회의실/세미나룸</h1>
+	<h1 class="title">회의실/세미나룸</h1>
 	
 	
 	<div>

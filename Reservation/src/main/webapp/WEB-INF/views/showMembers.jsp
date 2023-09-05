@@ -12,9 +12,18 @@
     margin: 0;
     padding: 0;
   }
+  
+       @font-face {
+    font-family: 'SBAggroB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+  
   h1 {
     text-align: center;
     margin-top: 20px;
+    font-family: 'SBAggroB';
   }
   #header {
     display: flex; /* flex 속성 추가 */
@@ -22,14 +31,63 @@
     align-items: center; /* 세로 중앙 정렬 */
     padding: 10px;
   }
-  #btnDelete {
-    cursor: pointer;
-    color: #f00;
-    text-decoration: underline;
-  }
-  #btnDelete:hover {
-    color: #f50; /* 마우스 호버 시 색상 변경 */
-  }
+  
+.btnDelete {
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background:linear-gradient(to bottom, #ff3700 5%, #bc3315 100%);
+	background-color:#ff3700;
+	border-radius:10px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:6px 8px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
+	margin-rightt:20px;
+	margin-top:10px;
+}
+.btnDelete:hover {
+	background:linear-gradient(to bottom, #bc3315 5%, #ff3700 100%);
+	background-color:#bc3315;
+}
+.btnDelete:active {
+	position:relative;
+	top:1px;
+}
+
+.btnPrev {
+	box-shadow:inset 0px 1px 0px 0px #9fb4f2;
+	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	background-color:#7892c2;
+	border-radius:10px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:6px 8px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+	margin-left:20px;
+	margin-top:10px;
+}
+.btnPrev:hover {
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	background-color:#476e9e;
+}
+.btnPrev:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+
+ 
   img {
     width: 75px;
     height: 75px;
@@ -41,10 +99,21 @@
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+  
+  	@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+  
+  
   th, td {
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #ddd;
+    font-family: 'GmarketSansMedium';
   }
   th {
     background-color: #f2f2f2;
@@ -63,8 +132,8 @@
 
 
 <div id="header">
-  <img src="img/이전메뉴.png" alt="이전 메뉴" id="prevMenu">
-  <div id="btnDelete">회원정보 삭제</div>
+  <button id="prevMenu" class="btnPrev">이전 메뉴</button>
+  <button id="btnDelete" class="btnDelete">회원정보 삭제</button>
 </div>
 
 

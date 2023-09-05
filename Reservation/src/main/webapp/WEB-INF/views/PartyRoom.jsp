@@ -11,7 +11,9 @@
 </head>
 <style>
 
-
+.bdiv{
+	border: 1px solid black;
+}
 
 
 
@@ -26,7 +28,7 @@
 
 <%@include file="header.jsp" %>
 
-	<h1 class="top">파티룸</h1>
+	<h1 class="title">파티룸</h1>
 	
 	<div>
 	<a href="/RecordingStudio"><span class="otherRoom"><strong> 스튜디오/방송 </strong></span></a>
