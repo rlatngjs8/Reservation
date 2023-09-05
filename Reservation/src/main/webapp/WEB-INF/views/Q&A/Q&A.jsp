@@ -103,7 +103,7 @@
 </head>
 <body>
 <h1>Q&A</h1><br>
-<button id="btnPrev" class="btnPrev">이전메뉴</button>
+<button id="btnPrev" class="btnPrev">관리자메뉴</button>
 <table id="tblBoard">
     <thead>
     <tr> 

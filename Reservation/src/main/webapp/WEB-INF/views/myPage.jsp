@@ -51,11 +51,11 @@
 
     .container {
         margin: 0 auto; /* 가운데 정렬 */
-        padding: 20px;
+        padding: 40px;
         background-color: #fff;
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        max-width: 800px; /* 최대 너비 제한 */
+        max-width: 1000px; /* 최대 너비 제한 */
         text-align: left; /* 내용물 왼쪽 정렬 */
     }
 
@@ -123,8 +123,9 @@
         padding: 8px 20px; /* 버튼 패딩 조정 */
         border-radius: 3px;
         cursor: pointer;
-        margin-left: 10px; /* 버튼과 입력란 사이 간격 조정 */
-    	border-radius: 5px;
+        margin-left: 50px; /* 버튼과 입력란 사이 간격 조정 */
+    		border-radius: 5px;
+    		width: 80px;
     }
 	
 	button {
@@ -142,20 +143,20 @@
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-}
+		}
 
-a,label,button,h2,th,td {
-font-family: 'CookieRun-Regular';
-}
-
-h3{
-	display:inline;
-}
+		a,label,button,h2,th,td {
+		font-family: 'CookieRun-Regular';
+		}
+		
+		h3{
+			display:inline;
+		}
     
 </style>
 </head>
 <body>
-
+<!-- 헤더랑 바텀 넣고 -->
 <div class="sidebar">
     <ul>
         <li><a href="#" onclick="showSection('userInfo')">나의 정보</a></li>
@@ -163,6 +164,7 @@ h3{
         <li><a href="#" onclick="showSection('purchaseHistory')">구매내역</a></li>
         <li><a href="#" onclick="showSection('myQuestions')">나의 문의내역</a></li>
         <li><a href="#" onclick="showSection('userDelete')">회원탈퇴</a></li>
+        <!-- 메인화면은 아래로 따로 내려서 티나도록 -->
         <li><a href="/" onclick="goHome">메인 화면으로</a></li>
     </ul>
 </div>
@@ -202,6 +204,7 @@ h3{
     <br>
     <div class="form-group" id="checkForm">
         <form action="checkPasscode" method="post">
+        		<!-- 아이디도 볼수있게 만들기 -->
             <input type="hidden" name="userid" id="useridCheck" value="${userid}">
             <label for="passcode">비밀번호 확인:</label>
             <input type="password" id="passcodeCheck" name="passcode" required style="width: 200px; padding: 8px; border: 1px solid #ccc; border-radius: 3px;">
@@ -231,8 +234,10 @@ h3{
                 <input type="tel" id="mobile" name="mobile" value="${member.mobile}" required style="width: 200px; padding: 8px; border: 1px solid #ccc; border-radius: 3px;">
             </div>
         </c:forEach>
+        <br>
         <button type="submit" id="edit" style="background-color: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 3px; cursor: pointer;">수정</button>
     </form>
+    <!-- 전부다 줄 긋고 (나의정보)버튼만들어서 myPage로 링크(나의정보 바로감)	 -->
 </div>
 <div class="container" id="purchaseHistory" style="display: none;">
     <h2>구매내역</h2>
@@ -251,7 +256,7 @@ h3{
                 <td>${re.space_name}</td>
                 <td>${re.useday.substring(0,10)}</td>
                 <td>${re.startTime}시 ~ ${re.endTime}시</td>
-                <td>${re.totalPrice}</td>
+                <td>${re.totalPrice}원</td>
                 <td>${re.purchaseTime}</td>
             </tr>
         </c:forEach>

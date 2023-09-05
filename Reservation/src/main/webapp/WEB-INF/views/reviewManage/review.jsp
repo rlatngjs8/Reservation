@@ -101,7 +101,7 @@
 }
         
         
-       .btnPrev {
+ .btnPrev {
 	box-shadow:inset 0px 1px 0px 0px #9fb4f2;
 	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
 	background-color:#7892c2;
@@ -111,7 +111,7 @@
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:12px;
+	font-size:20px;
 	padding:6px 8px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #283966;
@@ -136,7 +136,7 @@
 </head>
 <body>
 <h1 class="fh1">리뷰 리스트</h1>
-<button id="btnPrev" class="btnPrev">이전메뉴</button>
+<button id="btnPrev" class="btnPrev">관리자메뉴</button>
     <div id="body">
         <table>
             <thead>

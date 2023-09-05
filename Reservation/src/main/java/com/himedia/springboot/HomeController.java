@@ -71,24 +71,22 @@ public class HomeController {
       String passcode = req.getParameter("loginpw");// 마찬가지
       int n = rdao.login(userid, passcode);      // xml에서 int로 받아오기때문에
       if(n == 1) {                        // 받아온값이 1이면 (갯수가 1개라서)
-      			ArrayList<RoomDTO> member = rdao.getListOne(userid);
-      			String name = "";
+      	ArrayList<RoomDTO> member = rdao.getListOne(userid);
+      	String name = "";
 //      			model.addAttribute("member",member);
 
-      			if(!member.isEmpty()) {
-      					name = member.get(0).getName();
-      			}
+      	if(!member.isEmpty()) {
+      		name = member.get(0).getName();
+      	} 
+      	HttpSession session = req.getSession();
+        session.setAttribute("userid", userid);   // 유저아이디에 로그인아이디
+        session.setAttribute("passcode", passcode);
+        session.setAttribute("name", name);
          
-      			HttpSession session = req.getSession();
-         session.setAttribute("userid", userid);   // 유저아이디에 로그인아이디
-         session.setAttribute("passcode", passcode);
-         session.setAttribute("name", name);
-         
-         
-         return "redirect:/";      // /url로 가서 메소드까지 실행하고 리턴
+        return "redirect:/";      // /url로 가서 메소드까지 실행하고 리턴
       } else {
-            model.addAttribute("loginFailed", true);
-         return "redirect:/login";
+    	  model.addAttribute("loginFailed", true);      
+    	  return "login";
       }
    }
    @GetMapping("/logout")
@@ -135,7 +133,8 @@ public class HomeController {
  @PostMapping("/memberDelete")
  public String deleteMember(HttpServletRequest req, Model model) {
        int num = Integer.parseInt(req.getParameter("num"));
-             rdao.deleteMember(num);
+       
+       rdao.deleteMember(num);
      return "showMembers"; // 클라이언트로 응답 전송
  }
    

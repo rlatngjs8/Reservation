@@ -261,6 +261,9 @@ $(document).ready(function () {
         }
     });
 });
+$(document).on('click','#prev',function(){
+	window.location.href = "/manager";
+})
 </script>
 </body>
 </html>

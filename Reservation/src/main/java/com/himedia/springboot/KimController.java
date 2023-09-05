@@ -124,7 +124,7 @@ public class KimController {
 			String content = req.getParameter("content");
 			String writer = (String)session.getAttribute("userid");
 			rdao.insert(title, content, writer);
-			return "redirect:Q&A/Q&A";	
+			return "redirect:/Q&A";	
 		}
 		
 		@GetMapping("/write")

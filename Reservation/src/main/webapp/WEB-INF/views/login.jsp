@@ -63,10 +63,20 @@
     cursor: pointer;
     font-size: 16px; 
 }
+.error-message {
+    color: red;
+    font-size: 16px;
+    margin-top: 10px;
+}
 
 /* 버튼에 호버 효과를 추가합니다. */
 .button:hover {
     background-color: #0056b3; /* 호버 시 배경색 변경 */
+}
+.error-message {
+    color: red;
+    font-size: 16px;
+    margin-top: 10px;
 }
     
 </style>
@@ -79,13 +89,14 @@
         <input type="password" id="loginpw" name="loginpw" placeholder="패스워드">
         <input type="submit" value="로그인" class="button">&nbsp;&nbsp;<a href="/signup" class="button">회원가입</a>
         <c:forEach items="${member}" var="member">
-        <input type="hidden" name="name" value="${member.name}">
+        	<input type="hidden" name="name" value="${member.name}">
         </c:forEach>
     </div>
     <c:if test="${loginFailed}">
-        <script>
-            alert("아이디 혹은 비밀번호를 확인하세요.");
-        </script>
+			<script>
+        // 아이디 혹은 비밀번호가 올바르지 않을 때 메시지를 표시합니다.
+        alert("아이디 혹은 비밀번호를 확인하세요.");
+    	</script>
     </c:if>
 </form>
 <script src="http://code.jquery.com/jquery-Latest.js"></script>

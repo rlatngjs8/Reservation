@@ -13,7 +13,7 @@
     padding: 0;
   }
   
-       @font-face {
+  @font-face {
     font-family: 'SBAggroB';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
     font-weight: normal;
@@ -198,6 +198,16 @@ $(document).ready(function() {
 	      alert("삭제할 회원을 선택하세요.");
 	      return;
 	    }
+	    
+	    //현재 로그인되어있는 아이디 가져와서
+	    var loginUserid = '<%= session.getAttribute("userid") %>';
+	 		// 선택한 userid를 가져와
+	    var selectedUserid = selectedRow.find('td:eq(1)').text();
+	 		//둘이 비교
+	 		if(loginUserid == selectedUserid) {
+	 			alert("자신의 계정은 삭제할 수 없습니다.");
+	 			return;
+	 		}
 
 	    var confirmDelete = confirm("정말로 선택한 회원을 삭제하시겠습니까?");
 	    if (confirmDelete) {

@@ -43,22 +43,14 @@
   input[type="number"],
   textarea,
   input[type="file"] {
-    width: 100%;
+    width: 80%;
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
   textarea {
     resize: vertical;
-  }
-  .submit-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 0.7rem 1.5rem;
-    cursor: pointer;
-    font-size: 1.1rem;
+    width: 100%;
   }
   .clearfix {
     clear: both;
@@ -66,6 +58,44 @@
   .image-input {
     margin-bottom: 0.5rem;
   }
+  
+  /* 버튼 두개 사이즈 똑같이를 못하겠음. 색상도 변경 */
+  .button {
+    text-align: center; /* 가운데 정렬 */
+    
+}
+
+.submit-button {
+    text-decoration: none;
+    background-color: #607d8b; /* 수정 필요 */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.7rem 3rem; /* 넓이 늘리기 */
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-right: 20px; /* 두 버튼 사이 간격 늘리기 */
+    margin-bottom: 10px; /* 버튼 아래 여백 추가 */
+    height: 50px; /* 높이 추가 */
+}
+
+.cancel-button {
+    text-decoration: none;
+    background-color: #f57c00; /* 수정 필요 */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.7rem 3rem; /* 넓이 늘리기 */
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-right: 20px; /* 두 버튼 사이 간격 늘리기 */
+    margin-bottom: 10px; /* 버튼 아래 여백 추가 */
+    height: 60px; /* 높이 추가 */
+}
+
+.submit-button:hover, .cancel-button:hover {
+    background-color: #0056b3;
+}
 </style>
 </head>
 <body>
@@ -125,7 +155,11 @@
       <label for="description">상세 설명:</label>
       <textarea id="description" name="description" rows="30" required>${ppost.description}</textarea>
       <!-- 상세 설명과 관련된 필드들을 여기에 추가 -->
-      <input type="submit" value="수정" class="submit-button" id="btnSubmit">
+      <br><br>
+ <div class="button">
+	<a href="productView?id=${ppost.space_id}" class="cancel-button">취소</a>&nbsp;
+	<input type="submit" value="수정" class="submit-button" id="btnSubmit">
+</div>
   </div>
 </div>
 </form>

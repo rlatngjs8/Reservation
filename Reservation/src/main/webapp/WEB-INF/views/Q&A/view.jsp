@@ -108,19 +108,26 @@
     .cal{
     		font-weight: bold;
     }
-    .link-style {
+   .link-style {
     text-decoration: none;
     color: #25a4cd;
     font-weight: bold;
-		}
-		
-		.link-style:hover {
-		    text-decoration: underline;
-		}
+    background-color: transparent; /* 배경색 초기화 */
+    padding: 5px 10px; /* 내용물 주위의 여백 추가 */
+    border-radius: 5px; /* 둥근 테두리 추가 */
+    display: inline-block; /* 텍스트를 왼쪽 정렬 */
+    transition: background-color 0.3s ease; /* 배경색 전환 효과 추가 */
+}
+
+.link-style:hover {
+    background-color: #f5f5f5; /* 호버 시 배경색 변경 */
+}
 </style>
 </head>
 <body>
-<h1>상세문의내용</h1>
+<h1>상세문의내용</h1><br>
+<!-- 목록으로 css -->
+<a href="/Q&A" class="link-style">목록으로</a><br>
 <table>
 <tr><td class="cal">번호</td><td id="seqno">${bpost.seqno }</td></tr>
 <tr><td class="cal">제목</td><td>${bpost.title }</td></tr>
@@ -130,9 +137,8 @@
 <tr><td class="cal">작성시간</td><td>${bpost.created }</td></tr>
 <tr><td class="cal">수정시각</td><td>${bpost.updated }</td></tr>
 <tr>
-    <td><a href="/" class="link-style">목록으로</a></td>
+    <td><a href="/write" class="button" id="btnWrite">글쓰기</a></td>
     <td style='text-align: right;'>
-        <a href="/write" class="button" id="btnWrite">글쓰기</a>
         <button id="btnUpdate">수정</button>
         <button id="btnDelete">삭제</button>
     </td>

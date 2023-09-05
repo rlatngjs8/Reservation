@@ -13,7 +13,7 @@
 	delete from re_info where seqno = #{seqno}
 </delete>
 <select id="selectList" resultType="com.himedia.springboot.ReservationDTO">
-	select * from re_info where userid=#{userid}
+	select * from re_info where userid=#{userid} order by purchaseTime desc
 </select>
 <select id="payCom" resultType="com.himedia.springboot.ReservationDTO">
 	select a.seqno, b.userid, b.name, b.mobile, c.space_name, a.useday, a.startTime, a.endTime, a.totalPrice, a.purchaseTime

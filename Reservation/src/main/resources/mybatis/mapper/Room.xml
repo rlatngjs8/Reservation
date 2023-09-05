@@ -17,7 +17,7 @@
 	delete from members where num = #{num}
 </delete>
 <delete id="deleteMember1" parameterType="String">
-	delete from members where userid= #{userid}
+	delete from members where userid= #{param1}
 </delete>
 
 <select id="getTotal" resultType="int">

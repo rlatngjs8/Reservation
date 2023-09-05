@@ -43,13 +43,14 @@
   input[type="number"],
   textarea,
   input[type="file"] {
-    width: 100%;
+    width: 80%;
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
   textarea {
     resize: vertical;
+   	width: 100%;
   }
   .submit-button {
     background-color: #007bff;
@@ -71,8 +72,9 @@
 <body>
 <header>
   <h1>상품 추가</h1>
-</header>
+</header><br>
 <form action="/prodInsert" method="post" enctype="multipart/form-data">
+<a href="/productList">상품리스트</a><br>
 <div class="container">
   <div class="form-section">
       <label for="space_name">상품 이름:</label>

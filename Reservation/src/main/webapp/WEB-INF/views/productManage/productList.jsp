@@ -71,7 +71,7 @@
     border-radius: 10px; /* 둥근 테두리 */
     padding: 0.3rem 1rem; /* 좀 더 큰 크기 */
     cursor: pointer;
-    font-size: 1.1rem; /* 폰트 크기 조정 */
+    font-size: 25px; /* 폰트 크기 조정 */
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
     transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
     font-family: 'MaplestoryOTFBold';
@@ -83,7 +83,7 @@
     border-radius: 10px; 
     padding: 0.3rem 1rem; 
     cursor: pointer;
-    font-size: 1.1rem; 
+    font-size: 25px; 
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); 
     transition: background-color 0.3s ease; 
     font-family: 'MaplestoryOTFBold';
@@ -107,6 +107,7 @@
     top:50px;
     margin-left: 20px;
     font-family: 'MaplestoryOTFBold';
+    font-size: 25px;
   }
   
   #prev:hover{
@@ -153,13 +154,16 @@ font-family: 'SBAggroB';
 <header>
   <h1>상품 리스트</h1>
 </header><br>
-<button id="prev">이전 메뉴</button>
-<div class="add-product-button">
-  <button id="add-product-btn">상품추가</button>
-  <button id="btnDelete">상품삭제</button>
-</div>
-
 <div class="container">
+<div>
+		<!-- 글씨체 좀더 얌전한걸로 변경 -->
+	<button id="prev">관리자 메뉴</button>
+	<div class="add-product-button">
+	  <button id="add-product-btn">상품추가</button>&nbsp;&nbsp;&nbsp;
+	  <button id="btnDelete">상품삭제</button>
+	</div>
+</div>
+<br><br>
   <c:forEach items="${plist}" var="prod">
     <div class="product" data-space_id="${prod.space_id}">
 <%--       <img src="${prod.image}" alt="${product.name}"> --%>

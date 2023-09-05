@@ -156,7 +156,8 @@ input{
 <form id=frmMember method=post action="/dosignup">
 <h2>회원가입</h2>
 
-<div><input name=userid id=userid placeholder="아이디를 입력하세요.">
+<div>
+<input name=userid id=userid placeholder="아이디를 입력하세요.">
 </div>
 <div><input type=password name=passcode id=passcode placeholder="비밀번호를 입력하세요.">
 </div>
@@ -172,13 +173,19 @@ input{
 </div>
 <div><input id=mobile name=mobile placeholder="전화번호">
 </div>
-<div>
+<!-- 전체동의 -->
+<!--[필수]이용약관 동의      전체보기(링크) -->
+<!-- 쪼그만한 박스드래그해서 이용약관 쪼로록 나오고 -->
+<!-- [필수] 개인정보 수집 및 이용 동의       전체보기(링크) -->
+<!-- 쪼그만한 박스드래그해서 이용약관 쪼로록 나오고 -->
 
-	<input type="submit" value="가입" class="hover4">&nbsp;
-	<input type=reset id=btnReset value="비우기" class="hover5">&nbsp;
-	<a href="/login" class="button">로그인</a>
+<!-- 여기에 숨어있다가 입력안한거 있으면 입력하라고 빨간글씨. 그러고 입력안한칸 라벨이 빨간글씨로 변하게 -->
+
+<div>
+	<!-- 취소는 하얀색, 완료는 검은색?	 -->
+	<a href="/" class="button">취소</a>
+	<input type="submit" value="완료" class="hover4">&nbsp;
 	</div>
-	<button id="home" class="home">홈으로</button>
 </form>
 </body>
 
