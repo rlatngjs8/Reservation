@@ -110,7 +110,7 @@ public class YoonController {
 			jo.put("price", temp_reservation.get(i).getPrice());
 			jo.put("img1", temp_reservation.get(i).getImg1());
 			ja.add(jo);
-		}
+		}  
 		return ja.toJSONString();
 	}
 	
