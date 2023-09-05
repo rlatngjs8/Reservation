@@ -13,13 +13,15 @@ ul.sub_mobile {
   display: none;
 }
 
-
-
 #menu.open {
   left: 0px;
+  width:300px;
 
 }
 
+td{
+	align:center;
+}
 
 
 .page_cover.open {
@@ -38,7 +40,12 @@ ul.sub_mobile {
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  transition: all 0.3s ease; /* 부드러운 애니메이션 효과 추가 */
 }
+
+
+
+
 
 .close {
   width: 50px;
@@ -73,14 +80,16 @@ ul.sub_mobile {
   padding-right: 40px;
 }
 
-#menu a{
- padding:0;
- text-decoration: none;
- font-size: 18px;
- color: #25a4cd;
- display: block;
- transition: 0.3s;
- }
+#menu a {
+  padding: 0;
+  text-decoration: none;
+  font-size: 18px;
+  color: #25a4cd;
+  display: block;
+  transition: 0.3s;
+  text-align: center; /* 텍스트를 가운데 정렬합니다. */
+  line-height: 50px; /* 수직 가운데 정렬을 위해 line-height 추가 */
+}
 
 #menu.open {
   left: 0px;
@@ -105,26 +114,28 @@ ul.sub_mobile {
     padding:0;
     }
     
-#menu ul.nav li {
-    position:relative; 
-    float:left; 
-    width:100%; 
-    list-style-type:none; 
-    font-size:18px;
-    }
-    
+
+  #menu ul.nav li {
+  position: relative;
+  float: left;
+  width: 170%;
+  list-style-type: none;
+  font-size: 21px;
+  text-align: center;
+  margin-bottom: 10px; /* sub_mobile 항목들 사이의 간격 조절 */
+}
+
 #menu ul.nav li a {
-    display:block; 
-    width:100%; 
-    height:100%; 
-    line-height:50px; 
-    text-indent:20px;
-    text-align: left;
-    color:#25a4cd; 
-    font-weight:bold; 
-    text-decoration:none;
-    font-size:13px;
-    }
+  display: block;
+  width: 100%;
+  height: 50px; /* 높이를 변경 */
+  line-height: 50px;
+  text-align: center;
+  color: #25a4cd;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 13px;
+}
     
 #menu ul.nav li a:hover {
    background:#eee;
@@ -196,6 +207,7 @@ a {
 
 table,li{
 font-family: 'CookieRun-Regular';
+	
 }
 
 button {
@@ -203,9 +215,10 @@ font-family: 'CookieRun-Regular';
 }
 
 .name {
-	font-size : 20px;
+  font-size: 30px;
+  text-align: center; /* 가운데 정렬 */
+  margin-bottom: 10px; /* 텍스트 아래 여백 추가 */
 }
-
 
 </style>
 
@@ -221,41 +234,53 @@ font-family: 'CookieRun-Regular';
 <c:set var="userid" value="${sessionScope.userid}" /> <!-- 세션에서 userid 값을 가져옴 -->
 <c:set var="member" value="${rdao.getListOne(userid)}" /> <!-- RoomDAO를 사용하여 사용자 이름을 가져옴 -->
 
+
+
 <div class="btn1"></div>
 <div onclick="history.back();" class="page_cover"></div>
+
+
 
 <div id="menu">
     <ul class="nav">
         <li>
             <table>
                 <tr>
-                    <td align="right">
+                    <td>
                         <c:choose>
+                        
                             <c:when test="${empty userid}">
-                        	<!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
+                             <!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
                              <button id="btnLogin" class="button">로그인</button>
-                        </c:when>
+                             <button id="btnSignup" class="button">회원가입</button>                         
+                            </c:when>
                             <c:otherwise>
-                    
-                            <a><span class="name">${name}</span> 님 환영합니다</a>&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
-                             <li><a href='/myPage'>마이페이지</a></li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
+                                <a><span class="name">${name}</span> 님 환영합니다</a>
+                                <button id="btnLogout" class="button">로그아웃</button>
+                                <li>
+                                <a href='/myPage'>마이페이지</a>
+                                </li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
                             </c:otherwise>
-                             </c:choose>
-<!--                             <li><a href='/reservation'>예약현황</a></li> -->
-                           
-                       
+                        </c:choose>
                     </td>
                 </tr>
             </table>
-        </li>  
+        </li>
+
     
-<!--     <li><a href="/q&a">Q&A</a></li> -->
-    <li><a>서브 메뉴</a>
+   <li><a href="/#">Q&A</a></li>
+   <br>
+   <li><a href="/#">1:1문의</a></li>
+   <br>
+   <li><a href="/#">공지사항</a></li>
+   
+    <li><a>메뉴</a>
     <ul class="sub_mobile">
     <li><a href="/review">Review</a></li>
-
+	<br>
     <li><a href="event">이벤트</a></li>
-
+    <br>
+	<li><a href="/#">서비스약관</a></li>
     
       <c:choose>
       
@@ -296,29 +321,34 @@ $(document).on('click','#btnLogin',function(){
  $(document).on('click','#btnLogout',function(){
     window.location.href = "/logout";
  })
+ $(document).on('click','#btnSignup',function(){
+    window.location.href = "/signup";
+ })
 
 
 
 
 $(document).ready(function() {
-   $("#menu1 ul.sub_mobile").hide();
-   
-$(".btn1").click(function() {
-  $("#menu,.page_cover,html").addClass("open");
-  window.location.hash = "#open";
-})
-})
+  // 기존 코드는 생략
 
-window.onhashchange = function() {
-  if (location.hash != "#open") {
+  $(".btn1").click(function() {
+    $("#menu,.page_cover,html").addClass("open");
+    window.location.hash = "#open";
+  });
+
+  // 페이지 커버 클릭 시 메뉴 닫기
+  $(".page_cover").click(function() {
     $("#menu,.page_cover,html").removeClass("open");
-  }
-};
+    window.location.hash = "";
+  });
+});
+
 
 
 $("#menu ul.nav li").click(function(){
 $("ul",this).slideToggle("fast");
 })
+
 ;
 
 

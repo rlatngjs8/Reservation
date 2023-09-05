@@ -229,7 +229,13 @@
 $(document).ready(function() {
     $(document).on('click', '.select-checkbox', function() {
         $(this).closest('tr').toggleClass('selected-row');
-    });
+    })
+    
+    .on('click','#prevMenu',function(){
+    	window.location.href="/manager";
+    	
+    })
+    ;
 
     $('#btnDelete').click(function() {
         var selectedRows = $('.selected-row');

@@ -25,7 +25,7 @@ font-size: 24px;
 }
 
 
-#signup,#btnReset {
+#signup {
 color:#fff;
 font-size: 16px;
     background-color: grey;
@@ -44,15 +44,7 @@ input{
     background-color: #F8F8F8;
 }
 
-
-
- .hover4:hover{
-        box-shadow: 200px 0 0 0 rgba(0,0,0,0.25) inset, 
-                   -200px 0 0 0 rgba(0,0,0,0.25) inset;
-    }
-    
-    
-    
+  
      .hover4 {
         width:200px; 
         height:40px; 
@@ -73,20 +65,19 @@ input{
     
     
     
-    .hover4:hover{
+    .home:hover{
         box-shadow: 200px 0 0 0 rgba(0,0,0,0.25) inset, 
-                   -200px 0 0 0 rgba(0,0,0,0.25) inset;
+                   -200px 0 0 0 rgba(0,0,0,0.25) inset,
+                   color:#fff;
     }
     
-    
-    
-     .hover5 {
+        .home {
         width:200px; 
         height:40px; 
         line-height:40px; 
         border:1px #3399dd solid;;
         margin:15px auto; 
-        background-color:#F6CEF5;  
+        background-color:#F2E0F7;  
        
         cursor: pointer;  
 
@@ -94,7 +85,50 @@ input{
         transition:all 0.9s, color 0.3;  
     }
     
-    .hover5:hover{color:#fff;}
+    
+    
+    
+    
+    
+    
+    .home:hover{
+        box-shadow: 200px 0 0 0 rgba(0,0,0,0.25) inset, 
+                   -200px 0 0 0 rgba(0,0,0,0.25) inset;
+    }
+    
+    .home:hover{color:#fff;}
+    
+    .hover4:hover{
+        box-shadow: 200px 0 0 0 rgba(0,0,0,0.25) inset, 
+                   -200px 0 0 0 rgba(0,0,0,0.25) inset;
+    }
+    
+    .hover4:hover{color:#fff;}
+    
+    
+    
+    
+     .hover5 {
+       width:200px; 
+        height:40px; 
+        line-height:40px; 
+        border:1px #3399dd solid;;
+        margin:15px auto; 
+        background-color:#F2E0F7;  
+       
+        cursor: pointer;  
+
+        color:black;
+        transition:all 0.9s, color 0.3;   
+    }
+    
+     .hover5:hover{color:#fff;}
+     
+       .hover5:hover{
+        box-shadow: 200px 0 0 0 rgba(0,0,0,0.25) inset, 
+                   -200px 0 0 0 rgba(0,0,0,0.25) inset;
+    }
+    
     
     
     
@@ -144,6 +178,7 @@ input{
 	<input type=reset id=btnReset value="비우기" class="hover5">&nbsp;
 	<a href="/login" class="button">로그인</a>
 	</div>
+	<button id="home" class="home">홈으로</button>
 </form>
 </body>
 
@@ -155,7 +190,13 @@ input{
 
 <script src='http://code.jquery.com/jquery-Latest.js'></script>
 <script>
- $(document).on('submit','#frmMember',function(){
+ $(document)
+ .on('click','#home',function(){
+	 window.location.href="/";
+	 return false;
+ })
+ 
+ .on('submit','#frmMember',function(){
 	 if ($('#passcode').val() !== $('#passcode1').val()) {
 		alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
  		return false;
