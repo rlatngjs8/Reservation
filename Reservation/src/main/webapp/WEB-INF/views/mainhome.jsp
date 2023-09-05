@@ -293,6 +293,10 @@ card1 css 추가
 	overflow: hidden;
 }
 
+.cDiv1 {
+	overflow: hidden;
+}
+
 .card12 {
 	display: flex;
 	flex-direction: column;
@@ -303,15 +307,13 @@ card1 css 추가
 	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease;
-	width: 250px;
-	height: 240px;
 	border-radius: 30px;
 	
 	position: relative;
 	left: 25px;
 	
-	width: 550px;
-	height: 450px;
+	width: 526px;
+	height: 426px;
 }
 
 .card12 p {
@@ -326,8 +328,8 @@ card1 css 추가
 	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	
-	width: 500px;
-	height: 350px;
+	width: 450px;
+	height: 300px;
 }
 
 .slide-button {
@@ -372,7 +374,18 @@ card1 css 추가
 }
 
 .cDiv img {
-	margin-left: 30px;
+	margin-left: 20px;
+}
+
+.cDiv1 img {
+	margin-left: 10px;
+	margin-right:27px;
+	margin-top:10px;
+	height:40px;
+}
+
+.cDiv1 a{
+	position:relative;
 }
 
 .wrap {
@@ -433,6 +446,12 @@ card1 css 추가
 .cDiv a {
 	font-family: 'BMJUA', sans-serif;
 }
+
+.saleEvent {
+	font-size:23px;
+}
+
+
 </style>
 <body>
 
@@ -448,7 +467,7 @@ card1 css 추가
 
 	<!-- 이벤트 배너를 추가하고, "event"라는 링크를 걸었습니다. -->
 	<div class="banner">
-		<p>
+		<p class="saleEvent">
 			🎉 할인 이벤트 진행 중! <a href="event">자세히 보기</a>
 		</p>
 	</div>
@@ -496,10 +515,16 @@ card1 css 추가
 	<!-- 이미지 조정 및 룸에 대한 설명을 아이콘 아래에 표시 -->
 	<div>
 		<div class="first">
+		
+			<div class="cDiv">
+				<a href="#"><img src="img/전체보기.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<br>&nbsp;<a>전체보기</a>
+			</div>
+
 
 			<div class=cDiv>
 				<a href="/PartyRoom"><img src="img/파티룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<br>&nbsp; <a>파티룸</a>
+				<br> <a>파티룸</a>
 			</div>
 
 			<div class=cDiv>
@@ -565,7 +590,7 @@ card1 css 추가
 
 
 
-		<h3 class="newleft">새로 등록했어요</h3>
+		<a href="#"><h3 class="newleft">새로 등록했어요</h3></a>
 	</div>
 
 
@@ -627,7 +652,7 @@ card1 css 추가
 
 
 	<div>
-		<h3 class="newleft">방금 올라온 후기</h3>
+		<a href="#"><h3 class="newleft">방금 올라온 후기</h3></a>
 	</div>
 
 

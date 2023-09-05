@@ -114,6 +114,8 @@
 </head>
 <body>
     <h1>매출 관리 페이지</h1>
+    <button id="prev" class="prev">이전메뉴</button>
+    
     
     <!-- 날짜 선택 드롭다운 -->
     <div class="input-container">
