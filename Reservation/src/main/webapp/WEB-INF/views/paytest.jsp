@@ -7,82 +7,165 @@
   <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 </head>
 <style>
-	.temp_res {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    background-color: #f9f9f9;
-	}
-	.temp_res {
-		margin-top: 20px;
-		border-top: 1px solid #ccc;
-		padding-top: 10px;
-		word-wrap: break-word;
-	}
-	.reservation-item {
-    background-color: #f2f2f2;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid #ddd;
-	}
-	
-	.reservation-item p {
-	    font-weight: bold;
-	}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .total-price {
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px;
+        }
+        .selected-row {
+        background-color: #e0e0e0;
+    	}
+        
 	
 </style>
 <body>
-	<input type='hidden' id='userid' name="userid" value="${userid}">
-	<div id="temp_res">
-	<!-- 장바구니 데이터 들어가는곳 -->
-	</div>
+    <table>
+        <thead>
+            <tr>
+                <th>전체</th>
+                <th>상품명</th>
+                <th>판매가</th>
+                <th>입실시간</th>
+                <th>퇴실시간</th>
+                <th>주문관리</th>
+            </tr>
+        </thead>
+        <tbody id="shopping_basket">
+            <!-- 상품 정보 들어가는 곳 -->
+        </tbody>
+    </table>
+    <button id='btnDelete'>삭제</button> <!-- 버튼 ID 수정 -->
+    <div class="total-price">총 가격: 105,000원</div>
 
-<!-- 	 여기부터는 토스뱅크api -->
-  <!-- 결제위젯, 이용약관 영역 -->
-  <div id="payment-method"></div>
-  <div id="agreement"></div>
-  <!-- 결제하기 버튼 -->
-  <button id="payment-button">결제하기</button>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-  let totalPrice = 0;
-  $(document).ready(function () {
-	 get_temp_reservation();
-	});
+    <!-- 여기부터는 토스뱅크 API -->
+    <!-- 결제위젯, 이용약관 영역 -->
+    <div id="payment-method"></div>
+    <div id="agreement"></div>
+    <!-- 결제하기 버튼 -->
+    <button id="payment-button">결제하기</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            get_temp_reservation();
+        });
 
-	//총 가격이 안나옴 -------------------------------------
-  let real_totalPrice = 0;
+        function get_temp_reservation() {
+            console.log('임시예약 데이터 불러옴');
+            $.ajax({
+                url: '/get_temp_reservation',
+                data: {},
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    $("#shopping_basket").empty();
+                    for (let i = 0; i < data.length; i++) {
+                        let temp_data =
+                            "<tr>" + // 체크박스 추가
+                            "<td>" + "1" + "</td>" +
+                            "<td>" + data[i]['space_name'] + "</td>" +
+                            "<td>" + data[i]['total_price'] + "</td>" +
+                            "<td>" + data[i]['start_time'] + "시" + "</td>" +
+                            "<td>" + data[i]['end_time'] + "시" + "</td>" +
+                            "<td><input type='checkbox' id='" + data[i]['reservation_id'] +
+                            "' name='" + data[i]['reservation_id'] + "' value='" + data[i]['reservation_id'] +
+                            "' style='width: 20px; height: 20px;' class='select-checkbox'></td>" + // 체크박스 크기 설정
+                            "</tr>";
+                        $('#shopping_basket').append(temp_data);
+                    }
+                }
+            });
+        }
 
-  
-  function get_temp_reservation() { //데이터 불러오기
-	    console.log('임시예약 데이터 불러옴');
-	    $.ajax({
-	        url: '/get_temp_reservation',
-	        data: {},
-	        type: 'post',
-	        dataType: 'json',
-	        success: function (data) {
-	            console.log(data);
-	            $("#temp_res").empty();
-	            for (let i = 0; i < data.length; i++) {
-	            	real_totalPrice += data[i]['total_price'];
-	                let temp_data =
-	                	"<div style='background-color: #f2f2f2; padding: 10px; margin: 10px; border: 1px solid #ddd;'>" +
-	                	"<p style='font-weight: bold;'>구매자 id: " + data[i]['userid'] + "<p>" +
-	                	"<p>시작 시간: " + data[i]['start_time'] + "</p>" +
-	                	"<p>끝 시간: " + data[i]['end_time'] + "</p>" +
-	                	"<p>날짜: " + data[i]['reservation_date'] + "</p>" +
-	                	"<p>상품 정보: " + data[i]['space_id'] + "</p>" +
-	                	"<p>상품 정보: " + data[i]['total_price'] + "</p>" +
-	                	"</div>";
-	                $('#temp_res').append(temp_data);
-	            }
-	        }
-	    });
-	}
+        $(document).on('click', '.select-checkbox', function () {
+            $(this).closest('tr').toggleClass('selected-row');
+        });
 
-  
-  
+        $('#btnDelete').click(function () {
+            var selectedRows = $('.selected-row');
+            console.log("selectedRows", selectedRows);
+
+            if (selectedRows.length === 0) {
+                alert("삭제할 예약을 선택하세요.");
+                return;
+            }
+
+            var confirmDelete = confirm("선택한 예약을 정말로 삭제하시겠습니까?");
+            if (confirmDelete) {
+                selectedRows.each(function () {
+                    var currentRow = $(this); // 현재 행 저장
+                    var reservation_id = currentRow.find('input[type="checkbox"]').val(); // 예약 ID 가져오기
+                   // console.log("Deleting reservation_id", reservation_id);
+                    
+                    $.ajax({
+                        url: "/delete_temp_reservation",
+                        data: { reservation_id: reservation_id },
+                        type: 'post',
+                        success: function (data) {
+                        	if(data=='0'){
+                                console.error("삭제 실패:", error);                        		
+                        	} else {
+                                console.log("삭제 성공");
+                                currentRow.remove(); // 선택된 행 제거
+                        		
+                        	}
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("삭제 실패:", error);
+                        }
+                    });
+                });
+            }
+        });
+
+
+
+
+
+
+
+
     const clientKey = "test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq"
     const customerKey = "n9F7WOOedw7z_QeYrtqoK" // 내 상점에서 고객을 구분하기 위해 발급한 고객의 고유 ID
     const button = document.getElementById("payment-button")
@@ -98,7 +181,7 @@
     // https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액-옵션
     paymentWidget.renderPaymentMethods(
       "#payment-method", 
-      { value: real_totalPricee },
+      { value: '123' },
       { variantKey: "DEFAULT" } // 렌더링하고 싶은 결제 UI의 variantKey
     )
 

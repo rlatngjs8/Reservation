@@ -20,7 +20,7 @@ public interface ReservationDAO {
 		// 추가부분
 		ArrayList<temp_reservationDTO> select_temp_reservation(String userid);
 		void insert_temp_reservation(int start_time, int end_time, String reservation_date, int total_price, int space_id, String userid);
-		
+		int delete_temp_reservation(int reservation_id);
 		
 		
 }
