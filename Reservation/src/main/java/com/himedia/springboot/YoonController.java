@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -73,6 +74,7 @@ public class YoonController {
 	}
 	
 	@PostMapping("insert_temp_reservation")
+	@ResponseBody
 	public String insert_temp_reservation(HttpServletRequest req, Model model) {
 		int start_time = Integer.parseInt(req.getParameter("start_time"));
 		int end_time = Integer.parseInt(req.getParameter("end_time"));
@@ -96,14 +98,40 @@ public class YoonController {
 		JSONArray ja = new JSONArray();
 		for( int i = 0 ; i < temp_reservation.size(); i++ ) {
 			JSONObject jo = new JSONObject();
+			jo.put("reservation_id", temp_reservation.get(i).getReservation_id());
 			jo.put("start_time", temp_reservation.get(i).getStart_time());
 			jo.put("end_time", temp_reservation.get(i).getEnd_time());
 			jo.put("reservation_date", temp_reservation.get(i).getReservation_date());
 			jo.put("total_price", temp_reservation.get(i).getTotal_price());
 			jo.put("space_id", temp_reservation.get(i).getSpace_id());
 			jo.put("userid", temp_reservation.get(i).getUserid());
+			jo.put("space_name", temp_reservation.get(i).getSpace_name());
+			jo.put("space_type", temp_reservation.get(i).getSpace_type());
+			jo.put("price", temp_reservation.get(i).getPrice());
+			jo.put("img1", temp_reservation.get(i).getImg1());
 			ja.add(jo);
 		}
 		return ja.toJSONString();
 	}
+	
+//	@PostMapping("delete_temp_reservation")
+//	public String delete_temp_reservation(HttpServletRequest req, Model model) {
+//		int reservation_id = Integer.parseInt(req.getParameter("data[i]['reservation_id']"));
+//		resdao.delete_temp_reservation(reservation_id);
+//		return "redirect:/paytest";
+//	}
+	
+	@PostMapping("delete_temp_reservation")
+	@ResponseBody
+	public String delete_temp_reservation(HttpServletRequest req, Model model) {
+	    String reservationIdParam = req.getParameter("reservation_id");
+	    int cnt=0;
+	    if (reservationIdParam != null && !reservationIdParam.isEmpty()) {
+	        int reservation_id = Integer.parseInt(reservationIdParam);
+	        cnt=resdao.delete_temp_reservation(reservation_id);
+	    }
+	    return ""+cnt;
+	}
+
+
 }
