@@ -263,7 +263,7 @@ font-family: 'CookieRun-Regular';
       <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       
-      <c:when test="${userid =='nayeon'}">
+      <c:when test="${userid =='xaexal'}">
       <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       

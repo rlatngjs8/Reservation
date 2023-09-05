@@ -250,6 +250,7 @@ public class KimController {
 	 @ResponseBody
 	 public String delMember1(HttpServletRequest req) {
 		 String userid= req.getParameter("userid");
+		 System.out.println("userid=" + userid);
 		 boolean success =rdao.deleteMember1(userid);
 		 System.out.println("success="+success);
 		 
