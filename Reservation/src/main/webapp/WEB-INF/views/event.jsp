@@ -44,11 +44,27 @@
          padding: 10px;
       }
 
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
+.bn > a,p{
+	 font-family: 'Cafe24Ssurround';
+}
 
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
-
-
+h2{
+	 font-family: 'GongGothicMedium';
+}
 
 
 
@@ -81,7 +97,7 @@
 
   	<p align=center> 진행중인 이벤트 목록</p>
   	
-  	
+  	<br><br>
   	
   	
   	<section>

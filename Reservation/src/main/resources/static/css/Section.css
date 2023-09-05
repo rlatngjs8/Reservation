@@ -22,6 +22,7 @@ body {
 	left:132px;
 	font-size: 21px;
 	
+	
 }
 
 .otherRoom3{
@@ -96,7 +97,13 @@ body {
     text-overflow: ellipsis;
 }
 
-
+.title{
+	font-family: 'omyu_pretty';
+	font-size: 40px;
+	text-decoration: underline;
+    text-underline-position: under;
+	
+}
 
 
 .second {
@@ -107,7 +114,11 @@ body {
     margin: 20px 0;
     padding: 0;
     
+    
 }
+
+
+
 
 .second1 {
 
@@ -197,8 +208,10 @@ body {
 	
 }
 
-
-
+.card {
+background-color: #EFFBF8;
+	
+}
 
 
 

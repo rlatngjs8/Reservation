@@ -133,6 +133,15 @@
   pointer-events: none;
 }
 
+
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 #prevMenu{
 	position:relative;
 	left : 200px;
@@ -145,8 +154,8 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
-	font-size:9px;
+	font-family: 'CookieRun-Regular';
+	font-size:11px;
 	font-style:italic;
 	padding:5px 11px;
 	text-decoration:none;
@@ -164,23 +173,12 @@
 </style>
 </head>
 <body>
+<br><br><br><br>
 <h1>예약현황</h1>
 
 <input type="button" id="prevMenu" value="이전메뉴" class="prevMenu">
 
 
-<div class="custom-select" align=center>
-    <select id="searchType">
-        <option value="seqno" class="seqno" >예약번호</option>
-        <option value="userid" class="userid">아이디</option>
-        <option value="mobile" class="mobile">전화번호</option>
-        <option value="space_name" class="space_name">상품명</option>
-    </select>
-    <br><br>
-    <input type="text" id="searchKeyword" placeholder="검색할 키워드를 입력하세요">
-    <br><br>
-    <button id="btnSearch" class="btnSearch">검색</button>
-</div>
 
 <br><br><br><br>
 

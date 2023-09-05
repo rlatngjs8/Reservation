@@ -92,6 +92,15 @@
         .fh1{
         	color:black;
         }
+        
+        @font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+        
+        
        .btnPrev {
 	box-shadow:inset 0px 1px 0px 0px #9fb4f2;
 	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
@@ -107,6 +116,7 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #283966;
 	margin-left:200px;
+	font-family: 'CookieRun-Regular';
 }
 .btnPrev:hover {
 	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);

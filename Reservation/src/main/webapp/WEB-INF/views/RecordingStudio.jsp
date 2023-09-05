@@ -25,7 +25,7 @@
 <!-- 123 -->
 <%@include file="header.jsp" %>
 
-	<h1 class="top">녹음실/스튜디오</h1>
+	<h1 class="title">녹음실/스튜디오</h1>
 
 <div>
 	<a href="/seminarRoom"><span class="otherRoom3"><strong> 세미나룸 </strong></span></a>

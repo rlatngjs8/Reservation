@@ -56,7 +56,7 @@ body {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease;
 	width: 400px;
-	height: 380px;
+	height: 400px;
 	border-radius: 20px;
 }
 
@@ -219,6 +219,8 @@ h3 {
 	margin-left: 10%;
 	font-family: 'Cafe24Supermagic-Bold-v1.0';
 	font-size : 40px;
+	text-decoration:underline;
+	text-underline-position: under;
 }
 
 /*
@@ -253,8 +255,8 @@ card1 css 추가
 	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease;
-	width: 550px;
-	height: 450px;
+	width: 500px;
+	height: 400px;
 	border-radius: 30px;
 	margin-left: 70px;
 }
@@ -272,8 +274,8 @@ card1 css 추가
 .card1 img css 추가
 */
 .card1 img {
-	width: 500px;
-	height: 350px;
+	width: 450px;
+	height: 300px;
 	margin-bottom: 10px;
 	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -318,13 +320,13 @@ card1 css 추가
 }
 
 .card12 img {
-	width: 200px;
-	height: 166.75px;
+	width: 180px;
+	height: 146px;
 	margin-bottom: 10px;
 	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	
-		width: 500px;
+	width: 500px;
 	height: 350px;
 }
 
@@ -380,32 +382,44 @@ card1 css 추가
 	justify-content: center;
 }
 
-.load {
-	width: 80px;
-	height: 35px;
-	font-family: 'Roboto', sans-serif;
-	font-size: 11px;
-	text-transform: uppercase;
-	letter-spacing: 2.5px;
-	font-weight: 500;
-	color: #000;
-	background-color: #fff;
-	border: none;
-	border-radius: 45px;
-	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-	transition: all 0.3s ease 0s;
-	cursor: pointer;
-	outline: none;
-	position: relative;
-	left: 27px;
+
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.load:hover {
-	background-color: #2EE59D;
-	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-	color: #fff;
-	transform: translateY(-7px);
+
+
+.load {
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#3a8a9e;
+	font-family:Arial;
+	font-size:12px;
+	padding:7px 15px;
+	text-decoration:none;
+	
+	margin-left:53px;
+	font-family: 'yg-jalnan';
+	
 }
+.load:hover {
+	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	background-color:#bab1ba;
+}
+.load:active {
+	position:relative;
+	top:1px;
+}
+
+
 
 @font-face {
 	font-family: 'BMJUA';
@@ -440,7 +454,6 @@ card1 css 추가
 	</div>
 	<br>
 	<br>
-
 
 
 
@@ -637,7 +650,7 @@ card1 css 추가
 
 
 	<div class="wrap">
-		<input type="button" id="load" name="load"  value="더보기">
+		<input type="button" id="load" name="load" class="load" value="더보기">
 	</div>
 
 	<br>

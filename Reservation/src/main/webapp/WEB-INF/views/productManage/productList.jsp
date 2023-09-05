@@ -158,6 +158,7 @@ font-family: 'SBAggroB';
   <button id="add-product-btn">상품추가</button>
   <button id="btnDelete">상품삭제</button>
 </div>
+
 <div class="container">
   <c:forEach items="${plist}" var="prod">
     <div class="product" data-space_id="${prod.space_id}">
@@ -168,6 +169,7 @@ font-family: 'SBAggroB';
         <p class="space_type">${prod.space_type}</p>
         <p class="space-price">${prod.location}</p>
         <p class="space-price">${prod.mobile}</p>
+
       </div>
     </div>
   </c:forEach>
