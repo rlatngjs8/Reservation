@@ -77,13 +77,9 @@
     <a href="/showReservation">예약관리</a>
     <br>
     <a href="/productList">상품관리</a>
-<<<<<<< HEAD
+    <br>
     <a href="/sales">매출관리</a>
-=======
     <br>
-    <a href="/salesManagement">매출관리</a>
-    <br>
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
     <a href="/Q&A">Q&A</a>
     <br>
     <a href="/review">상품후기</a>

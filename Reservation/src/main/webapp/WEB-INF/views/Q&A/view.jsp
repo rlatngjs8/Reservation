@@ -10,18 +10,15 @@
         font-family: Arial, sans-serif;
         text-align: center;
         margin: 50px auto;
+        background-color: #f5f5f5;
     }
 
     table {
         width: 70%;
         margin: 0 auto;
-    }
-
-    table {
         border-collapse: collapse;
         margin-top: 20px;
     }
-
     table th, table td {
         border: 1px solid #ccc;
         padding: 8px;
@@ -30,30 +27,46 @@
 
     h1 {
         text-align: center;
+        background-color: #25a4cd;
+        color: #fff;
+        padding: 20px 0;
+        margin: 0;
     }
 
     textarea {
-        width: 100%;
+        width: 90%;
         resize: vertical;
+        padding: 10px;
+        border: 1px solid #ccc;
     }
 
     #btnUpdate, #btnDelete {
-        background-color: #f2f2f2;
+        background-color: #e74c3c;
         border: none;
-        padding: 6px 12px;
-        margin-right: 10px;
+        padding: 10px 20px;
+        color: #fff;
         cursor: pointer;
+        margin-right: 10px;
+        border-radius: 5px;
+    }
+
+    #btnUpdate:hover, #btnDelete:hover {
+        background-color: #c0392b;
     }
 
     a.button {
         text-decoration: none;
-        background-color: #f2f2f2;
-        padding: 6px 12px;
+        background-color: #25a4cd;
+        padding: 10px 20px;
+        color: #fff;
+        border-radius: 5px;
+        margin-right: 10px;
     }
 
     a.button:hover {
-        background-color: #ddd;
+        background-color: #2980b9;
     }
+
     h2 {
         margin-top: 40px;
     }
@@ -75,45 +88,53 @@
     }
 
     #commentContent {
-        width: 100%;
+        width: 68%;
         padding: 10px;
         resize: vertical;
     }
 
     #btnSubmit {
-        background-color: #007bff;
+        background-color: #25a4cd;
         color: white;
         border: none;
-        padding: 8px 16px;
+        padding: 10px 20px;
         cursor: pointer;
+        border-radius: 5px;
     }
 
     #btnSubmit:hover {
         background-color: #0056b3;
     }
-    #commentContent {
-        width: 50%; /* 원하는 넓이로 조절하세요 */
-        padding: 10px;
-        resize: vertical;
+    .cal{
+    		font-weight: bold;
     }
+    .link-style {
+    text-decoration: none;
+    color: #25a4cd;
+    font-weight: bold;
+		}
+		
+		.link-style:hover {
+		    text-decoration: underline;
+		}
 </style>
 </head>
 <body>
-<h1>게시물 보기</h1>
+<h1>상세문의내용</h1>
 <table>
-<tr><td>게시물번호</td><td id="seqno">${bpost.seqno }</td></tr>
-<tr><td>제목</td><td>${bpost.title }</td></tr>
-<tr><td>내용</td><td><textarea rows="10" cols="50" readonly>${bpost.content }</textarea></td></tr>
-<tr><td>작성자</td><td>${bpost.writer}</td></tr>
-<tr><td>조회수</td><td>${bpost.hit }</td></tr>
-<tr><td>작성시간</td><td>${bpost.created }</td></tr>
-<tr><td>수정시각</td><td>${bpost.updated }</td></tr>
+<tr><td class="cal">번호</td><td id="seqno">${bpost.seqno }</td></tr>
+<tr><td class="cal">제목</td><td>${bpost.title }</td></tr>
+<tr><td class="cal">내용</td><td><textarea rows="13" cols="60" readonly>${bpost.content }</textarea></td></tr>
+<tr><td class="cal">작성자</td><td>${bpost.writer}</td></tr>
+<tr><td class="cal">조회수</td><td>${bpost.hit }</td></tr>
+<tr><td class="cal">작성시간</td><td>${bpost.created }</td></tr>
+<tr><td class="cal">수정시각</td><td>${bpost.updated }</td></tr>
 <tr>
-    <td><a href="/">목록으로</a></td>
+    <td><a href="/" class="link-style">목록으로</a></td>
     <td style='text-align: right;'>
-        <a href="/write" class="button" id=btnWrite>글쓰기</a>
-    		<button id="btnUpdate">수정</button>
-        	<button id="btnDelete">삭제</button>
+        <a href="/write" class="button" id="btnWrite">글쓰기</a>
+        <button id="btnUpdate">수정</button>
+        <button id="btnDelete">삭제</button>
     </td>
 </tr>
 </table>
@@ -121,8 +142,8 @@
 <table id="commentTable">
     <thead style="background-color: #f2f2f2; padding: 8px;">
         <tr>
-            <th>작성자</th>
-            <th>내용</th>
+            <th style="width: 20%;">작성자</th>
+            <th style="text-align: center;">내용</th>
         </tr>
     </thead>
     <tbody>
@@ -134,13 +155,11 @@
 </table>
 <h2>댓글 작성</h2>
 <form id="commentForm" action="/addComment" method="post">
-		<input type="hidden" name="seqno" value="${bpost.seqno}"> 
-    <textarea id="commentContent" rows="4" cols="20" placeholder="댓글 내용" name="comment"></textarea>
+    <input type="hidden" name="seqno" value="${bpost.seqno}"> 
+    <textarea id="commentContent" rows="4" cols="25" placeholder="댓글 내용" name="comment"></textarea>
     <br>
-    <button type="submit" id=btnSubmit>댓글 작성</button>
+    <button type="submit" id="btnSubmit">댓글 작성</button>
 </form>
-
-
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>

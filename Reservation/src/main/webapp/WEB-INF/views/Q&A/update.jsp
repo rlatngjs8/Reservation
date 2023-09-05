@@ -3,55 +3,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>게시물 보기</title>
+    <meta charset="UTF-8">
+    <title>게시물 수정</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px auto;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #25a4cd;
+            color: #fff;
+            padding: 20px 0;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 60%;
+            margin: 70px auto 0; /* 상단 여백 추가 */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        #content {
+            resize: none;
+        }
+    </style>
 </head>
-<style>
-	table {
-		width: 100%;
-	}
+<body>
+<h1>게시물 수정</h1>
+<div class="form-container">
+    <form method="post" action="/modify" id="frmUpdate" name="frmUpdate">
+        <label for="title">제목</label>
+        <input type="text" name="title" id="title" value="${bpost.title}" size="64" maxlength="128">
 
-	table {
-		border-collapse: collapse;
-    }
+        <label for="content">내용</label>
+        <textarea rows="10" cols="50" name="content" id="content">${bpost.content}</textarea>
 
-    table th, table td {
-        border: 1px solid #ccc;
-        padding: 8px;
-        text-align: center;
-    }
-
-    h1 {
-        text-align: center;
-    }
-</style>
-<body align	=center>
-<form method="post" action="/modify" id=frmUpdate name=frmUpdate>
-<table>
-<tr><td>게시물번호</td><td>${bpost.seqno}<input type=hidden id=seqno name=seqno value="${bpost.seqno}"></td><tr>
-<tr><td>제목</td><td><input type=text name=title id=title value="${bpost.title }" size=64 maxlength=128></td><tr>
-<tr><td>내용</td><td><textarea rows=10 cols=50 name=content id=content>${bpost.content }</textarea></td><tr>
-<tr><td>작성자</td><td>${bpost.writer }</td><tr>
-<tr><td>조회수</td><td>${bpost.hit }</td><tr>
-<tr><td>작성시간</td><td>${bpost.created }</td><tr>
-<tr><td>수정시각</td><td>${bpost.updated }</td><tr>
-<tr><td><a href="/">목록으로</a></td><td></td><tr>
-<td><input type=submit id=btnSubmit name=btnSubmit value='수정완료'>&nbsp;&nbsp;
-</td></tr>
-</table>
-</form>
+        <div class="btn-container">
+            <a href="/Q&A" class="btn">목록으로</a>
+            <input type="submit" id="btnSubmit" name="btnSubmit" value="수정완료" class="btn">
+        </div>
+    </form>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
-$(document)
-.on('submit','#frmUpdate',function(){
-	if($('#title').val()==''){
-		alert('제목을 입력하시오'); return false;
-	}
-	if($('#cotent').val()==''){
-		alert('게시물내용을 입력하시오.'); return false;
-	}
-	return true;
+$(document).on('submit', '#frmUpdate', function() {
+    if ($('#title').val() == '') {
+        alert('제목을 입력하시오.');
+        return false;
+    }
+    if ($('#content').val() == '') {
+        alert('게시물 내용을 입력하시오.');
+        return false;
+    }
+    return true;
 })
 </script>
 </html>

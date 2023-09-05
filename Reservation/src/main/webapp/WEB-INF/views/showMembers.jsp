@@ -93,7 +93,8 @@
     height: 75px;
   }
   table {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     border-collapse: collapse;
     margin-top: 20px;
     background-color: #fff;

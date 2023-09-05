@@ -12,15 +12,14 @@
         margin: 0;
         padding: 0;
     }
-    
-        @font-face {
-    font-family: 'SBAggroB';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-    
-    
+
+    @font-face {
+        font-family: 'SBAggroB';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
     h1 {
         text-align: center;
         margin-top: 20px;
@@ -37,15 +36,14 @@
         background-color: #fff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    
-    	@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-    
-    
+
+    @font-face {
+        font-family: 'GmarketSansMedium';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
     th, td {
         padding: 10px;
         text-align: center;
@@ -74,117 +72,57 @@
         color: white;
         border: none;
         cursor: pointer;
-        border-radius:10px;
-        
-        
+        border-radius: 10px;
     }
     #btnDelete:hover {
         background-color: #d32f2f;
     }
-    
-.btnSearch {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-	background-color:#ededed;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#777777;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-}
-.btnSearch:hover {
-	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-	background-color:#dfdfdf;
-}
-.btnSearch:active {
-	top:1px;
-}
 
-
-
-.custom-select {
-  position: relative;
-  display: inline-block;
-  width: 200px; 
-  height:120px;
-  left:790px;
-  top:60px;
-  
-  margin-bottom:10px;
-}
-
-.custom-select select {
-  margin-top:5px;
-  width: 150px;
-  border: 1px solid #ccc;
-}
-.custom-select::after {
-
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-#prevMenu{
-	position:relative;
-	left : 200px;
-	top:60px;
-	
-	box-shadow: 0px 5px 14px -7px #276873;
-	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-	background-color:#ECE0F8;
-	border-radius:8px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:9px;
-	font-style:italic;
-	padding:5px 11px;
-	text-decoration:none;
-	text-shadow:0px 4px 0px #3d768a;
-
-}
-.prevMenu:hover {
-	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-	background-color:#408c99;
-}
-.prevMenu:active {
-	position:relative;
-	top:1px;
-}
+    .btnSearch {
+        box-shadow: inset 0px 1px 0px 0px #ffffff;
+        background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+        background-color: #ededed;
+        border-radius: 6px;
+        border: 1px solid #dcdcdc;
+        display: inline-block;
+        cursor: pointer;
+        color: #777777;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 6px 24px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #ffffff;
+    }
+    .btnSearch:hover {
+        background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+        background-color: #dfdfdf;
+    }
+    .btnSearch:active {
+        top: 1px;
+    }
+    .subHeader {
+    display: flex;
+    justify-content: space-between;
+		}
+		
+		.serch,
+		.btnDelete {
+		    white-space: nowrap;
+		}
 </style>
 </head>
 <body>
 <h1>예약현황</h1>
-
-<input type="button" id="prevMenu" value="이전메뉴" class="prevMenu">
-
-
-<div class="custom-select" align=center>
-    <select id="searchType">
-        <option value="seqno" class="seqno" >예약번호</option>
-        <option value="userid" class="userid">아이디</option>
-        <option value="mobile" class="mobile">전화번호</option>
-        <option value="space_name" class="space_name">상품명</option>
-    </select>
-    <br><br>
-    <input type="text" id="searchKeyword" placeholder="검색할 키워드를 입력하세요">
-    <br><br>
-    <button id="btnSearch" class="btnSearch">검색</button>
+<div class = "subHeader">
+	<div class = "serch">
+		<input type="text" id="searchKeyword" placeholder="검색할 키워드를 입력하세요">
+		<button id="btnSearch" class="btnSearch">검색</button>
+	</div>
+	<div class = "btnDelete">
+		<button id="btnDelete">선택된 예약 삭제</button>
+	</div>
 </div>
-
-<br><br><br><br>
-
-
 <div class="table-container">
     <table>
         <thead>
@@ -208,26 +146,20 @@
         </tbody>
     </table>
 </div>
-<button id="btnDelete">선택된 예약 삭제</button>
+
+
 </body>
 <script src="http://code.jquery.com/jquery-Latest.js"></script>
 <script>
 $(document).ready(function() {
-	$(document).on('click', '#prevMenu', function(){
-		
-		window.location.href="/manager";
-	})
-	
-	
-	
     $(document).on('click', '.select-checkbox', function() {
         $(this).closest('tr').toggleClass('selected-row');
-    
     });
 
     $('#btnDelete').click(function() {
         var selectedRows = $('.selected-row');
-        
+        console.log(selectedRows);
+
         if (selectedRows.length === 0) {
             alert("삭제할 예약을 선택하세요.");
             return;
@@ -238,30 +170,22 @@ $(document).ready(function() {
             selectedRows.each(function() {
                 var seqno = $(this).data('seqno');
                 $.ajax({
-                	url:"/reDelete",
-                	data: {seqno: seqno},
-                	type:'post',
-                	success: function(data){
-                		console.log("삭제성공");
-                		selectedRows.remove();
-                	}
-                })
-                
-                
-                
-                // 여기에 삭제하는 AJAX 요청 추가
+                    url: "/reDelete",
+                    data: { seqno: seqno },
+                    type: 'post',
+                    success: function(data) {
+                        console.log("삭제성공");
+                        selectedRows.remove();
+                    }
+                });
             });
         }
     });
-});
-$(document).ready(function() {
-    // ... (기존 코드)
 
     $('#btnSearch').click(function() {
         var keyword = $('#searchKeyword').val().trim().toLowerCase(); // 소문자로 변경
-        var searchType = $('#searchType').val();
         var rows = $('.select-checkbox').closest('tr');
-        
+
         if (keyword === '') {
             rows.show(); // 검색어가 없을 때 모든 행을 보여줌
             return;
@@ -269,16 +193,12 @@ $(document).ready(function() {
 
         rows.hide();
         rows.each(function() {
-            var data = $(this).data(searchType).toString().toLowerCase(); // 소문자로 변경
-            if (data.includes(keyword)) {
+            var rowData = $(this).text().toLowerCase(); // 현재 행의 모든 텍스트를 소문자로 변경하여 가져옴
+            if (rowData.includes(keyword)) {
                 $(this).show();
             }
         });
     });
 });
-
-
-
-
 </script>
 </html>
