@@ -99,13 +99,13 @@
 	}
 	
 	.selected-start-time {
-		background-color: #333; /* 검정색 배경 */
-		color: #fff; /* 흰색 글자색 */
+		background-color: #C8A2C8; /* 검정색 배경 */
+		color: #333; /* 흰색 글자색 */
 	}
 	
 	.selected-end-time {
-		background-color: #333; /* 검정색 배경 */
-		color: #fff; /* 흰색 글자색 */
+		background-color: #C8A2C8; /* 검정색 배경 */
+		color: #333; /* 흰색 글자색 */
 	}
 	
 	.price-text {
@@ -382,6 +382,10 @@
 	.duplicate-time-range {
 	    background-color: #ffcccb; /* 강조 색상 설정 */
 	}
+	
+	.highlighted-time-range {
+		background-color: #C8A2C8;
+	}
 </style>
 </head>
 <body>
@@ -477,15 +481,18 @@
                     <c:if test="${empty sessionScope.userid}">
                         <button id="addReF">장바구니 담기</button>
                     </c:if>
+                    <button id='show_cart'>장바구니 보기</button>
                     <div id="addedSlots"></div>
                     <!-- 추가버튼을 누르면 들어가는 곳  -->
                 </div>
 
                 <br>
                 <div class="price-text" id="totalPrice">총 가격: 0원</div>
+                <!--  로그인했을때 버튼 -->
                 <c:if test="${not empty sessionScope.userid}">
-                    <button id="btnReT">지금 진짜 예약하기</button>
+                    <button id="btnReT">결제하기</button>
                 </c:if>
+                <!-- 로그인안했을때 버튼 -->
                 <c:if test="${empty sessionScope.userid}">
                     <button id="btnReF">지금 예약하기</button>
                 </c:if>
@@ -588,14 +595,19 @@ $(document).ready(function () {
     review_get();
     get_imgslide();
 
+    // datepicker를 초기화할 때 showOn 옵션을 'focus'로 설정하여 input에 포커스가 가면 달력이 나타나도록 합니다.
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         minDate: new Date(),
+        showOn: 'focus', // 이 옵션을 추가하면 input에 포커스가 가면 달력이 나타납니다.
         onSelect: function (dateText, inst) {
             // 날짜 선택 후 초기화
             $("#selectedDate").text("선택한 날짜: " + dateText);
         }
     });
+
+    // input에 초기 포커스를 설정합니다.
+    $("#datepicker").focus();
 
     $(".time-cell").click(function () {
         const selectedDate = $("#datepicker").val();
@@ -689,16 +701,19 @@ $(document).ready(function () {
     });
 });
 
-// 선택한 시간 범위 강조 표시
+//선택한 시간 범위 강조 표시
 function highlightTimeRange() {
     const startTimeIndex = $(".time-cell").index($(".selected-start-time"));
     const endTimeIndex = $(".time-cell").index($(".selected-end-time"));
 
     $(".time-cell").removeClass("highlighted-time-range");
-    for (let i = startTimeIndex; i <= endTimeIndex; i++) {
+
+    // 시작 시간과 종료 시간 사이의 셀만 보라색으로 칠함
+    for (let i = Math.min(startTimeIndex, endTimeIndex) + 1; i < Math.max(startTimeIndex, endTimeIndex); i++) {
         $($(".time-cell")[i]).addClass("highlighted-time-range");
     }
 }
+
 
 // 선택한 시간 초기화
 function resetTimeSelection() {
@@ -811,6 +826,10 @@ $(document).on('click', '#not_login', function () { //로그인 안했을때 리
 
 $(document).on('click', '#btnReF', function () { //로그인 안했을때 예약하기 버튼
     alert("로그인을 해주세요.");
+});
+
+$(document).on('click', '#show_cart', function () { //카트로이동
+	 document.location = '/cart'
 });
 
 const reservationWindow = document.getElementById('reservationWindow'); // 예약 창 띄우기
@@ -935,5 +954,9 @@ function get_imgslide() { // 이미지 슬라이더
 }
 
 
+
 </script>
+
 </html>
+
+

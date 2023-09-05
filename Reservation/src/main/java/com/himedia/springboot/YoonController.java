@@ -132,6 +132,11 @@ public class YoonController {
 	    }
 	    return ""+cnt;
 	}
+	
+	@GetMapping("cart")
+	public String cart(Model model) {
+		return "cart";
+	}
 
 
 }
