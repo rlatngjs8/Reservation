@@ -13,7 +13,7 @@ ul.sub_mobile {
   display: none;
 }
 
-#menu.open {
+#menu.open { 
   left: 0px;
   width:300px;
 
