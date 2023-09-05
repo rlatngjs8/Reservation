@@ -115,6 +115,17 @@ footer .logo {
 }
 
 
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+li,span,p,a {
+	font-family: 'CookieRun-Regular';
+}
+
 
 </style>
 

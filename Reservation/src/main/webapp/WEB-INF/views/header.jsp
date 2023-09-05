@@ -9,6 +9,11 @@
 <title>Insert title here</title>
 </head>
 <style>
+ul.sub_mobile {
+  display: none;
+}
+
+
 
 #menu.open {
   left: 0px;
@@ -182,11 +187,24 @@ a {
 	font-family:'KIMM_Bold',sans-serif;
 }
 
-.bla{
-	
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
+table,li{
+font-family: 'CookieRun-Regular';
+}
 
+button {
+font-family: 'CookieRun-Regular';
+}
+
+.name {
+	font-size : 20px;
+}
 
 
 </style>
@@ -219,7 +237,7 @@ a {
                         </c:when>
                             <c:otherwise>
                     
-                            <a><span>${name}</span> 님 환영합니다</a>&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
+                            <a><span class="name">${name}</span> 님 환영합니다</a>&nbsp;&nbsp;&nbsp;<button id="btnLogout" class="button">로그아웃</button>
                              <li><a href='/myPage'>마이페이지</a></li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
                             </c:otherwise>
                              </c:choose>

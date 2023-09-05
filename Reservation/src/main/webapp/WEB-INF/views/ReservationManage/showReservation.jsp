@@ -78,6 +78,7 @@
         background-color: #d32f2f;
     }
 
+<<<<<<< HEAD
     .btnSearch {
         box-shadow: inset 0px 1px 0px 0px #ffffff;
         background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
@@ -110,9 +111,75 @@
 		.btnDelete {
 		    white-space: nowrap;
 		}
+=======
+
+
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 200px; 
+  height:120px;
+  left:790px;
+  top:60px;
+  
+  margin-bottom:10px;
+}
+
+.custom-select select {
+  margin-top:5px;
+  width: 150px;
+  border: 1px solid #ccc;
+}
+.custom-select::after {
+
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#prevMenu{
+	position:relative;
+	left : 200px;
+	top:60px;
+	
+	box-shadow: 0px 5px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#ECE0F8;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'CookieRun-Regular';
+	font-size:11px;
+	font-style:italic;
+	padding:5px 11px;
+	text-decoration:none;
+	text-shadow:0px 4px 0px #3d768a;
+
+}
+.prevMenu:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.prevMenu:active {
+	position:relative;
+	top:1px;
+}
 </style>
 </head>
 <body>
+<br><br><br><br>
 <h1>예약현황</h1>
 <div class = "subHeader">
 	<div class = "serch">
@@ -123,6 +190,14 @@
 		<button id="btnDelete">선택된 예약 삭제</button>
 	</div>
 </div>
+
+<input type="button" id="prevMenu" value="이전메뉴" class="prevMenu">
+
+
+
+<br><br><br><br>
+
+
 <div class="table-container">
     <table>
         <thead>

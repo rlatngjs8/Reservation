@@ -59,9 +59,45 @@
 	font-size : 300%;
   }
   
-  #prev {
-  	
-  }
+  
+.prev {
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color:#ededed;
+	border-radius:3px;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#3a8a9e;
+	font-family:Arial;
+	font-size:12px;
+	padding:7px 15px;
+	text-decoration:none;
+	
+	position:relative;
+	
+	left: 104px;
+
+}
+.prev:hover {
+	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	background-color:#bab1ba;
+}
+.prev:active {
+	position:relative;
+	top:1px;
+}
+
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+button {
+font-family: 'CookieRun-Regular';
+}
+
   
   
 </style>
@@ -69,9 +105,10 @@
 <body>
 <h1 align=center>관리자 페이지</h1>
 
-<button id="prev">메인 페이지</button>
+
 
 <div id="menu-container">
+<br>
     <a href="/showMembers">회원관리</a>
     <br>
     <a href="/showReservation">예약관리</a>
@@ -80,9 +117,13 @@
     <br>
     <a href="/sales">매출관리</a>
     <br>
+    <a href="/salesManagement">매출관리</a>
+    <br>
     <a href="/Q&A">Q&A</a>
     <br>
     <a href="/review">상품후기</a>
+    <br>
+    <button id="prev" class="prev">메인 페이지</button>
     <br>
 </div>
 </body>
