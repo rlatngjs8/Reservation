@@ -82,7 +82,7 @@
                     <th style="width: 5%;">번호</th>
                     <th style="width: 30%;">상품명</th>
                     <th style="width: 9%;">유저 아이디</th>
-                    <th style="width: 6%;">조회수</th>
+                    <th style="width: 6%;">별점</th>
                     <th style="width: 35%;">내용</th>
                     <th style="width: 20%;">작성 시간</th>
                 </tr>

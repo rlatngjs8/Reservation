@@ -322,20 +322,6 @@ public class KimController {
 	public String sales() {	
 			return "sales";
 	}
-//	@PostMapping("/getSalesData")
-//	@ResponseBody
-//	public String salesData(HttpServletRequest req, Model model) {
-// 	String start = req.getParameter("start");
-// 	String end = req.getParameter("end");
-// 	System.out.println("start="+start);
-// 	System.out.println("end="+end);
-//// 	LocalDateTime startTime = LocalDateTime.parse(start.replace("T", " "));
-////  LocalDateTime endTime = LocalDateTime.parse(end.replace("T", " "));
-// 	
-// 	ArrayList<ReservationDTO> sales = redao.sales(start, end);
-// 	model.addAttribute("sales", sales);
-// 	return "sales";
-//	}
 	
 	@PostMapping("/getSalesData")
 	@ResponseBody

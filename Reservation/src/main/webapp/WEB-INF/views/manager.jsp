@@ -40,7 +40,7 @@
     <a href="/showMembers">회원관리</a>
     <a href="/showReservation">예약관리</a>
     <a href="/productList">상품관리</a>
-    <a href="/salesManagement">매출관리</a>
+    <a href="/sales">매출관리</a>
     <a href="/Q&A">Q&A</a>
     <a href="/review">상품후기</a>
 </div>
