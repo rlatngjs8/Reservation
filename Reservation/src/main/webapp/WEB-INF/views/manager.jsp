@@ -114,7 +114,7 @@ font-family: 'CookieRun-Regular';
     <a href="/showReservation">예약관리</a>
     <br>
     <a href="/productList">상품관리</a>
-    <br>
+    <br> 
     <a href="/sales">매출관리</a>
     <br>
     <a href="/salesManagement">매출관리</a>
