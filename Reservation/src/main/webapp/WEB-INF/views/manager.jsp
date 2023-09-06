@@ -10,7 +10,7 @@
     }
     #menu-container {
         width: 300px;
-        margin: 50px auto;
+        margin: 20px auto;
         background-color: #fff;
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -69,14 +69,17 @@
 	cursor:pointer;
 	color:#3a8a9e;
 	font-family:Arial;
-	font-size:12px;
+	font-size:16px;
 	padding:7px 15px;
 	text-decoration:none;
 	
+
+	font-family: 'CookieRun-Regular';
+	
 	position:relative;
 	
-	left: 104px;
-
+	left:91px;
+	
 }
 .prev:hover {
 	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
@@ -95,7 +98,7 @@
 }
 
 button {
-font-family: 'CookieRun-Regular';
+
 }
  
   
@@ -108,7 +111,7 @@ font-family: 'CookieRun-Regular';
 
 
 <div id="menu-container">
-<br>
+<button id="prev" class="prev">메인 페이지</button><br><br>
     <a href="/showMembers">회원관리</a>
     <br>
     <a href="/showReservation">예약관리</a>
@@ -120,8 +123,6 @@ font-family: 'CookieRun-Regular';
     <a href="/Q&A">Q&A</a>
     <br>
     <a href="/review">상품후기</a>
-    <br>
-    <button id="prev" class="prev">메인 페이지</button>
     <br>
 </div>
 </body>

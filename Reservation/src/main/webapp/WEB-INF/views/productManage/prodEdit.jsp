@@ -73,13 +73,14 @@
     border-radius: 5px;
     padding: 0.7rem 3rem; /* 넓이 늘리기 */
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.0rem;
     margin-right: 20px; /* 두 버튼 사이 간격 늘리기 */
     margin-bottom: 10px; /* 버튼 아래 여백 추가 */
-    height: 50px; /* 높이 추가 */
+    height: 44px; /* 높이 추가 */
 }
 
 .cancel-button {
+
     text-decoration: none;
     background-color: #f57c00; /* 수정 필요 */
     color: #fff;
@@ -91,6 +92,7 @@
     margin-right: 20px; /* 두 버튼 사이 간격 늘리기 */
     margin-bottom: 10px; /* 버튼 아래 여백 추가 */
     height: 60px; /* 높이 추가 */
+    
 }
 
 .submit-button:hover, .cancel-button:hover {

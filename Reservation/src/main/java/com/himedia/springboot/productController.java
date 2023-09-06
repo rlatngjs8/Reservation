@@ -384,4 +384,13 @@ public String showStudyRooms(Model model) {
 	return "/studyRoom";
 	
 }
+
+@GetMapping("/allRooms")
+public String showAllRooms(Model model) {
+	ArrayList<productDTO> alemp = pdao.get_space();
+	model.addAttribute("rooms",alemp);
+	
+	return "/allRooms";
+}
+
 }

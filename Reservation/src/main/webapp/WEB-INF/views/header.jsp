@@ -15,13 +15,11 @@ ul.sub_mobile {
 
 #menu.open { 
   left: 0px;
-  width:300px;
+  width:260px;
+  align:center;
 
 }
 
-td{
-	align:center;
-}
 
 
 .page_cover.open {
@@ -58,6 +56,8 @@ td{
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  
+  
 }
 
 #menu {   
@@ -78,6 +78,8 @@ td{
   padding-top: 50px;
   padding-left: 0px;
   padding-right: 40px;
+  
+  align:center;
 }
 
 #menu a {
@@ -87,8 +89,8 @@ td{
   color: #25a4cd;
   display: block;
   transition: 0.3s;
-  text-align: center; /* 텍스트를 가운데 정렬합니다. */
-  line-height: 50px; /* 수직 가운데 정렬을 위해 line-height 추가 */
+  align: center; /* 텍스트를 가운데 정렬합니다. */
+  line-height: 5px; /* 수직 가운데 정렬을 위해 line-height 추가 */
 }
 
 #menu.open {
@@ -109,7 +111,7 @@ td{
 }
 
 #menu ul { 
-    width:190px; 
+    width:120px; 
     margin:0; 
     padding:0;
     }
@@ -118,12 +120,14 @@ td{
   #menu ul.nav li {
   position: relative;
   float: left;
-  width: 170%;
+  width: 150%;
   list-style-type: none;
-  font-size: 21px;
+  font-size: 1px;
   text-align: center;
   margin-bottom: 10px; /* sub_mobile 항목들 사이의 간격 조절 */
+  
 }
+
 
 #menu ul.nav li a {
   display: block;
@@ -134,7 +138,7 @@ td{
   color: #25a4cd;
   font-weight: bold;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 20px;
 }
     
 #menu ul.nav li a:hover {
@@ -153,7 +157,7 @@ td{
 #menu ul.nav li .sub_mobile a:hover {
     background:#787878;
     color:#fff;
-    z-index:999;
+
     }
 
 
@@ -170,7 +174,30 @@ a {
 
 .button {
   width: 70px;
-  height: 20px;
+  height: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  
+  position:relative;
+  
+  left:50px;
+  }
+
+
+.button1{
+	 width: 70px;
+  height: 30px;
   font-family: 'Roboto', sans-serif;
   font-size: 11px;
   text-transform: uppercase;
@@ -184,8 +211,8 @@ a {
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
-  }
 
+}
 
 @font-face {
     font-family: 'KIMM_Bold';
@@ -214,10 +241,15 @@ button {
 font-family: 'CookieRun-Regular';
 }
 
-.name {
-  font-size: 30px;
-  text-align: center; /* 가운데 정렬 */
-  margin-bottom: 10px; /* 텍스트 아래 여백 추가 */
+
+.welcome{
+position:relative;
+
+left:60px;
+}
+
+.pright{
+
 }
 
 </style>
@@ -244,48 +276,59 @@ font-family: 'CookieRun-Regular';
 <div id="menu">
     <ul class="nav">
         <li>
-            <table>
-                <tr>
-                    <td>
+           
+               
                         <c:choose>
                         
                             <c:when test="${empty userid}">
                              <!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
+                             <div class="pright">
                              <button id="btnLogin" class="button">로그인</button>
-                             <button id="btnSignup" class="button">회원가입</button>                         
+                             <button id="btnSignup" class="button">회원가입</button>
+                             </div>                         
                             </c:when>
                             <c:otherwise>
-                                <a><span class="name">${name}</span> 님 환영합니다</a>
-                                <button id="btnLogout" class="button">로그아웃</button>
+                            <div class="welcome">
+                                &nbsp;&nbsp;&nbsp;<a><span class="name">${name}</span> 님 환영합니다</a>
+                             </div>
+                             	<div class="pright">
+                                <button id="btnLogout" class="button1">로그아웃</button>
+                                </div>
                                 <li>
+                            	<div class="welcome">
                                 <a href='/myPage'>마이페이지</a>
+                                </div>
                                 </li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
+                                
                             </c:otherwise>
                         </c:choose>
-                    </td>
-                </tr>
-            </table>
+                   
+                
+           
         </li>
 
-    
+    <div class="welcome">
    <li><a href="/#">Q&A</a></li>
-   <br>
+
    <li><a href="/#">1:1문의</a></li>
-   <br>
+
    <li><a href="/#">공지사항</a></li>
    
-    <li><a>메뉴</a>
+    <li><a>더보기</a>
     <ul class="sub_mobile">
     <li><a href="/review">Review</a></li>
-	<br>
+
     <li><a href="event">이벤트</a></li>
-    <br>
+
 	<li><a href="/#">서비스약관</a></li>
-    
+	</div>    
       <c:choose>
       
-      <c:when test="${userid =='rlatngjs'}">  <!-- 관리자 메뉴 -->
+      <c:when test="${userid =='rlatngjs'}"> 
+       <!-- 관리자 메뉴 -->
+       <div class="welcome">
       <li><a href="/manager">관리자페이지</a></li>
+      </div>
       </c:when>
       
       <c:when test="${userid =='xaexal'}">
@@ -293,11 +336,15 @@ font-family: 'CookieRun-Regular';
       </c:when>
       
    <c:when test="${userid =='hwan'}">
+    <div class="welcome">
       <li><a href="/manager">관리자페이지</a></li>
+      </div>
       </c:when>
       
       <c:when test="${userid =='gldigh123'}">
+      <div class="welcome">
       <li><a href="/manager">관리자페이지</a></li>
+      </div>
       </c:when>
       
    </c:choose>
@@ -341,7 +388,16 @@ $(document).ready(function() {
     $("#menu,.page_cover,html").removeClass("open");
     window.location.hash = "";
   });
-});
+  $(".close").click(function() {
+	    $("#menu,.page_cover,html").removeClass("open");
+	    window.location.hash = "";
+	  });
+  
+
+
+  
+  
+})
 
 
 

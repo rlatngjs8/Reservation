@@ -29,6 +29,15 @@ body {
 	height: 60%;
 }
 
+.ffimg img{
+	width:45px;
+	height: 39px;
+	position:relative;
+	
+	right:5px;
+	top:9px;
+}
+
 .first {
 	display: flex;
 	list-style: none;
@@ -454,7 +463,8 @@ card1 css 추가
 
 .all{
 	position:relative;
-	right:4px;
+	right:8px;
+	top: 11px;
 }
 
 </style>
@@ -514,15 +524,40 @@ card1 css 추가
 
 
 
-	<br>
+	<!-- 이미지 조정 및 룸에 대한 설명을 아이콘 아래에 표시 -->
+	
+
 	<br>
 
-	<!-- 이미지 조정 및 룸에 대한 설명을 아이콘 아래에 표시 -->
-	<div>
+	<div class="second" align="center">
+		<div style="overflow: hidden">
+			<div class="slide-container">
+
+				<div class="slide-box">
+					<a href="event1"><img src="img/실험배너2 (1).jpg"></a>
+				</div>
+
+				<div class="slide-box">
+					<a href="event2"><img src="img/배너2.jpg"></a>
+				</div>
+			</div>
+			<button class="slide-button prev">
+				<i class="fas fa-chevron-left"></i>
+			</button>
+			<button class="slide-button next">
+				<i class="fas fa-chevron-right"></i>
+			</button>
+		</div>
+
+	</div>
+
+<br><br>
+
+<div>
 		<div class="first">
 		
 			<div class="cDiv">
-				<a href="#"><img src="img/전체보기.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="allRooms" class="ffimg"><img src="img/전체보기.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br>&nbsp;<a class="all">전체보기</a>
 			</div>
 
@@ -551,39 +586,9 @@ card1 css 추가
 		</div>
 	</div>
 
-	<br>
-	<br>
-	<br>
-
-	<div class="second" align="center">
-		<div style="overflow: hidden">
-			<div class="slide-container">
-
-				<div class="slide-box">
-					<a href="event1"><img src="img/실험배너2 (1).jpg"></a>
-				</div>
-
-				<div class="slide-box">
-					<a href="event2"><img src="img/배너2.jpg"></a>
-				</div>
-			</div>
-			<button class="slide-button prev">
-				<i class="fas fa-chevron-left"></i>
-			</button>
-			<button class="slide-button next">
-				<i class="fas fa-chevron-right"></i>
-			</button>
-		</div>
-
-	</div>
 
 
 
-
-
-
-	<br>
-	<br>
 	<hr />
 
 	<div>

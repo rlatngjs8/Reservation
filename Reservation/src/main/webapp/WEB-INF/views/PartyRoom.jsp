@@ -39,7 +39,7 @@
 	</div>
 
 
-
+	<a class="ta" href="/allRooms">전체보기</a>
 
 
 

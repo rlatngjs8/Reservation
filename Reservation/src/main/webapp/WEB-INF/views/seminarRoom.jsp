@@ -37,7 +37,7 @@
 	<a href="/PartyRoom"><span class="otherRoom4"><strong> 파티룸 </strong></span></a>
 	</div>
 
-
+	<a class="ta" href="/allRooms">전체보기</a>
 
 
 
