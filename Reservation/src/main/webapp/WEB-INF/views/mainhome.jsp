@@ -452,6 +452,11 @@ card1 css 추가
 }
 
 
+.all{
+	position:relative;
+	right:4px;
+}
+
 </style>
 <body>
 
@@ -518,7 +523,7 @@ card1 css 추가
 		
 			<div class="cDiv">
 				<a href="#"><img src="img/전체보기.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<br>&nbsp;<a>전체보기</a>
+				<br>&nbsp;<a class="all">전체보기</a>
 			</div>
 
 
