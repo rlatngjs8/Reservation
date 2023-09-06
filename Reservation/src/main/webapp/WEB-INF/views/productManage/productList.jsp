@@ -74,7 +74,7 @@
     font-size: 25px; /* 폰트 크기 조정 */
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
     transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
-    font-family: 'MaplestoryOTFBold';
+    font-family: 'GmarketSansMedium';
   }
   #btnDelete{
   background-color: #FE2E2E; 
@@ -86,7 +86,7 @@
     font-size: 25px; 
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); 
     transition: background-color 0.3s ease; 
-    font-family: 'MaplestoryOTFBold';
+    font-family: 'GmarketSansMedium';
   }
   
   #btnDelete:hover {
@@ -104,8 +104,14 @@
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); 
     transition: background-color 0.3s ease; 
     position:relative;
+<<<<<<< HEAD
     margin-left: 20px;
     font-family: 'MaplestoryOTFBold';
+=======
+    top:63px;
+    margin-left: 3px;
+    font-family: 'GmarketSansMedium';
+>>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
     font-size: 25px;
   }
   

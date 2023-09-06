@@ -143,11 +143,11 @@ li,span,p,a {
   
   <!-- menu1 이라는 class name을 menu로 변경 -->
     <ul class="menu">
-      <li><a href="javascript:void(0)">개인정보처리방침</a></li>
+      <li><a href="/personal">개인정보처리방침</a></li>
       <li><a href="javascript:void(0)">영상정보처리기기 운영관리 방침</a></li>
       <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>
       <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
-      <li><a href="javascript:void(0)">이용약관</a></li>
+      <li><a href="/service">이용약관</a></li>
       <li><a href="javascript:void(0)">핫라인</a></li>
     </ul>
 
@@ -167,7 +167,7 @@ li,span,p,a {
     <p class="copyright">
       &copy; <span class="this-year"></span> Share place Company. All Rights Reseved.
     </p>
-      <img src="" alt="" class="logo" />
+  
 
   </div>
 </footer>

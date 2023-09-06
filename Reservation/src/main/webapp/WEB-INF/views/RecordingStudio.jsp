@@ -24,7 +24,6 @@
 <body>
 <!-- 123 -->
 <%@include file="header.jsp" %>
-
 	<h1 class="title">녹음실/스튜디오</h1>
 
 <div>
@@ -35,8 +34,7 @@
 	<a href="/PartyRoom"><span class="otherRoom4"><strong> 파티룸 </strong></span></a>
 	</div>
 
-
-
+	<a class="ta" href="#">전체보기</a>
 
 
 
@@ -173,7 +171,6 @@ $(document)
     l = "${rooms[7].location.substring(0, rooms[7].location.indexOf('영등포구청역')+6)}";
     console.log(l);
 	d = "[" + l + "]";
-	console.log(d);
 	
 	s = document.querySelectorAll(".demo1")[1];
 	s.innerHTML = d;
