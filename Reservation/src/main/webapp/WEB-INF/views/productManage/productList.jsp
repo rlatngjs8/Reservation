@@ -20,7 +20,7 @@
     padding: 1rem 0;
   }
   .container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 2rem;
   }
@@ -104,7 +104,6 @@
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); 
     transition: background-color 0.3s ease; 
     position:relative;
-    top:50px;
     margin-left: 20px;
     font-family: 'MaplestoryOTFBold';
     font-size: 25px;
@@ -144,7 +143,16 @@ h2,p {
 h1 {
 font-family: 'SBAggroB';
 }
+.button-group {
+  display: flex;
+  justify-content: space-between; /* 요소들을 가로로 고르게 분포시킴 */
+  align-items: center; /* 요소들을 수직 가운데 정렬 */
+}
 
+.prev, .search-bar, .add-product-button {
+  flex: 1; /* 각 요소를 동일한 너비로 설정 */
+  margin-right: 10px; /* 요소들 사이 간격 조절 */
+}
 
 
 
@@ -155,14 +163,22 @@ font-family: 'SBAggroB';
   <h1>상품 리스트</h1>
 </header><br>
 <div class="container">
-<div>
-		<!-- 글씨체 좀더 얌전한걸로 변경 -->
-	<button id="prev">관리자 메뉴</button>
-	<div class="add-product-button">
-	  <button id="add-product-btn">상품추가</button>&nbsp;&nbsp;&nbsp;
-	  <button id="btnDelete">상품삭제</button>
+	<div class="button-group">
+			<!-- 글씨체 좀더 얌전한걸로 변경 -->
+		<div class="prev">
+			<button id="prev">관리자 메뉴</button>
+		</div>
+		<div class="search-bar">
+			<form action="/productList1" method="GET">
+		  <input type="text" id="search-input" name="keyword" placeholder="키워드 검색">
+		  <button id="search-button">검색</button>
+		  </form>
+		</div>
+		<div class="add-product-button">
+		  <button id="add-product-btn">상품추가</button>&nbsp;&nbsp;&nbsp;
+		  <button id="btnDelete">상품삭제</button>
+		</div>
 	</div>
-</div>
 <br><br>
   <c:forEach items="${plist}" var="prod">
     <div class="product" data-space_id="${prod.space_id}">
@@ -183,6 +199,7 @@ font-family: 'SBAggroB';
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document).ready(function() {
+	 
 	  // 제품을 클릭했을 때 처리
 	  $(document).on('click', '.product', function() {
 	    // 이전에 선택된 항목의 클래스 제거
@@ -210,6 +227,7 @@ $(document).ready(function() {
 				success: function(data){
 					console.log("삭제성공");
 					deleteProd.remove();
+					alert("삭제가 완료되었습니다.");
 				},fail:function(){
 					console.log("실패");
 				}

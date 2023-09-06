@@ -43,4 +43,7 @@ public interface RoomDAO {
 	
 	void insertComment(String userid, String comment);
 
+	
+	serviceDTO viewService(int num);
+	serviceDTO viewPersonal(int num);
 }

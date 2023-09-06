@@ -51,12 +51,45 @@
     margin: 0 4px;
   }
   
+  .centered-button-container {
+    text-align: center;
+  }
+  .product-list-link, .product-list-link1, .product-list-link2{
+    text-decoration: none;
+    background-color: #4c95a9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    display: inline-block;
+  }
+  .product-list-link {
+    background-color: #4c95a9;
+  }
+  .product-list-link1 {
+    background-color: #00e1b5;
+  }
+  .product-list-link2 {
+  	background-color: #a0a94c;
+  }
+  .product-list-link:hover,
+	.product-list-link1:hover,
+	.product-list-link2:hover {
+	  background-color: #4CAF50; /* 호버 시 배경색 변경 */
+}
 </style>
 <body>
   <header>
     <h1>상품 상세 보기</h1>
   </header><br>
-  <button id=btnEdit>상품수정</button>
+  <div class="centered-button-container">
+  	<a href="/manager" class="product-list-link1">관리자메뉴</a>&nbsp;&nbsp;&nbsp;
+  	<a href="/productList" class="product-list-link">상품리스트</a>&nbsp;&nbsp;&nbsp;
+  	<button id="btnEdit" class="product-list-link2">상품수정</button>
+	</div><br>
   <div class="container">
     <h2>상품 정보</h2>
     <div class="slider">

@@ -20,7 +20,7 @@
   }
   .container {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 2rem auto 0; /* Add top margin to container and remove bottom margin */
     padding: 2rem;
     background-color: #fff;
     border-radius: 5px;
@@ -32,7 +32,11 @@
   .form-section {
     flex: 1;
     width: calc(33.33% - 2rem); /* Divide into 3 equal columns with spacing */
-    margin: 1rem; /* Add some margin around each form-section */
+    margin: 1rem; /* Add margin around each form-section */
+    padding: 1.5rem; /* Add padding to form sections */
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   }
   .form-section label {
     font-weight: bold;
@@ -45,13 +49,18 @@
   input[type="file"] {
     width: 80%;
     padding: 0.5rem;
+    margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
   textarea {
     resize: vertical;
-   	width: 100%;
+    width: 100%;
   }
+  .image-input {
+    margin-bottom: 1rem; /* Increase margin between image inputs */
+  }
+
   .submit-button {
     background-color: #007bff;
     color: #fff;
@@ -64,19 +73,43 @@
   .clearfix {
     clear: both;
   }
-  .image-input {
-    margin-bottom: 0.5rem;
+  .centered-button-container {
+    text-align: center;
+  }
+  
+  .product-list-link, .product-list-link1 {
+    text-decoration: none;
+    background-color: #4c95a9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    display: inline-block;
+  }
+  .product-list-link {
+    background-color: #4c95a9;
+  }
+  .product-list-link1 {
+    background-color: #00e1b5;
   }
 </style>
 </head>
 <body>
 <header>
   <h1>상품 추가</h1>
-</header><br>
+</header>
+<br>
 <form action="/prodInsert" method="post" enctype="multipart/form-data">
-<a href="/productList">상품리스트</a><br>
-<div class="container">
-  <div class="form-section">
+  <div class="centered-button-container">
+  	<a href="/manager" class="product-list-link1">관리자메뉴</a>&nbsp;&nbsp;&nbsp;
+  	<a href="/productList" class="product-list-link">상품리스트</a>
+	</div>
+  <br>
+  <div class="container">
+    <div class="form-section">
       <label for="space_name">상품 이름:</label>
       <input type="text" id="space_name" name="space_name" required>
       
@@ -97,8 +130,8 @@
       
       <label for="mobile">전화번호:</label>
       <input type="text" id="mobile" name="mobile" required>
-  </div>
-  <div class="form-section">
+    </div>
+    <div class="form-section">
       <div class="image-input">
         <label for="image1">이미지 첨부 1:</label>
         <input type="file" id="image1" name="image1" accept="image/*">
@@ -119,45 +152,48 @@
         <label for="image5">이미지 첨부 5:</label>
         <input type="file" id="image5" name="image5" accept="image/*">
       </div>
+    </div>
   </div>
-</div>
-<div class="container">
-  <div class="form-section">
+  <div class="container">
+    <div class="form-section">
       <label for="description">상세 설명:</label>
       <textarea id="description" name="description" rows="30" required></textarea>
-      <!-- 상세 설명과 관련된 필드들을 여기에 추가 -->
       <input type="submit" value="추가" class="submit-button" id="btnSubmit">
+    </div>
   </div>
-</div>
 </form>
 </body>
 <script src="http://code.jquery.com/jquery-Latest.js"></script>
 <script>
 $(document).on('click','#btnSubmit',function(){
-	if($('#space_name').val() == ''){
-		alert('상품명을 입력하시오'); return false;
-	}	
-	if($('#space_type').val() == ''){
-		alert('유형을 입력하시오'); return false;
-	}	
-	if($('#location').val() == ''){
-		alert('위치를 입력하시오'); return false;
-	}	
-	if($('#extent').val() == ''){
-		alert('면적을 입력하시오'); return false;
-	}	
-	if($('#capacity').val() == ''){
-		alert('수용인원을 입력하시오'); return false;
-	}	
-	if($('#price').val() == ''){
-		alert('시간당 가격을 입력하시오'); return false;
-	}	
-	if($('#mobile').val() == ''){
-		alert('전화번호을 입력하시오'); return false;
-	}	
-	if($('#description').val() == ''){
-		alert('상세설명을 입력하시오'); return false;
-	}	
+  if($('#space_name').val() == ''){
+    alert('상품명을 입력하시오'); return false;
+  } 
+  if($('#space_type').val() == ''){
+    alert('유형을 입력하시오'); return false;
+  } 
+  if($('#location').val() == ''){
+    alert('위치를 입력하시오'); return false;
+  } 
+  if($('#extent').val() == ''){
+    alert('면적을 입력하시오'); return false;
+  } 
+  if($('#capacity').val() == ''){
+    alert('수용인원을 입력하시오'); return false;
+  } 
+  if($('#price').val() == ''){
+    alert('시간당 가격을 입력하시오'); return false;
+  } 
+  if($('#mobile').val() == ''){
+    alert('전화번호을 입력하시오'); return false;
+  } 
+  if($('#description').val() == ''){
+    alert('상세설명을 입력하시오'); return false;
+  } 
+})
+
+$(document).on('click','#btnSubmit',function(){
+  alert('상품추가가 완료되었습니다.');
 })
 </script>
 </html>

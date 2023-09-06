@@ -17,6 +17,16 @@ public class productDTO {
 		String img3;
 		String img4;
 		String img5;
+		
+		String keyword;
+		
+		
+		public String getKeyword() {
+				return keyword;
+		}
+		public void setKeyword(String keyword) {
+				this.keyword = keyword;
+		}
 		public int getSpace_id() {
 				return space_id;
 		}

@@ -75,6 +75,7 @@
 <h1>게시물 수정</h1>
 <div class="form-container">
     <form method="post" action="/modify" id="frmUpdate" name="frmUpdate">
+    		<input type="hidden" name="seqno"value="${bpost.seqno}">
         <label for="title">제목</label>
         <input type="text" name="title" id="title" value="${bpost.title}" size="64" maxlength="128">
 

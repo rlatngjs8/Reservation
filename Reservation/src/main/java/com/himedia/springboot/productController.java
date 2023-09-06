@@ -28,40 +28,54 @@ public class productController {
 		@Autowired
 		private productDAO pdao;
 		
-		
+		@GetMapping("/productList")
+		public String productList() {
+				return "/productManage/productList";
+		}
+
 		
 		// 상품관리 열리자마자 리스트
-		@GetMapping("/productList")
-	 public String productlist(HttpServletRequest req, Model model) {
-				int start,psize;
-				String page = req.getParameter("pageno1");
-				if(page == null || page.equals("")) {
-					page="1";
-				}
-				int pno = Integer.parseInt(page);
-				start = (pno -1) * 10;
-				psize = 10;
-				ArrayList<productDTO> alBoard = pdao.getList(start, psize);
-				
-				int cnt=pdao.getTotal();
-				System.out.println("cnt="+cnt);
-				int pagecount = (int) Math.ceil(cnt/10.0);
-				System.out.println("pagecount="+pagecount);
-				
-				String pagestr="";
-				for(int i=1; i<=pagecount; i++) {
-					if(pno == i) {
-						pagestr += i+"&nbsp;";
-					} else {
-						pagestr+="<a href='/productList?pageno1="+i+"'>"+i+"</a>&nbsp;";				
-					}
-					System.out.println(pagestr);
-				}
-				model.addAttribute("pagestr",pagestr);
-				model.addAttribute("plist",alBoard);
-				
-	 		return "/productManage/productList";
-	 }
+		@GetMapping("/productList1")
+  public String searchProducts(HttpServletRequest req, Model model) {
+      String keyword = req.getParameter("keyword");
+      System.out.println("keyword="+keyword);
+      int start, psize;
+      String page = req.getParameter("pageno1");
+      if (page == null || page.equals("")) {
+          page = "1";
+      }
+      int pno = Integer.parseInt(page);
+      start = (pno - 1) * 10;
+      psize = 10;
+
+      ArrayList<productDTO> alBoard;
+
+      if (keyword != null && !keyword.isEmpty()) {
+          // 키워드 검색을 수행하고 검색 결과를 가져옵니다.
+          alBoard = pdao.searchProducts(keyword, start, psize);
+      } else {
+          // 키워드가 없으면 모든 상품을 가져옵니다.
+          alBoard = pdao.getList(start, psize);
+      }
+
+      int cnt = pdao.getTotal();
+      int pagecount = (int) Math.ceil(cnt / 10.0);
+
+      String pagestr = "";
+      for (int i = 1; i <= pagecount; i++) {
+          if (pno == i) {
+              pagestr += i + "&nbsp;";
+          } else {
+              pagestr += "<a href='/productList?pageno1=" + i + "'>" + i + "</a>&nbsp;";
+          }
+      }
+
+      model.addAttribute("pagestr", pagestr);
+      model.addAttribute("plist", alBoard);
+
+      return "/productManage/productList";
+  }
+
 		
 		// 상품추가버튼 링크
 		@GetMapping("/addProduct")
@@ -103,11 +117,12 @@ public class productController {
 				int price = Integer.parseInt(req.getParameter("price"));
 				String mobile = req.getParameter("mobile");
 				
-				String img1 = saveImage(image1, space_name, 1);
-    String img2 = saveImage(image2, space_name, 2);
-    String img3 = saveImage(image3, space_name, 3);
-    String img4 = saveImage(image4, space_name, 4);
-    String img5 = saveImage(image5, space_name, 5);
+				
+				String img1 = (image1.isEmpty()) ? req.getParameter("prev_image1") : saveImage(image1, space_name, 1);
+				String img2 = (image2.isEmpty()) ? req.getParameter("prev_image2") : saveImage(image2, space_name, 2);
+    String img3 = (image3.isEmpty()) ? req.getParameter("prev_image3") : saveImage(image3, space_name, 3);
+    String img4 = (image4.isEmpty()) ? req.getParameter("prev_image4") : saveImage(image4, space_name, 4);
+    String img5 = (image5.isEmpty()) ? req.getParameter("prev_image5") : saveImage(image5, space_name, 5);
 				
 				String description = req.getParameter("description");
 				pdao.prodUpdate(space_id, space_name, space_type, location, extent, capacity, price, mobile,

@@ -267,6 +267,7 @@
     <h2>문의내역</h2>
     <hr/>
     <br>
+    <button class="myWrite" id="btnWrite">문의하기</button>
     <table id="tblBoard">
         <thead>
         <tr>
@@ -409,9 +410,13 @@
     })
 
     $(document).on('click','#tblBoard tbody tr',function(){
-        document.location='/Q&Aview?title='+$(this).find('td:eq(0)').text();
-        return false;
+    	window.location.href='/Q&Aview?title='+$(this).find('td:eq(1)').text();
+    	return false;
+        
     });
+    $(document).on('click','#btnWrite',function(){
+    	window.location.href="/myWrite";
+    })
 </script>
 </body>
 </html>

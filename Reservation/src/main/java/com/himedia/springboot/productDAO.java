@@ -30,4 +30,6 @@ public interface productDAO {
 		void review_insert(int rating, String review_content, String userid, int space_id);
 		ArrayList<ReviewDTO> select_review(int space_id);
 		
+		
+	 ArrayList<productDTO> searchProducts(String keyword, int start, int psize);
 }

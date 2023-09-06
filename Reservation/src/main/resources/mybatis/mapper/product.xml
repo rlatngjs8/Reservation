@@ -43,4 +43,9 @@
 	SELECT * FROM Reviews WHERE space_id = #{param1} ORDER BY created DESC;
 </select>
 
+<select id="searchProducts" resultType="com.himedia.springboot.productDTO">
+    SELECT * FROM spaces
+    WHERE space_name LIKE CONCAT('%', #{param1}, '%') OR space_type LIKE CONCAT('%', #{param1}, '%') OR location LIKE CONCAT('%', #{param1}, '%')
+    LIMIT #{param2}, #{param3}
+</select>
 </mapper>

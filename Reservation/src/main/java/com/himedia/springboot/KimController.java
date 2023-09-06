@@ -165,6 +165,7 @@ public class KimController {
 	 }
 
 	 @PostMapping("/addComment")
+	 // 댓글 쓰면 창이동안하고, 대댓글도 만들기(ajax)
 	 public String comment(HttpServletRequest req) {
 	     int seqno = Integer.parseInt(req.getParameter("seqno"));
 	     String comment = req.getParameter("comment");
@@ -174,8 +175,6 @@ public class KimController {
 
 	     rdao.comment(seqno, comment);
 	     
-//	     String redirectUrl = String.format("redirect:/Q&A/view?seqno=%d", seqno);
-//	     return redirectUrl; // 리다이렉트 URL을 직접 리턴
 	     return "redirect:/Q&A";
 	 }
 	 @GetMapping("/myPage")
@@ -266,8 +265,9 @@ public class KimController {
 	 public String qnaview(HttpServletRequest req, Model model){
 		 HttpSession session= req.getSession();
 		 String userid = (String) session.getAttribute("userid");
+		 String title = req.getParameter("title");
 		 
-		 BoardDTO bdto = bdao.viewBoardDTO(userid);
+		 BoardDTO bdto = bdao.viewBoardDTO(title);
 			bdao.hitup(userid);
 			model.addAttribute("bpost", bdto);
 		 
@@ -342,6 +342,54 @@ public class KimController {
 					ja.add(jo);
 			}
 			return ja.toJSONString();
+	}
+	@GetMapping("/myWrite")
+	public String myWrite() {
+			return "myWrite";
+	}
+	@PostMapping("/myinsert")
+	public String myinsert(HttpServletRequest req) {
+		HttpSession session= req.getSession();
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		String writer = (String)session.getAttribute("userid");
+		rdao.insert(title, content, writer);
+		return "redirect:/myPage";	
+	}
+	
+	
+	@GetMapping("/service")
+	public String service(HttpServletRequest req, Model model) {
+	    int num = 1;
+	    serviceDTO service = rdao.viewService(num);
+
+	    if (service != null) {
+	        System.out.println(service);
+	        model.addAttribute("service", service);
+	        return "service";
+	    } else {
+	        // 적절한 오류 처리 로직을 추가하세요.
+	        // 예를 들어, 오류 페이지로 리다이렉트하거나 오류 메시지를 표시할 수 있습니다.
+	    		System.out.println(service);
+	        return "error";
+	    }
+	}
+	
+	@GetMapping("/personal")
+	public String personal(HttpServletRequest req, Model model) {
+	    int num = 2;
+	    serviceDTO personal = rdao.viewPersonal(num);
+
+	    if (personal != null) {
+	        System.out.println(personal);
+	        model.addAttribute("personal", personal);
+	        return "personal";
+	    } else {
+	        // 적절한 오류 처리 로직을 추가하세요.
+	        // 예를 들어, 오류 페이지로 리다이렉트하거나 오류 메시지를 표시할 수 있습니다.
+	    		System.out.println(personal);
+	        return "error";
+	    }
 	}
 }
 

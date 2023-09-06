@@ -129,7 +129,7 @@
 <!-- 목록으로 css -->
 <a href="/Q&A" class="link-style">목록으로</a><br>
 <table>
-<tr><td class="cal">번호</td><td id="seqno">${bpost.seqno }</td></tr>
+<tr><td class="cal">번호</td><td id="seqno">${bpost.seqno}</td></tr>
 <tr><td class="cal">제목</td><td>${bpost.title }</td></tr>
 <tr><td class="cal">내용</td><td><textarea rows="13" cols="60" readonly>${bpost.content }</textarea></td></tr>
 <tr><td class="cal">작성자</td><td>${bpost.writer}</td></tr>
@@ -160,11 +160,11 @@
     </tbody>
 </table>
 <h2>댓글 작성</h2>
-<form id="commentForm" action="/addComment" method="post">
-    <input type="hidden" name="seqno" value="${bpost.seqno}"> 
-    <textarea id="commentContent" rows="4" cols="25" placeholder="댓글 내용" name="comment"></textarea>
+<form id="commentForm">
+    <input type="hidden" id="seqno" value="${bpost.seqno}">
+    <textarea id="commentContent" rows="4" cols="25" placeholder="댓글 내용"></textarea>
     <br>
-    <button type="submit" id="btnSubmit">댓글 작성</button>
+    <button type="button" id="btnSubmit">댓글 작성</button>
 </form>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
@@ -195,6 +195,52 @@ $(document).ready(function() {
         $("#btnDelete").hide();
         $("#btnWrite").hide();
     }
+    
+    $("#btnSubmit").click(function() {
+        let seqno = $("#seqno").val();
+        let comment = $("#commentContent").val();
+
+        $.ajax({
+            url: "/addComment",
+            type: "POST",
+            data: {
+                seqno: seqno,
+                comment: comment
+            },
+            success: function(response) {
+                // 댓글 추가 성공 시, 입력 폼 초기화 및 댓글 목록 업데이트
+                $("#commentContent").val(""); // 입력 폼 초기화
+                updateCommentList(seqno); // 댓글 목록 업데이트
+            },
+            error: function(xhr, status, error) {
+                console.error("댓글 추가 오류:", error);
+            }
+        });
+    });
+
+    // 초기 댓글 목록 로드
+    let seqno = $("#seqno").val();
+    updateCommentList(seqno);
+
+    // 이전 코드와 동일
+});
+
+function updateCommentList(seqno) {
+    // 댓글 목록을 가져와서 화면에 업데이트하는 함수
+    $.ajax({
+        url: "/getComments",
+        type: "GET",
+        data: {
+            seqno: seqno
+        },
+        success: function(response) {
+            // 댓글 목록을 업데이트
+            $("#commentList").html(response);
+        },
+        error: function(xhr, status, error) {
+            console.error("댓글 목록 로드 오류:", error);
+        }
+    });
 });
 
 $(document)
