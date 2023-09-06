@@ -11,8 +11,17 @@ public class ReservationDTO {
 		int endTime;
 		int totalPrice;
 		String purchaseTime;
+		//------------------------------
+		int space_id;
 		
 		
+		public int getSpace_id() {
+			return space_id;
+		}
+		public void setSpace_id(int space_id) {
+			this.space_id = space_id;
+		}
+		//--------------------------
 		public int getSeqno() {
 				return seqno;
 		}

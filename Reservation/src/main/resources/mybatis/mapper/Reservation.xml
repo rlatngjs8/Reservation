@@ -22,6 +22,7 @@
 <select id="sales" resultType="com.himedia.springboot.ReservationDTO">
     SELECT seqno, purchaseTime, totalPrice FROM re_info WHERE purchaseTime BETWEEN #{param1} AND #{param2} ORDER BY purchaseTime DESC
 </select>
+
 <insert id="insert_temp_reservation">
 	insert into temp_reservation set start_time=#{param1}, end_time=#{param2}, reservation_date=#{param3}, total_price=#{param4}, space_id=#{param5}, userid =#{param6}
 </insert>
@@ -34,7 +35,13 @@
 </select>
 
 <delete id="delete_temp_reservation" parameterType="java.util.HashMap">
-	DELETE FROM temp_reservation
-	WHERE reservation_id=#{param1}	
+	DELETE FROM temp_reservation WHERE userid = #{param1};
 </delete>
+
+<select id="get_reinfo">
+	SELECT r.*, s.space_id
+	FROM re_info AS r
+	INNER JOIN spaces AS s ON r.space_name = s.space_name
+	WHERE s.space_id = #{param1};
+</select>
 </mapper>

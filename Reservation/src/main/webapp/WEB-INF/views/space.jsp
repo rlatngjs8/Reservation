@@ -386,6 +386,21 @@
 	.highlighted-time-range {
 		background-color: #C8A2C8;
 	}
+	/* 예약된 시간대의 스타일 */
+	.re_highlighted-time-range{
+	    background-color: #696969; /* 초록색 배경색 */
+	}
+	
+	.re_selected-start-time {
+		background-color: #696969; /* 검정색 배경 */
+		color: #333; /* 흰색 글자색 */
+	}
+	
+	.re_selected-end-time {
+		background-color: #696969; /* 검정색 배경 */
+		color: #333; /* 흰색 글자색 */
+	}
+	
 </style>
 </head>
 <body>
@@ -446,12 +461,11 @@
             <div class="reservation-window" id="reservationWindow">
                 <h2>예약 진행</h2>
                 <h3>날짜 선택</h3>
-                <div class="date-picker">
+                <div id='date-picker' class="date-picker">
                     <input type="text" id="datepicker" placeholder="날짜 선택">
                 </div>
                 <h3>시간 선택</h3>
                 <h4>시간당 가격: ${space.price}원</h4>
-                <div class="price-text" id="currentPrice">현재 가격: 0원</div>
                 <div class="time-picker">
                     <table>
                         <tr>
@@ -475,13 +489,7 @@
                             <td class="time-cell">22:00</td>
                         </tr>
                     </table>
-                    <c:if test="${not empty sessionScope.userid}">
-                        <button id="addReT">장바구니 담기</button>
-                    </c:if>
-                    <c:if test="${empty sessionScope.userid}">
-                        <button id="addReF">장바구니 담기</button>
-                    </c:if>
-                    <button id='show_cart'>장바구니 보기</button>
+                    <!--  -->
                     <div id="addedSlots"></div>
                     <!-- 추가버튼을 누르면 들어가는 곳  -->
                 </div>
@@ -490,11 +498,11 @@
                 <div class="price-text" id="totalPrice">총 가격: 0원</div>
                 <!--  로그인했을때 버튼 -->
                 <c:if test="${not empty sessionScope.userid}">
-                    <button id="btnReT">결제하기</button>
+                    <button id="btnReT">예약 신청하기</button>
                 </c:if>
                 <!-- 로그인안했을때 버튼 -->
                 <c:if test="${empty sessionScope.userid}">
-                    <button id="btnReF">지금 예약하기</button>
+                    <button id="btnReF">예약 신청하기</button>
                 </c:if>
             </div>
 
@@ -591,23 +599,45 @@ let arrayStartTime = [];
 let arrayEndTime = [];
 let arrayAddedPrice = [];
 
-$(document).ready(function () {
-    review_get();
-    get_imgslide();
+let dbUseDate = [];
+let dbStartTime = [];
+let dbEndTime = [];
 
-    // datepicker를 초기화할 때 showOn 옵션을 'focus'로 설정하여 input에 포커스가 가면 달력이 나타나도록 합니다.
+
+$(document).ready(function () {
+	
+	
+	review_get();
+    get_imgslide();
+    get_reinfo();
+    
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         minDate: new Date(),
-        showOn: 'focus', // 이 옵션을 추가하면 input에 포커스가 가면 달력이 나타납니다.
         onSelect: function (dateText, inst) {
-            // 날짜 선택 후 초기화
-            $("#selectedDate").text("선택한 날짜: " + dateText);
+            // 사용자가 날짜를 선택할 때마다 호출되는 함수
+            const index = dbUseDate.indexOf(dateText);
+
+            if (index !== -1) {
+                // 선택한 날짜가 배열에 있는 경우에만 시간대 색칠 함수 호출
+                selectTimeRange(dbUseDate[index], dbStartTime[index], dbEndTime[index]);
+                
+                // 색칠된 시간대를 클릭할 수 없도록 pointer-events 스타일 설정
+                $(".time-cell.selected-start-time, .time-cell.selected-end-time").css("pointer-events", "none");
+                
+                // 시작 시간과 끝 시간 사이의 셀들을 클릭할 수 없도록 pointer-events 스타일 설정
+                $(".time-cell.highlighted-time-range").css("pointer-events", "none");
+            } else {
+                // 선택한 날짜가 배열에 없는 경우 색칠된 시간대 제거
+                $(".time-cell").removeClass("selected-start-time selected-end-time highlighted-time-range");
+                
+                // pointer-events 스타일을 원래대로 설정하여 클릭 가능하도록 함
+                $(".time-cell.selected-start-time, .time-cell.selected-end-time, .time-cell.highlighted-time-range").css("pointer-events", "auto");
+            }
         }
     });
 
-    // input에 초기 포커스를 설정합니다.
-    $("#datepicker").focus();
+
 
     $(".time-cell").click(function () {
         const selectedDate = $("#datepicker").val();
@@ -660,7 +690,7 @@ $(document).ready(function () {
         return false; // 중복된 시간대가 없으면 false 반환
     }
 
-    $("#addReT").click(function () {
+/*    $("#addReT").click(function () {
         const selectedDate = $("#datepicker").val();
 
         if (selectedDate === "" || selectedStartTime === null || selectedEndTime === null) {
@@ -693,12 +723,14 @@ $(document).ready(function () {
         $("#addedSlots").append(addedSlot);
         resetTimeSelection();
         $("#totalPrice").text("총 가격: " + totalAddedPrice + "원"); // 변경된 총 가격 표시
-        $("#currentPrice").text("현재 가격: 0원"); // 현재 가격 초기화
+      //$("#currentPrice").text("총 가격: 0원"); // 현재 가격 초기화
         
         // ajax
         insert_temp_reservation();
 
-    });
+    });*/
+    
+
 });
 
 //선택한 시간 범위 강조 표시
@@ -724,23 +756,24 @@ function resetTimeSelection() {
 
 // 가격 계산 함수 (변경되어야 할 부분 포함)
 function calculateTotalPrice() {
-    const hourPrice = parseInt("${space.price}"); // 시간당 가격 설정, 필요에 따라 수정
-
-    // 선택한 시간 범위 계산
-    const startTime = selectedStartTime.split(":");
-    const endTime = selectedEndTime.split(":");
-    const startHour = parseInt(startTime[0]);
-    const startMinute = parseInt(startTime[1]);
-    const endHour = parseInt(endTime[0]);
-    const endMinute = parseInt(endTime[1]);
-
-    // 시간 차이 계산
-    const diffInMinutes = (endHour * 60 + endMinute) - (startHour * 60 + startMinute);
-
-    // 절대값 계산
-    const totalPrice = Math.abs((diffInMinutes / 60) * hourPrice); // 절대값 적용
-
-    $("#currentPrice").text("현재 가격: " + totalPrice.toFixed(2) + "원");
+	const hourPrice = parseInt("${space.price}"); // 시간당 가격 설정, 필요에 따라 수정
+	
+	            // 선택한 시간 범위 계산
+	const startTime = selectedStartTime.split(":");
+	const endTime = selectedEndTime.split(":");
+	const startHour = parseInt(startTime[0]);
+	const startMinute = parseInt(startTime[1]);
+	const endHour = parseInt(endTime[0]);
+	const endMinute = parseInt(endTime[1]);
+	
+	            // 시간 차이 계산
+	const diffInMinutes = (endHour * 60 + endMinute) - (startHour * 60 + startMinute);
+	
+	// 절대값 계산
+	const addedPrice = Math.abs((diffInMinutes / 60) * hourPrice); // 절대값 적용
+	totalAddedPrice = addedPrice; // 총 가격에 추가한 가격 더하기
+	
+	$("#totalPrice").text("총 가격: " + totalAddedPrice + "원"); // 변경된 총 가격 표시
 }
 
 var selectedTime = "";
@@ -810,10 +843,29 @@ $(document).ready(function () {
 });
 
 
-$(document).on('click', '#btnReT', function () { //로그인 했을때 예약하기버튼 
-	const userid = $('#user_id').val();
-    document.location = '/paytest?userid=' + userid;
-    return false;
+$(document).on('click', '#btnReT', function () {
+    // 선택한 날짜, 시작 시간, 끝 시간을 가져옵니다.
+	const selectedDate = $("#datepicker").val();
+	const selectedStartTime = $(".selected-start-time").text();
+	const selectedEndTime = $(".selected-end-time").text();
+
+	// 날짜와 시간을 각각 확인합니다.
+	if (selectedDate === "") {
+	    alert("날짜를 선택해주세요.");
+	    return;
+	}
+
+	if (selectedStartTime === "" || selectedEndTime === "") {
+	    alert("시간을 선택해주세요.");
+	    return;
+	}
+	// 먼저 기존에 있던 데이터 삭제.
+	delete_temp_reservation()
+	// 다시 insert.
+	insert_temp_reservation();
+
+	// 결제 페이지로 이동합니다.
+	document.location = '/paytest';
 });
 
 $(document).on('click', '#addReF', function () { //로그인 안했을때 추가하기버튼
@@ -844,14 +896,16 @@ function insert_temp_reservation() {
     console.log("임시예약 인서트");
     const userid = $('#user_id').val();
     const space_id = $('#space_id').val();
-    const start_time = arrayStartTime[arrayStartTime.length - 1].split(":");
-    const end_time = arrayEndTime[arrayEndTime.length - 1].split(":");
+    const start_time = parseInt(selectedStartTime.split(":")[0]);
+    const end_time	 = parseInt(selectedEndTime.split(":")[0]);
+    const total_price = parseInt($('#totalPrice').text().match(/\d+/)[0]);
+    const reservation_date = $('#datepicker').val();
     
     const reservationData = {
-        reservation_date: arrayDate[arrayDate.length - 1],
-        start_time: start_time[0],
-        end_time: end_time[0],
-        total_price: arrayAddedPrice[arrayAddedPrice.length - 1],
+        reservation_date: reservation_date,
+        start_time: start_time,
+        end_time: end_time,
+        total_price: total_price,
         userid: userid, 
         space_id: space_id 
     };
@@ -887,7 +941,7 @@ function review_get() { //리뷰 불러오기
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            console.log(data);
+            console.log('리뷰 데이터 불러오기',data);
             $("#review").empty();
             for (let i = 0; i < data.length; i++) {
                 let review =
@@ -953,6 +1007,69 @@ function get_imgslide() { // 이미지 슬라이더
     });
 }
 
+function delete_temp_reservation() {
+    // 사용자의 아이디를 가져옵니다.
+    const userid = $("#user_id").val();
+
+    // 서버로 삭제 요청을 보냅니다.
+    console.log('삭제 데이터 이동중');
+    $.ajax({	
+        url: "/delete_temp_reservation",
+        data: { userid: userid },
+        type: 'post',
+        success: function (data) {
+            if (data === '0') {
+                console.error("삭제 실패:", data);                        		
+            } else {
+                console.log("삭제 성공");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("삭제 실패:", error);
+        }
+    });
+}
+
+function get_reinfo() { // 리뷰 불러오기
+    console.log('예약 데이터 불러옴');
+    const space_id = $('#space_id').val();
+	
+    $.ajax({
+        url: '/get_reinfo',
+        data: {
+            space_id: space_id
+        },
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            console.log('예약 데이터 불러오기',data);
+            for (let i = 0; i < data.length; i++) {
+                dbUseDate.push(data[i]['useday']);
+                dbStartTime.push(data[i]['startTime']);
+                dbEndTime.push(data[i]['endTime']);
+            }
+
+            // 데이터를 배열에 저장한 후 이 배열을 활용할 수 있습니다.
+            console.log('사용 날짜 배열:', dbUseDate);
+            console.log('시작 시간 배열:', dbStartTime);
+            console.log('끝 시간 배열:', dbEndTime);
+
+            // 이후 작업을 수행하면 됩니다.
+        }
+    });
+}
+
+//선택한 시간대를 색칠하는 함수
+function selectTimeRange(selectedDate, startTime, endTime) {
+    $(".time-cell").removeClass("selected-start-time selected-end-time highlighted-time-range");
+
+    // 시작 시간과 종료 시간에 해당하는 셀을 선택
+    $(".time-cell:contains('" + startTime + "')").addClass("selected-start-time").css("background-color", "#008000"); // 짙은 녹색 배경색
+    $(".time-cell:contains('" + endTime + "')").addClass("selected-end-time").css("background-color", "#008000"); // 짙은 녹색 배경색
+
+    // 선택한 시간대 색칠
+    highlightTimeRange();
+}
 
 
 </script>
