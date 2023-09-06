@@ -579,7 +579,7 @@
             <div id="review">
                 <!--  후기 작성 내용이 들어가는 div -->
             </div>
-
+            
         </section>
     </main>
     <footer>

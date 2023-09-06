@@ -57,17 +57,45 @@ public class YoonController {
 	@PostMapping("/review_get")
 	@ResponseBody
 	public String review_get(HttpServletRequest req, Model model) {
-		int space_id = Integer.parseInt(req.getParameter("space_id"));
+	    int start, psize, pno;
+	    int space_id = Integer.parseInt(req.getParameter("space_id"));
 	    ArrayList<ReviewDTO> review_get = pdao.select_review(space_id);
+	    String page = req.getParameter("pageno");
+
+	    if (page == null || page.equals("")) {
+	        pno = 1;
+	    } else {
+	        pno = Integer.parseInt(page);
+	    }
+
+	    start = (pno - 1) * 10; // 페이지 번호에 따른 시작 인덱스 계산
+	    psize = 10; // 페이지당 아이템 수
+
+	    // 해당 페이지의 리뷰 가져오기
+	    ArrayList<ReviewDTO> onepage = pdao.get_one_review_page(space_id, start, psize);
+
+	    int cnt = rdao.getTotal1(); // 총 리뷰 수
+	    int pagecount = (int) Math.ceil(cnt / (double) psize); // 전체 페이지 수 계산
+
+	    String pagestr = "";
+	    for (int i = 1; i <= pagecount; i++) {
+	        if (pno == i) {
+	            pagestr += i + "&nbsp;";
+	        } else {
+	            pagestr += "<a href='/review?pageno=" + i + "'>" + i + "</a>&nbsp;";
+	        }
+	    }
+	    model.addAttribute("pagestr", pagestr);
+
 	    JSONArray ja = new JSONArray();
-	    for (int i = 0; i < review_get.size(); i++) {
+	    for (int i = 0; i < onepage.size(); i++) { // 수정: onepage로 변경
 	        JSONObject jo = new JSONObject();
-	        jo.put("review_id", review_get.get(i).getReview_id());
-	        jo.put("space_id", review_get.get(i).getSpace_id());
-	        jo.put("userid", review_get.get(i).getUserid());
-	        jo.put("rating", review_get.get(i).getRating());
-	        jo.put("review_content", review_get.get(i).getReview_content());
-	        jo.put("created", review_get.get(i).getCreated());
+	        jo.put("review_id", onepage.get(i).getReview_id());
+	        jo.put("space_id", onepage.get(i).getSpace_id());
+	        jo.put("userid", onepage.get(i).getUserid());
+	        jo.put("rating", onepage.get(i).getRating());
+	        jo.put("review_content", onepage.get(i).getReview_content());
+	        jo.put("created", onepage.get(i).getCreated());
 	        ja.add(jo);
 	    }
 	    return ja.toJSONString();
