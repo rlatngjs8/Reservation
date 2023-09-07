@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.himedia.springboot.FAQDAO">
+<select id="typeMember" resultType="com.himedia.springboot.FAQDTO">
+	select * from FAQ where type="계정문의"
+</select>
+<select id="typeReservation" resultType="com.himedia.springboot.FAQDTO">
+	select * from FAQ where type="예약문의"
+</select>
+<select id="typePay" resultType="com.himedia.springboot.FAQDTO">
+	select * from FAQ where type="결제문의"
+</select>
+<select id="typeReceipt" resultType="com.himedia.springboot.FAQDTO">
+	select * from FAQ where type="영수증문의"
+</select>
+<select id="typeCancel" resultType="com.himedia.springboot.FAQDTO">
+	select * from FAQ where type="취소/환불문의"
+</select>
+<select id="typeUse" resultType="com.himedia.springboot.FAQDTO">
+	select * from FAQ where type="이용문의"
+</select>
+</mapper>

@@ -19,7 +19,7 @@ body {
 	font-family: 'omyu_pretty';
 	position: relative;
 	bottom:53px;
-	left:132px;
+	left:120px;
 	font-size: 21px;
 	
 	
@@ -29,7 +29,7 @@ body {
 	font-family: 'omyu_pretty';
 	position: relative;
 	bottom:53px;
-	left:198px;
+	left:170px;
 	font-size: 21px;	
 }
 
@@ -38,7 +38,7 @@ body {
 	font-size: 21px;
 	position: relative;
 	bottom:74px;
-	right:186px;;	
+	right:180px;;	
 }
 
 .otherRoom5{
@@ -71,7 +71,7 @@ body {
 	font-size: 21px;
 	position: relative;
 	bottom:76px;
-	right:130px;
+	right:120px;
 }
 
 
@@ -102,20 +102,24 @@ body {
 	font-size: 40px;
 	text-decoration: underline;
     text-underline-position: under;
+    
+   
 	
 }
 
 
 .second {
-
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    margin: 20px 0;
-    padding: 0;
-    
-    
+	display: flex;
+	list-style: none;
+	justify-content: center;
+	
+	width:1350px;
+	
+	margin-left: 236px;
+	
+	height:40%;
 }
+
 
 
 
@@ -134,19 +138,20 @@ body {
 
 
 .card {
-
- display: flex;
-        flex-direction: column;
-        padding: 10px;
-        margin: 10px;
-        border: 1px solid #ccc;
-        border-radius: 15px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-        width:500px;
-        height:430px;
-        
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease;
+	width: 520px;
+	height: 440px;
+	border-radius: 20px;
+	
+	margin-left: 43px;
 }
+
 
 .card1 {
 
@@ -246,5 +251,7 @@ background-color: #EFFBF8;
    .ta{
 	position:relative;
 	
-	bottom:25px;
+	bottom:40px;
+	
+	
 }

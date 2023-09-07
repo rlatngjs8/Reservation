@@ -28,6 +28,8 @@
 
 <%@include file="header.jsp" %>
 
+<br><br><br><br>
+
 	<h1 class="title">파티룸</h1>
 	
 	<div>
@@ -57,7 +59,6 @@
 		
 		<a class="location"><img src="img/위치아이콘.png"></a>
 		<br>
-		<a class="ra">#강남,#무료주차,#발렛,#돌잔치,스몰웨딩</a>
 		<a class="demo2">${rooms[0].price}원/시간</a>
 	
 	
@@ -71,8 +72,7 @@
         <a class="demo1">${rooms[1].location.substring(0, rooms[1].location.indexOf('2'))}</a>
         
         <a class="location"><img src="img/위치아이콘.png"></a>
-        <br>
-        <a class="ra">#강남,#브라이덜샤워,#소모임,#자연광</a>
+   
 		<a class="demo2">${rooms[1].price}원/시간</a>
 
 
@@ -86,26 +86,26 @@
          <a href="#"><img src="img/${rooms[3].img1}" alt="이미지 6"></a>
         
         <a class="demo3">${rooms[3].space_name}</a>
-        <br><br>
+        <br>
         <a class="demo1">${rooms[3].location.substring(0, rooms[3].location.indexOf('을지병원')+4)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-      	<a class="ra">#학동역,#루프탑,#바베큐,#하이엔드</a>
+        <br>
 		<a class="demo2">${rooms[3].price}원/시간</a>
   
     </div>
     
 
         </div>
-        
+        <br><br><br>
 	<div class="second">
 	<div class="card">
          <a href="#"><img src="img/${rooms[5].img3}" alt="이미지 6"></a>
         
         <a class="demo3">${rooms[5].space_name}</a>
-        <br><br>
+        <br>
         <a class="demo1">${rooms[5].location.substring(0, rooms[5].location.indexOf('학동역')+3)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-        <a class="ra">#렌탈스튜디오,#사진촬영,#무료주차</a>
+        <br>
 		<a class="demo2">${rooms[5].price}원/시간</a>
 
 
@@ -119,10 +119,9 @@
          <a href="#"><img src="img/${rooms[15].img1}" alt="이미지 6"></a>
       
         <a class="demo3">${rooms[15].space_name}</a>
-        <br><br>
+        <br>
         <a class="demo1">${rooms[15].location.substring(0, rooms[5].location.indexOf('선유도')+4)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-        <a class="ra">#영등포,#파티룸,#모임공간,#선유도</a>
 		<a class="demo2">${rooms[15].price}원/시간</a>
    
     </div>		
@@ -131,29 +130,31 @@
          <a href="#"><img src="img/${rooms[2].img1}" alt="이미지 6"></a>
    
         <a class="demo3">${rooms[2].space_name}</a>
-        <br><br>
+        <br>
         <a class="demo1">${rooms[2].location.substring(0, rooms[2].location.indexOf('압구정')+3)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-		<a class="ra">#압구정,#가로수길,#인생샷,#생일파티</a>
+        <br>
 		<a class="demo2">${rooms[2].price}원/시간</a>
     </div>
 	</div>
+	
+	<br><br><br>
 
-
-		<div class="second1">
+		<div class="second">
       <div class="card">
          <a href="#"><img src="img/${rooms[4].img1}" alt="이미지 6"></a>
           
         <a class="demo3">${rooms[4].space_name}</a>
-        <br><br>
+        <br>
         <a class="demo1">${rooms[4].location.substring(0, rooms[4].location.indexOf('매봉역')+4)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-        <a class="ra">#브라이덜샤워,#쇼케이스,#포로포즈</a>
+        <br>
 		<a class="demo2">${rooms[4].price}원/시간</a>
 
     </div>
 	</div>
-<br><br><br>
+<br><br><br><br><br>
+
 
 
 <%@include file="footer.jsp" %>

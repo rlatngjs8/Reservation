@@ -6,6 +6,20 @@
 <meta charset="UTF-8">
 <title>Home</title>
 <style>
+
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+
+
+
   body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
@@ -19,6 +33,7 @@
     color: #fff;
     padding: 20px 0;
     margin: 0;
+    font-family: 'HakgyoansimWoojuR';
   }
 
   table {
@@ -27,6 +42,8 @@
     border-collapse: collapse;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'HakgyoansimWoojuR';
+    font-weight:bold;
   }
 
   th, td {
@@ -52,6 +69,9 @@
     cursor: pointer;
     position:relative;
 		left:10%;
+		
+		font-family: 'HakgyoansimWoojuR';
+		font-weight:bold;
   }
 
   button.btnPrev:hover {
@@ -64,6 +84,8 @@
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    font-family: 'HakgyoansimWoojuR';
+    font-weight:bold;
   }
 
   button#btnWrite:hover {

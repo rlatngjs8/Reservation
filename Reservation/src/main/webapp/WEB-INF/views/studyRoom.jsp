@@ -11,9 +11,10 @@
 </head>
 <style>
 
-
-
-
+.ra1 {
+	
+	position:relative;
+}
 
 </style>
 
@@ -25,6 +26,8 @@
 <body>
 
 <%@include file="header.jsp" %>
+<br><br><br><br>
+
 
 	<h1 class="title">강의실/스터디룸</h1>
 	
@@ -50,12 +53,11 @@
     <div class="card">
          <a href="#"><img src="img/${rooms[20].img1}" alt="이미지 6"></a>
 		<a class="demo">${rooms[20].space_name}</a>
-		<br>
+		<br><br>
 		<a class="demo1">${rooms[20].location.substring(0, rooms[20].location.indexOf('독'))}</a>
 		
 		<a class="location"><img src="img/위치아이콘.png"></a>
 		<br>
-		<a class="ra">#홍대강의실,#유튜브,#인강스튜디오</a>
 		<a class="demo2">${rooms[20].price}원/시간</a>
 	
 	
@@ -65,12 +67,11 @@
          <a href="#"><img src="img/${rooms[21].img1}" alt="이미지 6"></a>
  
         <a class="demo3">${rooms[21].space_name}</a>
-        <br>
+        <br><br>
         <a class="demo1">${rooms[21].location.substring(0, rooms[21].location.indexOf('효'))}</a>
         
         <a class="location"><img src="img/위치아이콘.png"></a>
         <br>
-        <a class="ra">#사당역강의실,#강남강의실,#세미나실</a>
 		<a class="demo2">${rooms[21].price}원/시간</a>
 
 
@@ -88,23 +89,24 @@
         <a class="demo1">${rooms[22].location.substring(0, rooms[22].location.indexOf('1'))}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
         <br>
-      	<a class="ra">#책걸상,#아이패드,#라디에이터,#프린트</a>
+
 		<a class="demo2">${rooms[22].price}원/시간</a>
   
     </div>
-    
-
         </div>
+        
+        
+        <br><br><br>
         
 	<div class="second">
 	<div class="card">
          <a href="#"><img src="img/${rooms[23].img1}" alt="이미지 6"></a>
         
         <a class="demo3">${rooms[23].space_name}</a>
-        <br><br>
+        <br><br><br>
         <a class="demo1">${rooms[23].location.substring(0, rooms[23].location.indexOf('길'))}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-        <a class="ra">#강의실,#스터디룸,#부천모임,#동아리</a>
+
 		<a class="demo2">${rooms[23].price}원/시간</a>
 
 
@@ -118,10 +120,9 @@
          <a href="#"><img src="img/${rooms[24].img1}" alt="이미지 6"></a>
       
         <a class="demo3">${rooms[24].space_name}</a>
-        <br><br>
+        <br><br><br>
         <a class="demo1">${rooms[24].location.substring(0, rooms[24].location.indexOf('인')+6)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-        <a class="ra">#60명 수용,#대형 빔프로젝터,#무선마이크</a>
 		<a class="demo2">${rooms[24].price}원/시간</a>
    
     </div>		
@@ -130,7 +131,7 @@
 
 
 
-<br><br><br>
+<br><br><br><br><br>
 
 
 <%@include file="footer.jsp" %>

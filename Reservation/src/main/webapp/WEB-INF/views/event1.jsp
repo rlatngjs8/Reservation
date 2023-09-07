@@ -8,6 +8,9 @@
 </head>
 
  <style>
+ 
+
+ 
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -21,6 +24,7 @@
             padding: 1rem;
             
             height: 80px;
+      
         }
         .container {
             max-width: 800px;
@@ -85,8 +89,10 @@ li {
 <body>
 
 <%@include file="header.jsp" %>
+<br><br><br><br><br><br><br>
 
 
+<div class="forc">
 <header>
         <h1>설문조사 이벤트</h1>
     </header>
@@ -109,7 +115,7 @@ li {
         <p class="pst">더 많은 정보나 문의 사항은 <strong>event@example.com</strong>으로 문의</p>
     </div>
     <br><br>
-
+</div>
 <%@include file="footer.jsp" %>
 
 

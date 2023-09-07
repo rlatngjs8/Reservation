@@ -50,7 +50,23 @@ body {
 	display: flex;
 	list-style: none;
 	justify-content: center;
+	
+	width:1350px;
+	
+	margin-left: 236px;
+	
+	height:30%;
 }
+
+
+.second1 {
+	display: flex;
+	list-style: none;
+	justify-content: center;
+}
+
+
+
 
 /*
 .card css 부분 수정 
@@ -59,16 +75,21 @@ body {
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
-	margin: 10px;
 	border: 2px solid #ccc;
 	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease;
-	width: 400px;
-	height: 400px;
+	width: 520px;
+	height: 500px;
 	border-radius: 20px;
+	
+	margin-left: 43px;
 }
 
+.card a {
+	 font-family: 'omyu_pretty';
+	 font-size : 20px;
+}
 
 @font-face {
     font-family: 'omyu_pretty';
@@ -79,7 +100,8 @@ body {
 
 .card p{
 	font-family: 'omyu_pretty';
-	font-size: 23px;
+	font-size: 26px;
+	font-weight: bold;
 }
 
 /*
@@ -225,7 +247,7 @@ h3 {
 
 .newleft {
 	text-align: left;
-	margin-left: 10%;
+	margin-left: 16%;
 	font-family: 'Cafe24Supermagic-Bold-v1.0';
 	font-size : 40px;
 	text-decoration:underline;
@@ -237,9 +259,12 @@ h3 {
 */
 .banner {
 	background-color: #E0F8F7;
+	width:1268px;
 	padding: 40px;
 	text-align: center;
 	color: #333;
+	
+	margin-left:260px;
 }
 
 /*
@@ -467,6 +492,35 @@ card1 css 추가
 	top: 11px;
 }
 
+
+    .hidden {
+            display: none;
+        }
+
+
+#demo p{
+
+white-space: nowrap;
+position:relative;
+
+bottom:6px;
+
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#demot {
+	 font-family: 'GmarketSansMedium';	
+	 text-decoration : underline;
+	   text-underline-position: under;
+}
+
+
 </style>
 <body>
 
@@ -474,6 +528,7 @@ card1 css 추가
 
 	<!-- header (Share Place, 좌측 상단 햄버거 모양 버튼을 header.jsp로 만들었습니다.) -->
 	<%@include file="header.jsp"%>
+	<br><br>
 
 
 
@@ -481,6 +536,7 @@ card1 css 추가
 	<br>
 
 	<!-- 이벤트 배너를 추가하고, "event"라는 링크를 걸었습니다. -->
+	<br><br><br><br>
 	<div class="banner">
 		<p class="saleEvent">
 			🎉 할인 이벤트 진행 중! <a href="event">자세히 보기</a>
@@ -529,7 +585,7 @@ card1 css 추가
 
 	<br>
 
-	<div class="second" align="center">
+	<div class="second1" align="center">
 		<div style="overflow: hidden">
 			<div class="slide-container">
 
@@ -612,6 +668,11 @@ card1 css 추가
 			<a href="/#"><img src="img/${rooms[3].img2}" alt="이미지 6"></a>
 
 			<p id="demo">${rooms[3].space_name}</p>
+			<a id="demo">${rooms[3].location }</a>
+	
+		<br>
+		<a id="demot" align="right" style="position:relative; top:30px;">${rooms[3].price}원/시간</a>
+
 		</div>
 
 
@@ -619,6 +680,10 @@ card1 css 추가
 			<a href="#"><img src="img/${rooms[9].img2}" alt="이미지 6"></a>
 
 			<p id="demo">${rooms[9].space_name}</p>
+			<a id="demo">${rooms[9].location }</a>
+			
+			<br>
+			<a id="demot" align=right>${rooms[9].price}원/시간</a>
 		</div>
 
 
@@ -626,36 +691,62 @@ card1 css 추가
 			<a href="#"><img src="img/${rooms[22].img1}" alt="이미지 6"></a>
 
 			<p id="demo">${rooms[22].space_name}</p>
+			<a id="demo">${rooms[22].location }</a>
+			
+			<br>
+			<a id="demot" align=right>${rooms[22].price}원/시간</a>
 		</div>
 
-
-		<div class="card">
-			<a href="#"><img src="img/${rooms[12].img2}" alt="이미지 6"></a>
-
-			<p id="demo">${rooms[12].space_name}</p>
-		</div>
 	</div>
 
 	<br>
 	<br>
 
 	<div class="second">
+
+		<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
 		<div class="card">
-			<a href="#"><img src="img/${rooms[1].img2}" alt="이미지 6"></a>
+			<a href="/#"><img src="img/${rooms[1].img2}" alt="이미지 6"></a>
 
 			<p id="demo">${rooms[1].space_name}</p>
+			<a id="demo">${rooms[1].location }</a>
+			
+			
+		<br>
+		<a id="demot" align="right" style="position:relative; top:3px;">${rooms[1].price}원/시간</a>
+
 		</div>
 
 
 		<div class="card">
-			<a href="#"><img src="img/${rooms[15].img1}" alt="이미지 6"></a>
+			<a href="#"><img src="img/${rooms[15].img2}" alt="이미지 6"></a>
 
 			<p id="demo">${rooms[15].space_name}</p>
+			<a id="demo">${rooms[15].location }</a>
+			
+			<br>
+			<a id="demot" align=right>${rooms[15].price}원/시간</a>
 		</div>
 
 
-	</div>
+		<div class="card">
+			<a href="#"><img src="img/${rooms[12].img1}" alt="이미지 6"></a>
 
+			<p id="demo">${rooms[22].space_name}</p>
+			<a id="demo">${rooms[22].location }</a>
+			
+			<br>
+			<a id="demot" align=right>${rooms[12].price}원/시간</a>
+		</div>
+
+	</div>
+	
+	
+	<br><br>	
+	
+			
+			
+			
 	<br>
 	<br>
 	<br>
@@ -666,7 +757,7 @@ card1 css 추가
 	</div>
 
 
-	<div class="second">
+	<div class="second1">
 
 		<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
 		<div class="card1">
@@ -681,10 +772,6 @@ card1 css 추가
 		</div>
 
 		
-		<div class="card1">
-			<a href="#"><img src="img/20.jpg" alt="이미지 2"></a>
-			<p id="demo">후기1</p>
-		</div>
 	
 	</div>
 
@@ -698,7 +785,7 @@ card1 css 추가
 	<br>
 	<br>
 
-	<div class="second">
+	<div class="second1">
 
 
 
@@ -713,10 +800,6 @@ card1 css 추가
 			<p id="demo">goodgoodgood</p>
 		</div>
 
-		<div class="card12">
-			<a href="#"><img src="img/18.jpg"></a>
-			<p id="demo">GoodGoodGood</p>
-		</div>
 
 	</div>
 

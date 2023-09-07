@@ -35,8 +35,10 @@
     font-style: normal;
 }
 
-h1{
+.nh{
 font-family: 'omyu_pretty';
+
+margin-left : 45px;
 }
 
 
@@ -48,8 +50,8 @@ font-family: 'omyu_pretty';
 <body>
 
 <%@include file="header.jsp" %>
-
-<h1>새롭게 등록된 공간</h1>
+<br><br><br><br>
+<h1 class="nh">New Arrivals</h1>
 <br>
 
 
@@ -65,8 +67,8 @@ font-family: 'omyu_pretty';
         <br>
         <a class="demo1">${rooms[2].location.substring(0, rooms[2].location.indexOf('압구정역')+4)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-		<br>
-		<a class="ra">#압구정,#가로수길,#인생샷,#생일파티</a>
+		<br><br>
+	
 		<a class="demo2">${rooms[2].price}원/시간</a>
    
     </div>
@@ -78,8 +80,8 @@ font-family: 'omyu_pretty';
         <br>
         <a class="demo1">${rooms[3].location.substring(0, rooms[3].location.indexOf('을지병원')+4)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-		<br>
-		<a class="ra">#학동역,#루프탑,#바베큐,#하이엔드</a>
+	
+		<br><br>
 		<a class="demo2">${rooms[3].price}원/시간</a>
    
     </div>
@@ -91,14 +93,14 @@ font-family: 'omyu_pretty';
         <br>
         <a class="demo1">${rooms[11].location.substring(0, rooms[11].location.indexOf('사당역')+3)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-		<br>
-		<a class="ra">#브라이덜샤워,#쇼케이스,#포로포즈</a>
+		
+		<br><br>
 		<a class="demo2">${rooms[11].price}원/시간</a>
    
     </div>
     </div>
 
-
+<br><br><br>
 
 
 <div class="second">
@@ -110,8 +112,8 @@ font-family: 'omyu_pretty';
         <br>
         <a class="demo1">${rooms[9].location.substring(0, rooms[9].location.indexOf('압구정')+3)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
+	
 		<br>
-		<a class="ra">글씨가안나ㅏ</a>
 		<a class="demo2">${rooms[9].price}원/시간</a>
    
     </div>
@@ -123,8 +125,8 @@ font-family: 'omyu_pretty';
         <br>
         <a class="demo1">${rooms[1].location.substring(0, rooms[1].location.indexOf('논현동')+3)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
+
 		<br>
-		<a class="ra">#학동역,#루프탑,#바베큐,#하이엔드</a>
 		<a class="demo2">${rooms[1].price}원/시간</a>
    
     </div>
@@ -136,14 +138,14 @@ font-family: 'omyu_pretty';
         <br>
         <a class="demo1">${rooms[15].location.substring(0, rooms[4].location.indexOf('선유도역')+4)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
+
 		<br>
-		<a class="ra">#브라이덜샤워,#쇼케이스,#포로포즈</a>
 		<a class="demo2">${rooms[15].price}원/시간</a>
    
     </div>
     </div>
 
-
+<br><br><br><br><br>
 
 
 
@@ -158,7 +160,6 @@ font-family: 'omyu_pretty';
         <a class="demo1">${rooms[22].location.substring(4, rooms[22].location.indexOf('민락동')+3)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
 		<br>
-		<a class="ra">#압구정,#가로수길,#인생샷,#생일파티</a>
 		<a class="demo2">${rooms[22].price}원/시간</a>
    
     </div>
@@ -170,8 +171,8 @@ font-family: 'omyu_pretty';
         <br>
         <a class="demo1">${rooms[12].location.substring(0, rooms[12].location.indexOf('혜화역')+3)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-		<br>
-		<a class="ra">#학동역,#루프탑,#바베큐,#하이엔드</a>
+	
+		<br><br>	
 		<a class="demo2">${rooms[12].price}원/시간</a>
    
     </div>
@@ -183,8 +184,8 @@ font-family: 'omyu_pretty';
         <br>
         <a class="demo1">${rooms[20].location.substring(3, rooms[20].location.indexOf('마포구')+3)}</a>
         <a class="location"><img src="img/위치아이콘.png"></a>
-		<br>
-		<a class="ra">#브라이덜샤워,#쇼케이스,#포로포즈</a>
+
+		<br><br>
 		<a class="demo2">${rooms[20].price}원/시간</a>
    
     </div>
