@@ -265,9 +265,9 @@ public class KimController {
 	 public String qnaview(HttpServletRequest req, Model model){
 		 HttpSession session= req.getSession();
 		 String userid = (String) session.getAttribute("userid");
-		 String title = req.getParameter("title");
+		 int seqno = Integer.parseInt(req.getParameter("seqno"));
 		 
-		 BoardDTO bdto = bdao.viewBoardDTO(title);
+		 BoardDTO bdto = bdao.viewBoardDTO(seqno);
 			bdao.hitup(userid);
 			model.addAttribute("bpost", bdto);
 		 

@@ -29,52 +29,47 @@ public class productController {
 		private productDAO pdao;
 		
 		@GetMapping("/productList")
-		public String productList() {
+		public String productList(HttpServletRequest req, Model model) {
+				String keyword = req.getParameter("keyword");
+    System.out.println("keyword="+keyword);
+    int start, psize;
+    String page = req.getParameter("pageno1");
+    if (page == null || page.equals("")) {
+        page = "1";
+    }
+    int pno = Integer.parseInt(page);
+    start = (pno - 1) * 10;
+    psize = 10;
+
+    ArrayList<productDTO> alBoard;
+
+    if (keyword != null && !keyword.isEmpty()) {
+        // 키워드 검색을 수행하고 검색 결과를 가져옵니다.
+        alBoard = pdao.searchProducts(keyword, start, psize);
+    } else {
+        // 키워드가 없으면 모든 상품을 가져옵니다.
+        alBoard = pdao.getList(start, psize);
+    }
+
+    int cnt = pdao.getTotal();
+    int pagecount = (int) Math.ceil(cnt / 10.0);
+
+    String pagestr = "";
+    for (int i = 1; i <= pagecount; i++) {
+        if (pno == i) {
+            pagestr += i + "&nbsp;";
+        } else {
+            pagestr += "<a href='/productList?pageno1=" + i + "'>" + i + "</a>&nbsp;";
+        }
+    }
+
+    model.addAttribute("pagestr", pagestr);
+    model.addAttribute("plist", alBoard);
+    
 				return "/productManage/productList";
 		}
 
 		
-		// 상품관리 열리자마자 리스트
-		@GetMapping("/productList1")
-  public String searchProducts(HttpServletRequest req, Model model) {
-      String keyword = req.getParameter("keyword");
-      System.out.println("keyword="+keyword);
-      int start, psize;
-      String page = req.getParameter("pageno1");
-      if (page == null || page.equals("")) {
-          page = "1";
-      }
-      int pno = Integer.parseInt(page);
-      start = (pno - 1) * 10;
-      psize = 10;
-
-      ArrayList<productDTO> alBoard;
-
-      if (keyword != null && !keyword.isEmpty()) {
-          // 키워드 검색을 수행하고 검색 결과를 가져옵니다.
-          alBoard = pdao.searchProducts(keyword, start, psize);
-      } else {
-          // 키워드가 없으면 모든 상품을 가져옵니다.
-          alBoard = pdao.getList(start, psize);
-      }
-
-      int cnt = pdao.getTotal();
-      int pagecount = (int) Math.ceil(cnt / 10.0);
-
-      String pagestr = "";
-      for (int i = 1; i <= pagecount; i++) {
-          if (pno == i) {
-              pagestr += i + "&nbsp;";
-          } else {
-              pagestr += "<a href='/productList?pageno1=" + i + "'>" + i + "</a>&nbsp;";
-          }
-      }
-
-      model.addAttribute("pagestr", pagestr);
-      model.addAttribute("plist", alBoard);
-
-      return "/productManage/productList";
-  }
 
 		
 		// 상품추가버튼 링크

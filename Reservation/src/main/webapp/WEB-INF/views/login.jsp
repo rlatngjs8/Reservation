@@ -87,10 +87,11 @@
         <h2>로그인</h2>
         <input type="text" id="loginid" name="loginid" placeholder="로그인 아이디" autofocus>
         <input type="password" id="loginpw" name="loginpw" placeholder="패스워드">
-        <input type="submit" value="로그인" class="button">&nbsp;&nbsp;<a href="/signup" class="button">회원가입</a>
+        <input type="submit" id="btnSubmit" value="로그인" class="button">&nbsp;&nbsp;<a href="/signup" class="button">회원가입</a>
         <c:forEach items="${member}" var="member">
         	<input type="hidden" name="name" value="${member.name}">
         </c:forEach>
+        <input type="checkbox" id="auto">자동로그인
     </div>
     <c:if test="${loginFailed}">
 			<script>
@@ -100,13 +101,39 @@
     </c:if>
 </form>
 <script src="http://code.jquery.com/jquery-Latest.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script>
 $(document).on('submit', '#frmLogin', function() {
     if ($('#loginid').val() === '' || $('#loginpw').val() === '') {
         alert('아이디 혹은 비밀번호를 입력해주세요');
         return false;
     }
+    $.post('/doLogin',{userid:$('#loginid').val(),passcode:$('#loginpw').val()},function(data){
+    	if (data == '0') { // 로그인 성공
+            if ($('#auto').prop('checked') == true) {
+//                 document.cookie = "userid=" + $('#loginid').val() + "; passcode=" + $('#loginpw').val();
+	  	  				$.cookie('userid',$('#loginid').val());
+  	  					$.cookie('passcode',$('#loginpw').val());
+    		}
+    	} else {// 실패 
+    		
+    	}
+    },'json')
 });
+$(document).ready(function () {
+    let useridCookie = $.cookie('userid');
+    let passcodeCookie = $.cookie('passcode');
+    console.log("userid 쿠키=" + useridCookie);
+    console.log("passcode 쿠키=" + passcodeCookie);
+    
+    $('#loginid').val(useridCookie);
+    $('#loginpw').val(passcodeCookie);
+    
+    if (useridCookie != null && passcodeCookie != null) {
+        $('#btnSubmit').trigger('click');
+    }
+});
+
 </script>
 </body>
 </html>

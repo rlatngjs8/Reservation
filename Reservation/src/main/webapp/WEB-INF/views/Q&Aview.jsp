@@ -101,6 +101,7 @@
 <body>
 <h1>상세문의 내역</h1>
 <table>
+<input type="hidden" value="${bpost.seqno}">
 <tr><td>제목</td><td>${bpost.title}</td></tr>
 <tr><td>내용</td><td><textarea rows="10" cols="50" readonly>${bpost.content }</textarea></td></tr>
 <tr><td>작성자</td><td>${bpost.writer}</td></tr>

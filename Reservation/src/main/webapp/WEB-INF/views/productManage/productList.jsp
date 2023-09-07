@@ -104,14 +104,10 @@
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); 
     transition: background-color 0.3s ease; 
     position:relative;
-<<<<<<< HEAD
     margin-left: 20px;
     font-family: 'MaplestoryOTFBold';
-=======
-    top:63px;
     margin-left: 3px;
     font-family: 'GmarketSansMedium';
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
     font-size: 25px;
   }
   
@@ -160,8 +156,57 @@ font-family: 'SBAggroB';
   margin-right: 10px; /* 요소들 사이 간격 조절 */
 }
 
+.search-bar {
+    display: flex;
+    align-items: center;
+  }
 
+  #search-input {
+    width: 200px; /* 검색 입력 필드의 너비 조정 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
 
+  #search-button {
+    background-color: #A4A4A4; /* 검색 버튼 배경색 */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-left: 10px; /* 검색 버튼과 입력 필드 간격 설정 */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+  }
+
+  /* 검색 버튼에 호버 효과 추가 */
+  #search-button:hover {
+    background-color: #D8D8D8; /* 호버 시 배경색 변경 */
+  }
+/* ${pagestr} 스타일 */
+#pagestr-container {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+#pagestr-container a {
+  text-decoration: none;
+  color: #555; /* 텍스트 색상을 회색으로 설정 */
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #999; /* 테두리 색상을 회색으로 설정 */
+  border-radius: 5px;
+  background-color: #f7f7f7; /* 배경 색상을 회색으로 설정 */
+  transition: background-color 0.3s ease, color 0.3s ease; /* 호버 효과 설정 */
+}
+
+#pagestr-container a:hover {
+  background-color: #999; /* 호버 시 배경 색상 변경 */
+  color: #fff; /* 호버 시 텍스트 색상 변경 */
+}
 </style>
 </head>
 <body>
@@ -175,7 +220,7 @@ font-family: 'SBAggroB';
 			<button id="prev">관리자 메뉴</button>
 		</div>
 		<div class="search-bar">
-			<form action="/productList1" method="GET">
+			<form action="/productList" method="GET">
 		  <input type="text" id="search-input" name="keyword" placeholder="키워드 검색">
 		  <button id="search-button">검색</button>
 		  </form>
@@ -199,7 +244,7 @@ font-family: 'SBAggroB';
       </div>
     </div>
   </c:forEach>
- 	<div align="left">${pagestr}</div>
+ 	<div id="pagestr-container" align="center">${pagestr}</div>
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>

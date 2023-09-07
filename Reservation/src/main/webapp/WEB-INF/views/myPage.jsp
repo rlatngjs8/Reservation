@@ -163,7 +163,7 @@
         <li><a href="#" onclick="showSection('userEdit')">회원정보 수정</a></li>
         <li><a href="#" onclick="showSection('purchaseHistory')">구매내역</a></li>
         <li><a href="#" onclick="showSection('myQuestions')">나의 문의내역</a></li>
-        <li><a href="#" onclick="showSection('userDelete')">회원탈퇴</a></li>
+        <li><a href="#" onclick="showSection('userDelete')">서비스탈퇴</a></li>
         <!-- 메인화면은 아래로 따로 내려서 티나도록 -->
         <li><a href="/" onclick="goHome">메인 화면으로</a></li>
     </ul>
@@ -206,6 +206,7 @@
         <form action="checkPasscode" method="post">
         		<!-- 아이디도 볼수있게 만들기 -->
             <input type="hidden" name="userid" id="useridCheck" value="${userid}">
+            <label style="font-size: 20px">ID: &nbsp;&nbsp;${userid}</label><br>
             <label for="passcode">비밀번호 확인:</label>
             <input type="password" id="passcodeCheck" name="passcode" required style="width: 200px; padding: 8px; border: 1px solid #ccc; border-radius: 3px;">
             <button type="submit" id="checkPasscodeButton" style="background-color: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 3px; cursor: pointer;">확인</button>
@@ -276,7 +277,8 @@
         </thead>
         <tbody>
         <c:forEach items="${blist}" var="bpost" varStatus="loop">
-            <tr>
+        <input type="hidden" value="${bpost.seqno}">
+            <tr data-seqno="${bpost.seqno}">
                 <td>${loop.index+1}</td>
                 <td>${bpost.title}</td>
                 <td>${bpost.writer}</td>
@@ -287,12 +289,13 @@
     </table>
 </div>
 <div class="container" id="userDelete" style="display: none;">
-    <h2>회원탈퇴</h2>
+    <h2>서비스 탈퇴</h2>
     <hr/>
     <br>
     <div class="form-group" id="delCheckForm">
         <form action="deleteCheck" method="post">
             <input type="hidden" name="userid" id="useridCheck1" value="${userid}">
+            <label style="font-size: 20px">ID: &nbsp;&nbsp;${userid}</label><br>
             <label for="passcode">비밀번호 확인:</label>
             <input type="password" id="passcodeCheck1" name="passcode" required style="width: 200px; padding: 8px; border: 1px solid #ccc; border-radius: 3px;">
             <button type="submit" id="delCheckPasscodeButton" style="background-color: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 3px; cursor: pointer;">확인</button>
@@ -300,7 +303,19 @@
     </div>
     <form action="delMember" method="post" class="hidden" id="deleteForm">
         <input type="hidden" name="delMember" value="${userid}">
-        <input type="submit" id="subDelete" value="회원탈퇴" style="background-color: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 3px; cursor: pointer;">
+        <div id="delReason">
+        	<h3>서비스 탈퇴 전에 꼭 확인하세요</h3>
+        	<p>서비스 탈퇴시 내 프로필, 예약내역 등의 모든 정보가 삭제되며 이후 복구가 불가능합니다.</p>
+        	<div>
+        		<input type="checkbox">
+        		<label>위의 내용을 숙지했으며 서비스 탈퇴에 동의합니다.</label>
+        	</div>
+        	<p>서비스 탈퇴동의는 필수입니다.</p>
+        </div>
+        <div>
+        <a href="/myPage">취소</a>
+        <input type="submit" id="subDelete" value="서비스탈퇴" style="background-color: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 3px; cursor: pointer;">
+        </div>
     </form>
 </div>
 <script src="http://code.jquery.com/jquery-Latest.js"></script>
@@ -409,11 +424,11 @@
         }
     })
 
-    $(document).on('click','#tblBoard tbody tr',function(){
-    	window.location.href='/Q&Aview?title='+$(this).find('td:eq(1)').text();
-    	return false;
-        
-    });
+    $(document).on('click', '#tblBoard tbody tr', function() {
+    var seqno = $(this).data('seqno'); // 클릭한 행의 data-seqno 속성 값을 읽어옴
+    window.location.href = '/Q&Aview?seqno=' + seqno; // 원하는 URL로 이동
+    return false;
+});
     $(document).on('click','#btnWrite',function(){
     	window.location.href="/myWrite";
     })

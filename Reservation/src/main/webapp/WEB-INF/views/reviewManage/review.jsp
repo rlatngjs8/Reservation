@@ -127,8 +127,26 @@
 	top:1px;
 }
 
-#pagestr{
-	 padding: 10px;
+#pagestr-container {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+#pagestr-container a {
+  text-decoration: none;
+  color: #555; /* 텍스트 색상을 회색으로 설정 */
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #999; /* 테두리 색상을 회색으로 설정 */
+  border-radius: 5px;
+  background-color: #f7f7f7; /* 배경 색상을 회색으로 설정 */
+  transition: background-color 0.3s ease, color 0.3s ease; /* 호버 효과 설정 */
+}
+
+#pagestr-container a:hover {
+  background-color: #999; /* 호버 시 배경 색상 변경 */
+  color: #fff; /* 호버 시 텍스트 색상 변경 */
 }
 
 
@@ -163,7 +181,7 @@
             </tbody>
         </table>
     </div>
-<div id="pagestr">
+<div id="pagestr-container" align="center">
     ${pagestr}
 </div>
 </body>

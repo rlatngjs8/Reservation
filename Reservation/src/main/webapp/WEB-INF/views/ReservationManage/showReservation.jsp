@@ -78,7 +78,6 @@
         background-color: #d32f2f;
     }
 
-<<<<<<< HEAD
     .btnSearch {
         box-shadow: inset 0px 1px 0px 0px #ffffff;
         background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
@@ -111,7 +110,6 @@
 		.btnDelete {
 		    white-space: nowrap;
 		}
-=======
 
 
 .custom-select {
@@ -176,10 +174,31 @@
 	position:relative;
 	top:1px;
 }
+#pagestr-container {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+#pagestr-container a {
+  text-decoration: none;
+  color: #555; /* 텍스트 색상을 회색으로 설정 */
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #999; /* 테두리 색상을 회색으로 설정 */
+  border-radius: 5px;
+  background-color: #f7f7f7; /* 배경 색상을 회색으로 설정 */
+  transition: background-color 0.3s ease, color 0.3s ease; /* 호버 효과 설정 */
+}
+
+#pagestr-container a:hover {
+  background-color: #999; /* 호버 시 배경 색상 변경 */
+  color: #fff; /* 호버 시 텍스트 색상 변경 */
+}
 </style>
 </head>
 <body>
-<br><br><br><br>
+<br><br>
 <h1>예약현황</h1>
 <div class = "subHeader">
 	<div class = "serch">
@@ -221,6 +240,7 @@
         </tbody>
     </table>
 </div>
+    <div id="pagestr-container" align="center">${pagestr}</div>
 
 
 </body>
