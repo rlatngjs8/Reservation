@@ -600,7 +600,7 @@ card1 css 추가
 
 
 
-		<a href="#"><h3 class="newleft">새로 등록했어요</h3></a>
+		<a href="/newrooms"><h3 class="newleft">새로 등록했어요</h3></a>
 	</div>
 
 
@@ -616,23 +616,23 @@ card1 css 추가
 
 
 		<div class="card">
-			<a href="#"><img src="img/${rooms[6].img2}" alt="이미지 6"></a>
+			<a href="#"><img src="img/${rooms[9].img2}" alt="이미지 6"></a>
 
-			<p id="demo">${rooms[6].space_name}</p>
+			<p id="demo">${rooms[9].space_name}</p>
 		</div>
 
 
 		<div class="card">
-			<a href="#"><img src="img/${rooms[11].img2}" alt="이미지 6"></a>
+			<a href="#"><img src="img/${rooms[22].img1}" alt="이미지 6"></a>
 
-			<p id="demo">${rooms[11].space_name}</p>
+			<p id="demo">${rooms[22].space_name}</p>
 		</div>
 
 
 		<div class="card">
-			<a href="#"><img src="img/${rooms[0].img2}" alt="이미지 6"></a>
+			<a href="#"><img src="img/${rooms[12].img2}" alt="이미지 6"></a>
 
-			<p id="demo">${rooms[0].space_name}</p>
+			<p id="demo">${rooms[12].space_name}</p>
 		</div>
 	</div>
 
@@ -680,6 +680,12 @@ card1 css 추가
 			<p id="demo">후기1</p>
 		</div>
 
+		
+		<div class="card1">
+			<a href="#"><img src="img/20.jpg" alt="이미지 2"></a>
+			<p id="demo">후기1</p>
+		</div>
+	
 	</div>
 
 

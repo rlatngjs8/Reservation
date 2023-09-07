@@ -408,4 +408,12 @@ public String showAllRooms(Model model) {
 	return "/allRooms";
 }
 
+@GetMapping("/newrooms")
+public String shownewRooms(Model model) {
+	ArrayList<productDTO> alemp = pdao.get_space();
+	model.addAttribute("rooms",alemp);
+	
+	return "/newrooms";
+}
+
 }

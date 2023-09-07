@@ -31,6 +31,9 @@
 	font-size:20px;
 }
 
+.cate a{
+	text-decoration: underline;
+}
 
 
 </style>
