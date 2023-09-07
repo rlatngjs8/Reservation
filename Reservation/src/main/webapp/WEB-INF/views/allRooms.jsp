@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,6 +59,19 @@
 
 
 <div class="second">
+<c:forEach items="${rooms}" var="prod">
+    <div class="product" data-space_id="${prod.space_id}">
+<%--       <img src="${prod.image}" alt="${product.name}"> --%>
+      <div class="space-info">
+      	<h2>${prod.space_id}</h2>
+        <h2 class="space_name">${prod.space_name}</h2>
+        <p class="space_type">${prod.space_type}</p>
+        <p class="space-price">${prod.location}</p>
+        <p class="space-price">${prod.mobile}</p>
+
+      </div>
+    </div>
+  </c:forEach>
     
 	<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
     <div class="card">
