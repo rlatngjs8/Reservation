@@ -48,4 +48,16 @@
     WHERE space_name LIKE CONCAT('%', #{param1}, '%') OR space_type LIKE CONCAT('%', #{param1}, '%') OR location LIKE CONCAT('%', #{param1}, '%')
     LIMIT #{param2}, #{param3}
 </select>
+
+<insert id="qa_insert">
+	insert into board set content=#{param1}, writer=#{param2}, title=#{param3}, space_id=#{param4} , created=now()
+</insert>
+
+<select id="get_member_info">
+	SELECT * FROM members WHERE userid = #{param1};
+</select>
+
+<select id="qa_get">
+	select * from board where space_id=#{param1}
+</select>
 </mapper>

@@ -49,7 +49,7 @@
 		margin-top: 20px;
 	}
 	
-	.space-rules, .location-info, .review, .review_content {
+	.space-rules, .location-info, .review, .review_content, .qa {
 		margin-top: 20px;
 		border-top: 1px solid #ccc;
 		padding-top: 10px;
@@ -268,8 +268,8 @@
 
     .ui-dialog {
      
-     max-width: 450px;
-     max-height: 500px;
+     max-width: 500px;
+     max-height: 570px;
    	 background-color: #ffffff;
     }
 
@@ -336,7 +336,7 @@
 
     .ui-dialog-content form .textarea {
       height: 150px;
-      margin-bottom: 20px;
+      margin-bottom: 3px;
     }
 
     .ui-dialog-content .btn {
@@ -353,23 +353,23 @@
     #review_content {
         width: 97%; /* 원하는 넓이로 조절하세요 */
         height: 100%;
-        padding: 0px;
+        padding: 15px;
         resize: none;
     }
     
-	.review {
+	.review, .qa {
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px;
     background-color: #f9f9f9;
 	}
 	
-	.review h4 {
+	.review, .qa h4 {
 	    font-size: 18px;
 	    font-weight: bold;
 	}
 	
-	.review p {
+	.review, .qa  p {
 	    font-size: 14px;
 	}
 	
@@ -399,11 +399,50 @@
 	.re_selected-end-time {
 		background-color: #696969; /* 검정색 배경 */
 		color: #333; /* 흰색 글자색 */
-	}
-	
+	}	
+#qa-dialog-form {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#qa_content {
+    width: 97%;
+    height: 200px;
+    padding: 15px;
+    resize: none;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+#qa_content::placeholder {
+    color: #777;
+}
+
+#qa_title {
+    width: 60%;
+    height: 10px;
+    padding: 15px;
+    resize: none;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+#qa_title::placeholder {
+    color: #777;
+}
+    
 </style>
 </head>
 <body>
+
+	<!--  <input type='hidden' id='username' value="">-->
     <input type='hidden' id='user_id' value="${sessionScope.userid}">
     <input type="hidden" id="space_id" value="${space.space_id }">
     <header style="display: flex; justify-content: flex-end; align-items: center;">
@@ -551,35 +590,66 @@
                 <c:if test="${empty sessionScope.userid}">
                     <button id="not_login" >리뷰 작성하기</button>
                 </c:if>
-                <div class="container" >
-                    <div id="dialog-form" title="Write a Review">
-                        <div class="dialog-content" >
-                            <div class="star-widget">
-                                <div class="review-header" style="text-align: center" >리뷰 작성하기</div>
-                                <input type="radio" name="rate" id="rate-5" value="5">
-                                <label for="rate-5" class="fas fa-star"></label>
-                                <input type="radio" name="rate" id="rate-4" value="4">
-                                <label for="rate-4" class="fas fa-star"></label>
-                                <input type="radio" name="rate" id="rate-3" value="3">
-                                <label for="rate-3" class="fas fa-star"></label>
-                                <input type="radio" name="rate" id="rate-2" value="2">
-                                <label for="rate-2" class="fas fa-star"></label>
-                                <input type="radio" name="rate" id="rate-1" value="1">
-                                <label for="rate-1" class="fas fa-star"></label>
-                            </div>
-                            <br><br><br>
-                            <div class="textarea" style="text-align: center;">
-                                <textarea id="review_content" cols="20" rows="18" style="height: 250px; border: 2px solid #333; border-width: 4px; " placeholder="리뷰를 작성하세요"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="review">
-                <!--  후기 작성 내용이 들어가는 div -->
-            </div>
+		            <div id="dialog-form" title="Write a Review" style="width: 90%; height: 90%;">
+		                <div class="dialog-content" >
+		                    <div class="star-widget">
+		                        <div class="review-header" style="text-align: center" >리뷰 작성하기</div>
+		                        <input type="radio" name="rate" id="rate-5" value="5">
+		                        <label for="rate-5" class="fas fa-star"></label>
+		                        <input type="radio" name="rate" id="rate-4" value="4">
+		                        <label for="rate-4" class="fas fa-star"></label>
+		                        <input type="radio" name="rate" id="rate-3" value="3">
+		                        <label for="rate-3" class="fas fa-star"></label>
+		                        <input type="radio" name="rate" id="rate-2" value="2">
+		                        <label for="rate-2" class="fas fa-star"></label>
+		                        <input type="radio" name="rate" id="rate-1" value="1">
+		                        <label for="rate-1" class="fas fa-star"></label>
+		                    </div>
+		                    <br><br><br>
+		                    <div class="textarea" style="text-align: center;">
+		                        <textarea id="review_content" cols="20" rows="18" style="height: 250px; border: 2px solid #333; border-width: 4px; " placeholder="리뷰를 작성하세요"></textarea>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+			
+				<div id="review">
+				    <!-- 후기 작성 내용이 들어가는 div -->
+				</div>
+				<div id="review_page_num" style="text-align: center;">
+				    <span class="page" data-page="1">1</span>
+				    <span class="page" data-page="2">2</span>
+				    <span class="page" data-page="3">3</span>
+				    <!-- 페이지 번호를 추가하고 각각의 페이지를 클릭할 때 data-page 속성으로 페이지 번호를 저장합니다. -->
+				</div>
             
+		<div id="Q&A" style="border-width: 4px;">
+			<h3>리뷰</h3>
+            <c:if test="${not empty sessionScope.userid}">
+				<button id="open-qa-dialog-button">Q&A 작성</button>
+            </c:if>
+            <!--  로그인 안했을 떄  동작함 -->
+            <c:if test="${empty sessionScope.userid}">
+                <button id="not_login" >Q&A 작성</button>
+            </c:if>
+		    <!-- Q&A 작성 다이얼로그 폼 -->
+		    <div id="qa-dialog-form" title="Q&A 작성">
+		        <form>
+		        	<div class="qa-header" style="text-align: center" >질문 작성하기</div>
+		        	<div class="qa-textarea" style="text-align: center;">
+		        	<textarea id="qa_title" cols="0" rows="10" style= "border: 1px solid #333; " placeholder="제목을 작성하세요"></textarea>
+		        	</div>
+					<div class="qa-textarea" style="text-align: center;">
+					<textarea id="qa_content" cols="20" rows="18" style="height: 250px; border: 2px solid #333; border-width: 4px; " placeholder="질문을 작성하세요"></textarea>
+                   	</div>
+		        </form>
+		    </div>
+		</div>
+		
+		<div id="qa">
+        <!--  q&a 작성 내용이 들어가는 div -->
+        </div> 
+        
         </section>
     </main>
     <footer>
@@ -610,6 +680,9 @@ $(document).ready(function () {
 	review_get();
     get_imgslide();
     get_reinfo();
+    get_member_info();
+    qa_get();
+    
     
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
@@ -780,6 +853,7 @@ var selectedTime = "";
 
 // 다이얼 로그 시작
 // 다이얼 로그 시작
+// 다이얼 로그 시작
 $(document).ready(function () {
     const openDialogBtn = document.querySelector("#open-dialog-button");
     const dialogForm = $("#dialog-form");
@@ -793,8 +867,8 @@ $(document).ready(function () {
     dialogForm.dialog({
         autoOpen: false,
         modal: true,
-        width: 450,
-        height: 510,
+        width: 1000,
+        height:500,
         resizable: false, // 크기 조절 비활성화
         buttons: [
             {
@@ -834,14 +908,19 @@ $(document).ready(function () {
                     });
                     window.location.href = "/space";
                 }
-            }
+            },
+            {
+                text: "취소",
+                click: function () {
+                	dialogForm.dialog("close");
+                }
+            } // 이 부분에 쉼표 추가
         ]
     });
 
     // 별점 선택 위젯 설정
     $("#dialog-rating").selectmenu();
 });
-
 
 $(document).on('click', '#btnReT', function () {
     // 선택한 날짜, 시작 시간, 끝 시간을 가져옵니다.
@@ -957,6 +1036,48 @@ function review_get() { //리뷰 불러오기
     });
 }
 
+function qa_get() { //리뷰 불러오기
+    console.log('qa 불러옴');
+    const space_id = $('#space_id').val();
+    $.ajax({
+        url: '/qa_get',
+        data: {
+            space_id: space_id
+        },
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            console.log('리뷰 데이터 불러오기',data);
+            $("#qa").empty();
+            for (let i = 0; i < data.length; i++) {
+                let qa =
+                    "<div class='qa'>" +
+                    "<h4>작성자: " + data[i]['writer'] + "</h4>" +
+                    "<p>제목 " + data[i]['title'] + "</p>" + // 수정된 부분
+                    "<p>리뷰 내용: " + data[i]['content'] + "</p>" +
+                    "<p>작성일: " + data[i]['created'] + "</p>" +
+                    "</div>";
+                $('#qa').append(qa);
+            }
+        }
+    });
+}
+
+
+function get_member_info() { //데이터 불러오기
+    const userid = $("#user_id").val();
+    console.log('나의 정보 불러옴');
+    $.ajax({
+        url: '/get_member_info',
+        data: {userid: userid},
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+        	console.log('나의 정보 불러오기',data);
+        }
+    });
+}
+
 function generateStarRating(rating) { //별그리기
     let starsHtml = '';
     for (let i = 1; i <= 5; i++) {
@@ -1030,6 +1151,7 @@ function delete_temp_reservation() {
     });
 }
 
+
 function get_reinfo() { // 리뷰 불러오기
     console.log('예약 데이터 불러옴');
     const space_id = $('#space_id').val();
@@ -1064,16 +1186,99 @@ function selectTimeRange(selectedDate, startTime, endTime) {
     $(".time-cell").removeClass("selected-start-time selected-end-time highlighted-time-range");
 
     // 시작 시간과 종료 시간에 해당하는 셀을 선택
-    $(".time-cell:contains('" + startTime + "')").addClass("selected-start-time").css("background-color", "#008000"); // 짙은 녹색 배경색
-    $(".time-cell:contains('" + endTime + "')").addClass("selected-end-time").css("background-color", "#008000"); // 짙은 녹색 배경색
+    $(".time-cell:contains('" + startTime + "')").addClass("selected-start-time");
+    $(".time-cell:contains('" + endTime + "')").addClass("selected-end-time");
 
     // 선택한 시간대 색칠
     highlightTimeRange();
 }
 
 
+$(document).ready(function () {
+    const openQADialogBtn = document.querySelector("#open-qa-dialog-button");
+    const qaDialogForm = $("#qa-dialog-form");
+
+    if (openQADialogBtn) {
+        openQADialogBtn.onclick = function () {
+            qaDialogForm.dialog("open");
+        };
+    }
+
+    qaDialogForm.dialog({
+        autoOpen: false,
+        modal: true,
+        width: 450,
+        height: 480,
+        resizable: false,
+        buttons: [
+            {
+                text: "질문하기",
+                click: function () {
+                    const content = $("#qa_content").val();
+                    const writer = $('#user_id').val();
+                    const space_id = $('#space_id').val();
+					const title = $('#qa_title').val();
+                    
+                    console.log(qa_content);
+                    
+                    if (!qa_content) {
+                        alert("질문을 입력해주세요.");
+                        return;
+                    }
+
+                    const qaData = {
+                    	content: content,
+                    	title : title,
+                        writer: writer,
+                        space_id: space_id
+                    };
+
+                    $.ajax({
+                        url: '/qa_insert',
+                        type: 'post',
+                        data: qaData,
+                        success: function (response) {
+                            console.log('질문 등록 성공:');
+                            // 여기에 질문 등록 후 작업을 추가할 수 있습니다.
+                        },
+                        error: function (error) {
+                            console.error('질문 등록 실패:', error);
+                            // 실패 시 에러 처리를 수행하거나 사용자에게 알림을 보여줄 수 있습니다.
+                        }
+                    });
+
+                   // window.location.href = "/space";
+                }
+            },
+            {
+                text: "취소",
+                click: function () {
+                    qaDialogForm.dialog("close");
+                }
+            }
+        ]
+    });
+});
+
+/*
+let currentPage = 1;
+//페이지 번호를 클릭했을 때 이벤트 핸들러를 등록합니다.
+$('#review_page_num .page').on('click', function () {
+    const page = $(this).data('page'); // 클릭한 페이지 번호를 가져옵니다.
+    
+    // 현재 페이지와 클릭한 페이지가 같으면 아무 작업도 하지 않습니다.
+    if (currentPage === page) {
+        return;
+    }
+    
+    // 클릭한 페이지로 현재 페이지를 업데이트합니다.
+    currentPage = page;
+    
+    // 리뷰를 불러오는 함수를 호출합니다.
+    review_get();
+});
+*/
+
+
 </script>
-
 </html>
-
-

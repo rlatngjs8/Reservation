@@ -31,4 +31,8 @@ public interface productDAO {
 		ArrayList<ReviewDTO> select_review(int space_id);
 		ArrayList<ReviewDTO> get_one_review_page(int start, int psize ,int space_id);
 		ArrayList<productDTO> searchProducts(String keyword, int start, int psize);
+		void review_insert(String writer, String content, String title, String userid, int space_id);
+		ArrayList<memberDTO> get_member_info(String userid);
+		void qa_insert(String content, String writer, String title , int space_id);
+		ArrayList<BoardDTO> qa_get(int space_id); 
 }

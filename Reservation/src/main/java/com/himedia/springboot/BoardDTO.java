@@ -1,6 +1,23 @@
 package com.himedia.springboot;
 
 public class BoardDTO {
+	
+	int seqno;
+	String title;
+	String content;
+	String writer;
+	int hit;
+	String created;
+	String updated;
+	String comment;
+	int space_id;
+	
+	public int getSpace_id() {
+		return space_id;
+	}
+	public void setSpace_id(int space_id) {
+		this.space_id = space_id;
+	}
 	public int getSeqno() {
 		return seqno;
 	}
@@ -43,20 +60,12 @@ public class BoardDTO {
 	public void setUpdated(String updated) {
 		this.updated = updated;
 	}
-	int seqno;
-	String title;
-	String content;
-	String writer;
-	int hit;
-	String created;
-	String updated;
-	String comment;
-public String getComment() {
+	public String getComment() {	
 		return comment;
-}
-public void setComment(String comment) {
+	}
+	public void setComment(String comment) {
 		this.comment = comment;
-}
+	}
 	
 	
 }

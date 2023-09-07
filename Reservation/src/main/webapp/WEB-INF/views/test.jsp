@@ -834,7 +834,13 @@ $(document).ready(function () {
                     });
                     window.location.href = "/space";
                 }
-            }
+            },
+            {
+                text: "취소",
+                click: function () {
+                    qaDialogForm.dialog("close");
+                }
+            
         ]
     });
 

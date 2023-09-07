@@ -57,45 +57,17 @@ public class YoonController {
 	@PostMapping("/review_get")
 	@ResponseBody
 	public String review_get(HttpServletRequest req, Model model) {
-	    int start, psize, pno;
-	    int space_id = Integer.parseInt(req.getParameter("space_id"));
+		int space_id = Integer.parseInt(req.getParameter("space_id"));
 	    ArrayList<ReviewDTO> review_get = pdao.select_review(space_id);
-	    String page = req.getParameter("pageno");
-
-	    if (page == null || page.equals("")) {
-	        pno = 1;
-	    } else {
-	        pno = Integer.parseInt(page);
-	    }
-
-	    start = (pno - 1) * 10; // 페이지 번호에 따른 시작 인덱스 계산
-	    psize = 10; // 페이지당 아이템 수
-
-	    // 해당 페이지의 리뷰 가져오기
-	    ArrayList<ReviewDTO> onepage = pdao.get_one_review_page(space_id, start, psize);
-
-	    int cnt = rdao.getTotal1(); // 총 리뷰 수
-	    int pagecount = (int) Math.ceil(cnt / (double) psize); // 전체 페이지 수 계산
-
-	    String pagestr = "";
-	    for (int i = 1; i <= pagecount; i++) {
-	        if (pno == i) {
-	            pagestr += i + "&nbsp;";
-	        } else {
-	            pagestr += "<a href='/review?pageno=" + i + "'>" + i + "</a>&nbsp;";
-	        }
-	    }
-	    model.addAttribute("pagestr", pagestr);
-
 	    JSONArray ja = new JSONArray();
-	    for (int i = 0; i < onepage.size(); i++) { // 수정: onepage로 변경
+	    for (int i = 0; i < review_get.size(); i++) {
 	        JSONObject jo = new JSONObject();
-	        jo.put("review_id", onepage.get(i).getReview_id());
-	        jo.put("space_id", onepage.get(i).getSpace_id());
-	        jo.put("userid", onepage.get(i).getUserid());
-	        jo.put("rating", onepage.get(i).getRating());
-	        jo.put("review_content", onepage.get(i).getReview_content());
-	        jo.put("created", onepage.get(i).getCreated());
+	        jo.put("review_id", review_get.get(i).getReview_id());
+	        jo.put("space_id", review_get.get(i).getSpace_id());
+	        jo.put("userid", review_get.get(i).getUserid());
+	        jo.put("rating", review_get.get(i).getRating());
+	        jo.put("review_content", review_get.get(i).getReview_content());
+	        jo.put("created", review_get.get(i).getCreated());
 	        ja.add(jo);
 	    }
 	    return ja.toJSONString();
@@ -187,6 +159,67 @@ public class YoonController {
 	        ja.add(jo);
 	    }
 	    return ja.toJSONString();
+	 
 	}
 	
+	@PostMapping("/qa_insert")
+	public String qa_insert(HttpServletRequest req, Model model) {
+		String writer = req.getParameter("writer");
+		String content = req.getParameter("content");
+		String title = req.getParameter("title");
+		int space_id = Integer.parseInt(req.getParameter("space_id"));
+		pdao.qa_insert(content, writer, title , space_id);
+		return "redirect:/space";
+	}
+	
+	@PostMapping("/get_member_info")
+	@ResponseBody
+	public String get_member_info(HttpServletRequest req, Model model) {
+		String userid = req.getParameter("userid");
+		ArrayList<memberDTO> get_member_info = pdao.get_member_info(userid);
+		JSONArray ja = new JSONArray();
+	    for (int i = 0; i < get_member_info.size(); i++) {
+	        JSONObject jo = new JSONObject();
+	        jo.put("num", get_member_info.get(i).getNum());
+	        jo.put("userid",get_member_info.get(i).getUserid());
+	        jo.put("passcode", get_member_info.get(i).getPasscode());
+	        jo.put("name",get_member_info.get(i).getName());
+	        jo.put("birthday", get_member_info.get(i).getBirthday());
+	        jo.put("address", get_member_info.get(i).getAddress());
+	        jo.put("email", get_member_info.get(i).getEmail());
+	        jo.put("mobile", get_member_info.get(i).getMobile());
+	        jo.put("created",get_member_info.get(i).getCreated());
+	        ja.add(jo);
+	    }
+	    return ja.toJSONString();
+	}
+	
+	
+	@PostMapping("/qa_get")
+	@ResponseBody
+	public String qa_get(HttpServletRequest req, Model model) {
+		int space_id = Integer.parseInt(req.getParameter("space_id"));
+		ArrayList<BoardDTO> qa_get= pdao.qa_get(space_id);
+		JSONArray ja = new JSONArray();
+	    for (int i = 0; i < qa_get.size(); i++) {
+	        JSONObject jo = new JSONObject();
+	        jo.put("seqno", qa_get.get(i).getSeqno());
+	        jo.put("title",qa_get.get(i).getTitle());
+	        jo.put("content", qa_get.get(i).getContent());
+	        jo.put("writer",qa_get.get(i).getWriter());
+	        jo.put("hit", qa_get.get(i).getHit());
+	        jo.put("crated", qa_get.get(i).getCreated());
+	        jo.put("updated", qa_get.get(i).getUpdated());
+	        jo.put("space_id", qa_get.get(i).getSpace_id());
+	        jo.put("created", qa_get.get(i).getCreated());
+	        ja.add(jo);
+	    }
+	    return ja.toJSONString();
+	}
+	
+	@GetMapping("/ttest")
+	public String ttest() {
+		return "ttest";
+				
+	}
 }
