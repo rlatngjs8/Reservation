@@ -110,6 +110,32 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+        
+ .prev {
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color:#ededed;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#3a8a9e;
+	font-family:Arial;
+	font-size:17px;
+	padding:4px 8px;
+	text-decoration:none;
+	
+	position:relative;
+	
+}
+.prev:hover {
+	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	background-color:#bab1ba;
+}
+.prev:active {
+	position:relative;
+	top:1px;
+}
+        
+        
     </style>
 </head>
 <body>

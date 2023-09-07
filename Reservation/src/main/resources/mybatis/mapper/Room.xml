@@ -74,7 +74,7 @@
 </update> 
 
 <select id="get_space" resultType="com.himedia.springboot.productDTO">
-	SELECT space_id, space_name, location, DESCRIPTION,img1,img2,img3,img4,img5 FROM spaces
+	SELECT space_id, space_name, location, DESCRIPTION,img1,img2,img3,img4,img5,price FROM spaces
 </select>
 <select id="viewService" resultType="com.himedia.springboot.serviceDTO">
 	select num, terms_of_use, personal_information from service where num = #{num}

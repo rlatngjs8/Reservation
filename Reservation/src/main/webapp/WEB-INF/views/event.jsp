@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="css/home.css" rel="stylesheet" /> 
 
 <title>Event Page</title>
 </head>
@@ -21,15 +20,24 @@
 
  body {
          font-family: Arial, sans-serif;
-         margin: 0;
-         padding: 0;
+
+
       }
+      
+      .big {
+       margin-left : 45px;
+      }
+      
+      
       .bigDiv {
          display: flex;
          flex-direction: column;
          align-items: center;
          min-height: 100vh;
          justify-content: space-around;
+         
+         
+         
       }
       .banner {
          background-color: #f2f2f2;
@@ -72,30 +80,22 @@ h2{
 </style>
 <body>
 
- 		 
- 		 
- 		 
- 		 
- 		 
- 		 
- 		 
- 		 
- 		 
+ 	
  		 
  		 
  	<%@include file="header.jsp" %>	 
  		 
- 		 <br><br>
+ 		 <br><br><br><br><br><br>
  		 
  		 
  		 
  		 
- 		 
+ <div class="big">		 
  		   
-  	<h2 align=center> 이벤트 </h2>
+  	<h2 align=center class="eh"> 이벤트 </h2>
+<br>
 
-
-  	<p align=center> 진행중인 이벤트 목록</p>
+  	<p class="ep" align=center> 진행중인 이벤트 목록</p>
   	
   	<br><br>
   	
@@ -138,20 +138,24 @@ h2{
   	</section>
 
 
-
+</div>
 	
 	
-	
-	
-	<%@include file="footer.jsp" %>
-
 	
 	
 
+
 	
 	
 
+	
+	
+<%@include file="footer.jsp" %>
 </body>
+
+	
+	
+	
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 

@@ -16,6 +16,10 @@ ul.sub_mobile {
  
 }
 
+.welcome3 {
+	font-family: 'HakgyoansimWoojuR'
+}
+
 .sub_mobile li:hover{
 
 	background-color:#ccc;
@@ -27,7 +31,7 @@ ul.sub_mobile {
 
 #menu.open { 
   left: 0px;
-  width:260px;
+  width:225px;
 
 }
 
@@ -38,18 +42,20 @@ ul.sub_mobile {
 }
 
 .btn1 {
+
   width: 50px;
   height: 50px;
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  z-index: 1;
   background-image: url("http://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/menu.png");
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
-  transition: all 0.3s ease; /* 부드러운 애니메이션 효과 추가 */
+  transition: all 0.3s ease;
+  
+  position:relative;
+  
+  bottom:80px;
+
 }
 
 
@@ -89,6 +95,7 @@ ul.sub_mobile {
   padding-top: 50px;
   padding-left: 0px;
   padding-right: 40px;
+   background-color: white;
   
 
 }
@@ -149,13 +156,16 @@ ul.sub_mobile {
   height: 50px; /* 높이를 변경 */
   line-height: 50px;
   text-align: center;
-  color: #25a4cd;
-  font-weight: bold;
+  color: black;
+  
   text-decoration: none;
-  font-size: 20px;
+
   
   align:center;
   text-align:center;
+  
+   font-family: 'HakgyoansimWoojuR';
+  
 }
     
 
@@ -180,8 +190,8 @@ a {
 .button {
   width: 70px;
   height: 30px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 11px;
+  font-size: 14px;
+  
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 500;
@@ -207,7 +217,7 @@ a {
 .button1{
 	width: 90px;
   height: 30px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'HakgyoansimWoojuR';
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
@@ -230,16 +240,11 @@ a {
 
 }
 
-@font-face {
-    font-family: 'yg-jalnan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+
 
 
 a {
-	font-family: 'yg-jalnan';
+	font-family: 'HakgyoansimWoojuR';
 }
 
 @font-face {
@@ -249,19 +254,39 @@ a {
     font-style: normal;
 }
 
-.top{
-	font-family:'KIMM_Bold',sans-serif;
+.top {
+  text-align: center;
+  font-family: 'KIMM_Bold', sans-serif;
+  background-color: transparent; /* 배경색 투명으로 설정 */
+}
+
+
+.top-container {
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 71%;
+  height:9.1%;
+  background-color: white;
+  margin-left: 267px;
+   overflow: hidden;
+   
+   z-index: 999; /* 다른 요소 위에 표시되도록 설정 */
+
 }
 
 @font-face {
-    font-family: 'CookieRun-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
+
 table,li{
-font-family: 'yg-jalnan';
+font-family: 'HakgyoansimWoojuR';
 	
 }
 
@@ -269,14 +294,14 @@ font-family: 'yg-jalnan';
 
 
 button {
-font-family: 'yg-jalnan';
+font-family: 'HakgyoansimWoojuR';
 }
 
 
 
 
 .welcome a {
-	font-family: 'yg-jalnan';
+	font-family: 'HakgyoansimWoojuR';
 }
 
 
@@ -294,62 +319,86 @@ font-family: 'yg-jalnan';
 	display: flex;
     justify-content: space-between;
     align-items: center; /* 세로 중앙 정렬을 위해 추가 */
+        font-family: 'HakgyoansimWoojuR';
+        word-break:break-all;
 }	
 
 .welcome1 li:hover {
-	background-color: #f9c7e1;	
+	background-color: #ccc;	
 	padding-right: 40px;
 		
 }
 
 
 .name {
-	color: #848484;
+	color: black;
+	 font-family: 'HakgyoansimWoojuR';
 }
 
 .welcome li:first-child:hover {
-	background-color: #f9c7e1;	
-	padding-right: 40px;
+	background-color: #ccc;	
+	padding-right: 20px;
+	
 }
 
 .welcome li:nth-child(2):hover {
-	background-color: #F9CEA1;
-	padding-right: 40px;
+	background-color: #ccc;
+	padding-right: 20px;
+	
 }
 
 .welcome li:nth-child(3):hover {
-	background-color: #B3FC9A;
-	padding-right: 40px;
+	background-color: #ccc;
+	padding-right: 20px;
+
 }
 
 
 .welcome3 li:hover {
-	background-color: #9e9e9e;
-	padding-right: 40px;
+	background-color: #ccc;
+	padding-right: 20px;
+
+	
 }
+
+
 
 
 #menu ul.sub_mobile li a {
     font-size: 14px;
 }
 
+.mine {
+    font-family: 'HakgyoansimWoojuR'; /* 'HakgyoansimWoojuR' 글꼴을 사용합니다. */
+    weight:100%;
+    
+}
+
+.mine:hover {
+	background-color:#ccc;
+	padding: 0;
+}
+	
+
+
 </style>
 
 <body>
 
 <!-- 클릭시, 메인 페이지로 이동. -->
+<div class="top-container">
 <h1 align=center class="top"><a href="/">Share Place</a></h1> <hr/>
-
-
+<div class="btn1"></div>
 
 <!-- 로그인 하지 않은 상태로 다른 페이지로 이동시, userid에 빈 문자열이 들어가서 수정했습니다. -->
 
 <c:set var="userid" value="${sessionScope.userid}" /> <!-- 세션에서 userid 값을 가져옴 -->
 <c:set var="member" value="${rdao.getListOne(userid)}" /> <!-- RoomDAO를 사용하여 사용자 이름을 가져옴 -->
 
+</div>
 
 
-<div class="btn1"></div>
+
 <div onclick="history.back();" class="page_cover"></div>
 
 
@@ -371,14 +420,13 @@ font-family: 'yg-jalnan';
                             <c:otherwise>
                             <div class="welcome1">
                                 <a><span class="name">${name}</span> 님 환영합니다</a>
-                           		
-                             	
+                       
                                 <button id="btnLogout" class="button1">로그아웃</button>
                                  </div>
                                  
                                 <li>
                             	<div class="welcome23">
-                                <a href='/myPage' style="color:#BCA9F5;" class="mine">마이페이지</a>
+                                <a href='/myPage' style="color:black;" class="mine" font-family ='HakgyoansimWoojuR'>마이페이지</a>
                                 </div>
                                 </li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
                                 
@@ -391,11 +439,11 @@ font-family: 'yg-jalnan';
 
 	
     <div class="welcome">
-   <li><a href="/#" style="color:#F5A9D0;">Q&A</a></li>
+   <li><a href="/#"  style="color: black">Q&A</a></li>
 
-   <li><a href="/#" style="color: #F7BE81;">1:1문의</a></li>
+   <li><a href="/#"  style="color: black">1:1문의</a></li>
 
-   <li><a href="/#" style="color: #82FA58;">공지사항</a></li>
+   <li><a href="/#" style="color: black">공지사항</a></li>
    
   
 	</div>    
@@ -404,7 +452,7 @@ font-family: 'yg-jalnan';
       <c:when test="${userid =='rlatngjs'}"> 
        <!-- 관리자 메뉴 -->
        <div class="welcome3">
-      <li><a href="/manager" style="color:#848484;">관리자페이지</a></li>
+      <li><a href="/manager" style="color:black;">관리자페이지</a></li>
       </div>
       </c:when>
       
@@ -414,28 +462,28 @@ font-family: 'yg-jalnan';
       
    <c:when test="${userid =='hwan'}">
     <div class="welcome3">
-      <li><a href="/manager" style="color:#848484;">관리자페이지</a></li>
+      <li><a href="/manager" style="color:black;">관리자페이지</a></li>
       </div>
       </c:when>
       
       <c:when test="${userid =='gldigh123'}">
       <div class="welcome3">
-      <li><a href="/manager" style="color:#848484;">관리자페이지</a></li>
+      <li><a href="/manager" style="color:black;">관리자페이지</a></li>
       </div>
       </c:when>
       
    </c:choose>
      
      
-       <li><a style="color:#5882FA;">더보기</a>
+       <li><a style="color:black;  font-family: 'HakgyoansimWoojuR';">더보기</a>
     <ul class="sub_mobile">
-    <li><a href="/review" style="color:#819FF7;">Review</a></li>
+    <li><a href="/review" style="color:black;">Review</a></li>
 
-    <li><a href="event" style="color:#819FF7;">이벤트</a></li>
+    <li><a href="event" style="color:black;">이벤트</a></li>
 
-	<li><a href="/#" style="color:#819FF7;">서비스약관</a></li>
+	<li><a href="/#" style="color:black;">서비스약관</a></li>
     
-    <li><a href="/#" style="color:#819FF7;">개인정보처리방침</a></li>
+    <li><a href="/#" style="color:black;">개인정보처리방침</a></li>
      
      
     </ul>
@@ -444,6 +492,7 @@ font-family: 'yg-jalnan';
     
 <div onclick="history.back();" class="close"></div>
 </div>
+
 
 
 
@@ -465,29 +514,42 @@ $(document).on('click','#btnLogin',function(){
 
 
 $(document).ready(function() {
-  // 기존 코드는 생략
+  var menuOpen = false; 
+
 
   $(".btn1").click(function() {
-    $("#menu,.page_cover,html").addClass("open");
-    window.location.hash = "#open";
+    if (!menuOpen) {
+     
+      $("#menu,.page_cover,html").addClass("open");
+      window.location.hash = "#open";
+    } else {
+    
+      $("#menu,.page_cover,html").removeClass("open");
+      window.location.hash = "";
+    }
+    
+    // 메뉴 상태 업데이트
+    menuOpen = !menuOpen;
   });
 
   // 페이지 커버 클릭 시 메뉴 닫기
   $(".page_cover").click(function() {
     $("#menu,.page_cover,html").removeClass("open");
     window.location.hash = "";
+    
+    // 메뉴 상태 업데이트
+    menuOpen = false;
   });
+
+  // close 버튼 클릭 시 메뉴 닫기
   $(".close").click(function() {
-	    $("#menu,.page_cover,html").removeClass("open");
-	    window.location.hash = "";
-	  });
-  
-
-
-  
-  
-})
-
+    $("#menu,.page_cover,html").removeClass("open");
+    window.location.hash = "";
+    
+    // 메뉴 상태 업데이트
+    menuOpen = false;
+  });
+});
 
 
 $("#menu ul.nav li").click(function(){

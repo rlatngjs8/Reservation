@@ -179,24 +179,24 @@ div {
     max-height: 400px; /* Adjust this value as needed 
 
 
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
+
 </style>
 <body>
   <header>
     <h1>상품 상세 보기</h1>
   </header><br>
-<<<<<<< HEAD
+
   <div class="centered-button-container">
   	<a href="/manager" class="product-list-link1">관리자메뉴</a>&nbsp;&nbsp;&nbsp;
   	<a href="/productList" class="product-list-link">상품리스트</a>&nbsp;&nbsp;&nbsp;
   	<button id="btnEdit" class="product-list-link2">상품수정</button>
 	</div><br>
-=======
+
   
   <!-- 수정된 버튼 ID 적용 -->
   <button id="btnEdit">상품수정</button>
   <button id="btnPrev" class="btnPrev">이전화면</button>
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
+
   <div class="container">
     <h2 align=center>상품 정보</h2>
     <div class="slider">

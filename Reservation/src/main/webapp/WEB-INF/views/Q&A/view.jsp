@@ -6,11 +6,27 @@
 <meta charset="UTF-8">
 <title>게시물 보기</title>
 <style>
+
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+	button {
+	font-family: 'HakgyoansimWoojuR';
+        font-weight:bold;
+	}
+
     body {
         font-family: Arial, sans-serif;
         text-align: center;
         margin: 50px auto;
         background-color: #f5f5f5;
+        font-family: 'HakgyoansimWoojuR';
+        font-weight:bold;
     }
 
     table {
@@ -18,6 +34,7 @@
         margin: 0 auto;
         border-collapse: collapse;
         margin-top: 20px;
+        
     }
     table th, table td {
         border: 1px solid #ccc;
