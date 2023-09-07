@@ -60,4 +60,8 @@
 <select id="qa_get">
 	select * from board where space_id=#{param1}
 </select>
+<select id="getSpaceKey" resultType="com.himedia.springboot.productDTO">
+    SELECT space_id, space_name, space_type, capacity, location, DESCRIPTION, price, mobile, extent,img1,img2,img3,img4,img5 FROM spaces
+    WHERE space_name LIKE CONCAT('%', #{param1}, '%') OR space_type LIKE CONCAT('%', #{param1}, '%') OR location LIKE CONCAT('%', #{param1}, '%')
+</select>
 </mapper>

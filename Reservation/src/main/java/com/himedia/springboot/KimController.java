@@ -426,11 +426,23 @@ public class KimController {
 			System.out.println(name);
 			System.out.println(mobile);
 			
-		 String foundUserID = rdao.findID(email, name, mobile);
+			String foundUserID = rdao.findID(email, name, mobile);
    
-		 
-
 			return foundUserID;
+	}
+	@PostMapping("/findPW")
+	@ResponseBody
+	public String findPW(HttpServletRequest req) {
+		String userid = req.getParameter("userid");
+		String name	= req.getParameter("name");
+		String mobile = req.getParameter("mobile");
+		System.out.println(userid);
+		System.out.println(name);
+		System.out.println(mobile);
+		
+		String foundUserPW = rdao.findPW(userid, name, mobile);
+		
+		return foundUserPW;
 	}
 }
 

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.javassist.compiler.ast.Keyword;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -396,8 +397,17 @@ public String showStudyRooms(Model model) {
 }
 
 @GetMapping("/allRooms")
-public String showAllRooms(Model model) {
-	ArrayList<productDTO> alemp = pdao.get_space();
+public String showAllRooms(HttpServletRequest req,Model model) {
+	String keyword = req.getParameter("keyword");
+	System.out.println("keyword");
+	ArrayList<productDTO> alemp;
+//	= pdao.get_space();
+	if(keyword != null && !keyword.isEmpty()) {
+		//키워드 검색하고 결과 가져옴
+		alemp = pdao.getSpaceKey(keyword);
+	} else {
+		alemp = pdao.get_space();
+	}
 	model.addAttribute("rooms",alemp);
 	
 	return "/allRooms";

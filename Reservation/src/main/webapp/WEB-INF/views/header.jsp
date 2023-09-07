@@ -378,6 +378,32 @@ font-family: 'HakgyoansimWoojuR';
 	background-color:#ccc;
 	padding: 0;
 }
+#search-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: 19%; /* 원하는 위치로 조정하세요 */
+  margin-top: 1%; /* 원하는 위치로 조정하세요 */
+}
+
+#search-input {
+  width: 200px; /* 검색 입력 필드 너비 조정 */
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#search-button {
+  background-color: #25a4cd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  padding: 0 10px;
+  cursor: pointer;
+  margin-left: 5px;
+}
 	
 
 
@@ -389,6 +415,14 @@ font-family: 'HakgyoansimWoojuR';
 <div class="top-container">
 <h1 align=center class="top"><a href="/">Share Place</a></h1> <hr/>
 <div class="btn1"></div>
+
+<!-- 검색기능 -->
+<div id="search-container">
+  <form action="/allRooms" method="GET">
+    <input type="text" id="search-input" name="keyword" placeholder="키워드 검색">
+    <button id="search-button">검색</button>
+  </form>
+</div>
 
 <!-- 로그인 하지 않은 상태로 다른 페이지로 이동시, userid에 빈 문자열이 들어가서 수정했습니다. -->
 
@@ -438,10 +472,11 @@ font-family: 'HakgyoansimWoojuR';
         </li>
 
 	
-    <div class="welcome">
-   <li><a href="/#"  style="color: black">Q&A</a></li>
+   <div class="welcome">
+   <!-- 1대1문의 로그인이 안되어있으면 로그인창으로,로그인되어있으면 myWrite -->
+   <li><a href="/myWrite"  style="color: black">1:1문의</a></li>
 
-   <li><a href="/#"  style="color: black">1:1문의</a></li>
+   <li><a href="/FAQ"  style="color: black">자주묻는질문</a></li>
 
    <li><a href="/#" style="color: black">공지사항</a></li>
    
@@ -451,7 +486,7 @@ font-family: 'HakgyoansimWoojuR';
       
       <c:when test="${userid =='rlatngjs'}"> 
        <!-- 관리자 메뉴 -->
-       <div class="welcome3">
+      <div class="welcome3">
       <li><a href="/manager" style="color:black;">관리자페이지</a></li>
       </div>
       </c:when>
@@ -460,8 +495,8 @@ font-family: 'HakgyoansimWoojuR';
       <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       
-   <c:when test="${userid =='hwan'}">
-    <div class="welcome3">
+   		<c:when test="${userid =='hwan'}">
+    	<div class="welcome3">
       <li><a href="/manager" style="color:black;">관리자페이지</a></li>
       </div>
       </c:when>
@@ -471,22 +506,20 @@ font-family: 'HakgyoansimWoojuR';
       <li><a href="/manager" style="color:black;">관리자페이지</a></li>
       </div>
       </c:when>
-      
    </c:choose>
      
      
-       <li><a style="color:black;  font-family: 'HakgyoansimWoojuR';">더보기</a>
-    <ul class="sub_mobile">
-    <li><a href="/review" style="color:black;">Review</a></li>
-
-    <li><a href="event" style="color:black;">이벤트</a></li>
-
-	<li><a href="/#" style="color:black;">서비스약관</a></li>
-    
-    <li><a href="/#" style="color:black;">개인정보처리방침</a></li>
-     
-     
-    </ul>
+    <li><a style="color:black;  font-family: 'HakgyoansimWoojuR';">더보기</a>
+	    <ul class="sub_mobile">
+	    <!-- 리뷰삭제. 연결할만한 곳이 없어요 -->
+		    <li><a href="/review" style="color:black;">Review</a></li>
+		
+		    <li><a href="event" style="color:black;">이벤트</a></li>
+		
+				<li><a href="/service" style="color:black;">서비스약관</a></li>
+		    
+		    <li><a href="/personal" style="color:black;">개인정보처리방침</a></li>
+	    </ul>
     </li>
     </ul>
     

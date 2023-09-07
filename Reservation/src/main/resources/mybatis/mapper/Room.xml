@@ -85,4 +85,7 @@
 <select id="findID" resultType="String">
 	select userid from members where email=#{param1} and name=#{param2} and mobile=#{param3}
 </select>
+<select id="findPW" resultType="String">
+	select passcode from members where userid=#{param1} and name=#{param2} and mobile=#{param3}
+</select>
 </mapper> 

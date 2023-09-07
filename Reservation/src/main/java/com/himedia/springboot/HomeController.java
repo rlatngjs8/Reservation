@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -66,7 +68,7 @@ public class HomeController {
    }
    
    @PostMapping("/doLogin")      // 로그인 화면 변경. 잘모르겠음   로그인버튼 눌렀을때   
-   public String doLogin(HttpServletRequest req, Model model) {
+   public String doLogin(HttpServletRequest req, HttpServletResponse response, Model model) {
       String userid = req.getParameter("loginid");      //인풋의 name써야함
       String passcode = req.getParameter("loginpw");// 마찬가지
       int n = rdao.login(userid, passcode);      // xml에서 int로 받아오기때문에
@@ -82,7 +84,17 @@ public class HomeController {
         session.setAttribute("userid", userid);   // 유저아이디에 로그인아이디
         session.setAttribute("passcode", passcode);
         session.setAttribute("name", name);
-         
+        
+        // 쿠키 설정
+        Cookie useridCookie = new Cookie("userid", userid);
+        Cookie passcodeCookie = new Cookie("passcode", passcode);
+        // 쿠키 유효기간 설정
+        useridCookie.setMaxAge(15768000); //6개월 
+        passcodeCookie.setMaxAge(15768000); 
+        // 쿠키를 응답에 추가
+        response.addCookie(useridCookie);
+        response.addCookie(passcodeCookie);
+        
         return "redirect:/";      // /url로 가서 메소드까지 실행하고 리턴
       } else {
     	  model.addAttribute("loginFailed", true);      

@@ -16,7 +16,9 @@
         .log {
             width: 400px;
             height: 350px;
-            margin: 100px auto;
+						margin: auto; /* 수평 가운데 정렬 */
+				    position: absolute;
+				    top: 0; bottom: 400px; left: 0; right: 0; /* 수직 가운데 정렬 */
             padding: 40px;
             box-sizing: border-box;
             border: 1px solid #ddd;
@@ -118,14 +120,11 @@
 	        
         }
         #findUser{
-        	margin-left: 70px;
+        	margin-left: 80px;
     			margin-top: 20px;
         }
 				.btnSubmit {
-				    margin-left: 55px;
-				}
-				.p3{
-					font-size: 20px;
+				    margin-left: 65px;
 				}
 				.data{
 					font-size: 25px; 
@@ -133,19 +132,25 @@
 					text-decoration: underline;
 					font-weight: bold;
 				}
+				.p3{
+					font-size: 20px;
+				}
+				.q3{
+					font-size: 20px;
+				}
     </style>
 </head>
 <body>
 <form id="frmLogin" method="post" action="/doLogin">
     <div class="log">
-        <h2>로그인</h2><input type="checkbox" id="auto">자동로그인
+        <h2>로그인</h2><input type="checkbox" id="auto">로그인저장
         <input type="text" id="loginid" name="loginid" placeholder="로그인 아이디" autofocus>
         <input type="password" id="loginpw" name="loginpw" placeholder="패스워드">
         <div class="btnSubmit">
-        <input type="submit" id="btnSubmit" value="로그인" class="button">&nbsp;&nbsp;<a href="/signup" class="button">회원가입</a>
+        	<input type="submit" id="btnSubmit" value="로그인" class="button">&nbsp;&nbsp;<a href="/signup" class="button">회원가입</a>
         </div>
         <c:forEach items="${member}" var="member">
-            <input type="hidden" name="name" value="${member.name}">
+           <input type="hidden" name="name" value="${member.name}">
         </c:forEach>
         <div id="findUser">
             <a class="findID" id="findID">아이디찾기</a> / 
@@ -190,7 +195,6 @@
             <div id="serchID">
             	
             </div>
-            
         </div>
     </div>
 </div>
@@ -199,13 +203,16 @@
         <span class="close" id="closePasswordModal">&times;</span>
         <h3>비밀번호 찾기</h3>
         <!-- 비밀번호 찾기 내용 -->
+        <br><hr/><br>
+        <div id="q1">
         <p>본인확인을 위해 가입당시 입력한</p>
         <p>아이디와 이름, 전화번호를 입력해주세요</p>
-        <hr/><br>
-        <div class="findInput">
+        </div><br>
+        <div class="findInput" id="findInput">
+        		<div id="q2">
                 <div class="c">
                     <label class="lb">아이디</label>&nbsp;&nbsp;
-                    <input type="text" name="findEmailPW" id="findEmailPW" placeholder="아이디">
+                    <input type="text" name="findUseridPW" id="findUseridPW" placeholder="아이디">
                 </div>
                 <div class="c">
                     <label class="lb">이름</label>&nbsp;&nbsp;
@@ -213,11 +220,15 @@
                 </div>
                 <div class="c">
                     <label class="lb">전화번호</label>&nbsp;&nbsp;
-                    <input type="text" name="findPhoneNumberPW" id="findPhoneNumberPW" placeholder="01055555555">
+                    <input type="text" name="findMobilePW" id="findMobilePW" placeholder="01055555555">
                 </div>
                 <br>
                 <button type="button" id="rollbackPW" class="hover5">취소</button>
-                <input type="button" id="subModalPW "value="완료" class="hover4">&nbsp;
+                <input type="button" id="subModalPW" value="완료" class="hover4">&nbsp;
+            </div>
+            <div id="serchPW">
+            
+            </div>
         </div>
     </div>
 </div>
@@ -236,21 +247,21 @@
                     $.cookie('passcode',$('#loginpw').val());
                 }
             } else {// 실패 
-
+							console.log("쿠키저장 실패");
             }
         },'json')
     });
     $(document).ready(function () {
-        let useridCookie = $.cookie('userid');
-        let passcodeCookie = $.cookie('passcode');
+        var useridCookie = $.cookie('userid');
+        var passcodeCookie = $.cookie('passcode');
         console.log("userid 쿠키=" + useridCookie);
         console.log("passcode 쿠키=" + passcodeCookie);
 
-        $('#loginid').val(useridCookie);
-        $('#loginpw').val(passcodeCookie);
+        
 
         if (useridCookie != null && passcodeCookie != null) {
-            $('#btnSubmit').trigger('click');
+        		$('#loginid').val(useridCookie);
+          	$('#loginpw').val(passcodeCookie);
         }
     });
 
@@ -259,32 +270,48 @@
     $(document).ready(function() {
         // 아이디 찾기 모달 열기
         $('#findID').click(function() {
-            $('#idModal').css('display', 'block');
+          $('#idModal').css('display', 'block');
+					$('#findEmailID').val('');
+			    $('#findNameID').val('');
+			    $('#findMobileID').val('');
         });
-
         // 아이디 찾기 모달 닫기
         $('#closeIdModal').click(function() {
-            $('#idModal').css('display', 'none');
+        	$('#serchID').empty();
+        	$('#p1').show();
+					$('#p2').show();
+          $('#idModal').css('display', 'none');
+        });
+        // 아이디 찾기 모달 내 취소 버튼 클릭 시 닫기
+        $('#rollbackID').click(function () {
+        	$('#serchID').empty();
+        	$('#p1').show();
+					$('#p2').show();
+          $('#idModal').css('display', 'none');
         });
 
         // 비밀번호 찾기 모달 열기
         $('#findPW').click(function() {
-            $('#passwordModal').css('display', 'block');
+          $('#passwordModal').css('display', 'block');
+        	$('#findUseridPW').val('');
+			    $('#findNamePW').val('');
+			    $('#findMobilePW').val('');
         });
-
         // 비밀번호 찾기 모달 닫기
         $('#closePasswordModal').click(function() {
-            $('#passwordModal').css('display', 'none');
+        	$('#serchPW').empty();
+        	$('#q1').show();
+					$('#q2').show();
+         	$('#passwordModal').css('display', 'none');
         });
-        // 아이디 찾기 모달 내 취소 버튼 클릭 시 닫기
-        $('#rollbackID').click(function () {
-            $('#idModal').css('display', 'none');
-        });
-
         // 비밀번호 찾기 모달 내 취소 버튼 클릭 시 닫기
         $('#rollbackPW').click(function () {
-            $('#passwordModal').css('display', 'none');
+        	$('#serchPW').empty();
+        	$('#q1').show();
+					$('#q2').show();
+          $('#passwordModal').css('display', 'none');
         });
+        
     });
     
     $(document).on('click','#subModalID',function(){    
@@ -300,12 +327,46 @@
     		success: function(data){
     			console.log(data);
     			$('#serchID').empty();
-    			$('#p1').empty();
-    			$('#p2').empty();
+    			$('#p1').hide();
+    			$('#p2').hide();
     			i = "<span class='p3'>회원님의 아이디는 </span><span class='data'>"+data+"</span><span class='p3'> 입니다</span><br>"
-    					+"<button type='button' id='rollbackID' class='hover5'>닫기</button>";
+    					+"<button type='button' id='rollbackID1' class='hover5'>닫기</button>";
     			console.log(i);
     			$("#serchID").append(i);
+    			$('#rollbackID1').click(function () {			//취소버튼 실행
+    				$('#serchID').empty();
+    				$('#p1').show();
+    				$('#p2').show();
+    	      $('#idModal').css('display', 'none');
+    	     });
+    		}
+    	})
+    })
+    $(document).on('click','#subModalPW',function(){
+    	console.log('비밀번호 찾는중');
+    	var userid = $('#findUseridPW').val();
+    	var name = $('#findNamePW').val();
+    	var mobile = $('#findMobilePW').val();
+    	$.ajax({
+    		url:'/findPW',
+    		type:'post',
+    		data:{userid:userid,name:name,mobile:mobile},
+    		datatype:'text',
+    		success:function(data){
+    			console.log(data);
+    			$('#serchPW').empty();
+    			$('#q1').hide();
+    			$('#q2').hide();
+    			j = "<span class='q3'>회원님의 비밀번호는 </span><span class='data'>"+data+"</span><span class=q3'> 입니다</span><br>"
+							+"<button type='button' id='rollbackPW1' class='hover5'>닫기</button>";
+					console.log(j);
+					$('#serchPW').append(j);
+					$('#rollbackPW1').click(function () {
+						$('#serchPW').empty();
+						$('#q1').show();
+						$('#q2').show();
+		        $('#passwordModal').css('display', 'none');
+		      });
     		}
     	})
     })
