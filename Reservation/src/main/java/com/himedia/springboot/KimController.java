@@ -29,6 +29,8 @@ public class KimController {
 		private RoomDAO rdao;
 		@Autowired
 		private BoardDAO bdao;
+		@Autowired
+		private FAQDAO fdao;
 		
 		@GetMapping("/showReservation")
 		public String reservaiton(HttpServletRequest req, Model model) {
@@ -390,6 +392,45 @@ public class KimController {
 	    		System.out.println(personal);
 	        return "error";
 	    }
+	}
+	@GetMapping("/FAQ")
+	public String FAQ(Model model) {
+			ArrayList<FAQDTO> member = fdao.typeMember();
+			model.addAttribute("member", member);
+			
+			ArrayList<FAQDTO> Reservation = fdao.typeReservation();
+			model.addAttribute("Reservation",Reservation);
+			
+			ArrayList<FAQDTO> pay = fdao.typePay();
+			model.addAttribute("pay",pay);
+			
+			ArrayList<FAQDTO> receipt = fdao.typeReceipt();
+			model.addAttribute("receipt",receipt);
+			
+			ArrayList<FAQDTO> cancel = fdao.typeCancel();
+			model.addAttribute("cancel",cancel);
+			
+			ArrayList<FAQDTO> use = fdao.typeUse();
+			model.addAttribute("use",use);
+			
+			
+			return "FAQ";
+	}
+	@PostMapping("/findID")
+	@ResponseBody
+	public String findID(HttpServletRequest req) {
+			String email = req.getParameter("email");
+			String name = req.getParameter("name");
+			String mobile = req.getParameter("mobile");
+			System.out.println(email);
+			System.out.println(name);
+			System.out.println(mobile);
+			
+		 String foundUserID = rdao.findID(email, name, mobile);
+   
+		 
+
+			return foundUserID;
 	}
 }
 

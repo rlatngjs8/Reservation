@@ -82,5 +82,7 @@
 <select id="viewPersonal" resultType="com.himedia.springboot.serviceDTO">
 	select num, terms_of_use, personal_information from service where num = #{num}
 </select>
-
+<select id="findID" resultType="String">
+	select userid from members where email=#{param1} and name=#{param2} and mobile=#{param3}
+</select>
 </mapper> 

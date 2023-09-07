@@ -46,4 +46,6 @@ public interface RoomDAO {
 	
 	serviceDTO viewService(int num);
 	serviceDTO viewPersonal(int num);
+	
+	String findID(String email, String name, String mobile);
 }

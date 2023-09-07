@@ -81,7 +81,6 @@
 	.product-list-link2:hover {
 	  background-color: #4CAF50; /* 호버 시 배경색 변경 */
 }
-=======
   /* 수정된 스타일 */
   #btnEdit {
 box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -98,9 +97,7 @@ box-shadow:inset 0px 1px 0px 0px #ffffff;
 	padding:8px 14px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
-    
-    margin-left:21%;
-	
+  margin-left:21%;
 	position:relative;
 	
 	top:100px;
@@ -179,24 +176,21 @@ div {
     max-height: 400px; /* Adjust this value as needed 
 
 
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
 </style>
 <body>
   <header>
     <h1>상품 상세 보기</h1>
   </header><br>
-<<<<<<< HEAD
   <div class="centered-button-container">
   	<a href="/manager" class="product-list-link1">관리자메뉴</a>&nbsp;&nbsp;&nbsp;
   	<a href="/productList" class="product-list-link">상품리스트</a>&nbsp;&nbsp;&nbsp;
   	<button id="btnEdit" class="product-list-link2">상품수정</button>
 	</div><br>
-=======
   
   <!-- 수정된 버튼 ID 적용 -->
   <button id="btnEdit">상품수정</button>
   <button id="btnPrev" class="btnPrev">이전화면</button>
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
+
   <div class="container">
     <h2 align=center>상품 정보</h2>
     <div class="slider">
