@@ -35,5 +35,5 @@ public interface productDAO {
 		void review_insert(String writer, String content, String title, String userid, int space_id);
 		ArrayList<memberDTO> get_member_info(String userid);
 		void qa_insert(String content, String writer, String title , int space_id);
-		ArrayList<BoardDTO> qa_get(int space_id); 
+		ArrayList<BoardDTO> qa_get(int space_id);
 }

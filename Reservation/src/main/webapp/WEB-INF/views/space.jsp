@@ -645,11 +645,13 @@
 		        </form>
 		    </div>
 		</div>
-		
-		<div id="qa">
-        <!--  q&a 작성 내용이 들어가는 div -->
-        </div> 
         
+        <div id="qa"><!-- 리뷰 들어가는 곳 --></div>
+		<div id="pagination">
+		    <button id="prevPage">이전 페이지</button>
+		    <button id="nextPage">다음 페이지</button>
+		</div>
+		
         </section>
     </main>
     <footer>
@@ -1259,6 +1261,59 @@ $(document).ready(function () {
         ]
     });
 });
+
+//현재 페이지 및 페이지당 아이템 수 설정
+let qa_currentPage = 1;
+let re_currentPage = 1;
+const itemsPerPage = 3;
+
+//이전 페이지로 이동
+$("#prevPage").on("click", function () {
+    if (currentPage > 1) {
+        currentPage--;
+        qa_get();
+    }
+});
+
+//다음 페이지로 이동
+$("#nextPage").on("click", function () {
+    currentPage++;
+    qa_get();
+});
+
+function qa_get() {
+    console.log('qa 불러옴');
+    const space_id = $('#space_id').val();
+    const qa_currentPage = $('#qa_currentPage').val(); // 현재 페이지 정보를 가져옴
+    const qa_itemsPerPage = $('#qa_itemsPerPage').val(); // 페이지당 아이템 수 정보를 가져옴
+    let pagecount = (int) Math.ceil(cnt/10.0);
+    
+    $.ajax({
+        url: '/qa_get',
+        data: {
+            space_id: space_id,
+            currentPage: currentPage, // 현재 페이지 정보를 서버에 전달
+            itemsPerPage: itemsPerPage // 페이지당 아이템 수 정보를 서버에 전달
+        },
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            console.log('리뷰 데이터 불러오기', data);
+            $("#qa").empty();
+            for (let i = 0; i < data.length; i++) {
+                let qa =
+                    "<div class='qa'>" +
+                    "<h4>작성자: " + data[i]['writer'] + "</h4>" +
+                    "<p>제목 " + data[i]['title'] + "</p>" +
+                    "<p>리뷰 내용: " + data[i]['content'] + "</p>" +
+                    "<p>작성일: " + data[i]['created'] + "</p>" +
+                    "</div>";
+                $('#qa').append(qa);
+            }
+        }
+    });
+}
+
 
 /*
 let currentPage = 1;

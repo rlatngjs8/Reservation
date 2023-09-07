@@ -199,7 +199,11 @@ public class YoonController {
 	@ResponseBody
 	public String qa_get(HttpServletRequest req, Model model) {
 		int space_id = Integer.parseInt(req.getParameter("space_id"));
-		ArrayList<BoardDTO> qa_get= pdao.qa_get(space_id);
+		int itemsPerPage = Integer.parseInt(req.getParameter("itemsPerPage"));
+		int currentPage = Integer.parseInt(req.getParameter("currentPage"));
+//	    ArrayList<BoardDTO> qa_get = pdao.qa_getByPage(space_id, currentPage, itemsPerPage);
+
+		ArrayList<BoardDTO> qa_get= pdao.qa_get(space_id, currentPage, itemsPerPage);
 		JSONArray ja = new JSONArray();
 	    for (int i = 0; i < qa_get.size(); i++) {
 	        JSONObject jo = new JSONObject();
@@ -222,4 +226,6 @@ public class YoonController {
 		return "ttest";
 				
 	}
+	
+	
 }
