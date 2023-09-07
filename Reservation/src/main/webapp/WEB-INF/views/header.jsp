@@ -11,12 +11,23 @@
 <style>
 ul.sub_mobile {
   display: none;
+  
+
+ 
 }
+
+.sub_mobile li:hover{
+
+	background-color:#ccc;
+	padding-right: 40px;
+}	
+
+
+
 
 #menu.open { 
   left: 0px;
   width:260px;
-  align:center;
 
 }
 
@@ -79,23 +90,25 @@ ul.sub_mobile {
   padding-left: 0px;
   padding-right: 40px;
   
-  align:center;
+
 }
 
 #menu a {
   padding: 0;
   text-decoration: none;
   font-size: 18px;
-  color: #25a4cd;
+  color: #A9F5E1;
   display: block;
   transition: 0.3s;
   align: center; /* 텍스트를 가운데 정렬합니다. */
   line-height: 5px; /* 수직 가운데 정렬을 위해 line-height 추가 */
+  
+  position:relative;
+  left:21px;
+  
+  cursor:pointer;
 }
 
-#menu.open {
-  left: 0px;
-}
 
 
 
@@ -111,20 +124,21 @@ ul.sub_mobile {
 }
 
 #menu ul { 
-    width:120px; 
+    width:100%; 
     margin:0; 
     padding:0;
+    
+    align:center;
     }
     
 
   #menu ul.nav li {
-  position: relative;
-  float: left;
-  width: 150%;
+  width: 100%;
   list-style-type: none;
   font-size: 1px;
-  text-align: center;
+
   margin-bottom: 10px; /* sub_mobile 항목들 사이의 간격 조절 */
+
   
 }
 
@@ -139,32 +153,23 @@ ul.sub_mobile {
   font-weight: bold;
   text-decoration: none;
   font-size: 20px;
+  
+  align:center;
+  text-align:center;
 }
     
-#menu ul.nav li a:hover {
-   background:#eee;
-    }
+
     
-#menu ul.nav li .sub_mobile a {
-    position:relative;
-    float:left;
-    display:block;
-    width:100%;
-    z-index:999;
-    background:#ccc;
-   }
 
-#menu ul.nav li .sub_mobile a:hover {
-    background:#787878;
-    color:#fff;
-
-    }
 
 
 #menu {
    background-color: #F7F0E0;
    color: #25a4cd;
    border: 1px solid #c9c9c9;
+   
+     align:center;
+  text-align:center;
 }
 
 a {
@@ -183,7 +188,7 @@ a {
   color: #000;
   background-color: #fff;
   border: none;
-  border-radius: 20px;
+  border-radius: 5px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease 0s;
   cursor: pointer;
@@ -191,12 +196,16 @@ a {
   
   position:relative;
   
-  left:50px;
+  left:10px;
   }
+
+.button:hover{
+	background-color: #BDBDBD;
+}
 
 
 .button1{
-	 width: 70px;
+	width: 90px;
   height: 30px;
   font-family: 'Roboto', sans-serif;
   font-size: 11px;
@@ -206,12 +215,31 @@ a {
   color: #000;
   background-color: #fff;
   border: none;
-  border-radius: 45px;
+  border-radius: 5px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
+  
 
+  text-align:right;
+  
+  position:relative;
+  
+  left:20px;
+
+}
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+a {
+	font-family: 'yg-jalnan';
 }
 
 @font-face {
@@ -233,23 +261,76 @@ a {
 }
 
 table,li{
-font-family: 'CookieRun-Regular';
+font-family: 'yg-jalnan';
 	
 }
 
+
+
+
 button {
-font-family: 'CookieRun-Regular';
+font-family: 'yg-jalnan';
 }
 
 
-.welcome{
-position:relative;
 
-left:60px;
+
+.welcome a {
+	font-family: 'yg-jalnan';
 }
+
 
 .pright{
+	display: inline-block;
 
+	width:80%;
+	
+	position:relative;
+	left:10px;
+	
+	}
+
+.welcome1 {
+	display: flex;
+    justify-content: space-between;
+    align-items: center; /* 세로 중앙 정렬을 위해 추가 */
+}	
+
+.welcome1 li:hover {
+	background-color: #f9c7e1;	
+	padding-right: 40px;
+		
+}
+
+
+.name {
+	color: #848484;
+}
+
+.welcome li:first-child:hover {
+	background-color: #f9c7e1;	
+	padding-right: 40px;
+}
+
+.welcome li:nth-child(2):hover {
+	background-color: #F9CEA1;
+	padding-right: 40px;
+}
+
+.welcome li:nth-child(3):hover {
+	background-color: #B3FC9A;
+	padding-right: 40px;
+}
+
+
+.welcome3 li:hover {
+	background-color: #9e9e9e;
+	padding-right: 40px;
+}
+
+
+#menu ul.sub_mobile li a {
+    font-size: 14px;
 }
 
 </style>
@@ -284,19 +365,20 @@ left:60px;
                              <!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
                              <div class="pright">
                              <button id="btnLogin" class="button">로그인</button>
-                             <button id="btnSignup" class="button">회원가입</button>
+                             <button id="btnSignup" class="button" >회원가입</button>
                              </div>                         
                             </c:when>
                             <c:otherwise>
-                            <div class="welcome">
-                                &nbsp;&nbsp;&nbsp;<a><span class="name">${name}</span> 님 환영합니다</a>
-                             </div>
-                             	<div class="pright">
+                            <div class="welcome1">
+                                <a><span class="name">${name}</span> 님 환영합니다</a>
+                           		
+                             	
                                 <button id="btnLogout" class="button1">로그아웃</button>
-                                </div>
+                                 </div>
+                                 
                                 <li>
-                            	<div class="welcome">
-                                <a href='/myPage'>마이페이지</a>
+                            	<div class="welcome23">
+                                <a href='/myPage' style="color:#BCA9F5;" class="mine">마이페이지</a>
                                 </div>
                                 </li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
                                 
@@ -307,27 +389,22 @@ left:60px;
            
         </li>
 
+	
     <div class="welcome">
-   <li><a href="/#">Q&A</a></li>
+   <li><a href="/#" style="color:#F5A9D0;">Q&A</a></li>
 
-   <li><a href="/#">1:1문의</a></li>
+   <li><a href="/#" style="color: #F7BE81;">1:1문의</a></li>
 
-   <li><a href="/#">공지사항</a></li>
+   <li><a href="/#" style="color: #82FA58;">공지사항</a></li>
    
-    <li><a>더보기</a>
-    <ul class="sub_mobile">
-    <li><a href="/review">Review</a></li>
-
-    <li><a href="event">이벤트</a></li>
-
-	<li><a href="/#">서비스약관</a></li>
+  
 	</div>    
       <c:choose>
       
       <c:when test="${userid =='rlatngjs'}"> 
        <!-- 관리자 메뉴 -->
-       <div class="welcome">
-      <li><a href="/manager">관리자페이지</a></li>
+       <div class="welcome3">
+      <li><a href="/manager" style="color:#848484;">관리자페이지</a></li>
       </div>
       </c:when>
       
@@ -336,18 +413,30 @@ left:60px;
       </c:when>
       
    <c:when test="${userid =='hwan'}">
-    <div class="welcome">
-      <li><a href="/manager">관리자페이지</a></li>
+    <div class="welcome3">
+      <li><a href="/manager" style="color:#848484;">관리자페이지</a></li>
       </div>
       </c:when>
       
       <c:when test="${userid =='gldigh123'}">
-      <div class="welcome">
-      <li><a href="/manager">관리자페이지</a></li>
+      <div class="welcome3">
+      <li><a href="/manager" style="color:#848484;">관리자페이지</a></li>
       </div>
       </c:when>
       
    </c:choose>
+     
+     
+       <li><a style="color:#5882FA;">더보기</a>
+    <ul class="sub_mobile">
+    <li><a href="/review" style="color:#819FF7;">Review</a></li>
+
+    <li><a href="event" style="color:#819FF7;">이벤트</a></li>
+
+	<li><a href="/#" style="color:#819FF7;">서비스약관</a></li>
+    
+    <li><a href="/#" style="color:#819FF7;">개인정보처리방침</a></li>
+     
      
     </ul>
     </li>

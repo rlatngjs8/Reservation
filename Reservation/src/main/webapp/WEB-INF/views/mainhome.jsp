@@ -31,11 +31,11 @@ body {
 
 .ffimg img{
 	width:45px;
-	height: 39px;
+	height: 41px;
 	position:relative;
 	
 	right:5px;
-	top:9px;
+	top:7px;
 }
 
 .first {
