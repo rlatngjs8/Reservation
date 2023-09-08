@@ -120,7 +120,6 @@
     border-radius: 5px;
     padding: 0.7rem 1.5rem;
     cursor: pointer;
-/* <<<<<<< HEAD */
     font-size: 1.1rem;
     margin-top: 2rem;
     display: inline-block;
@@ -131,7 +130,6 @@
   .product-list-link1 {
     background-color: #00e1b5;
   }
-/* ======= */
 /*     font-size: 1.0rem; */
 /*     margin-right: 20px; /* 두 버튼 사이 간격 늘리기 */ */
 /*     margin-bottom: 10px; /* 버튼 아래 여백 추가 */ */

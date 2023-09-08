@@ -49,4 +49,5 @@ public interface RoomDAO {
 	
 	String findID(String email, String name, String mobile);
 	String findPW(String userid, String name, String mobile);
+	
 }

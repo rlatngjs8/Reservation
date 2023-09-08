@@ -138,7 +138,7 @@
 <div class="container">
 	<h1>상세문의수정</h1><br>
 	<!-- 목록으로 css -->
-	<a href="/Q&A" class="link-style">목록으로</a><br>
+	<a href="javascript:history.back();" class="link-style">이전으로</a><br>
 	<form action="/modify" method="post">
 	<table>
 	<input type="hidden" id="seqno" name="seqno" value="${bpost.seqno}">
@@ -148,7 +148,7 @@
 	<tr><td class="cal">작성자</td><td><input type="hidden" name="writer" value="${userid}">${userid}</td></tr>
 	<tr><td class="cal">조회수</td><td>${bpost.hit}</td></tr>
 	<tr><td class="cal">작성시간</td><td>${bpost.created}</td></tr>
-	<tr><td class="cal">수정시각</td><td>${bpost.updated}</td></tr>
+	<tr><td class="cal">수정시각</td><td><input type="hidden" name="updated" value="${bpost.updated}">${bpost.updated}</td></tr>
 	<tr>
 	    <td></td>
 	    <td style='text-align: right;'>

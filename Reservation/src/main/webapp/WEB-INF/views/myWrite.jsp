@@ -130,16 +130,16 @@
 }
 		.container{
 		width: 60%;
-    margin: 0 auto;
+    margin: 113px auto;
     }
 </style>
 </head>
 <body>
-<<<<<<< HEAD
+<%@include file="header.jsp"%>
 <div class="container">
 	<h1>상세문의작성</h1><br>
 	<!-- 목록으로 css -->
-	<a href="/Q&A" class="link-style">목록으로</a><br>
+	<a href="/" class="link-style">홈으로</a><br>
 	<form action="/myInsert" method="get">
 	<table>
 	<tr><td class="cal">번호</td><td id="seqno"></td></tr>
@@ -172,27 +172,7 @@
 	        </tr>
 	    </tbody>
 	</table>
-=======
 
-<%@include file="header.jsp"%>
-<br><br><br><br>
-<h1>문의내용작성</h1>
-<br><br><br>
-<div class="form-container">
-    <form method="post" action="/myinsert" id="frmInsert" name="frmInsert">
-        <label for="title">제목</label>
-        <input type="text" name="title" id="title" maxlength="128">
-
-        <label for="content">내용</label>
-        <textarea rows="10" cols="64" name="content" id="content"></textarea>
-
-        <div class="btn-container">
-            <input type="button" class="btn" id="qa" value="목록으로">
-            <input type="submit" id="btnSubmit" name="btnSubmit" value="작성완료" class="btn">
-        </div>
-    </form>
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
-</div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
@@ -206,5 +186,32 @@ $(document).on('click','#btnWrite',function(){
 		alert("내용을 입력해주세요.");
 	}
 })
+$(document).ready(function() {
+    let loggedIn = ${not empty sessionScope.userid}; // 로그인된 상태인지 확인
+    let writer = "${bpost.writer}"; // 작성자의 아이디를 변수에 저장
+    let manager = "rlatngjs";	// 매니저 아이디
+    
+    if (loggedIn) {
+        let loggedInUsername = "${sessionScope.userid}";
+
+        if (writer === loggedInUsername || loggedInUsername == manager) {
+            // 작성자와 로그인한 사용자의 아이디가 같은 경우
+            $("#btnUpdate").show();
+            $("#btnDelete").show();
+            $("#btnWrite").show();
+            
+        } else {
+            // 작성자와 로그인한 사용자의 아이디가 다른 경우
+            $("#btnUpdate").hide();
+            $("#btnDelete").hide();
+            $("#btnWrite").show();
+        }
+    } else {
+        // 로그인되지 않은 상태
+        $("#btnUpdate").hide();
+        $("#btnDelete").hide();
+        $("#btnWrite").hide();
+    }
+}    
 </script>
 </html>

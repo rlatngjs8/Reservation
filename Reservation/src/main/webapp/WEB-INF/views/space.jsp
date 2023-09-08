@@ -551,7 +551,7 @@ height: 21px;
 	</div>
 	<!--  <input type='hidden' id='username' value="">-->
     <input type='hidden' id='user_id' value="${sessionScope.userid}">
-    <input type="hidden" id="space_id" value="${space.space_id }">
+    <input type="hidden" id="space_id" name="space_id" value="${space.space_id }">
 
     <main>
         <section class="space-details" style="max-width: 70%;">
@@ -1016,7 +1016,9 @@ $(document).on('click', '#not_login', function () { //로그인 안했을때 리
 });
 
 $(document).on('click', '#btnReF', function () { //로그인 안했을때 예약하기 버튼
-    alert("로그인을 해주세요.");
+    alert("로그인 후에 이용가능합니다.");
+//    	window.location.href = "login";
+    
 });
 
 $(document).on('click', '#show_cart', function () { //카트로이동

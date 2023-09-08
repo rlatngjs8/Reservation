@@ -384,63 +384,81 @@
         
     });
     
-    $(document).on('click','#subModalID',function(){    
-    	console.log('아이디 찾는중')
-    	var email = $('#findEmailID').val();
-    	var name = $('#findNameID').val();
-    	var mobile = $('#findMobileID').val();
-    	$.ajax({
-    		url:'/findID',
-    		type:'post',
-    		data: {email:email,name:name,mobile:mobile},
-    		datatype: 'text',
-    		success: function(data){
-    			console.log(data);
-    			$('#serchID').empty();
-    			$('#p1').hide();
-    			$('#p2').hide();
-    			i = "<span class='p3'>회원님의 아이디는 </span><span class='data'>"+data+"</span><span class='p3'> 입니다</span><br>"
-    					+"<button type='button' id='rollbackID1' class='hover5'>닫기</button>";
-    			console.log(i);
-    			$("#serchID").append(i);
-    			$('#rollbackID1').click(function () {			//취소버튼 실행
-    				$('#serchID').empty();
-    				$('#p1').show();
-    				$('#p2').show();
-    	      $('#idModal').css('display', 'none');
-    	     });
-    		}
-    	})
-    })
-    $(document).on('click','#subModalPW',function(){
-    	console.log('비밀번호 찾는중');
-    	var userid = $('#findUseridPW').val();
-    	var name = $('#findNamePW').val();
-    	var mobile = $('#findMobilePW').val();
-    	$.ajax({
-    		url:'/findPW',
-    		type:'post',
-    		data:{userid:userid,name:name,mobile:mobile},
-    		datatype:'text',
-    		success:function(data){
-    			console.log(data);
-    			$('#serchPW').empty();
-    			$('#q1').hide();
-    			$('#q2').hide();
-    			j = "<span class='q3'>회원님의 비밀번호는 </span><span class='data'>"+data+"</span><span class=q3'> 입니다</span><br>"
-							+"<button type='button' id='rollbackPW1' class='hover5'>닫기</button>";
-					console.log(j);
-					$('#serchPW').append(j);
-					$('#rollbackPW1').click(function () {
-						$('#serchPW').empty();
-						$('#q1').show();
-						$('#q2').show();
-		        $('#passwordModal').css('display', 'none');
-		      });
-    		}
-    	})
-    })
-    
+    $(document).on('click', '#subModalID', function () {
+        console.log('아이디 찾는중');
+        var email = $('#findEmailID').val();
+        var name = $('#findNameID').val();
+        var mobile = $('#findMobileID').val();
+        $.ajax({
+            url: '/findID',
+            type: 'post',
+            data: { email: email, name: name, mobile: mobile },
+            datatype: 'text',
+            success: function (data) {
+                console.log("data="+data);
+                if (data === "") {
+                    // 아이디를 찾지 못한 경우, 입력값이 일치하는 정보가 없음을 알림
+                    alert("일치하는 정보를 찾을 수 없습니다.");
+                    $('#findEmailID').val('');
+                    $('#findNameID').val('');
+                    $('#findMobileID').val('');
+                } else {
+                    // 아이디를 찾은 경우, 해당 아이디를 표시
+                    $('#serchID').empty();
+                    $('#p1').hide();
+                    $('#p2').hide();
+                    i = "<span class='p3'>회원님의 아이디는 </span><span class='data'>" + data + "</span><span class='p3'> 입니다</span><br>" +
+                        "<button type='button' id='rollbackID1' class='hover5'>닫기</button>";
+                    console.log(i);
+                    $("#serchID").append(i);
+                    $('#rollbackID1').click(function () {
+                        $('#serchID').empty();
+                        $('#p1').show();
+                        $('#p2').show();
+                        $('#idModal').css('display', 'none');
+                    });
+                }
+            }
+        });
+    });
+    $(document).on('click', '#subModalPW', function () {
+        console.log('비밀번호 찾는중');
+        var userid = $('#findUseridPW').val();
+        var name = $('#findNamePW').val();
+        var mobile = $('#findMobilePW').val();
+        $.ajax({
+            url: '/findPW',
+            type: 'post',
+            data: { userid: userid, name: name, mobile: mobile },
+            dataType: 'text', // 'datatype' 오타를 'dataType'로 수정
+            success: function (data) {
+                console.log("data=" + data);
+                if (data === "") {
+                    // 비밀번호를 찾지 못한 경우, 입력값이 일치하는 정보가 없음을 알림
+                    alert("일치하는 정보를 찾을 수 없습니다.");
+                    // 입력 필드 값을 초기화
+                    $('#findUseridPW').val('');
+                    $('#findNamePW').val('');
+                    $('#findMobilePW').val('');
+                } else {
+                    // 비밀번호를 찾은 경우, 해당 비밀번호를 표시
+                    $('#serchPW').empty();
+                    $('#q1').hide();
+                    $('#q2').hide();
+                    j = "<span class='q3'>회원님의 비밀번호는 </span><span class='data'>" + data + "</span><span class=q3'> 입니다</span><br>" +
+                        "<button type='button' id='rollbackPW1' class='hover5'>닫기</button>";
+                    console.log(j);
+                    $('#serchPW').append(j);
+                    $('#rollbackPW1').click(function () {
+                        $('#serchPW').empty();
+                        $('#q1').show();
+                        $('#q2').show();
+                        $('#passwordModal').css('display', 'none');
+                    });
+                }
+            }
+        });
+    });
   
     
 </script>

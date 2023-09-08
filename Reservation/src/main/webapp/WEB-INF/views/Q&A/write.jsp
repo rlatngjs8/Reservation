@@ -36,6 +36,7 @@
         margin-top: 20px;
         
     }
+  	
     table th, table td {
         border: 1px solid #ccc;
         padding: 8px;
@@ -248,17 +249,8 @@ function updateCommentList(seqno) {
         }
     });
 };
-
-$(document)
-.on('click', '#btnDelete', function() {
-    if (!confirm('정말로 지울까요?')) return false;
-
-    document.location = '/delete?seqno=' + $('#seqno').text();
-    return false;
+$(document).on('click','#btnWrite',function(){
+	alert("작성이 완료되었습니다.");
 })
-.on('click', '#btnUpdate', function() {
-    document.location = '/update?seqno=' + $('#seqno').text();
-    return false;
-});
 </script>
 </html>
