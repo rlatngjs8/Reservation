@@ -58,7 +58,7 @@
 </select>
 
 <select id="qa_get">
-	select * from board where space_id=#{param1}
+	SELECT * FROM board WHERE space_id = #{param1} ORDER BY created DESC;
 </select>
 <select id="getSpaceKey" resultType="com.himedia.springboot.productDTO">
     SELECT space_id, space_name, space_type, capacity, location, DESCRIPTION, price, mobile, extent,img1,img2,img3,img4,img5 FROM spaces
