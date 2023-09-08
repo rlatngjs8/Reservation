@@ -10,7 +10,7 @@
 </head>
 <style>
         body {
-            font-family: Arial, sans-serif;
+          
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
@@ -18,7 +18,7 @@
             margin: 0 auto;
         }
 
-        h1 {
+        .hc {
             background-color: #007bff;
             color: #fff;
             padding: 20px;
@@ -79,6 +79,7 @@
 				}
 
         #loadData {
+        font-family: 'Pretendard-Regular';
             background-color: #007bff;
             color: #fff;
             cursor: pointer;
@@ -111,20 +112,31 @@
             background-color: #f2f2f2;
         }
         
+        @font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+        
  .prev {
+ 	font-family: 'Pretendard-Regular';
 	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
 	background-color:#ededed;
 	border:1px solid #d6bcd6;
 	display:inline-block;
 	cursor:pointer;
 	color:#3a8a9e;
-	font-family:Arial;
 	font-size:17px;
 	padding:4px 8px;
 	text-decoration:none;
 	
 	position:relative;
 	
+	left: 10px;
+	
+	    cursor: pointer;
+            height: 40px;
 }
 .prev:hover {
 	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
@@ -139,7 +151,10 @@
     </style>
 </head>
 <body>
-    <h1>매출 관리 페이지</h1>
+<%@include file="header.jsp" %>
+<br><br><br><br><br><br>
+
+    <h1 class="hc">매출 관리 페이지</h1>
     <button id="prev" class="prev">이전메뉴</button>
     
     

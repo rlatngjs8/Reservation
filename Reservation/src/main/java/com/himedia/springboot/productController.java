@@ -439,4 +439,13 @@ public String shownewRooms(Model model) {
 	return "/newrooms";
 }
 
+@GetMapping("/dance")
+public String showdance(Model model) {
+	ArrayList<productDTO> alemp = pdao.get_space();
+	model.addAttribute("rooms",alemp);
+	
+	return "/dance";
+}
+
+
 }

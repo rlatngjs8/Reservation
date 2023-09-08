@@ -95,7 +95,12 @@
     </div>
     
 
-        </div>
+ </div>
+        
+        
+        
+        
+        
         <br><br><br>
 	<div class="second">
 	<div class="card">
@@ -152,6 +157,7 @@
 		<a class="demo2">${rooms[4].price}원/시간</a>
 
     </div>
+      
 	</div>
 <br><br><br><br><br>
 
