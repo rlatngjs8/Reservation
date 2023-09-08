@@ -31,7 +31,7 @@ body {
 
 .ffimg img{
 	width:50px;
-	height: 45px;
+	height: 44px;
 	position:relative;
 	
 	right:5px;
@@ -348,6 +348,8 @@ card1 css 추가
 	
 	width: 526px;
 	height: 426px;
+	
+	opacity:0;
 }
 
 .card12 p {
@@ -489,7 +491,7 @@ card1 css 추가
 .all{
 	position:relative;
 	right:8px;
-	top: 5px;
+	top: 4px;
 }
 
 
@@ -545,7 +547,7 @@ bottom:6px;
 	<br>
 	<br>
 
-	<!-- 이미지 조정 및 룸에 대한 설명을 아이콘 아래에 표시 -->
+	
 	
 
 	<br>
@@ -584,14 +586,12 @@ bottom:6px;
 
 			
 			
-			
-			
-			<div class=cDiv style="margin-right: 20px;">
+			<div class=cDiv style="margin-right: 5px;">
 				<a href="allRooms?category=party"><img src="img/파티룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br> <a>파티룸</a>
 			</div>
 			
-			<div class=cDiv style="margin-right: 20px;">
+			<div class=cDiv style="margin-right: 10px;">
 				<a href="allRooms?category=conference"><img src="img/세미나룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br> <a>회의실/세미나</a>
 			</div>
@@ -750,17 +750,14 @@ bottom:6px;
 
 
 
-	<div class="wrap">
-		<input type="button" id="load" name="load" class="load" value="더보기">
-	</div>
 
+
+	<br>
 	<br>
 	<br>
 	<br>
 
 	<div class="second1">
-
-
 
 
 		<div class="card12">
@@ -809,20 +806,23 @@ bottom:6px;
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 	$(document).ready(function() {
-		$(".card12").hide();
-		var buttonText = [ "더 보기", "접기" ];
-		var toggleIndex = 0;
+		$(window).scroll(function(){
+			$('.card12').each(function(i){
+				var bottom = $(this).offset().top + $(this).outerHeight();
+				var bottom2 = $(window).scrollTop() + $(window).height();
+				
+				if( bottom2 > bottom/2){
+					$(this).animate({'opacity':'1'},500);
+				}
+				
+			})
+		});
+		
+		var toggleOpacity = true;
 
 		$("#load").click(function() {
-			var currentScroll = $(window).scrollTop(); // 현재 스크롤 위치 저장
-			$(".card12").slideToggle("fast", function() {
-				// 스크롤 위치를 이동하지 않도록 설정
-
-				$(window).scrollTop(currentScroll);
-			});
-
-			toggleIndex = 1 - toggleIndex;
-			$(this).val(buttonText[toggleIndex]);
+			$(".card12").animate({'opacity': toggleOpacity ? '0' : '1'}, 500);
+			toggleOpacity = !toggleOpacity;
 		});
 	});
 
@@ -834,4 +834,5 @@ bottom:6px;
 		$('.slide-container').css('transform', 'translateX(-100vw)');
 	});
 </script>
+
 </html>

@@ -31,7 +31,7 @@ ul.sub_mobile {
 
 #menu.open { 
   left: 0px;
-  width:225px;
+  width:205px;
 
 }
 
@@ -41,7 +41,7 @@ ul.sub_mobile {
   display: block;
 }
 
-.btn1 {
+.headerbtn {
 
   width: 50px;
   height: 50px;
@@ -55,6 +55,8 @@ ul.sub_mobile {
   position:relative;
   
   bottom:80px;
+  
+  
 
 }
 
@@ -254,9 +256,19 @@ a {
     font-style: normal;
 }
 
+
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
 .top {
   text-align: center;
-  font-family: 'KIMM_Bold', sans-serif;
+ font-family: 'CookieRun-Regular';
   background-color: transparent; /* 배경색 투명으로 설정 */
 }
 
@@ -382,41 +394,43 @@ font-family: 'HakgyoansimWoojuR';
   position: fixed;
   top: 3px;
   right: 0;
-  margin-right: 19%; /* 원하는 위치로 조정하세요 */
-  margin-top: 1%; /* 원하는 위치로 조정하세요 */
+  margin-right: 19%;
+  margin-top: 1%;
 }
 
 #search-input {
-  width: 200px; /* 검색 입력 필드 너비 조정 */
+  width: 200px;
   height: 30px;
   border: 1px solid #ccc;
   border-radius: 20px;
-  padding: 5px;
+  padding: 5px 35px 5px 5px; /* 오른쪽 패딩을 조절하여 아이콘이 텍스트와 겹치지 않도록 함 */
+}
+
+#search-icon {
+  position: absolute;
+  top: 50%; /* 아이콘을 수직 가운데 정렬 */
+  right: 10px; /* 아이콘을 오른쪽에 정렬 */
+  transform: translateY(-50%); /* 아이콘을 수직 가운데 정렬 */
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 #search-button {
   background-color: #25a4cd;
-  color: #fff;
+  color: #25a4cd;
   border: none;
-  border-radius: 5px;
-  height: 40px;
+  border-radius: 20px;
+  height: 30px;
   padding: 0 10px;
   cursor: pointer;
   margin-left: 5px;
-}
-	
-#search-container img{
-	position : absolute;
-  width: 12px;
-  top: 16px;
-  right: 240px;
-  margin: 0;
+  margin-bottom: 5px;
   
 }
+	
 
-#search-input:focus + img {
-  display: none; /* 입력 필드가 포커스를 받으면 이미지를 숨김 */
-}
+
 
 </style>
 
@@ -428,15 +442,17 @@ font-family: 'HakgyoansimWoojuR';
 
 <!-- 클릭시, 메인 페이지로 이동. -->
 <div class="top-container">
-<h1 align=center class="top"><a href="/">Share Place</a></h1> 
+<h1 class="top"  style="margin-right: 495px;"><a href="/">Share Place</a></h1> 
 
-<div class="btn1"></div>
+<div class="headerbtn"></div>
 
 <!-- 검색기능 -->
 <div id="search-container">
 
   <form action="/allRooms" method="GET">
-    <input type="text" id="search-input" name="keyword">
+    <input type="text" id="search-input" name="keyword" placeholder="검색어를 입력하세요">
+	<img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" id="search-icon">
+
     
     
     <button id="search-button">검색</button>
@@ -602,7 +618,7 @@ $(document).ready(function() {
   var menuOpen = false; 
 
 
-  $(".btn1").click(function() {
+  $(".headerbtn").click(function() {
     if (!menuOpen) {
      
       $("#menu,.page_cover,html").addClass("open");

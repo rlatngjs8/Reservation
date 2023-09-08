@@ -52,7 +52,7 @@
     display: block;
     margin: 0 auto;
 }
-.card .demo, .card .demo1, .card .demo2 {
+.card .demo{
     font-size: 16px;
     margin: 10px 0;
 }
@@ -60,6 +60,30 @@
     font-size: 18px;
     color: #dd4b39;
 }
+
+.forimg {
+	width:1px;
+	height:1px;
+}
+
+  #card1_7 a {
+   font-size : 15px;
+   
+   
+   
+  }
+
+  #card2_7 {
+   
+   font-size : 15px;
+  }
+
+
+#card2_2.card{
+font-size : 13px;
+}
+
+
 </style>
 </head>
 
@@ -79,15 +103,18 @@
 <br><br>
 <div class="second">
     <c:forEach items="${rooms}" var="prod" varStatus="outerLoop">
-        <!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
         <div class="card" id="card1_${outerLoop.index}"  onclick="window.location.href='/space?space_id=${prod.space_id}'">
             <a href="#" class="fimg"><img src="img/${prod.img1}" alt="이미지 6"></a>
+            <br>
             <a class="demo">${prod.space_name}</a>
             <br>
-            <a class="demo1">${prod.location}</a>
-            <a class="location"><img src="img/위치아이콘.png"></a>
+          
+            <a class="demo1">[${prod.location}]</a>
+            <br><br>
+            <a class="demo12"><strong>${prod.price}</strong>&nbsp;시간/원</a>
+            
             <br>
-            <a class="demo2">${prod.price}원/시간</a>
+      
         </div>
         <div class="card" id="card2_${outerLoop.index}" style="display: none;" onclick="window.location.href='/space?space_id=${prod.space_id}'">
 				</div>
@@ -96,6 +123,8 @@
         </c:if>
     </c:forEach>
 </div>
+
+
 <br><br><br><br><br>
 <%@include file="footer.jsp" %>
 </body>
@@ -125,6 +154,15 @@
 
             // 해당 카테고리의 효과를 활성화합니다.
             activateCategory(category);
+            
+            $(".cate a").css("text-decoration", "none");
+            
+            $(this).css({"text-decoration":"underline",
+            			 "text-underline-position":"under"
+            	
+            
+            });
+            
         });
     });
 
@@ -145,13 +183,14 @@
                     // 카테고리가 있으면 모든 카드 숨김
                     $(".card").css("display", "none");
                     for (let k = 0; k < data.length; k++) {
-                        let cardHtml = "<a href='#' class='fimg'><img src='img/" + data[k]['img1'] + "' alt='이미지 6'></a>" +
+                        let cardHtml = "<a href='#' class='fimg'><img src='img/" + data[k]['img1'] + "' alt='이미지 6'></a>" + "<br>" +
                             "<a class='demo'>" + data[k]['space_name'] + "</a>" +
                             "<br>" +
                             "<a class='demo1'>" + data[k]['location'] + "</a>" +
-                            "<a class='location'><img src='img/위치아이콘.png'></a>" +
+                             
                             "<br>" +
-                            "<a class='demo2'>" + data[k]['price'] + "원/시간</a>";
+                            "<br>"+
+                            "<a class='demo12'>" +"<strong>"+data[k]['price']+"</strong>" + "원/시간</a>";
 
                         $("#card2_" + k).html(cardHtml);
                         $("#card2_" + k).css("display", "block");

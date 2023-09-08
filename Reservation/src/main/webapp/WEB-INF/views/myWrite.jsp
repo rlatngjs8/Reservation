@@ -135,6 +135,7 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 <div class="container">
 	<h1>상세문의작성</h1><br>
 	<!-- 목록으로 css -->
@@ -171,6 +172,26 @@
 	        </tr>
 	    </tbody>
 	</table>
+=======
+
+<%@include file="header.jsp"%>
+<br><br><br><br>
+<h1>문의내용작성</h1>
+<br><br><br>
+<div class="form-container">
+    <form method="post" action="/myinsert" id="frmInsert" name="frmInsert">
+        <label for="title">제목</label>
+        <input type="text" name="title" id="title" maxlength="128">
+
+        <label for="content">내용</label>
+        <textarea rows="10" cols="64" name="content" id="content"></textarea>
+
+        <div class="btn-container">
+            <input type="button" class="btn" id="qa" value="목록으로">
+            <input type="submit" id="btnSubmit" name="btnSubmit" value="작성완료" class="btn">
+        </div>
+    </form>
+>>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>

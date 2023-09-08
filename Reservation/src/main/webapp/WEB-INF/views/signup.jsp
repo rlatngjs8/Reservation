@@ -61,9 +61,20 @@ font-size: 24px;
 
 }
 
-h2 {
+
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.signuph2 {
+font-family: 'Pretendard-Regular';
+font-weight:bold;
 font-size: 24px;
-    color: #6A24FE;
+    color: black;
     margin-bottom: 20px;
     text-decoration : underline;
 }
@@ -71,7 +82,7 @@ font-size: 24px;
 
 
 
-input{
+.inp, .hall, .cboa, .hover4{
  width: 20%;
     height: 48px;
     padding: 0 10px;
@@ -246,12 +257,7 @@ border-radius: 6px;
 }
 
 
-h2{
- font-family: 'yg-jalnan';
-	font-size:35px;
-	color: black;
-	
-}
+
 
 
 
@@ -260,8 +266,9 @@ h2{
 </style>
 <body align=center>
 <%@include file="header.jsp"%>
+<br><br><br><br>
 <form id=frmMember method=post action="/dosignup">
-<h2>회원가입</h2>
+<h2 class="signuph2">회원가입</h2>
 <div class="c">
 <label class="lb">아이디</label>&nbsp;&nbsp;
 <input name=userid id=userid class="inp" placeholder="아이디를 입력하세요.">
