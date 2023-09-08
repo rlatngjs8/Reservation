@@ -67,7 +67,7 @@ footer {
 /* 예약 창 스타일 */
 .reservation-window {
     position: absolute;
-    top: 100px;
+    top: 230px;
     right: 20px;
     width: 350px;
     background-color: #ffffff;
@@ -911,8 +911,6 @@ function calculateTotalPrice() {
 
 var selectedTime = "";
 
-// 다이얼 로그 시작
-// 다이얼 로그 시작
 // 다이얼 로그 시작
 $(document).ready(function () {
     const openDialogBtn = document.querySelector("#open-dialog-button");

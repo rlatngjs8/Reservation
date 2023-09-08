@@ -109,6 +109,9 @@ public class YoonController {
 			jo.put("space_type", temp_reservation.get(i).getSpace_type());
 			jo.put("price", temp_reservation.get(i).getPrice());
 			jo.put("img1", temp_reservation.get(i).getImg1());
+			jo.put("mobile", temp_reservation.get(i).getMobile());
+			jo.put("description", temp_reservation.get(i).getDescription());
+			jo.put("capacity", temp_reservation.get(i).getCapacity());
 			ja.add(jo);
 		}  
 		return ja.toJSONString();
@@ -216,6 +219,22 @@ public class YoonController {
 	    }
 	    return ja.toJSONString();
 	}
+	
+	@PostMapping("/get_terms_of_use")
+	@ResponseBody
+	public String get_terms_of_use(HttpServletRequest req, Model model) {
+		ArrayList<serviceDTO> terms_of_use = resdao.get_terms_of_use();
+		JSONArray ja = new JSONArray();
+	    for (int i = 0; i < terms_of_use.size(); i++) {
+	        JSONObject jo = new JSONObject();
+	        jo.put("num", terms_of_use.get(i).getNum());
+	        jo.put("terms_of_use",terms_of_use.get(i).getTerms_of_use());
+	        jo.put("personal_information", terms_of_use.get(i).getPersonal_information());
+	        ja.add(jo);
+	    }
+	    return ja.toJSONString();
+	}
+	
 	
 	@GetMapping("/ttest")
 	public String ttest() {

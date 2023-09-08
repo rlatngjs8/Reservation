@@ -22,6 +22,7 @@ public interface ReservationDAO {
 		void insert_temp_reservation(int start_time, int end_time, String reservation_date, int total_price, int space_id, String userid);
 		int delete_temp_reservation(String userid);
 		ArrayList<ReservationDTO> get_reinfo(int space_id);
+		ArrayList<serviceDTO> get_terms_of_use();
 		
 		
 }
