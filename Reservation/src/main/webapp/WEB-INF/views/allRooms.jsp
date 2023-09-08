@@ -8,7 +8,6 @@
 <link href="css/Section.css" rel="stylesheet" /> 
 <title>Insert title here</title>
 <style>
-<<<<<<< HEAD
     img {
         height: 333.33px;
         width: 400px;
@@ -40,18 +39,15 @@
 	    flex-wrap: wrap;
 	    justify-content: space-between;
 	}
-=======
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
 
-<<<<<<< HEAD
-   .card {
-        display: none;
-        width: calc(25% - 20px);
-        margin-bottom: 20px;
-        padding: 10px;
-        border: 1px solid #ddd;
-        text-align: center;
-    }
+    .card {
+    display: none;
+    width: calc(25% - 20px);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
 .card img {
     display: block;
     margin: 0 auto;
@@ -64,34 +60,13 @@
     font-size: 18px;
     color: #dd4b39;
 }
-=======
-
-
-
-
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
 </style>
 </head>
 
 <body>
 
 <%@include file="header.jsp" %>
-<<<<<<< HEAD
 <h1 class="title">전체보기</h1>
-=======
-
-	<h1 class="title">전체보기</h1>
-	<br>
-	
-	<div class="cate">
-	<a href="PartyRoom" class="froom">파티룸</a>&nbsp;&nbsp;&nbsp;
-	<a href="seminarRoom" class="sroom">세미나/회의실</a>&nbsp;&nbsp;&nbsp;
-	<a href="studyRoom" class="troom">강의실/스터디룸</a>&nbsp;&nbsp;&nbsp;
-	<a href="RecordingStudio" class="foroom">스튜디오/방송</a>
-	</div>
-
-
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
 <br>
 <div class="cate">
     <a href="#" class="froom" data-category="party">파티룸</a>&nbsp;&nbsp;&nbsp;
@@ -103,7 +78,6 @@
 
 <br><br>
 <div class="second">
-<<<<<<< HEAD
     <c:forEach items="${rooms}" var="prod" varStatus="outerLoop">
         <!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
         <div class="card" id="card1_${outerLoop.index}"  onclick="window.location.href='/space?space_id=${prod.space_id}'">
@@ -122,31 +96,11 @@
         </c:if>
     </c:forEach>
 </div>
-=======
-<c:forEach items="${rooms}" var="prod">
-    <div class="product" data-space_id="${prod.space_id}">
-<%--       <img src="${prod.image}" alt="${product.name}"> --%>
-      <div class="space-info">
-      	<h2>${prod.space_id}</h2>
-        <h2 class="space_name">${prod.space_name}</h2>
-        <p class="space_type">${prod.space_type}</p>
-        <p class="space-price">${prod.location}</p>
-        <p class="space-price">${prod.mobile}</p>
-
-      </div>
-    </div>
-  </c:forEach>
-    
-
-    
-    
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
 <br><br><br><br><br>
 <%@include file="footer.jsp" %>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
-<<<<<<< HEAD
 //카테고리를 클릭할 때 Ajax를 사용하여 해당 카테고리에 해당하는 상품들을 불러옵니다.
       $(document).ready(function() {
         // 쿼리 매개변수를 파싱하여 선택된 카테고리를 확인합니다.
@@ -210,10 +164,8 @@
             }
         });
     }
-=======
 	
 
 	
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
 </script>
 </html>
