@@ -38,7 +38,7 @@
 .nh{
 font-family: 'omyu_pretty';
 
-margin-left : 45px;
+margin-right: 22px;
 }
 
 

@@ -187,7 +187,7 @@ a {
   color:black;
 }
 
-.button {
+.button12 {
   width: 70px;
   height: 30px;
   font-size: 14px;
@@ -380,7 +380,7 @@ font-family: 'HakgyoansimWoojuR';
 }
 #search-container {
   position: fixed;
-  top: 0;
+  top: 3px;
   right: 0;
   margin-right: 19%; /* 원하는 위치로 조정하세요 */
   margin-top: 1%; /* 원하는 위치로 조정하세요 */
@@ -390,7 +390,7 @@ font-family: 'HakgyoansimWoojuR';
   width: 200px; /* 검색 입력 필드 너비 조정 */
   height: 30px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 5px;
 }
 
@@ -399,35 +399,59 @@ font-family: 'HakgyoansimWoojuR';
   color: #fff;
   border: none;
   border-radius: 5px;
-  height: 30px;
+  height: 40px;
   padding: 0 10px;
   cursor: pointer;
   margin-left: 5px;
 }
 	
+#search-container img{
+	position : absolute;
+  width: 12px;
+  top: 16px;
+  right: 240px;
+  margin: 0;
+  
+}
 
+#search-input:focus + img {
+  display: none; /* 입력 필드가 포커스를 받으면 이미지를 숨김 */
+}
 
 </style>
 
 <body>
 
+
+
+
+
 <!-- 클릭시, 메인 페이지로 이동. -->
 <div class="top-container">
-<h1 align=center class="top"><a href="/">Share Place</a></h1> <hr/>
+<h1 align=center class="top"><a href="/">Share Place</a></h1> 
+
 <div class="btn1"></div>
 
 <!-- 검색기능 -->
 <div id="search-container">
+
   <form action="/allRooms" method="GET">
-    <input type="text" id="search-input" name="keyword" placeholder="키워드 검색">
+    <input type="text" id="search-input" name="keyword">
+    
+    
     <button id="search-button">검색</button>
   </form>
+  
 </div>
 
 <!-- 로그인 하지 않은 상태로 다른 페이지로 이동시, userid에 빈 문자열이 들어가서 수정했습니다. -->
 
 <c:set var="userid" value="${sessionScope.userid}" /> <!-- 세션에서 userid 값을 가져옴 -->
 <c:set var="member" value="${rdao.getListOne(userid)}" /> <!-- RoomDAO를 사용하여 사용자 이름을 가져옴 -->
+
+
+
+
 
 </div>
 
@@ -447,8 +471,8 @@ font-family: 'HakgyoansimWoojuR';
                             <c:when test="${empty userid}">
                              <!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
                              <div class="pright">
-                             <button id="btnLogin" class="button">로그인</button>
-                             <button id="btnSignup" class="button" >회원가입</button>
+                             <button id="btnLogin" class="button12">로그인</button>
+                             <button id="btnSignup" class="button12" >회원가입</button>
                              </div>                         
                             </c:when>
                             <c:otherwise>
@@ -474,7 +498,10 @@ font-family: 'HakgyoansimWoojuR';
 	
    <div class="welcome">
    <!-- 1대1문의 로그인이 안되어있으면 로그인창으로,로그인되어있으면 myWrite -->
-   <li><a href="/myWrite"  style="color: black">1:1문의</a></li>
+   
+
+		
+  <li><a href="/myWrite" style="color: black" id="one">1:1문의</a></li>
 
    <li><a href="/FAQ"  style="color: black">자주묻는질문</a></li>
 
@@ -512,7 +539,7 @@ font-family: 'HakgyoansimWoojuR';
     <li><a style="color:black;  font-family: 'HakgyoansimWoojuR';">더보기</a>
 	    <ul class="sub_mobile">
 	    <!-- 리뷰삭제. 연결할만한 곳이 없어요 -->
-		    <li><a href="/review" style="color:black;">Review</a></li>
+	
 		
 		    <li><a href="event" style="color:black;">이벤트</a></li>
 		
@@ -544,9 +571,35 @@ $(document).on('click','#btnLogin',function(){
  })
 
 
+ 
+ 
+
+
+
+
 
 
 $(document).ready(function() {
+	
+	console.log(${empty userid});
+	
+	
+	
+	  $("#one").click(function(e) {
+		    // userid가 비어 있는 경우
+		    if ("${empty userid}"==true) {
+		      e.preventDefault(); 
+		      alert("로그인이 필요한 기능입니다.");
+		    } else {
+		    	window.location.href="/myWrite";
+		    }
+		  });
+	
+	
+	
+	
+	
+	
   var menuOpen = false; 
 
 

@@ -9,13 +9,11 @@
         body {
             font-size: 14px;
             font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
         }
 
         .log {
             width: 400px;
-            height: 350px;
+            height: 420px;
 						margin: auto; /* 수평 가운데 정렬 */
 				    position: absolute;
 				    top: 0; bottom: 400px; left: 0; right: 0; /* 수직 가운데 정렬 */
@@ -23,6 +21,7 @@
             box-sizing: border-box;
             border: 1px solid #ddd;
             border-radius: 6px;
+            margin-top: 170px;
         }
 
         .log h2 {
@@ -60,7 +59,11 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            
+           
         }
+        
+
 
         .error-message {
             color: red;
@@ -96,7 +99,7 @@
         border-radius: 6px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         width: 500px;
-        height: 300px;
+        height: 390px;
         margin: 0 auto;
     }
 
@@ -110,6 +113,13 @@
             font-size: 20px;
             cursor: pointer;
         }
+        
+        @font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
         .findID, .findPW{
         	cursor: pointer;
 	        text-decoration: underline;
@@ -117,6 +127,10 @@
 	        font-size: 14px;
 	        color: black;
 	        display: inline-block; /* 인라인 요소를 블록 요소로 변경하여 중앙 정렬 적용 */
+	        
+	        font-family: 'HakgyoansimWoojuR';
+	        
+	        
 	        
         }
         #findUser{
@@ -138,23 +152,75 @@
 				.q3{
 					font-size: 20px;
 				}
+				
+				.btnSubmit,.btnsignup {
+					position:relative;
+					
+					right:10px;
+				}
+				
+				
+p {
+	font-family: 'HakgyoansimWoojuR';
+	font-weight: bold;
+	text-align:center;
+}
+
+.c {
+	align:center;
+	font-family: 'HakgyoansimWoojuR';
+	font-weight : bold;
+}
+
+.lb{
+	font-size : 20px;
+}
+
+h1 {
+	font-size : 30px;
+	font-weight : bold;
+	font-family: 'HakgyoansimWoojuR';
+}
+
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.hover4{
+	position:relative;
+	left:200px;
+	font-family: 'TheJamsil5Bold';
+	font-weight : bold;
+	
+	width:80px;
+	height: 35px;
+	
+}
+				
     </style>
 </head>
 <body>
+<%@include file="header.jsp"%>
 <form id="frmLogin" method="post" action="/doLogin">
     <div class="log">
-        <h2>로그인</h2><input type="checkbox" id="auto">로그인저장
+        <h2>로그인</h2>
         <input type="text" id="loginid" name="loginid" placeholder="로그인 아이디" autofocus>
         <input type="password" id="loginpw" name="loginpw" placeholder="패스워드">
+        <input type="checkbox" id="auto">로그인저장
+        
         <div class="btnSubmit">
-        	<input type="submit" id="btnSubmit" value="로그인" class="button">&nbsp;&nbsp;<a href="/signup" class="button">회원가입</a>
+        <br>
+        	<input type="submit" id="btnSubmit" value="로그인" class="button">&nbsp;&nbsp; <input type="button" id="btnSignup" value="회원가입" class="button">
         </div>
         <c:forEach items="${member}" var="member">
            <input type="hidden" name="name" value="${member.name}">
         </c:forEach>
         <div id="findUser">
-            <a class="findID" id="findID">아이디찾기</a> / 
-            <a class="findPW" id="findPW">비밀번호찾기</a>
+            <a class="findID" id="findID" style="font-weight: bold;">아이디찾기</a> /
+            <a class="findPW" id="findPW" style="font-weight: bold;">비밀번호찾기</a>
         </div>
     </div>
     <c:if test="${loginFailed}">
@@ -166,8 +232,8 @@
 </form>
 <div id="idModal" class="modal">
     <div class="modal-content">
-        <span class="close" id="closeIdModal">&times;</span>
-        <h3>아이디 찾기</h3>
+        <div class="close" id="closeIdModal"></div>
+        <h1 align=center>아이디 찾기</h1>
         <!-- 아이디 찾기 내용 -->
         <br><hr/><br>
         <div id="p1">
@@ -176,21 +242,23 @@
         </div><br>
         <div class="findInput" id="findInput">
         		<div id="p2">
-                <div class="c">
-                    <label class="lb">이메일</label>&nbsp;&nbsp;
+                <div class="c" align=center>
+                    <label class="lb"><strong>이메일</strong></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" name="findEmailID" id="findEmailID" placeholder="아이디@emample.com">
                 </div>
-                <div class="c">
-                    <label class="lb">이름</label>&nbsp;&nbsp;
+                <br>
+                <div class="c" align=center>
+                    <label class="lb"><strong>이름</strong></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" name="findNameID" id="findNameID" placeholder="홍길동">
                 </div>
-                <div class="c">
-                    <label class="lb">전화번호</label>&nbsp;&nbsp;
+                <br>
+                <div class="c" align=center>
+                    <label class="lb"><strong>전화번호</strong></label>&nbsp;&nbsp;
                     <input type="text" name="findMobileID" id="findMobileID" placeholder="01055555555">
                 </div>
                 <br>
-                <button type="button" id="rollbackID" class="hover5">취소</button>
-                <input type="button" id="subModalID" value="완료" class="hover4">&nbsp;
+                <input type="button" id="rollbackID" value="취소" class="hover4" >
+                <input type="button" id="subModalID" value="완료" class="hover4">
             </div>    
             <div id="serchID">
             	
@@ -200,8 +268,8 @@
 </div>
 <div id="passwordModal" class="modal">
     <div class="modal-content">
-        <span class="close" id="closePasswordModal">&times;</span>
-        <h3>비밀번호 찾기</h3>
+        <span class="close" id="closePasswordModal"></span>
+        <h1 align=center>비밀번호 찾기</h1>
         <!-- 비밀번호 찾기 내용 -->
         <br><hr/><br>
         <div id="q1">
@@ -210,20 +278,22 @@
         </div><br>
         <div class="findInput" id="findInput">
         		<div id="q2">
-                <div class="c">
-                    <label class="lb">아이디</label>&nbsp;&nbsp;
+                <div class="c" align=center>
+                    <label class="lb">아이디</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" name="findUseridPW" id="findUseridPW" placeholder="아이디">
                 </div>
-                <div class="c">
-                    <label class="lb">이름</label>&nbsp;&nbsp;
+                <br>
+                <div class="c" align=center>
+                    <label class="lb">이름</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" name="findNamePW" id="findNamePW" placeholder="홍길동">
                 </div>
-                <div class="c">
+                <br>
+                <div class="c" align=center>
                     <label class="lb">전화번호</label>&nbsp;&nbsp;
                     <input type="text" name="findMobilePW" id="findMobilePW" placeholder="01055555555">
                 </div>
                 <br>
-                <button type="button" id="rollbackPW" class="hover5">취소</button>
+                <input type="button" id="rollbackPW" value="취소" class="hover4">
                 <input type="button" id="subModalPW" value="완료" class="hover4">&nbsp;
             </div>
             <div id="serchPW">
@@ -232,6 +302,7 @@
         </div>
     </div>
 </div>
+
 <script src="http://code.jquery.com/jquery-Latest.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script>
@@ -370,6 +441,10 @@
     		}
     	})
     })
+    
+  
+    
 </script>
+
 </body>
 </html>

@@ -547,39 +547,6 @@ bottom:6px;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<!-- 이미지 조정 및 룸에 대한 설명을 아이콘 아래에 표시 -->
 	
 
@@ -617,7 +584,13 @@ bottom:6px;
 				<br>&nbsp;<a class="all">전체보기</a>
 			</div>
 
-
+			
+			<div class=cDiv>
+				<a href="/dance"><img src="img/연습실.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<br> <a>연습실</a>
+			</div>
+			
+			
 			<div class=cDiv>
 				<a href="/PartyRoom"><img src="img/파티룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br> <a>파티룸</a>

@@ -88,11 +88,22 @@
         <textarea rows="10" cols="64" name="content" id="content"></textarea>
 
         <div class="btn-container">
-            <a href="/Q&A" class="btn">목록으로</a>
+            <input type="button" class="btn" id="qa" value="목록으로">
             <input type="submit" id="btnSubmit" name="btnSubmit" value="작성완료" class="btn">
         </div>
     </form>
 </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(document)
+.on('click','#qa',function(){
+	
+	window.location.href="/Q&A";
+})
+
+
+</script>
 </html>
     
