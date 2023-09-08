@@ -30,12 +30,12 @@ body {
 }
 
 .ffimg img{
-	width:45px;
-	height: 41px;
+	width:50px;
+	height: 45px;
 	position:relative;
 	
 	right:5px;
-	top:7px;
+	top:2px;
 }
 
 .first {
@@ -489,7 +489,7 @@ card1 css 추가
 .all{
 	position:relative;
 	right:8px;
-	top: 11px;
+	top: 5px;
 }
 
 

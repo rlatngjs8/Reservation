@@ -267,10 +267,10 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  width: 71%;
+  width: 100%;
   height:9.1%;
   background-color: white;
-  margin-left: 267px;
+  margin-left: 247px;
    overflow: hidden;
    
    z-index: 999; /* 다른 요소 위에 표시되도록 설정 */
@@ -583,18 +583,17 @@ $(document).ready(function() {
 	
 	console.log(${empty userid});
 	
+	var a = "${empty userid}";
+	console.log(a);
 	
 	
 	  $("#one").click(function(e) {
 		    // userid가 비어 있는 경우
-		    if ("${empty userid}"==true) {
+		    if (!a) {
 		      e.preventDefault(); 
 		      alert("로그인이 필요한 기능입니다.");
-		    } else {
-		    	window.location.href="/myWrite";
-		    }
+		    } 
 		  });
-	
 	
 	
 	
