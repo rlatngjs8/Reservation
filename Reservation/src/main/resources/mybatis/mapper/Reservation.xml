@@ -28,7 +28,7 @@
 </insert>
 
 <select id="select_temp_reservation">
-	SELECT tr.*, s.space_name, s.space_type, s.price , s.img1
+	SELECT tr.*, s.*
 	FROM temp_reservation AS tr
 	INNER JOIN spaces AS s ON tr.space_id = s.space_id
 	WHERE userid=#{param1};
@@ -44,4 +44,9 @@
 	INNER JOIN spaces AS s ON r.space_name = s.space_name
 	WHERE s.space_id = #{param1};
 </select>
+
+<select id="get_terms_of_use">
+	SELECT * FROM service WHERE num = 3 OR num = 4;
+</select>
+
 </mapper>

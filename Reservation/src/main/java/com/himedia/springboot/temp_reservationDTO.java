@@ -13,8 +13,30 @@ public class temp_reservationDTO {
 	int price;
 	String img1;
 	
+	String mobile;
+	String description;
+	String capacity;
 	
 	
+	
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getCapacity() {
+		return capacity;
+	}
+	public void setCapacity(String capacity) {
+		this.capacity = capacity;
+	}
 	public String getImg1() {
 		return img1;
 	}
