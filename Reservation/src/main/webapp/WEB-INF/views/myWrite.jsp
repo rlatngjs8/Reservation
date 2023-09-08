@@ -77,6 +77,9 @@
     </style>
 </head>
 <body>
+
+<%@include file="header.jsp"%>
+<br><br><br><br>
 <h1>문의내용작성</h1>
 <br><br><br>
 <div class="form-container">

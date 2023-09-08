@@ -8,7 +8,7 @@
     <style>
         body {
             font-size: 14px;
-            font-family: 'Roboto', sans-serif;
+           
         }
 
         .log {
@@ -114,12 +114,7 @@
             cursor: pointer;
         }
         
-        @font-face {
-    font-family: 'HakgyoansimWoojuR';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
+
         .findID, .findPW{
         	cursor: pointer;
 	        text-decoration: underline;
@@ -160,7 +155,7 @@
 				}
 				
 				
-p {
+.forlogP {
 	font-family: 'HakgyoansimWoojuR';
 	font-weight: bold;
 	text-align:center;
@@ -176,7 +171,7 @@ p {
 	font-size : 20px;
 }
 
-h1 {
+.forlogH {
 	font-size : 30px;
 	font-weight : bold;
 	font-family: 'HakgyoansimWoojuR';
@@ -203,8 +198,12 @@ h1 {
     </style>
 </head>
 <body>
+
+
+
 <%@include file="header.jsp"%>
 <form id="frmLogin" method="post" action="/doLogin">
+<br><br><br>
     <div class="log">
         <h2>로그인</h2>
         <input type="text" id="loginid" name="loginid" placeholder="로그인 아이디" autofocus>
@@ -233,12 +232,12 @@ h1 {
 <div id="idModal" class="modal">
     <div class="modal-content">
         <div class="close" id="closeIdModal"></div>
-        <h1 align=center>아이디 찾기</h1>
+        <h1 align=center class="forlogH">아이디 찾기</h1>
         <!-- 아이디 찾기 내용 -->
         <br><hr/><br>
         <div id="p1">
-	        <p>본인확인을 위해 가입당시 입력한</p>
-	        <p>이메일과 이름, 전화번호를 입력해주세요</p>
+	        <p class="forlogP">본인확인을 위해 가입당시 입력한</p>
+	        <p class="forlogP">이메일과 이름, 전화번호를 입력해주세요</p>
         </div><br>
         <div class="findInput" id="findInput">
         		<div id="p2">
@@ -269,12 +268,12 @@ h1 {
 <div id="passwordModal" class="modal">
     <div class="modal-content">
         <span class="close" id="closePasswordModal"></span>
-        <h1 align=center>비밀번호 찾기</h1>
+        <h1 align=center class="forlogH">비밀번호 찾기</h1>
         <!-- 비밀번호 찾기 내용 -->
         <br><hr/><br>
         <div id="q1">
-        <p>본인확인을 위해 가입당시 입력한</p>
-        <p>아이디와 이름, 전화번호를 입력해주세요</p>
+        <p class="forlogP">본인확인을 위해 가입당시 입력한</p>
+        <p class="forlogP">아이디와 이름, 전화번호를 입력해주세요</p>
         </div><br>
         <div class="findInput" id="findInput">
         		<div id="q2">
