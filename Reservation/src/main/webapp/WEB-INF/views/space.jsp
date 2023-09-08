@@ -7,422 +7,417 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d35ff5a43bbc9d6ce4be2d8cd14ddba0"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${space.space_name}</title>
 <style>
-	body {
-		font-family: Arial, sans-serif;
-		margin: 0;
-		padding: 0;
-	}
-	
-	header {
-		background-color: #333;
-		color: white;
-		text-align: center;
-		padding: 10px;
-	}
-	
-	main {
-		padding: 20px;
-	}
-	
-	.space-details {
-		border: 1px solid #ccc;
-		padding: 20px;
-		margin: 10px;
-		background-color: #f9f9f9;
-		word-wrap: break-word;
-	}
-	
-	.space-image img {
-		max-width: 100%;
-		height: auto;
-	}
-	
-	.space-introduction {
-		margin-top: 20px;
-	}
-	
-	.space-rules, .location-info, .review, .review_content, .qa {
-		margin-top: 20px;
-		border-top: 1px solid #ccc;
-		padding-top: 10px;
-		word-wrap: break-word;
-	}
-	
-	footer {
-		background-color: #333;
-		color: white;
-		text-align: center;
-		padding: 10px;
-	}
-	
-	/* 추가된 스타일 */
-	.reservation-window {
-		position: absolute;
-		top: 100px;
-		right: 20px;
-		width: 350px;
-		background-color: #ffffff; /* 흰색 배경 */
-		border: 1px solid #333; /* 검정색 테두리 */
-		padding: 20px;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		transition: top 0.3s ease;
-		color: #333; /* 검정색 글자색 */
-	}
-	
-	#datepicker {
-		width: 150px; /* 원하는 크기로 조정하세요 */
-		padding: 5px; /* 내부 여백 조정 */
-		font-size: 14px; /* 글자 크기 조정 */
-		border: 1px solid #ccc;
-		border-radius: 5px;
-	}
-	
-	.time-picker table {
-		width: 100%;
-		border-collapse: collapse;
-		border: 1px solid #ccc;
-	}
-	
-	.time-cell {
-		text-align: center;
-		padding: 10px;
-		border: 1px solid #ccc;
-		cursor: pointer;
-	}
-	
-	.selected-start-time {
-		background-color: #C8A2C8; /* 검정색 배경 */
-		color: #333; /* 흰색 글자색 */
-	}
-	
-	.selected-end-time {
-		background-color: #C8A2C8; /* 검정색 배경 */
-		color: #333; /* 흰색 글자색 */
-	}
-	
-	.price-text {
-		font-weight: bold;
-		font-size: 18px;
-		margin-top: 10px;
-		color: #333; /* 검정색 글자색 */
-	}
-	
-	#btnReT, #btnReF {
-		background-color: #333; /* 검정색 배경 */
-		color: #fff; /* 흰색 글자색 */
-		border: none;
-		padding: 10px 20px;
-		margin-top: 10px;
-		cursor: pointer;
-		transition: background-color 0.3s ease, color 0.3s ease;
-	}
-	
-	#addReT, #addReF {
-		background-color: #333; /* 검정색 배경 */
-		color: #fff; /* 흰색 글자색 */
-		border: none;
-		padding: 5px 5px;
-		margin-top: 10px;
-		cursor: pointer;
-		transition: background-color 0.3s ease, color 0.3s ease;
-	}
-	
-	#btnReT:hover, #btnReF:hover {
-		background-color: #fff; /* 흰색 배경 */
-		color: #333; /* 검정색 글자색 */
-	}
-	
-	#addedSlots {
-		font-size: 14px; /* 원하는 크기로 조정 */
-	}
-	
-	.time-picker {
-		/* 기존 스타일 유지 */
-		position: relative; /* 부모 요소를 기준으로 위치 지정 */
-	}
-	
-	.price-container {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin-top: 20px; /* 적절한 여백 조절 */
-	}
-	
-	#totalPrice {
-		/* 기존 스타일 유지 */
-		margin: 0; /* 기존 여백 제거 */
-	}
-	.container {
-      width: 400px;
-      background-color: #fff;
-      padding: 20px 30px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      text-align: center;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
+	/* 기본 스타일 초기화 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-    .post {
-      display: none;
-    }
+/* 메인 콘텐츠 컨테이너 */
+main {
+    padding: 20px;
+}
 
-    .text {
-      font-size: 25px;
-      color: #333;
-      font-weight: 500;
-    }
-
-    .edit {
-      position: absolute;
-      right: 10px;
-      top: 5px;
-      font-size: 16px;
-      color: #666;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    .edit:hover {
-      text-decoration: underline;
-    }
-
-    .star-widget input {
-      display: none;
-    }
-
-    .star-widget label {
-      font-size: 40px;
-      color: #444;
-      padding: 10px;
-      float: right;
-      transition: all 0.2s ease;
-    }
-
-    .star-widget input:not(:checked) ~ label:hover,
-    .star-widget input:not(:checked) ~ label:hover ~ label {
-      color: #fd4;
-    }
-
-    .star-widget input:checked ~ label {
-      color: #fd4;
-    }
-
-    .star-widget input#rate-5:checked ~ label {
-      color: #fe7;
-      text-shadow: 0 0 20px #952;
-    }
-
-    .star-widget input:checked ~ form {
-      display: block;
-    }
-
-    form header {
-      font-size: 25px;
-      color: #fe7;
-      font-weight: 500;
-      margin: 5px 0 20px;
-      transition: all 0.2s ease;
-    }
-
-    form .textarea textarea {
-      height: 150px;
-      width: 100%;
-      outline: none;
-      color: #333;
-      border: 1px solid #ccc;
-      background: #f8f8f8;
-      padding: 10px;
-      font-size: 17px;
-      resize: none;
-    }
-
-    .btn button {
-      height: 45px;
-      border: 1px solid #444;
-      outline: none;
-      background: #222;
-      color: #fff;
-      font-size: 17px;
-      font-weight: 500;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn button:hover {
-      background: #1b1b1b;
-    }
-
-    /* Dialog Styles */
-    #dialog-form {
-      display: none;
-    }
-
-    .ui-dialog {
-     
-     max-width: 500px;
-     max-height: 570px;
-   	 background-color: #ffffff;
-    }
-
-    .ui-dialog-titlebar {
-      display: none;
-    }
-
-    .ui-dialog-content {
-      padding: 0;
-      overflow: hidden;
-       /* Disable scrollbar */
-    }
-
-    .ui-dialog-buttonpane {
-      display: flex;
-      justify-content: flex-end;
-      padding: 0 20px 20px;
-      background-color: transparent;
-      border-top: none;
-    }
-
-    .ui-dialog-buttonset {
-      margin: 0;
-    }
-
-    .ui-dialog-buttonset button {
-      border: none;
-      outline: none;
-      background: transparent;
-      color: #999;
-      font-size: 17px;
-      font-weight: 500;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      padding: 0;
-      margin-left: 10px;
-    }
-
-    .ui-dialog-buttonset button.close-button {
-      font-size: 20px;
-      margin-left: auto;
-    }
-
-    .ui-dialog-buttonset button:hover {
-      color: #1b1b1b;
-    }
-
-    .ui-dialog-content .star-widget {
-      padding: 20px 30px;
-    }
-
-    .star-widget {
-      width: 386px; /* Adjust the width as desired */
-      height: 100px; /* Adjust the height as desired */
-      padding: 20px 30px;
-      box-sizing: border-box;
-      margin: 0 auto;
-    }
-
-    .ui-dialog-content form header {
-      margin: 0 0 20px;
-    }
-
-    .ui-dialog-content form .textarea {
-      height: 150px;
-      margin-bottom: 3px;
-    }
-
-    .ui-dialog-content .btn {
-      margin: 0;
-    }
-
-    .review-header { 
-      font-size: 20px;
-      color: #0;
-      font-weight: 500;
-      margin-bottom: 15px;
-    }
-    
-    #review_content {
-        width: 97%; /* 원하는 넓이로 조절하세요 */
-        height: 100%;
-        padding: 15px;
-        resize: none;
-    }
-    
-	.review, .qa {
+/* 공간 상세정보 섹션 */
+.space-details {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 20px;
     margin: 10px;
     background-color: #f9f9f9;
-	}
-	
-	.review, .qa h4 {
-	    font-size: 18px;
-	    font-weight: bold;
-	}
-	
-	.review, .qa  p {
-	    font-size: 14px;
-	}
-	
-	.yellow-star {
-        color: yellow;
-        text-shadow: 0 0 5px black;
-    }
-    
-	    /* 선택한 시간대를 강조 표시하는 스타일 */
-	.duplicate-time-range {
-	    background-color: #ffcccb; /* 강조 색상 설정 */
-	}
-	
-	.highlighted-time-range {
-		background-color: #C8A2C8;
-	}
-	/* 예약된 시간대의 스타일 */
-	.re_highlighted-time-range{
-	    background-color: #696969; /* 초록색 배경색 */
-	}
-	
-	.re_selected-start-time {
-		background-color: #696969; /* 검정색 배경 */
-		color: #333; /* 흰색 글자색 */
-	}
-	
-	.re_selected-end-time {
-		background-color: #696969; /* 검정색 배경 */
-		color: #333; /* 흰색 글자색 */
-	}	
-#qa-dialog-form {
-    display: none;
+    word-wrap: break-word;
+}
+
+/* 공간 이미지 */
+.space-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 공간 소개 */
+.space-introduction {
+    margin-top: 20px;
+}
+
+/* 여러 섹션의 테두리와 여백 */
+.space-rules,
+.location-info,
+.review,
+.qa,
+.reviews {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    word-wrap: break-word;
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* 예약 창 스타일 */
+.reservation-window {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 350px;
+    background-color: #ffffff;
+    border: 1px solid #333;
     padding: 20px;
-    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease;
+    color: #333;
+}
+
+/* 날짜 선택 입력 */
+#datepicker {
+    width: 150px;
+    padding: 5px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-#qa_content {
-    width: 97%;
-    height: 200px;
-    padding: 15px;
-    resize: none;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px;
+/* 시간 선택 테이블 */
+.time-picker table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+/* 시간 셀 */
+.time-cell {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* 선택한 시작 시간과 끝 시간 */
+.selected-start-time,
+.selected-end-time {
+    background-color: #C8A2C8;
     color: #333;
 }
 
+/* 가격 텍스트 */
+.price-text {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* 예약 버튼 */
+#btnReT,
+#btnReF {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 예약 버튼 호버 스타일 */
+#btnReT:hover,
+#btnReF:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+/* 추가된 슬롯 텍스트 스타일 */
+#addedSlots {
+    font-size: 14px;
+}
+
+/* 가격 컨테이너 스타일 */
+.price-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* 총 가격 텍스트 스타일 */
+#totalPrice {
+    margin: 0;
+}
+
+/* 대화 상자 스타일 */
+.container {
+    width: 400px;
+    background-color: #fff;
+    padding: 20px 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 게시물 숨김 스타일 */
+.post {
+    display: none;
+}
+
+/* 본문 텍스트 스타일 */
+.text {
+    font-size: 25px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* 편집 버튼 스타일 */
+.edit {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* 편집 버튼 호버 스타일 */
+.edit:hover {
+    text-decoration: underline;
+}
+
+/* 별점 위젯 스타일 */
+.star-widget input {
+    display: none;
+}
+
+/* 별점 레이블 스타일 */
+.star-widget label {
+    font-size: 40px;
+    color: #444;
+    padding: 10px;
+    float: right;
+    transition: all 0.2s ease;
+}
+
+/* 별점 레이블 호버 스타일 */
+.star-widget input:not(:checked) ~ label:hover,
+.star-widget input:not(:checked) ~ label:hover ~ label {
+    color: #fd4;
+}
+
+/* 선택된 별점 스타일 */
+.star-widget input:checked ~ label {
+    color: #fd4;
+}
+
+/* 5점 별점 스타일 */
+.star-widget input#rate-5:checked ~ label {
+    color: #fe7;
+    text-shadow: 0 0 20px #952;
+}
+
+/* 별점 입력 양식 스타일 */
+.star-widget input:checked ~ form {
+    display: block;
+}
+
+/* 별점 입력 양식 헤더 스타일 */
+form header {
+    font-size: 25px;
+    color: #fe7;
+    font-weight: 500;
+    margin: 5px 0 20px;
+    transition: all 0.2s ease;
+}
+
+/* 별점 입력 양식 텍스트영역 스타일 */
+form .textarea textarea {
+    height: 150px;
+    width: 100%;
+    outline: none;
+    color: #333;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    padding: 10px;
+    font-size: 17px;
+    resize: none;
+}
+
+/* 별점 입력 양식 버튼 스타일 */
+.btn button {
+    height: 45px;
+    border: 1px solid #444;
+    outline: none;
+    background: #222;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* 별점 입력 양식 버튼 호버 스타일 */
+.btn button:hover {
+    background: #1b1b1b;
+}
+
+/* 대화 상자 스타일 */
+#dialog-form {
+    display: none;
+    width: auto;
+    height: auto;
+}
+
+/* 대화 상자 스타일 */
+.ui-dialog {
+    max-width: 500px;
+    max-height: 570px;
+    background-color: #ffffff;
+}
+
+/* 대화 상자 제목바 스타일 */
+.ui-dialog-titlebar {
+    display: none;
+}
+
+/* 대화 상자 콘텐츠 스타일 */
+.ui-dialog-content {
+    padding: 0;
+    overflow: hidden;
+    /* 스크롤바 비활성화 */
+}
+
+/* 대화 상자 버튼 패널 스타일 */
+.ui-dialog-buttonpane {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 20px 20px;
+    background-color: transparent;
+    border-top: none;
+}
+
+/* 대화 상자 버튼셋 스타일 */
+.ui-dialog-buttonset {
+    margin: 0;
+}
+
+/* 대화 상자 버튼 스타일 */
+.ui-dialog-buttonset button {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #999;
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    margin-left: 10px;
+}
+
+/* 대화 상자 닫기 버튼 스타일 */
+.ui-dialog-buttonset button.close-button {
+    font-size: 20px;
+    margin-left: auto;
+}
+
+/* 대화 상자 버튼 호버 스타일 */
+.ui-dialog-buttonset button:hover {
+    color: #1b1b1b;
+}
+
+/* 대화 상자 별점 위젯 스타일 */
+.ui-dialog-content .star-widget {
+    padding: 20px 30px;
+}
+
+/* 대화 상자 별점 위젯 스타일 */
+.star-widget {
+    width: 386px;
+    height: 100px;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+/* 대화 상자 별점 입력 양식 헤더 스타일 */
+.ui-dialog-content form header {
+    margin: 0 0 20px;
+}
+
+/* 대화 상자 별점 입력 양식 텍스트영역 스타일 */
+.ui-dialog-content form .textarea {
+    height: 150px;
+    margin-bottom: 3px;
+}
+
+/* 대화 상자 별점 입력 양식 버튼 스타일 */
+.ui-dialog-content .btn {
+    margin: 0;
+}
+
+/* 리뷰 헤더 스타일 */
+.review-header {
+    font-size: 20px;
+    color: #000;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+/* 리뷰 및 질문/답변 섹션 스타일 */
+.review,
+.qa {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+}
+
+/* 리뷰 및 질문/답변 제목 스타일 */
+.review h4,
+.qa h4 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 리뷰 및 질문/답변 내용 스타일 */
+.review p,
+.qa p {
+    font-size: 14px;
+}
+
+/* 노란색 별 스타일 */
+.yellow-star {
+    color: yellow;
+    text-shadow: 0 0 5px black;
+}
+
+/* 선택한 시간대 강조 스타일 */
+.duplicate-time-range {
+    background-color: #ffcccb;
+}
+
+/* 강조된 시간대 강조 스타일 */
+.highlighted-time-range {
+    background-color: #C8A2C8;
+}
+
+/* 질문/답변 내용 입력 플레이스홀더 스타일 */
 #qa_content::placeholder {
     color: #777;
 }
 
+/* 질문/답변 제목 입력 스타일 */
 #qa_title {
     width: 60%;
     height: 10px;
@@ -434,32 +429,129 @@
     color: #333;
 }
 
+/* 질문/답변 제목 입력 플레이스홀더 스타일 */
 #qa_title::placeholder {
     color: #777;
 }
-    
-</style>
-</head>
-<body>
 
+/* 예약 완료 스타일 */
+.reserved {
+    color: #696969;
+    background-color: #696969;
+    pointer-events: none; /* 클릭 비활성화 */
+}
+
+/* 중복 알림 메시지 스타일 */
+#duplicateAlert {
+    display: none;
+    height: 75px;
+    background-color: #ff0000;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 24px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    /* 추가 스타일을 필요에 따라 추가하세요. */
+}
+
+#review_content , #qa_content {
+    height: 234px;
+    width: 420px;
+    border: 2px solid #333;
+    border-width: 3px;
+    resize: none;
+    padding: 10px; /* 모든 방향으로 패딩 추가 */
+}
+
+
+/* Q&A 섹션 스타일 */
+
+#Q&A h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Q&A 작성 버튼 스타일 */
+#open-qa-dialog-button,#open-dialog-button,
+#not_login {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
+}
+
+#open-qa-dialog-button:hover,
+#not_login:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Q&A 작성 다이얼로그 폼 스타일 */
+#qa-dialog-form {
+    display: none;
+    height: auto;
+    width: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 4px solid #ccc;
+    border-radius: 5px;
+}
+
+.qa-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+.qa-textarea {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#qa_title,
+#qa_content {
+    width: 90%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    resize: none;
+}
+
+#qa_title {
+height: 21px;
+}
+
+#qa_title::placeholder,
+#qa_content::placeholder {
+    color: #777;
+}
+
+
+
+</style>
+</head> <!-- 나는 바보 -->
+<body>
+	<%@include file="header.jsp" %>
+	<div id="duplicateAlert" class="alert-box">
+    중복된 예약이 있습니다. 예약 시간을 다시 확인해주세요.
+	</div>
 	<!--  <input type='hidden' id='username' value="">-->
     <input type='hidden' id='user_id' value="${sessionScope.userid}">
     <input type="hidden" id="space_id" value="${space.space_id }">
-    <header style="display: flex; justify-content: flex-end; align-items: center;">
-        <h1>${space.space_name}</h1>
-        <div style="margin-left: auto;">
-            <c:if test="${not empty sessionScope.userid}">
-                <a href="/logout">로그아웃</a>
-                <p>로그인한 아이디: ${sessionScope.name}</p>
-            </c:if>
-
-            <!-- 로그인되지 않은 상태일 때 -->
-            <c:if test="${empty sessionScope.userid}">
-                <a href="/login">로그인</a>
-                <a href="/signup">회원가입</a>
-            </c:if>
-        </div>
-    </header>
 
     <main>
         <section class="space-details" style="max-width: 70%;">
@@ -534,6 +626,10 @@
                 </div>
 
                 <br>
+                <div id="reservationInfo"> 
+                 <!-- 예약일시들어가는곳 -->  
+                </div>
+                
                 <div class="price-text" id="totalPrice">총 가격: 0원</div>
                 <!--  로그인했을때 버튼 -->
                 <c:if test="${not empty sessionScope.userid}">
@@ -543,12 +639,6 @@
                 <c:if test="${empty sessionScope.userid}">
                     <button id="btnReF">예약 신청하기</button>
                 </c:if>
-            </div>
-
-            <div id='imgurlList'></div>
-
-            <div id='spaceList'>
-                <!-- 제품 미리보기 들어가는 곳 -->
             </div>
 
             <div class="space-rules" style="word-wrap: break-word;">
@@ -607,11 +697,11 @@
 		                    </div>
 		                    <br><br><br>
 		                    <div class="textarea" style="text-align: center;">
-		                        <textarea id="review_content" cols="20" rows="18" style="height: 250px; border: 2px solid #333; border-width: 4px; " placeholder="리뷰를 작성하세요"></textarea>
+		                        <textarea id="review_content" cols="20" rows="18" placeholder="리뷰를 작성하세요"></textarea>
 		                    </div>
 		                </div>
 		            </div>
-		        </div>
+		        
 			
 				<div id="review">
 				    <!-- 후기 작성 내용이 들어가는 div -->
@@ -622,8 +712,9 @@
 				    <span class="page" data-page="3">3</span>
 				    <!-- 페이지 번호를 추가하고 각각의 페이지를 클릭할 때 data-page 속성으로 페이지 번호를 저장합니다. -->
 				</div>
+			</div>
             
-		<div id="Q&A" style="border-width: 4px;">
+		<div id="Q&A" style="border-width: 4px; height: auto;">
 			<h3>리뷰</h3>
             <c:if test="${not empty sessionScope.userid}">
 				<button id="open-qa-dialog-button">Q&A 작성</button>
@@ -633,25 +724,25 @@
                 <button id="not_login" >Q&A 작성</button>
             </c:if>
 		    <!-- Q&A 작성 다이얼로그 폼 -->
-		    <div id="qa-dialog-form" title="Q&A 작성">
+		    <div id="qa-dialog-form" title="Q&A 작성" style="height: auto;">
 		        <form>
 		        	<div class="qa-header" style="text-align: center" >질문 작성하기</div>
 		        	<div class="qa-textarea" style="text-align: center;">
 		        	<textarea id="qa_title" cols="0" rows="10" style= "border: 1px solid #333; " placeholder="제목을 작성하세요"></textarea>
 		        	</div>
 					<div class="qa-textarea" style="text-align: center;">
-					<textarea id="qa_content" cols="20" rows="18" style="height: 250px; border: 2px solid #333; border-width: 4px; " placeholder="질문을 작성하세요"></textarea>
+					<textarea id="qa_content" cols="20" rows="18" placeholder="질문을 작성하세요"></textarea>
                    	</div>
 		        </form>
 		    </div>
 		</div>
-        
-        <div id="qa"><!-- 리뷰 들어가는 곳 --></div>
+		
+		<div id="qa"></div>
 		<div id="pagination">
 		    <button id="prevPage">이전 페이지</button>
 		    <button id="nextPage">다음 페이지</button>
 		</div>
-		
+        
         </section>
     </main>
     <footer>
@@ -661,6 +752,9 @@
         </p>
     </footer>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script>
 let selectedStartTime = null;
 let selectedEndTime = null;
@@ -674,6 +768,8 @@ let arrayAddedPrice = [];
 let dbUseDate = [];
 let dbStartTime = [];
 let dbEndTime = [];
+const db_reservations = [];
+
 
 
 $(document).ready(function () {
@@ -684,36 +780,31 @@ $(document).ready(function () {
     get_reinfo();
     get_member_info();
     qa_get();
+   		
     
-    
+ // Datepicker 설정
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         minDate: new Date(),
         onSelect: function (dateText, inst) {
-            // 사용자가 날짜를 선택할 때마다 호출되는 함수
-            const index = dbUseDate.indexOf(dateText);
+            // 선택한 날짜를 가져옴
+            const selectedDate = dateText;
+            resetTimeSelection();
+            // 선택한 날짜와 일치하는 예약 데이터 찾기
+            const reservation = findReservationByDate(selectedDate);
 
-            if (index !== -1) {
-                // 선택한 날짜가 배열에 있는 경우에만 시간대 색칠 함수 호출
-                selectTimeRange(dbUseDate[index], dbStartTime[index], dbEndTime[index]);
-                
-                // 색칠된 시간대를 클릭할 수 없도록 pointer-events 스타일 설정
-                $(".time-cell.selected-start-time, .time-cell.selected-end-time").css("pointer-events", "none");
-                
-                // 시작 시간과 끝 시간 사이의 셀들을 클릭할 수 없도록 pointer-events 스타일 설정
-                $(".time-cell.highlighted-time-range").css("pointer-events", "none");
+            if (reservation) {
+                // 예약 데이터에 해당하는 경우에만 작업 수행
+                const startTime = reservation.db_start_time;
+                const endTime = reservation.db_end_time;
+                reserveTimeSlots(startTime, endTime);
             } else {
-                // 선택한 날짜가 배열에 없는 경우 색칠된 시간대 제거
-                $(".time-cell").removeClass("selected-start-time selected-end-time highlighted-time-range");
-                
-                // pointer-events 스타일을 원래대로 설정하여 클릭 가능하도록 함
-                $(".time-cell.selected-start-time, .time-cell.selected-end-time, .time-cell.highlighted-time-range").css("pointer-events", "auto");
+
             }
         }
     });
 
-
-
+   
     $(".time-cell").click(function () {
         const selectedDate = $("#datepicker").val();
         const currentTime = $(this).text();
@@ -737,13 +828,22 @@ $(document).ready(function () {
             const isDuplicate = checkForDuplicates(selectedDate, selectedStartTime, selectedEndTime);
 
             if (isDuplicate) {
-                alert("이미 선택한 시간대입니다. 다른 시간대를 선택해주세요.");
+                // 중복된 예약이 있을 경우 처리
+                $("#duplicateAlert").slideDown(); // 중복 알림을 내려오게 함
+                
+                
                 resetTimeSelection();
-            } else {
-                $(this).addClass("selected-end-time");
-                highlightTimeRange();
-                calculateTotalPrice();
+                
+                // 2초 후에 숨김
+                setTimeout(function() {
+                    $("#duplicateAlert").slideUp(); // 중복 알림을 올려 숨김
+                }, 1500); // 2초(2000 밀리초) 후에 숨김 처리
+                return;
             }
+
+            $(this).addClass("selected-end-time");
+            highlightTimeRange();
+            calculateTotalPrice();
         }
         // 세 번째 선택한 시간인지 확인 (첫 번째로 다시 선택)
         else {
@@ -755,57 +855,22 @@ $(document).ready(function () {
 
     // 중복 시간 체크 함수
     function checkForDuplicates(selectedDate, startTime, endTime) {
-        for (let i = 0; i < arrayDate.length; i++) {
-            if (selectedDate === arrayDate[i] &&
-                ((startTime >= arrayStartTime[i] && startTime <= arrayEndTime[i]) ||
-                    (endTime >= arrayStartTime[i] && endTime <= arrayEndTime[i]))) {
-                return true; // 중복된 시간대가 있으면 true 반환
+        const $timeCells = $(".time-cell");
+
+        for (let i = 0; i < $timeCells.length; i++) {
+            const $cell = $($timeCells[i]);
+            const cellTime = $cell.text();
+            const cellClass = $cell.attr("class");
+
+            if (cellTime >= startTime && cellTime <= endTime) {
+                if (cellClass.includes("reserved")) {
+                    return true;
+                }
             }
         }
-        return false; // 중복된 시간대가 없으면 false 반환
+
+        return false;
     }
-
-/*    $("#addReT").click(function () {
-        const selectedDate = $("#datepicker").val();
-
-        if (selectedDate === "" || selectedStartTime === null || selectedEndTime === null) {
-            alert("날짜와 시작 시간, 끝 시간을 선택해주세요.");
-            return;
-        }
-
-        const hourPrice = parseInt("${space.price}"); // 시간당 가격 설정, 필요에 따라 수정
-        const startTime = selectedStartTime.split(":");
-        const endTime = selectedEndTime.split(":");
-        const startHour = parseInt(startTime[0]);
-        const startMinute = parseInt(startTime[1]);
-        const endHour = parseInt(endTime[0]);
-        const endMinute = parseInt(endTime[1]);
-
-        const diffInMinutes = (endHour * 60 + endMinute) - (startHour * 60 + startMinute);
-        const addedPrice = Math.abs((diffInMinutes / 60) * hourPrice); // 절대값 적용
-
-        totalAddedPrice += addedPrice; // 총 가격에 추가한 가격 더하기
-
-        // 배열에 값 추가
-        arrayDate.push(selectedDate);
-        arrayStartTime.push(selectedStartTime);
-        arrayEndTime.push(selectedEndTime);
-        arrayAddedPrice.push(addedPrice);
-
-        const addedSlot = "<p>" + selectedDate + ": " + selectedStartTime + " - " + selectedEndTime +
-            " (추가 금액: " + addedPrice + "원)</p>";
-
-        $("#addedSlots").append(addedSlot);
-        resetTimeSelection();
-        $("#totalPrice").text("총 가격: " + totalAddedPrice + "원"); // 변경된 총 가격 표시
-      //$("#currentPrice").text("총 가격: 0원"); // 현재 가격 초기화
-        
-        // ajax
-        insert_temp_reservation();
-
-    });*/
-    
-
 });
 
 //선택한 시간 범위 강조 표시
@@ -821,13 +886,6 @@ function highlightTimeRange() {
     }
 }
 
-
-// 선택한 시간 초기화
-function resetTimeSelection() {
-    $(".time-cell").removeClass("selected-start-time selected-end-time highlighted-time-range");
-    selectedStartTime = null;
-    selectedEndTime = null;
-}
 
 // 가격 계산 함수 (변경되어야 할 부분 포함)
 function calculateTotalPrice() {
@@ -1038,33 +1096,6 @@ function review_get() { //리뷰 불러오기
     });
 }
 
-function qa_get() { //리뷰 불러오기
-    console.log('qa 불러옴');
-    const space_id = $('#space_id').val();
-    $.ajax({
-        url: '/qa_get',
-        data: {
-            space_id: space_id
-        },
-        type: 'post',
-        dataType: 'json',
-        success: function (data) {
-            console.log('리뷰 데이터 불러오기',data);
-            $("#qa").empty();
-            for (let i = 0; i < data.length; i++) {
-                let qa =
-                    "<div class='qa'>" +
-                    "<h4>작성자: " + data[i]['writer'] + "</h4>" +
-                    "<p>제목 " + data[i]['title'] + "</p>" + // 수정된 부분
-                    "<p>리뷰 내용: " + data[i]['content'] + "</p>" +
-                    "<p>작성일: " + data[i]['created'] + "</p>" +
-                    "</div>";
-                $('#qa').append(qa);
-            }
-        }
-    });
-}
-
 
 function get_member_info() { //데이터 불러오기
     const userid = $("#user_id").val();
@@ -1154,7 +1185,7 @@ function delete_temp_reservation() {
 }
 
 
-function get_reinfo() { // 리뷰 불러오기
+function get_reinfo() { // 예약데이터 불러오기
     console.log('예약 데이터 불러옴');
     const space_id = $('#space_id').val();
 	
@@ -1166,23 +1197,33 @@ function get_reinfo() { // 리뷰 불러오기
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            console.log('예약 데이터 불러오기',data);
+        	reservations = data
             for (let i = 0; i < data.length; i++) {
                 dbUseDate.push(data[i]['useday']);
                 dbStartTime.push(data[i]['startTime']);
                 dbEndTime.push(data[i]['endTime']);
             }
+        	  for (let i = 0; i < dbUseDate.length; i++) {
+                  const reservation = {
+                      db_use_date: dbUseDate[i],
+                      db_start_time: dbStartTime[i],
+                      db_end_time: dbEndTime[i]
+                  };
+                  db_reservations.push(reservation);
+              }
 
-            // 데이터를 배열에 저장한 후 이 배열을 활용할 수 있습니다.
-            console.log('사용 날짜 배열:', dbUseDate);
-            console.log('시작 시간 배열:', dbStartTime);
-            console.log('끝 시간 배열:', dbEndTime);
+              // 데이터를 배열에 저장한 후 이 배열을 활용할 수 있습니다.
+              console.log('사용 날짜 배열:', db_reservations);
+              // 이후 작업을 수행하면 됩니다.
+          },
+          error: function (error) {
+              console.error('예약 데이터를 가져오는 데 실패했습니다:', error);
+          }
+      });
+  }
 
-            // 이후 작업을 수행하면 됩니다.
-        }
-    });
-}
 
+/*
 //선택한 시간대를 색칠하는 함수
 function selectTimeRange(selectedDate, startTime, endTime) {
     $(".time-cell").removeClass("selected-start-time selected-end-time highlighted-time-range");
@@ -1194,7 +1235,7 @@ function selectTimeRange(selectedDate, startTime, endTime) {
     // 선택한 시간대 색칠
     highlightTimeRange();
 }
-
+*/
 
 $(document).ready(function () {
     const openQADialogBtn = document.querySelector("#open-qa-dialog-button");
@@ -1209,8 +1250,8 @@ $(document).ready(function () {
     qaDialogForm.dialog({
         autoOpen: false,
         modal: true,
-        width: 450,
-        height: 480,
+        width: 1000,
+        height: 500,
         resizable: false,
         buttons: [
             {
@@ -1248,8 +1289,7 @@ $(document).ready(function () {
                             // 실패 시 에러 처리를 수행하거나 사용자에게 알림을 보여줄 수 있습니다.
                         }
                     });
-
-                   // window.location.href = "/space";
+                    window.location.href = "/space";
                 }
             },
             {
@@ -1262,49 +1302,28 @@ $(document).ready(function () {
     });
 });
 
-//현재 페이지 및 페이지당 아이템 수 설정
-let qa_currentPage = 1;
-let re_currentPage = 1;
-const itemsPerPage = 3;
-
-//이전 페이지로 이동
-$("#prevPage").on("click", function () {
-    if (currentPage > 1) {
-        currentPage--;
-        qa_get();
-    }
-});
-
-//다음 페이지로 이동
-$("#nextPage").on("click", function () {
-    currentPage++;
-    qa_get();
-});
-
-function qa_get() {
+function qa_get() { //리뷰 불러오기
     console.log('qa 불러옴');
     const space_id = $('#space_id').val();
-    const qa_currentPage = $('#qa_currentPage').val(); // 현재 페이지 정보를 가져옴
-    const qa_itemsPerPage = $('#qa_itemsPerPage').val(); // 페이지당 아이템 수 정보를 가져옴
-    let pagecount = (int) Math.ceil(cnt/10.0);
-    
+ //   const currentPage = $('#currentPage').val(); // 현재 페이지 정보를 가져옴
+   // const itemsPerPage = $('#itemsPerPage').val(); // 페이지당 아이템 수 정보를 가져옴
     $.ajax({
         url: '/qa_get',
         data: {
-            space_id: space_id,
-            currentPage: currentPage, // 현재 페이지 정보를 서버에 전달
-            itemsPerPage: itemsPerPage // 페이지당 아이템 수 정보를 서버에 전달
+            space_id: space_id
+            //currentPage: currentPage,
+            //itemsPerPage: itemsPerPage
         },
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            console.log('리뷰 데이터 불러오기', data);
+            console.log('리뷰 데이터 불러오기',data);
             $("#qa").empty();
             for (let i = 0; i < data.length; i++) {
                 let qa =
                     "<div class='qa'>" +
                     "<h4>작성자: " + data[i]['writer'] + "</h4>" +
-                    "<p>제목 " + data[i]['title'] + "</p>" +
+                    "<p>제목 " + data[i]['title'] + "</p>" + // 수정된 부분
                     "<p>리뷰 내용: " + data[i]['content'] + "</p>" +
                     "<p>작성일: " + data[i]['created'] + "</p>" +
                     "</div>";
@@ -1315,24 +1334,123 @@ function qa_get() {
 }
 
 
-/*
-let currentPage = 1;
-//페이지 번호를 클릭했을 때 이벤트 핸들러를 등록합니다.
-$('#review_page_num .page').on('click', function () {
-    const page = $(this).data('page'); // 클릭한 페이지 번호를 가져옵니다.
-    
-    // 현재 페이지와 클릭한 페이지가 같으면 아무 작업도 하지 않습니다.
-    if (currentPage === page) {
+//선택한 시간 범위 강조 표시
+function highlightTimeRange() {
+    const startTimeIndex = $(".time-cell").index($(".selected-start-time"));
+    const endTimeIndex = $(".time-cell").index($(".selected-end-time"));
+
+    $(".time-cell").removeClass("highlighted-time-range");
+
+    // 시작 시간과 종료 시간 사이의 셀만 보라색으로 칠함
+    for (let i = Math.min(startTimeIndex, endTimeIndex) + 1; i < Math.max(startTimeIndex, endTimeIndex); i++) {
+        $($(".time-cell")[i]).addClass("highlighted-time-range");
+    }
+    displayReservationInfo();
+}
+
+
+//선택한 시간대의 예약 정보를 표시합니다.
+function displayReservationInfo() {
+    const selectedDate = $("#datepicker").val();
+    const startTime = $(".selected-start-time").text();
+    const endTime = $(".selected-end-time").text();
+
+    if (!selectedDate || !startTime || !endTime) {
+        // 날짜, 시작 시간, 종료 시간 중 하나라도 선택되지 않았을 때 예약 정보를 숨김
+        $("#reservationInfo").hide();
         return;
     }
+
+    const startTimeNum = parseInt(startTime);
+    const endTimeNum = parseInt(endTime);
+    const duration = endTimeNum - startTimeNum;
+    const dayOfWeek = getDayOfWeek(selectedDate);
+    const reservationInfo = "<h4>예약일시:</h4>" +
+        "<h4>" + selectedDate + " " + dayOfWeek + " " + startTime + " ~ " + endTime + " (" + duration + "시간)</h4>";
+
+    $("#reservationInfo").html(reservationInfo).show(); // 예약 정보를 보이도록 설정
+}
+
+
+//요일 구하는 함수
+function getDayOfWeek(selectedDate) {
+    const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
+    const date = new Date(selectedDate);
+    const dayOfWeekIndex = date.getDay();
+    return daysOfWeek[dayOfWeekIndex];
+}
+
+//선택한 시간 범위 강조 표시 함수
+function db_highlightTimeRange(startTimeIndex, endTimeIndex) {
+    //$(".time-cell").removeClass("reserved");
+
+    // 시작 시간과 종료 시간 사이의 셀만 보라색으로 칠함
+    for (let i = Math.min(startTimeIndex, endTimeIndex) + 1; i < Math.max(startTimeIndex, endTimeIndex); i++) {
+        $($(".time-cell")[i]).addClass("reserved");
+    }
+}
+
+// 선택한 시간대를 색칠하는 함수
+function selectTimeRange(startTime, endTime) {
+    $(".time-cell").removeClass("selected-start-time selected-end-time highlighted-time-range reserved");
+
+    // 시작 시간과 종료 시간에 해당하는 셀을 선택
+    const $startTimeCell = $(".time-cell:contains('" + startTime + "')");
+    const $endTimeCell = $(".time-cell:contains('" + endTime + "')");
+
+    $startTimeCell.addClass("reserved");
+    $endTimeCell.addClass("reserved");
+
+    // 선택한 시간대 색칠
+    db_highlightTimeRange($startTimeCell.index(), $endTimeCell.index());
+}
+
+function findReservationByDate(selectedDate) {
+    for (let i = 0; i < db_reservations.length; i++) {
+        console.log("예약 날짜 확인 중:", db_reservations[i].db_use_date);
+        if (db_reservations[i].db_use_date === selectedDate) {
+            console.log("일치하는 예약 발견:", db_reservations[i]);
+            return db_reservations[i];
+        }
+    }
+    // 일치하는 예약 데이터가 없을 경우 null 또는 원하는 다른 값 반환
+    console.log("선택한 날짜에 일치하는 예약 데이터를 찾을 수 없습니다:", selectedDate);
+    return null;
+}
+
+//시작시간과 끝시간 사이의 time-cell들을 reserved로 표시
+function reserveTimeSlots(startTime, endTime) {
+    console.log("reserveTimeSlots 함수 시작");
     
-    // 클릭한 페이지로 현재 페이지를 업데이트합니다.
-    currentPage = page;
-    
-    // 리뷰를 불러오는 함수를 호출합니다.
-    review_get();
-});
-*/
+    $(".time-cell").removeClass("reserved");
+
+    const startHour = startTime
+    const endHour = endTime
+
+    console.log("시작 시간:", startHour);
+    console.log("종료 시간:", endHour);
+
+    // 시작 시간과 종료 시간 사이의 셀을 reserved로 설정
+    $(".time-cell").each(function () {
+        const cellTime = $(this).text().split(":");
+        const cellHour = parseInt(cellTime[0]);
+
+        console.log("현재 셀의 시간:", cellHour);
+
+        if (cellHour >= startHour && cellHour <= endHour) {
+            $(this).addClass("reserved");
+            console.log("셀을 reserved로 설정:", $(this).text());
+        }
+    });
+
+    console.log("reserveTimeSlots 함수 완료");
+}
+
+function resetTimeSelection() {
+    $(".time-cell").removeClass("selected-start-time selected-end-time highlighted-time-range").not(".reserved").removeClass("reserved");
+    selectedStartTime = null;
+    selectedEndTime = null;
+}
 
 
 </script>
