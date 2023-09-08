@@ -119,7 +119,7 @@ public class KimController {
 			return "Q&A/Q&A";
 		}
 		
-		@PostMapping("/insert")
+		@GetMapping("/insert")
 		public String insert(HttpServletRequest req) {
 			HttpSession session= req.getSession();
 			String title = req.getParameter("title");
@@ -152,6 +152,7 @@ public class KimController {
 	 @GetMapping("/update")
 	 public String update(HttpServletRequest req, Model model) {
 	    int seqno = Integer.parseInt(req.getParameter("seqno"));
+	    System.out.println("seqno="+seqno);
 	    BoardDTO bdto = rdao.view(seqno);
 	    model.addAttribute("bpost",bdto);
 	    return "Q&A/update";
@@ -163,7 +164,7 @@ public class KimController {
 	    String title = req.getParameter("title");
 	    String content = req.getParameter("content");
 	    rdao.update(seqno, title, content);
-	    return "redirect:/Q&A";
+	    return "redirect:/view?seqno=" + seqno;
 	 }
 
 	 @PostMapping("/addComment")
@@ -349,7 +350,7 @@ public class KimController {
 	public String myWrite() {
 			return "myWrite";
 	}
-	@PostMapping("/myinsert")
+	@GetMapping("/myInsert")
 	public String myinsert(HttpServletRequest req) {
 		HttpSession session= req.getSession();
 		String title = req.getParameter("title");

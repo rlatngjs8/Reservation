@@ -139,50 +139,57 @@
 .link-style:hover {
     background-color: #f5f5f5; /* 호버 시 배경색 변경 */
 }
+		.container{
+		width: 60%;
+    margin: 0 auto;
+    }
 </style>
 </head>
 <body>
-<h1>상세문의내용</h1><br>
-<!-- 목록으로 css -->
-<a href="/Q&A" class="link-style">목록으로</a><br>
-<table>
-<tr><td class="cal">번호</td><td id="seqno">${bpost.seqno}</td></tr>
-<tr><td class="cal">제목</td><td>${bpost.title }</td></tr>
-<tr><td class="cal">내용</td><td><textarea rows="13" cols="60" readonly>${bpost.content }</textarea></td></tr>
-<tr><td class="cal">작성자</td><td>${bpost.writer}</td></tr>
-<tr><td class="cal">조회수</td><td>${bpost.hit }</td></tr>
-<tr><td class="cal">작성시간</td><td>${bpost.created }</td></tr>
-<tr><td class="cal">수정시각</td><td>${bpost.updated }</td></tr>
-<tr>
-    <td><a href="/write" class="button" id="btnWrite">글쓰기</a></td>
-    <td style='text-align: right;'>
-        <button id="btnUpdate">수정</button>
-        <button id="btnDelete">삭제</button>
-    </td>
-</tr>
-</table>
-<h2>댓글 목록</h2>
-<table id="commentTable">
-    <thead style="background-color: #f2f2f2; padding: 8px;">
-        <tr>
-            <th style="width: 20%;">작성자</th>
-            <th style="text-align: center;">내용</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>관리자</td>
-            <td>${bpost.comment}</td>
-        </tr>
-    </tbody>
-</table>
-<h2>댓글 작성</h2>
-<form id="commentForm">
-    <input type="hidden" id="seqno" value="${bpost.seqno}">
-    <textarea id="commentContent" rows="4" cols="25" placeholder="댓글 내용"></textarea>
-    <br>
-    <button type="button" id="btnSubmit">댓글 작성</button>
-</form>
+<div class="container">
+	<h1>상세문의내용</h1><br>
+	<!-- 목록으로 css -->
+	<a href="/Q&A" class="link-style">목록으로</a><br>
+	
+	<table>
+	<tr><td class="cal">번호</td><td><input type="hidden" id="seqno" name="seqno" value="${bpost.seqno}">${bpost.seqno}</td></tr>
+	<tr><td class="cal">제목</td><td>${bpost.title}</td></tr>
+	<tr><td class="cal">내용</td><td><textarea rows="13" cols="60" readonly>${bpost.content }</textarea></td></tr>
+	<tr><td class="cal">작성자</td><td>${bpost.writer}</td></tr>
+	<tr><td class="cal">조회수</td><td>${bpost.hit }</td></tr>
+	<tr><td class="cal">작성시간</td><td>${bpost.created }</td></tr>
+	<tr><td class="cal">수정시각</td><td>${bpost.updated }</td></tr>
+	<tr>
+	    <td><a href="/write" class="button" id="btnWrite">글쓰기</a></td>
+	    <td style='text-align: right;'>
+	        <button id="btnUpdate">수정</button>
+	        <button id="btnDelete">삭제</button>
+	    </td>
+	</tr>
+	</table>
+	<h2>댓글 목록</h2>
+	<table id="commentTable">
+	    <thead style="background-color: #f2f2f2; padding: 8px;">
+	        <tr>
+	            <th style="width: 20%;">작성자</th>
+	            <th style="text-align: center;">내용</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td>관리자</td>
+	            <td>${bpost.comment}</td>
+	        </tr>
+	    </tbody>
+	</table>
+	<h2>댓글 작성</h2>
+	<form id="commentForm">
+	    <input type="hidden" id="seqno" value="${bpost.seqno}">
+	    <textarea id="commentContent" rows="4" cols="25" placeholder="댓글 내용"></textarea>
+	    <br>
+	    <button type="button" id="btnSubmit">댓글 작성</button>
+	</form>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
@@ -242,33 +249,35 @@ $(document).ready(function() {
     // 이전 코드와 동일
 });
 
-function updateCommentList(seqno) {
-    // 댓글 목록을 가져와서 화면에 업데이트하는 함수
-    $.ajax({
-        url: "/getComments",
-        type: "GET",
-        data: {
-            seqno: seqno
-        },
-        success: function(response) {
-            // 댓글 목록을 업데이트
-            $("#commentList").html(response);
-        },
-        error: function(xhr, status, error) {
-            console.error("댓글 목록 로드 오류:", error);
-        }
-    });
-});
+// function updateCommentList(seqno) {
+//     // 댓글 목록을 가져와서 화면에 업데이트하는 함수
+//     $.ajax({
+//         url: "/getComments",
+//         type: "GET",
+//         data: {
+//             seqno: seqno
+//         },
+//         success: function(response) {
+//             // 댓글 목록을 업데이트
+//             $("#commentList").html(response);
+//         },
+//         error: function(xhr, status, error) {
+//             console.error("댓글 목록 로드 오류:", error);
+//         }
+//     });
+// };
 
 $(document)
 .on('click', '#btnDelete', function() {
     if (!confirm('정말로 지울까요?')) return false;
-
-    document.location = '/delete?seqno=' + $('#seqno').text();
+    let seqno = $("#seqno").val();
+    document.location = '/delete?seqno=' + seqno;
     return false;
 })
 .on('click', '#btnUpdate', function() {
-    document.location = '/update?seqno=' + $('#seqno').text();
+		let seqno = $("#seqno").val();
+		console.log(seqno);
+    document.location = '/update?seqno=' + seqno;
     return false;
 });
 </script>

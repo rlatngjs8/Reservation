@@ -320,6 +320,10 @@
 </div>
 <script src="http://code.jquery.com/jquery-Latest.js"></script>
 <script>
+
+
+
+
     $(document).ready(function() {
         $("#checkPasscodeButton").click(function(e) {
             e.preventDefault(); // 폼 제출 막
