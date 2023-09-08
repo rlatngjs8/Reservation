@@ -148,7 +148,7 @@ font-family: 'TheJamsil5Bold';
                 <div class="faq-question toggle-button">${pay.title}</div>
                 <div class="faq-answer">${pay.content}</div>
             </div>
-        </c:forEach>
+        </c:forEach> 
     </section>
     <br><br>
     <!-- 영수증문의 -->
