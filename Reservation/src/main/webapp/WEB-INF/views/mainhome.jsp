@@ -546,40 +546,6 @@ bottom:6px;
 	<br>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<!-- 이미지 조정 및 룸에 대한 설명을 아이콘 아래에 표시 -->
 	
 
@@ -619,22 +585,22 @@ bottom:6px;
 
 
 			<div class=cDiv>
-				<a href="/PartyRoom"><img src="img/파티룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="allRooms?category=party"><img src="img/파티룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br> <a>파티룸</a>
 			</div>
 
 			<div class=cDiv>
-				<a href="/RecordingStudio"><img src="img/녹음실.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="allRooms?category=studio"><img src="img/녹음실.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br> <a>스튜디오/방송</a>
 			</div>
 
 			<div class=cDiv>
-				<a href="/seminarRoom">&nbsp;<img src="img/세미나룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="allRooms?category=conference">&nbsp;<img src="img/세미나룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br>&nbsp; <a>회의실/세미나</a>
 			</div>
 
 			<div class=cDiv>
-				<a href="/studyRoom"><img src="img/스터디룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="allRooms?category=study"><img src="img/스터디룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br>&nbsp; <a>강의실/스터디룸</a>
 			</div>
 

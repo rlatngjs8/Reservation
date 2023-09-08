@@ -124,7 +124,7 @@
     			margin-top: 20px;
         }
 				.btnSubmit {
-				    margin-left: 65px;
+				    margin-left: 60px;
 				}
 				.data{
 					font-size: 25px; 

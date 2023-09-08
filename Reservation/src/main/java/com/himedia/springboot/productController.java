@@ -409,9 +409,27 @@ public String showAllRooms(HttpServletRequest req,Model model) {
 		alemp = pdao.get_space();
 	}
 	model.addAttribute("rooms",alemp);
-	
-	return "/allRooms";
+	return "allRooms";
 }
+
+@PostMapping("/categoryRooms")
+@ResponseBody
+public String category(HttpServletRequest req) {
+		String category = req.getParameter("category");
+		ArrayList<productDTO> alemp = pdao.getCategory(category);
+				JSONArray ja = new JSONArray();
+			 for (int i = 0; i < alemp.size(); i++) {
+			 		JSONObject jo = new JSONObject();
+			 		jo.put("space_id", alemp.get(i).getSpace_id());
+			 		jo.put("img1", alemp.get(i).getImg1());
+			 		jo.put("space_name", alemp.get(i).getSpace_name());
+			 		jo.put("location", alemp.get(i).getLocation());
+			 		jo.put("price", alemp.get(i).getPrice());
+			 		ja.add(jo);
+			 }
+			 return ja.toJSONString();
+}
+
 
 @GetMapping("/newrooms")
 public String shownewRooms(Model model) {

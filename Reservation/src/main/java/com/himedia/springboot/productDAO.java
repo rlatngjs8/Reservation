@@ -25,7 +25,8 @@ public interface productDAO {
 		
 		// 승환
 		ArrayList<productDTO> get_space();
-		ArrayList<productDTO> getSpaceKey(String ketword);
+		ArrayList<productDTO> getSpaceKey(String keyword);
+		ArrayList<productDTO> getCategory(String category);
 		
 		productDTO get_one_space(int space_id);
 		void review_insert(int rating, String review_content, String userid, int space_id);
