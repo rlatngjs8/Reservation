@@ -246,7 +246,7 @@ a {
 a {
 	font-family: 'HakgyoansimWoojuR';
 }
-
+ 
 @font-face {
     font-family: 'KIMM_Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');

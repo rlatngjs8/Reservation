@@ -28,7 +28,7 @@
     color: #333;
     text-decoration: none;
 }
-
+ 
 .card a:hover {
     color: #000;
     cursor: pointer;
