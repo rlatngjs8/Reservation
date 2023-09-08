@@ -108,7 +108,8 @@
 		
 		.serch,
 		.btnDelete {
-		    white-space: nowrap;
+		   margin-left:200px;
+		   top: 100px;
 		}
 
 
@@ -195,16 +196,22 @@
   background-color: #999; /* 호버 시 배경 색상 변경 */
   color: #fff; /* 호버 시 텍스트 색상 변경 */
 }
+
+
+
 </style>
 </head>
 <body>
 <br><br>
 <h1>예약현황</h1>
+
 <div class = "subHeader">
+
 	<div class = "serch">
 		<input type="text" id="searchKeyword" placeholder="검색할 키워드를 입력하세요">
 		<button id="btnSearch" class="btnSearch">검색</button>
 	</div>
+	
 	<div class = "btnDelete">
 		<button id="btnDelete">선택된 예약 삭제</button>
 	</div>

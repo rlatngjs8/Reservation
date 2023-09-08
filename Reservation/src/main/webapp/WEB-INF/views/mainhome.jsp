@@ -30,12 +30,12 @@ body {
 }
 
 .ffimg img{
-	width:45px;
-	height: 41px;
+	width:50px;
+	height: 45px;
 	position:relative;
 	
 	right:5px;
-	top:7px;
+	top:2px;
 }
 
 .first {
@@ -489,7 +489,7 @@ card1 css 추가
 .all{
 	position:relative;
 	right:8px;
-	top: 11px;
+	top: 5px;
 }
 
 
@@ -546,10 +546,6 @@ bottom:6px;
 	<br>
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
 	<!-- 이미지 조정 및 룸에 대한 설명을 아이콘 아래에 표시 -->
 	
 
