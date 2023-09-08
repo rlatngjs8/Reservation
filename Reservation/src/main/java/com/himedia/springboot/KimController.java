@@ -316,7 +316,7 @@ public class KimController {
 //			int seqno = (int) session.getAttribute("seqno");
 			int seqno = 4;
 			ArrayList<ReservationDTO> alReser = redao.payCom(seqno);
-			
+			 
 			model.addAttribute("seqno",seqno);
 			model.addAttribute("pay", alReser);
 			
