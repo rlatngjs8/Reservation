@@ -9,6 +9,9 @@
 <title>공간예약 시스템</title>
 </head>
 <style>
+
+
+
 body {
 	text-align: center;
 }
@@ -36,9 +39,10 @@ body {
 	justify-content: center;
 }
 .card-container {
+	margin-left: 30px;
+	align:center;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     gap: 20px; /* 카드 간격 조절 (원하는 값으로 조절 가능) */
   }
 .second {
@@ -49,6 +53,7 @@ body {
     margin-left: 236px;
     height: 30%;
     gap: 20px; /* .card 간격 조절 */
+    
 }
 
 .card {
@@ -59,15 +64,16 @@ body {
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    width: calc(33.33% - 20px); /* 1줄에 3개가 오도록 폭 조절 */
+  	width:400px;
     height: 400px;
     margin-bottom: 20px; /* 아래 여백 추가 */
 }
 
 .card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px; /* 조절된 값 */
+    width: 300px;
+    
+    height: 100%; /* 이미지 카드의 높이에 맞추기 위해 100%로 설정 */
+    border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 15px;
 }
@@ -131,21 +137,7 @@ h3 {
 	color: #0007bff;
 	font-weight: bold;
 }
-.card1 {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 10px;
-	margin: 10px;
-	border: 3px solid #ccc;
-	border-radius: 5px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease;
-	width: 500px;
-	height: 400px;
-	border-radius: 30px;
-	margin-left: 70px;
-}
+
 .card1 p {
 	font-family: 'omyu_pretty';
 	font-size: 25px;
@@ -339,6 +331,10 @@ h3 {
 	text-decoration: underline;
 	text-underline-position: under;
 }
+
+
+
+
 </style>
 <body>
 	<!-- header (Share Place, 좌측 상단 햄버거 모양 버튼을 header.jsp로 만들었습니다.) -->
@@ -405,18 +401,26 @@ h3 {
 		<a href="/newrooms"><h3 class="newleft">새로 등록했어요</h3></a>
 	</div>
 	<div class="second"> <!-- 새로등록 6개만 나오게함. xml에서 asc를 desc로 수정 -->
+	<div class="card-container">
 		 <c:forEach items="${rooms}" var="prod" varStatus="outerLoop">
-        <div class="card" id="card1_${outerLoop.index}" data-space_id="${prod.space_id}" onclick="window.location.href='/space?space_id=${prod.space_id}'">
-            <a href="#" class="fimg"><img src="img/${prod.img1}" alt="이미지 6"></a>
-            <br>
+        <div class="card" id="card1_${outerLoop.index}" space_id="${prod.space_id}" onclick="window.location.href='/space?space_id=${prod.space_id}'">
+            <a href="#" class="fimg"><img src="img/${prod.img1}" alt="이미지 6"  style="height: 200px;"></a>
+            
+             <c:if test="${outerLoop.index > 0}">
+                <br>
+            </c:if>
+            
+            
+            
             <a class="demo">${prod.space_name}</a>
             <br>
             <a class="demo1">[${prod.location}]</a>
-            <br><br>
+            <br>
             <a class="demo12"><strong>${prod.price}</strong>&nbsp;원/시간</a>
             <br>
         </div>
     </c:forEach>
+    </div>
     <!-- 이거 있어야 한줄에 3개 나올수있 -->
     <c:if test="${outerLoop.index % 3 == 2}">
           <div style="flex-basis: 100%; height: 0;"></div>
@@ -426,9 +430,15 @@ h3 {
 	<div>
 		<a href="#"><h3 class="newleft">방금 올라온 후기</h3></a>
 	</div>
+	
+	
 	<div class="second1">
-		 <c:forEach items="${review}" var="review" varStatus="outerLoop">
-        <div class="card" id="card2_${outerLoop.index}" data-space_id="${review.space_id}" onclick="window.location.href='/space?space_id=${review.space_id}'">
+    <c:forEach items="${review}" var="review" varStatus="outerLoop">
+        <c:if test="${outerLoop.index % 3 == 0}">
+            <div class="card-container">
+        </c:if>
+
+        <div class="card" id="card2_${outerLoop.index}" space_id="${review.space_id}" onclick="window.location.href='/space?space_id=${review.space_id}'">
             <a href="#" class="fimg"><img src="img/${review.img1}" alt="이미지 6"></a>
             <br>
             <a class="demo">${review.space_name}</a>
@@ -439,13 +449,15 @@ h3 {
             <p class="review3">${review.review_content}</p>
             <br>
         </div>
+
+        <c:if test="${outerLoop.index % 3 == 2 || outerLoop.last}">
+            </div>
+        </c:if>
     </c:forEach>
-    <!-- 이거 있어야 한줄에 3개 나올수있 -->
-    <c:if test="${outerLoop.index % 3 == 2}">
-          <div style="flex-basis: 100%; height: 0;"></div>
-    </c:if>
-	</div>
+</div>
+
 	<%@include file="footer.jsp"%>
+
 </body>
 <!-- script부분 전체 삭제 -->
 <script src="https://code.jquery.com/jquery-latest.js"></script>
