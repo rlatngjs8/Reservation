@@ -157,21 +157,6 @@
 	</tr>
 	</table>
 	</form>
-	<h2>댓글 목록</h2>
-	<table id="commentTable">
-	    <thead style="background-color: #f2f2f2; padding: 8px;">
-	        <tr>
-	            <th style="width: 20%;">작성자</th>
-	            <th style="text-align: center;">내용</th>
-	        </tr>
-	    </thead>
-	    <tbody>
-	        <tr>
-	            <td>관리자</td>
-	            <td>${bpost.comment}</td>
-	        </tr>
-	    </tbody>
-	</table>
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
@@ -202,53 +187,10 @@ $(document).ready(function() {
         $("#btnDelete").hide();
         $("#btnWrite").hide();
     }
-    
-    $("#btnSubmit").click(function() {
-        let seqno = $("#seqno").val();
-        let comment = $("#commentContent").val();
-
-        $.ajax({
-            url: "/addComment",
-            type: "POST",
-            data: {
-                seqno: seqno,
-                comment: comment
-            },
-            success: function(response) {
-                // 댓글 추가 성공 시, 입력 폼 초기화 및 댓글 목록 업데이트
-                $("#commentContent").val(""); // 입력 폼 초기화
-                updateCommentList(seqno); // 댓글 목록 업데이트
-            },
-            error: function(xhr, status, error) {
-                console.error("댓글 추가 오류:", error);
-            }
-        });
-    });
-
-    // 초기 댓글 목록 로드
-    let seqno = $("#seqno").val();
-    updateCommentList(seqno);
 
     // 이전 코드와 동일
 });
 
-function updateCommentList(seqno) {
-    // 댓글 목록을 가져와서 화면에 업데이트하는 함수
-    $.ajax({
-        url: "/getComments",
-        type: "GET",
-        data: {
-            seqno: seqno
-        },
-        success: function(response) {
-            // 댓글 목록을 업데이트
-            $("#commentList").html(response);
-        },
-        error: function(xhr, status, error) {
-            console.error("댓글 목록 로드 오류:", error);
-        }
-    });
-};
 $(document).on('click','#btnWrite',function(){
 	alert("작성이 완료되었습니다.");
 })

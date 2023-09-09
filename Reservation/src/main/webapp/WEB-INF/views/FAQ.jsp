@@ -113,16 +113,15 @@ font-family: 'TheJamsil5Bold';
 </header>
 <div class="container">
     <p class="faqp" align=center>자주 찾으시는 질문을 모아 보았어요.</p>
-
     <br>
     <!-- 계정문의 -->
     <section class="faq-category">
         <h2>계정문의</h2>
         <hr/>
-        <c:forEach items="${member}" var="mem">
+        <c:forEach items="${member1}" var="me">
             <div class="faq-item">
-                <div class="faq-question toggle-button">${mem.title}</div>
-                <div class="faq-answer">${mem.content}</div>
+                <div class="faq-question toggle-button">${me.title}</div>
+                <div class="faq-answer">${me.content}</div>
             </div>
         </c:forEach>
     </section>

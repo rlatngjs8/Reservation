@@ -12,6 +12,14 @@ public class BoardDTO {
 	String comment;
 	int space_id;
 	
+	int parentID;
+	
+	public int getParentID() {
+		return parentID;
+	}
+	public void setParentID(int parentID) {
+		this.parentID = parentID;
+	}
 	public int getSpace_id() {
 		return space_id;
 	}

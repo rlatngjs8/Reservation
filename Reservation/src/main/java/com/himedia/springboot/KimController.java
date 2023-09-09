@@ -1,6 +1,9 @@
 package com.himedia.springboot;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.stream.events.Comment;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -10,9 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.mysql.cj.xdevapi.JsonArray;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -168,18 +170,45 @@ public class KimController {
 	 }
 
 	 @PostMapping("/addComment")
+	 @ResponseBody
 	 // 댓글 쓰면 창이동안하고, 대댓글도 만들기(ajax)
 	 public String comment(HttpServletRequest req) {
-	     int seqno = Integer.parseInt(req.getParameter("seqno"));
-	     String comment = req.getParameter("comment");
-	     
-	     System.out.println("seqno=" + seqno);
-	     System.out.println("comment= " + comment);
-
-	     rdao.comment(seqno, comment);
-	     
+		 int parentID = Integer.parseInt(req.getParameter("parentID"));
+	     String writer = req.getParameter("writer");
+	     String content = req.getParameter("content");
+	        
+	     rdao.comment(parentID,writer,content);
 	     return "redirect:/Q&A";
 	 }
+	 
+	 @GetMapping("/getComments")
+	 @ResponseBody
+	 public List<Comment> getComments(HttpServletRequest req) {
+		 int seqno = Integer.parseInt(req.getParameter("seqno"));
+	     // seqno에 해당하는 게시물의 댓글 목록을 가져오는 로직을 작성합니다.
+		 List<Comment> comments = rdao.getCommentsByParentID(seqno);
+		 return comments;
+	 }
+	 @PostMapping("/addReply")
+	 public String addReply(HttpServletRequest req) {
+		    int parentID = Integer.parseInt(req.getParameter("parentID"));
+		    String writer = req.getParameter("writer");
+		    String content = req.getParameter("content");
+		 
+		    rdao.comment(parentID, writer, content);
+		    
+		    return "redirect:/Q&A";
+	 }
+	 @GetMapping("/getReplies")
+	 @ResponseBody
+	 public List<Comment> getReplies(HttpServletRequest req){
+		 int parentID = Integer.parseInt(req.getParameter("parentID"));
+		 System.out.println("parentID=" + parentID);
+		 
+		 List<Comment> replies = rdao.getReplies(parentID);
+		 return replies;
+	 }
+	 
 	 @GetMapping("/myPage")
 	 public String changeUser(HttpServletRequest req, Model model) {
 	 			HttpSession session= req.getSession();
@@ -270,13 +299,11 @@ public class KimController {
 		 String userid = (String) session.getAttribute("userid");
 		 int seqno = Integer.parseInt(req.getParameter("seqno"));
 		 
-		 BoardDTO bdto = bdao.viewBoardDTO(seqno);
-			bdao.hitup(userid);
-			model.addAttribute("bpost", bdto);
-		 
+		 BoardDTO bdto = rdao.view(seqno);
+		 rdao.hitup(seqno);
+		 model.addAttribute("bpost", bdto);
 		 return"Q&Aview";
 	 }
-	 
 	 @Autowired
 	 private reviewDAO revDAO;
 	 @GetMapping("/review")
@@ -324,7 +351,7 @@ public class KimController {
 	}
 	@GetMapping("/sales")
 	public String sales() {	
-			return "sales";
+		return "sales";
 	}
 	
 	@PostMapping("/getSalesData")
@@ -397,7 +424,8 @@ public class KimController {
 	@GetMapping("/FAQ")
 	public String FAQ(Model model) {
 			ArrayList<FAQDTO> member = fdao.typeMember();
-			model.addAttribute("member", member);
+			System.out.println(member.size());
+			model.addAttribute("member1", member);
 			
 			ArrayList<FAQDTO> Reservation = fdao.typeReservation();
 			model.addAttribute("Reservation",Reservation);
@@ -428,8 +456,11 @@ public class KimController {
 			System.out.println(mobile);
 			
 			String foundUserID = rdao.findID(email, name, mobile);
-   
-			return foundUserID;
+			
+			if(foundUserID != null && !foundUserID.isEmpty()) {
+				return foundUserID;
+			}
+			return "";
 	}
 	@PostMapping("/findPW")
 	@ResponseBody
@@ -441,9 +472,13 @@ public class KimController {
 		System.out.println(name);
 		System.out.println(mobile);
 		
+		
 		String foundUserPW = rdao.findPW(userid, name, mobile);
 		
-		return foundUserPW;
+		if(foundUserPW != null && !foundUserPW.isEmpty()) {
+			return foundUserPW;
+		}
+		return "";
 	}
 }
 

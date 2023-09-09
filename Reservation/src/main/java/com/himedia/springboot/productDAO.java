@@ -27,6 +27,8 @@ public interface productDAO {
 		ArrayList<productDTO> get_space();
 		ArrayList<productDTO> getSpaceKey(String keyword);
 		ArrayList<productDTO> getCategory(String category);
+		ArrayList<productDTO> get_sapceNew();
+		ArrayList<productDTO> reviewProd();
 		
 		productDTO get_one_space(int space_id);
 		void review_insert(int rating, String review_content, String userid, int space_id);
@@ -37,4 +39,6 @@ public interface productDAO {
 		ArrayList<memberDTO> get_member_info(String userid);
 		void qa_insert(String content, String writer, String title , int space_id);
 		ArrayList<BoardDTO> qa_get(int space_id);
+		
+		
 }

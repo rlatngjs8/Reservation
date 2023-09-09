@@ -3,6 +3,8 @@ package com.himedia.springboot;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.stream.events.Comment;
+
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -29,7 +31,11 @@ public interface RoomDAO {
 	void update(int seqno, String p1, String p2);
 	ArrayList<BoardDTO> getList1(int start, int psize);
 	int getTotal1();
-	void comment(int seqno, String comment);
+	void comment(int parentID, String writer, String content);
+	List<Comment> getCommentsByParentID(int seqno);
+	List<Comment> getReplies(int parentID);
+
+	
 	
 	void reservaion(String p1, String p2,String p3);
 	
@@ -40,6 +46,7 @@ public interface RoomDAO {
 	void updatePaymentStatus(String roomId, String paymentStatus);
 
 	ArrayList<RoomDTO> get_space();
+	ArrayList<productDTO> get_sapceNew();
 	
 	void insertComment(String userid, String comment);
 

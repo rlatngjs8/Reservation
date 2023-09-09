@@ -19,8 +19,29 @@ public class productDTO {
 		String img5;
 		
 		String keyword;
+		String rating;
+		String review_content;
 		
+		int review_id;
 		
+		public int getReview_id() {
+			return review_id;
+		}
+		public void setReview_id(int review_id) {
+			this.review_id = review_id;
+		}
+		public String getRating() {
+			return rating;
+		}
+		public void setRating(String rating) {
+			this.rating = rating;
+		}
+		public String getReview_content() {
+			return review_content;
+		}
+		public void setReview_content(String review_content) {
+			this.review_content = review_content;
+		}
 		public String getKeyword() {
 				return keyword;
 		}

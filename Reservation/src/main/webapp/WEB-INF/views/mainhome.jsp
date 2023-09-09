@@ -4,9 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <meta charset="UTF-8">
 <title>공간예약 시스템</title>
 </head>
@@ -14,30 +12,17 @@
 body {
 	text-align: center;
 }
-
-
-
-/*
-.first li css 삭제
-*/
-
-/*
-.first img css 수정
-*/
 .first img {
 	width: 50%;
 	height: 60%;
 }
-
-.ffimg img{
-	width:50px;
+.ffimg img {
+	width: 50px;
 	height: 44px;
-	position:relative;
-	
-	right:5px;
-	top:2px;
+	position: relative;
+	right: 5px;
+	top: 2px;
 }
-
 .first {
 	display: flex;
 	list-style: none;
@@ -45,192 +30,72 @@ body {
 	margin: 20px 0;
 	padding: 0;
 }
-
-.second {
-	display: flex;
-	list-style: none;
-	justify-content: center;
-	
-	width:1350px;
-	
-	margin-left: 236px;
-	
-	height:30%;
-}
-
-
 .second1 {
 	display: flex;
 	list-style: none;
 	justify-content: center;
 }
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* 카드 간격 조절 (원하는 값으로 조절 가능) */
+  }
+.second {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    width: 1350px;
+    margin-left: 236px;
+    height: 30%;
+    gap: 20px; /* .card 간격 조절 */
+}
 
-
-
-
-/*
-.card css 부분 수정 
-*/
 .card {
-	display: flex;
-	flex-direction: column;
-	padding: 10px;
-	border: 2px solid #ccc;
-	border-radius: 5px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease;
-	width: 520px;
-	height: 500px;
-	border-radius: 20px;
-	
-	margin-left: 43px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: calc(33.33% - 20px); /* 1줄에 3개가 오도록 폭 조절 */
+    height: 400px;
+    margin-bottom: 20px; /* 아래 여백 추가 */
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* 조절된 값 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+.demo, .demo1, .demo12 {
+    font-family: 'omyu_pretty';
+    font-size: 20px;
 }
 
 .card a {
-	 font-family: 'omyu_pretty';
-	 font-size : 20px;
+	font-family: 'omyu_pretty';
+	font-size: 20px;
 }
 
 @font-face {
-    font-family: 'omyu_pretty';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'omyu_pretty';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
 }
 
-.card p{
+.card p {
 	font-family: 'omyu_pretty';
 	font-size: 26px;
 	font-weight: bold;
 }
-
-/*
-.card img css 부분 수정
-*/
-.card img {
-	max-width: 90%;
-	height: 300px;
-	width: 2000px;
-	border-radius: 15px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	margin-top: 15px;
-}
-
-/*
-html.open css 삭제
-*/
-
-/*
-menu.open css 삭제
-*/
-
-/*
-.page_cover open css 삭제
-*/
-
-/*
-.btn css 삭제
-*/
-
-/*
-.close css 삭제
-*/
-
-/*
-.menu css 삭제
-*/
-
-/*
-.menu a css 삭제
-*/
-
-/*
-.menu open css 삭제
-*/
-
-/*
-.page_cover open css 삭제
-*/
-
-/*
-.page_cover css 삭제
-*/
-
-/*
-.menu ul css 삭제
-*/
-
-/*
-.menu ul.nav li css 삭제
-*/
-
-/*
-.menu ul.nav li a css 삭제
-*/
-
-/*
-.menu ul.nav li a:hover css 삭제
-*/
-
-/*
-.menu ul.nav li. sub_mobile a css 삭제
-*/
-
-/*
-.menu ul.nav li .sub_mobile a:hover css 삭제
-*/
-
-/*
-.cc css 삭제
-*/
-
-/*
-.button css 삭제
-*/
-
-/*
-.button:hover css 삭제
-*/
-
-/*
-.my-box css 삭제
-*/
-
-/*
-.ex1 css 삭제
-*/
-
-/*
-.button css 삭제
-*/
-
-/*
-.button:hover css 삭제
-*/
-
-/*
-.menu css 삭제
-*/
-
-/*
-h1,h3 css 에서 h1 css만 삭제
-*/
-
-/*
-img css 삭제
-*/
-
-/*
-.slider css 삭제
-*/
-
-/*
-.slide css 삭제
-*/
-
-/*
-img css 삭제
-*/
 h3 {
 	font-size: 24px;
 	color: #333;
@@ -249,36 +114,23 @@ h3 {
 	text-align: left;
 	margin-left: 16%;
 	font-family: 'Cafe24Supermagic-Bold-v1.0';
-	font-size : 40px;
-	text-decoration:underline;
+	font-size: 40px;
+	text-decoration: underline;
 	text-underline-position: under;
 }
-
-/*
-.banner css 추가
-*/
 .banner {
 	background-color: #E0F8F7;
-	width:1268px;
+	width: 1268px;
 	padding: 40px;
 	text-align: center;
 	color: #333;
-	
-	margin-left:260px;
+	margin-left: 260px;
 }
-
-/*
-.banner a css 추가
-*/
 .banner a {
 	text-decoration: none;
 	color: #0007bff;
 	font-weight: bold;
 }
-
-/*
-card1 css 추가
-*/
 .card1 {
 	display: flex;
 	flex-direction: column;
@@ -294,19 +146,10 @@ card1 css 추가
 	border-radius: 30px;
 	margin-left: 70px;
 }
-
 .card1 p {
-	font-family:'omyu_pretty';
-	font-size:25px;
+	font-family: 'omyu_pretty';
+	font-size: 25px;
 }
-
-/*
-.card1:hover css 추가
-*/
-
-/*
-.card1 img css 추가
-*/
 .card1 img {
 	width: 450px;
 	height: 300px;
@@ -315,22 +158,15 @@ card1 css 추가
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
 }
-
-/*
-.mli img css 추가
-*/
 .mli img {
 	width: 60%;
 }
-
 .cDiv {
 	overflow: hidden;
 }
-
 .cDiv1 {
 	overflow: hidden;
 }
-
 .card12 {
 	display: flex;
 	flex-direction: column;
@@ -342,32 +178,26 @@ card1 css 추가
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease;
 	border-radius: 30px;
-	
 	position: relative;
 	left: 25px;
-	
 	width: 526px;
 	height: 426px;
-	
-	opacity:0;
+	opacity: 0;
 }
 
 .card12 p {
-	font-family:'omyu_pretty';
-	font-size:25px;
+	font-family: 'omyu_pretty';
+	font-size: 25px;
 }
-
 .card12 img {
 	width: 180px;
 	height: 146px;
 	margin-bottom: 10px;
 	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	
 	width: 450px;
 	height: 300px;
 }
-
 .slide-button {
 	background-color: transparent;
 	border: none;
@@ -378,7 +208,6 @@ card1 css 추가
 	z-index: 2;
 	color: #000;
 }
-
 .prev {
 	left: 10px;
 }
@@ -386,17 +215,14 @@ card1 css 추가
 .next {
 	right: 10px;
 }
-
 .slide-container {
 	width: 300vw;
 	transition: all 1s;
 }
-
 .slide-box {
 	width: 100vw;
 	float: left;
 }
-
 .slide-box img {
 	width: 1000px;
 	height: 200px;
@@ -415,13 +241,13 @@ card1 css 추가
 
 .cDiv1 img {
 	margin-left: 10px;
-	margin-right:27px;
-	margin-top:10px;
-	height:40px;
+	margin-right: 27px;
+	margin-top: 10px;
+	height: 40px;
 }
 
-.cDiv1 a{
-	position:relative;
+.cDiv1 a {
+	position: relative;
 }
 
 .wrap {
@@ -431,44 +257,40 @@ card1 css 추가
 	justify-content: center;
 }
 
-
-
 @font-face {
-    font-family: 'yg-jalnan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'yg-jalnan';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
-
-
 
 .load {
-	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
-	background-color:#ededed;
-	border-radius:6px;
-	border:1px solid #d6bcd6;
-	display:inline-block;
-	cursor:pointer;
-	color:#3a8a9e;
-	font-family:Arial;
-	font-size:12px;
-	padding:7px 15px;
-	text-decoration:none;
-	
-	margin-left:53px;
+	background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color: #ededed;
+	border-radius: 6px;
+	border: 1px solid #d6bcd6;
+	display: inline-block;
+	cursor: pointer;
+	color: #3a8a9e;
+	font-family: Arial;
+	font-size: 12px;
+	padding: 7px 15px;
+	text-decoration: none;
+	margin-left: 53px;
 	font-family: 'yg-jalnan';
-	
 }
+
 .load:hover {
-	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
-	background-color:#bab1ba;
+	background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	background-color: #bab1ba;
 }
+
 .load:active {
-	position:relative;
-	top:1px;
+	position: relative;
+	top: 1px;
 }
-
-
 
 @font-face {
 	font-family: 'BMJUA';
@@ -484,59 +306,44 @@ card1 css 추가
 }
 
 .saleEvent {
-	font-size:23px;
+	font-size: 23px;
 }
 
-
-.all{
-	position:relative;
-	right:8px;
+.all {
+	position: relative;
+	right: 8px;
 	top: 4px;
 }
 
+.hidden {
+	display: none;
+}
 
-    .hidden {
-            display: none;
-        }
-
-
-#demo p{
-
-white-space: nowrap;
-position:relative;
-
-bottom:6px;
-
+#demo p {
+	white-space: nowrap;
+	position: relative;
+	bottom: 6px;
 }
 
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 #demot {
-	 font-family: 'GmarketSansMedium';	
-	 text-decoration : underline;
-	   text-underline-position: under;
+	font-family: 'GmarketSansMedium';
+	text-decoration: underline;
+	text-underline-position: under;
 }
-
-
 </style>
 <body>
-
-
-
 	<!-- header (Share Place, 좌측 상단 햄버거 모양 버튼을 header.jsp로 만들었습니다.) -->
 	<%@include file="header.jsp"%>
-	<br><br>
-
-
-
-
-	<br>
-
+	<br><br><br>
 	<!-- 이벤트 배너를 추가하고, "event"라는 링크를 걸었습니다. -->
 	<br><br><br><br>
 	<div class="banner">
@@ -544,22 +351,13 @@ bottom:6px;
 			🎉 할인 이벤트 진행 중! <a href="event">자세히 보기</a>
 		</p>
 	</div>
-	<br>
-	<br>
-
-	
-	
-
-	<br>
-
+	<br><br><br>
 	<div class="second1" align="center">
 		<div style="overflow: hidden">
 			<div class="slide-container">
-
 				<div class="slide-box">
 					<a href="event1"><img src="img/실험배너2 (1).jpg"></a>
 				</div>
-
 				<div class="slide-box">
 					<a href="event2"><img src="img/배너2.jpg"></a>
 				</div>
@@ -571,257 +369,108 @@ bottom:6px;
 				<i class="fas fa-chevron-right"></i>
 			</button>
 		</div>
-
 	</div>
-
-<br><br>
-
-<div>
+	<br><br>
+	<div>
 		<div class="first">
-		
 			<div class="cDiv">
 				<a href="allRooms" class="ffimg"><img src="img/전체보기.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br>&nbsp;<a class="all">전체보기</a>
 			</div>
-
-			
-			
 			<div class=cDiv style="margin-right: 5px;">
 				<a href="allRooms?category=party"><img src="img/파티룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br> <a>파티룸</a>
 			</div>
-			
 			<div class=cDiv style="margin-right: 10px;">
 				<a href="allRooms?category=conference"><img src="img/세미나룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br> <a>회의실/세미나</a>
 			</div>
-
 			<div class=cDiv style="margin-right: 20px;">
 				<a href="allRooms?category=study"><img src="img/스터디룸.jpg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br> <a>강의실/스터디룸</a>
 			</div>
-			
 			<div class=cDiv style="margin-right: 20px;">
 				<a href="allRooms?category=studio"><img src="img/녹음실.jpg"></a>&nbsp;&nbsp;
 				<br> <a>스튜디오/방송</a>
 			</div>
-			
 			<div class=cDiv style="margin-right: 20px;">
 				<a href="allRooms?category=practice"><img src="img/연습실.jpg"></a>
 				<br> <a>연습실</a>
 			</div>
-
-
 		</div>
 	</div>
-
-
-
-
 	<hr />
-
 	<div>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-
-
-
+		<br> <br> <br> <br> <br>
 		<a href="/newrooms"><h3 class="newleft">새로 등록했어요</h3></a>
 	</div>
-
-
-	<!-- 이미지 작업중입니다. -->
-	<div class="second">
-
-		<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
-		<div class="card">
-			<a href="/#"><img src="img/${rooms[3].img2}" alt="이미지 6"></a>
-
-			<p id="demo">${rooms[3].space_name}</p>
-			<a id="demo">${rooms[3].location }</a>
-	
-		<br>
-		<a id="demot" align="right" style="position:relative; top:30px;">${rooms[3].price}원/시간</a>
-
-		</div>
-
-
-		<div class="card">
-			<a href="#"><img src="img/${rooms[9].img2}" alt="이미지 6"></a>
-
-			<p id="demo">${rooms[9].space_name}</p>
-			<a id="demo">${rooms[9].location }</a>
-			
-			<br>
-			<a id="demot" align=right>${rooms[9].price}원/시간</a>
-		</div>
-
-
-		<div class="card">
-			<a href="#"><img src="img/${rooms[22].img1}" alt="이미지 6"></a>
-
-			<p id="demo">${rooms[22].space_name}</p>
-			<a id="demo">${rooms[22].location }</a>
-			
-			<br>
-			<a id="demot" align=right>${rooms[22].price}원/시간</a>
-		</div>
-
+	<div class="second"> <!-- 새로등록 6개만 나오게함. xml에서 asc를 desc로 수정 -->
+		 <c:forEach items="${rooms}" var="prod" varStatus="outerLoop">
+        <div class="card" id="card1_${outerLoop.index}" data-space_id="${prod.space_id}" onclick="window.location.href='/space?space_id=${prod.space_id}'">
+            <a href="#" class="fimg"><img src="img/${prod.img1}" alt="이미지 6"></a>
+            <br>
+            <a class="demo">${prod.space_name}</a>
+            <br>
+            <a class="demo1">[${prod.location}]</a>
+            <br><br>
+            <a class="demo12"><strong>${prod.price}</strong>&nbsp;원/시간</a>
+            <br>
+        </div>
+    </c:forEach>
+    <!-- 이거 있어야 한줄에 3개 나올수있 -->
+    <c:if test="${outerLoop.index % 3 == 2}">
+          <div style="flex-basis: 100%; height: 0;"></div>
+    </c:if>
 	</div>
-
-	<br>
-	<br>
-
-	<div class="second">
-
-		<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
-		<div class="card">
-			<a href="/#"><img src="img/${rooms[1].img2}" alt="이미지 6"></a>
-
-			<p id="demo">${rooms[1].space_name}</p>
-			<a id="demo">${rooms[1].location }</a>
-			
-			
-		<br>
-		<a id="demot" align="right" style="position:relative; top:3px;">${rooms[1].price}원/시간</a>
-
-		</div>
-
-
-		<div class="card">
-			<a href="#"><img src="img/${rooms[15].img2}" alt="이미지 6"></a>
-
-			<p id="demo">${rooms[15].space_name}</p>
-			<a id="demo">${rooms[15].location }</a>
-			
-			<br>
-			<a id="demot" align=right>${rooms[15].price}원/시간</a>
-		</div>
-
-
-		<div class="card">
-			<a href="#"><img src="img/${rooms[12].img1}" alt="이미지 6"></a>
-
-			<p id="demo">${rooms[22].space_name}</p>
-			<a id="demo">${rooms[22].location }</a>
-			
-			<br>
-			<a id="demot" align=right>${rooms[12].price}원/시간</a>
-		</div>
-
-	</div>
-	
-	
-	<br><br>	
-	
-			
-			
-			
-	<br>
-	<br>
-	<br>
-
-
+	<br><br><br><br><br>
 	<div>
 		<a href="#"><h3 class="newleft">방금 올라온 후기</h3></a>
 	</div>
-
-
 	<div class="second1">
-
-		<!-- 기존 card라는 class name을 card1으로 변경 및 이미지 작업중입니다. -->
-		<div class="card1">
-			<a href="#"><img src="img/40.jpg" alt="이미지 2"></a>
-			<p id="demo">후기1</p>
-		</div>
-
-
-		<div class="card1">
-			<a href="#"><img src="img/14.jpg" alt="이미지 2"></a>
-			<p id="demo">후기1</p>
-		</div>
-
-		
-	
+		 <c:forEach items="${review}" var="review" varStatus="outerLoop">
+        <div class="card" id="card2_${outerLoop.index}" data-space_id="${review.space_id}" onclick="window.location.href='/space?space_id=${review.space_id}'">
+            <a href="#" class="fimg"><img src="img/${review.img1}" alt="이미지 6"></a>
+            <br>
+            <a class="demo">${review.space_name}</a>
+            <br>
+            <!-- 레이팅을 별로 바꿔야함 -->
+            <a class="review1">${review.rating}</a><a class="review2">${review.price}원/시간</a>
+            <br><br>
+            <p class="review3">${review.review_content}</p>
+            <br>
+        </div>
+    </c:forEach>
+    <!-- 이거 있어야 한줄에 3개 나올수있 -->
+    <c:if test="${outerLoop.index % 3 == 2}">
+          <div style="flex-basis: 100%; height: 0;"></div>
+    </c:if>
 	</div>
-
-
-
-
-
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<div class="second1">
-
-
-		<div class="card12">
-			<a href="#"><img src="img/3.jpg"></a>
-			<p id="demo">goodgoodgood</p>
-		</div>
-
-		<div class="card12">
-			<a href="#"><img src="img/12.jpg"></a>
-			<p id="demo">goodgoodgood</p>
-		</div>
-
-
-	</div>
-
-	<br>
-	<br>
-	<br>
-
-
-
-
-
-
-
-
-
-	<!-- a태그(id=move top btn)을 삭제 -->
-
-
-
-
-
-
-
-	<!-- header와 마찬가지로 footer.jsp라는 파일을 만들었습니다. -->
 	<%@include file="footer.jsp"%>
-
-
-
 </body>
-
-
-
 <!-- script부분 전체 삭제 -->
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 	$(document).ready(function() {
-		$(window).scroll(function(){
-			$('.card12').each(function(i){
+		$(window).scroll(function() {
+			$('.card12').each(function(i) {
 				var bottom = $(this).offset().top + $(this).outerHeight();
 				var bottom2 = $(window).scrollTop() + $(window).height();
-				
-				if( bottom2 > bottom/2){
-					$(this).animate({'opacity':'1'},500);
+
+				if (bottom2 > bottom / 2) {
+					$(this).animate({
+						'opacity' : '1'
+					}, 500);
 				}
-				
+
 			})
 		});
-		
+
 		var toggleOpacity = true;
 
 		$("#load").click(function() {
-			$(".card12").animate({'opacity': toggleOpacity ? '0' : '1'}, 500);
+			$(".card12").animate({
+				'opacity' : toggleOpacity ? '0' : '1'
+			}, 500);
 			toggleOpacity = !toggleOpacity;
 		});
 	});

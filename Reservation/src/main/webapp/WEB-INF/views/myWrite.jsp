@@ -157,22 +157,6 @@
 	</tr>
 	</table>
 	</form>
-	<h2>댓글 목록</h2>
-	<table id="commentTable">
-	    <thead style="background-color: #f2f2f2; padding: 8px;">
-	        <tr>
-	            <th style="width: 20%;">작성자</th>
-	            <th style="text-align: center;">내용</th>
-	        </tr>
-	    </thead>
-	    <tbody>
-	        <tr>
-	            <td>관리자</td>
-	            <td>${bpost.comment}</td>
-	        </tr>
-	    </tbody>
-	</table>
-
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>

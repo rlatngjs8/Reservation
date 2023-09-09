@@ -67,4 +67,12 @@
 <select id="getCategory" resultType="com.himedia.springboot.productDTO">
 	select * from spaces where space_type =#{param1}
 </select>
+<select id="get_sapceNew" resultType="com.himedia.springboot.productDTO">
+	select * from spaces order by space_id asc limit 6
+</select>
+<select id="reviewProd" resultType="com.himedia.springboot.productDTO">
+	select a.space_id, a.img1, a.space_name, b.rating, a.price, b.review_content 
+	from spaces a inner join reviews b on a.space_id=b.space_id
+	where b.rating >= 4 order by b.review_id desc 
+</select>
 </mapper>

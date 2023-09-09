@@ -3,282 +3,417 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>게시물 보기</title>
-<style>
+    <meta charset="UTF-8">
+    <title>게시물 보기</title>
+    <style>
+        @font-face {
+            font-family: 'HakgyoansimWoojuR';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-@font-face {
-    font-family: 'HakgyoansimWoojuR';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
+        button {
+            font-family: 'HakgyoansimWoojuR';
+            font-weight: bold;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px auto;
+            background-color: #f5f5f5;
+            font-family: 'HakgyoansimWoojuR';
+            font-weight: bold;
+        }
 
-	button {
-	font-family: 'HakgyoansimWoojuR';
-        font-weight:bold;
-	}
+        table {
+            width: 70%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin: 50px auto;
-        background-color: #f5f5f5;
-        font-family: 'HakgyoansimWoojuR';
-        font-weight:bold;
-    }
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
 
-    table {
-        width: 70%;
-        margin: 0 auto;
-        border-collapse: collapse;
-        margin-top: 20px;
-        
-    }
-    table th, table td {
-        border: 1px solid #ccc;
-        padding: 8px;
-        text-align: left;
-    }
+        h1 {
+            text-align: center;
+            background-color: #25a4cd;
+            color: #fff;
+            padding: 20px 0;
+            margin: 0;
+        }
 
-    h1 {
-        text-align: center;
-        background-color: #25a4cd;
-        color: #fff;
-        padding: 20px 0;
-        margin: 0;
-    }
+        textarea {
+            width: 90%;
+            resize: vertical;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
 
-    textarea {
-        width: 90%;
-        resize: vertical;
-        padding: 10px;
-        border: 1px solid #ccc;
-    }
+        #btnUpdate, #btnDelete {
+            background-color: #e74c3c;
+            border: none;
+            padding: 10px 20px;
+            color: #fff;
+            cursor: pointer;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
 
-    #btnUpdate, #btnDelete {
-        background-color: #e74c3c;
-        border: none;
-        padding: 10px 20px;
-        color: #fff;
-        cursor: pointer;
-        margin-right: 10px;
-        border-radius: 5px;
-    }
+        #btnUpdate:hover, #btnDelete:hover {
+            background-color: #c0392b;
+        }
 
-    #btnUpdate:hover, #btnDelete:hover {
-        background-color: #c0392b;
-    }
+        a.button {
+            text-decoration: none;
+            background-color: #25a4cd;
+            padding: 10px 20px;
+            color: #fff;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
 
-    a.button {
-        text-decoration: none;
-        background-color: #25a4cd;
-        padding: 10px 20px;
-        color: #fff;
-        border-radius: 5px;
-        margin-right: 10px;
-    }
+        a.button:hover {
+            background-color: #2980b9;
+        }
 
-    a.button:hover {
-        background-color: #2980b9;
-    }
+        h2 {
+            margin-top: 40px;
+        }
 
-    h2 {
-        margin-top: 40px;
-    }
+        ul#commentList {
+            list-style-type: none;
+            padding: 0;
+        }
 
-    ul#commentList {
-        list-style-type: none;
-        padding: 0;
-    }
+        ul#commentList li {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
 
-    ul#commentList li {
-        background-color: #f2f2f2;
-        padding: 10px;
-        border: 1px solid #ccc;
-        margin-top: 10px;
-    }
+        .comment-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px auto;
+            max-width: 600px;
+            text-align: left;
+        }
 
-    #commentForm {
-        margin-top: 20px;
-    }
+        .comment-author {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
 
-    #commentContent {
-        width: 68%;
-        padding: 10px;
-        resize: vertical;
-    }
+        .comment-textarea {
+            width: 98%;
+            height: 50px;
+            resize: none;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
 
-    #btnSubmit {
-        background-color: #25a4cd;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
+        .comment-button {
+            display: block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
 
-    #btnSubmit:hover {
-        background-color: #0056b3;
-    }
-    .cal{
-    		font-weight: bold;
-    }
-   .link-style {
-    text-decoration: none;
-    color: #25a4cd;
-    font-weight: bold;
-    background-color: transparent; /* 배경색 초기화 */
-    padding: 5px 10px; /* 내용물 주위의 여백 추가 */
-    border-radius: 5px; /* 둥근 테두리 추가 */
-    display: inline-block; /* 텍스트를 왼쪽 정렬 */
-    transition: background-color 0.3s ease; /* 배경색 전환 효과 추가 */
-}
+        .comment-button:hover {
+            background-color: #0056b3;
+        }
 
-.link-style:hover {
-    background-color: #f5f5f5; /* 호버 시 배경색 변경 */
-}
-		.container{
-		width: 60%;
-    margin: 0 auto;
-    }
-</style>
+        .cal {
+            font-weight: bold;
+        }
+
+        .link-style {
+            text-decoration: none;
+            color: #25a4cd;
+            font-weight: bold;
+            background-color: transparent;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .link-style:hover {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        /* 추가된 스타일 */
+        .reply-list {
+            margin-left: 20px; /* 들여쓰기 스타일 지정 */
+        }
+
+    </style>
 </head>
 <body>
 <div class="container">
-	<h1>상세문의내용</h1><br>
-	<!-- 목록으로 css -->
-	<a href="/myPage" class="link-style">마이페이지</a><br>
-	
-	<table>
-	<tr><td class="cal">번호</td><td><input type="hidden" id="seqno" name="seqno" value="${bpost.seqno}">${bpost.seqno}</td></tr>
-	<tr><td class="cal">제목</td><td>${bpost.title}</td></tr>
-	<tr><td class="cal">내용</td><td><textarea rows="13" cols="60" readonly>${bpost.content }</textarea></td></tr>
-	<tr><td class="cal">작성자</td><td>${bpost.writer}</td></tr>
-	<tr><td class="cal">조회수</td><td>${bpost.hit }</td></tr>
-	<tr><td class="cal">작성시간</td><td>${bpost.created}</td></tr>
-	<tr><td class="cal">수정시각</td><td>${bpost.updated}</td></tr>
-	<tr>
-	    <td><a href="/write" class="button" id="btnWrite">글쓰기</a></td>
-	    <td style='text-align: right;'>
-	        <button id="btnUpdate">수정</button>
-	        <button id="btnDelete">삭제</button>
-	    </td>
-	</tr>
-	</table>
-	<h2>댓글 목록</h2>
-	<table id="commentTable">
-	    <thead style="background-color: #f2f2f2; padding: 8px;">
-	        <tr>
-	            <th style="width: 20%;">작성자</th>
-	            <th style="text-align: center;">내용</th>
-	        </tr>
-	    </thead>
-	    <tbody>
-	        <tr>
-	            <td>관리자</td>
-	            <td>${bpost.comment}</td>
-	        </tr>
-	    </tbody>
-	</table>
-	<h2>댓글 작성</h2>
-	<form id="commentForm">
-	    <input type="hidden" id="seqno" value="${bpost.seqno}">
-	    <textarea id="commentContent" rows="4" cols="25" placeholder="댓글 내용"></textarea>
-	    <br>
-	    <button type="button" id="btnSubmit">댓글 작성</button>
-	</form>
+    <h1>상세문의내용</h1><br>
+    <a href="/myPage" class="link-style">마이페이지</a><br>
+
+    <table>
+        <tr><td class="cal">번호</td><td><input type="hidden" id="seqno" name="seqno" value="${bpost.seqno}">${bpost.seqno}</td></tr>
+        <tr><td class="cal">제목</td><td>${bpost.title}</td></tr>
+        <tr><td class="cal">내용</td><td><textarea rows="13" cols="60" readonly>${bpost.content}</textarea></td></tr>
+        <tr><td class="cal">작성자</td><td>${bpost.writer}</td></tr>
+        <tr><td class="cal">조회수</td><td>${bpost.hit}</td></tr>
+        <tr><td class="cal">작성시간</td><td>${bpost.created}</td></tr>
+        <tr><td class="cal">수정시각</td><td>${bpost.updated}</td></tr>
+        <tr>
+            <td><a href="/write" class="button" id="btnWrite">글쓰기</a></td>
+            <td style='text-align: right;'>
+                <button id="btnUpdate">수정</button>
+                <button id="btnDelete">삭제</button>
+            </td>
+        </tr>
+    </table>
+
+    <h2>댓글 목록</h2>
+    <div class="comment-container">
+        <ul id="commentList">
+            <!-- 댓글 목록이 여기에 추가됩니다. -->
+        </ul>
+        <div class="comment-author">
+            <h3>댓글 작성</h3>
+            <input type="hidden" id="comment-writer" name="writer" value="${userid}">
+            <input type="hidden" id="parentID" name="parentID" value="${bpost.seqno}">
+            ${userid}
+        </div>
+
+        <!-- 댓글 입력란 -->
+        <textarea class="comment-textarea" id="comment-textarea" name="content" placeholder="댓글을 입력하세요"></textarea>
+
+        <!-- 댓글 등록 버튼 -->
+        <button class="comment-button" id="comment-submit">댓글 등록</button>
+    </div>
+
+    <!-- 답글 작성 폼 -->
+    <div class="comment-container" id="reply-form-container" style="display: none;">
+        <h3>답글 작성</h3>
+        <input type="hidden" id="reply-writer" name="writer" value="${userid}">
+        ${userid}
+        <textarea class="comment-textarea" id="reply-textarea" name="content" placeholder="답글을 입력하세요"></textarea>
+        <!-- 답글 등록 버튼 -->
+        <button class="comment-button" id="reply-submit">답글 등록</button>
+        <!-- 답글 취소 버튼 -->
+        <button class="comment-button" id="reply-cancel">취소</button>
+    </div>
+
+    <!-- 답글 목록 -->
+<!--     <div class="comment-container" id="reply-list-container"> -->
+<!--         <h3>답글 목록</h3> -->
+<!--         <ul id="replyList"> -->
+<!--             답글 목록이 여기에 추가됩니다. -->
+<!--         </ul> -->
+<!--     </div> -->
 </div>
-</body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
-$(document).ready(function() {
-    let loggedIn = ${not empty sessionScope.userid}; // 로그인된 상태인지 확인
-    let writer = "${bpost.writer}"; // 작성자의 아이디를 변수에 저장
-    let manager = "rlatngjs";	// 매니저 아이디
-    
-    if (loggedIn) {
-        let loggedInUsername = "${sessionScope.userid}";
+    $(document).ready(function() {
+        let loggedIn = ${not empty sessionScope.userid};
+        let writer = "${bpost.writer}";
+        let manager = "rlatngjs";
+        let userid = "${sessionScope.userid}";
 
-        if (writer === loggedInUsername || loggedInUsername == manager) {
-            // 작성자와 로그인한 사용자의 아이디가 같은 경우
-            $("#btnUpdate").show();
-            $("#btnDelete").show();
-            $("#btnWrite").show();
-            
+        if (loggedIn) {
+            if (writer === userid || userid === manager) {
+                $("#btnUpdate").show();
+                $("#btnDelete").show();
+                $("#btnWrite").show();
+            } else {
+                $("#btnUpdate").hide();
+                $("#btnDelete").hide();
+                $("#btnWrite").show();
+            }
         } else {
-            // 작성자와 로그인한 사용자의 아이디가 다른 경우
             $("#btnUpdate").hide();
             $("#btnDelete").hide();
-            $("#btnWrite").show();
+            $("#btnWrite").hide();
         }
-    } else {
-        // 로그인되지 않은 상태
-        $("#btnUpdate").hide();
-        $("#btnDelete").hide();
-        $("#btnWrite").hide();
-    }
-    
-    $("#btnSubmit").click(function() {
-        let seqno = $("#seqno").val();
-        let comment = $("#commentContent").val();
 
-        $.ajax({
-            url: "/addComment",
-            type: "POST",
-            data: {
-                seqno: seqno,
-                comment: comment
-            },
-            success: function(response) {
-                // 댓글 추가 성공 시, 입력 폼 초기화 및 댓글 목록 업데이트
-                $("#commentContent").val(""); // 입력 폼 초기화
-                updateCommentList(seqno); // 댓글 목록 업데이트
-            },
-            error: function(xhr, status, error) {
-                console.error("댓글 추가 오류:", error);
-            }
+        $("#comment-submit").click(function() {
+            var writer = $("#comment-writer").val();
+            var parentID = "${bpost.seqno}"; // 댓글의 부모 ID를 글의 seqno로 설정
+            var content = $("#comment-textarea").val();
+
+            $.ajax({
+                url: "/addComment",
+                type: "POST",
+                data: {
+                    writer: writer,
+                    parentID: parentID,
+                    content: content
+                },
+                success: function(response) {
+                    $("#comment-textarea").val("");
+                    
+                    // 댓글을 등록한 후, 즉시 댓글 목록을 업데이트
+                    updateCommentList(parentID);
+                },
+                error: function(xhr, status, error) {
+                    console.error("댓글 추가 오류:", error);
+                }
+            });
+        });
+
+        let seqno = "${bpost.seqno}"; // 글의 seqno를 가져옴
+        updateCommentList(seqno);
+
+        // 답글 달기 버튼 클릭 시
+        $(document).on('click', '.reply-button', function() {
+            let commentId = $(this).data("comment-id");
+            console.log("답글 commentId=" + commentId);
+            $(this).hide();
+            $("#reply-form-container").appendTo($(this).closest("li"));
+            $("#reply-form-container").show();
+
+            // 답글 목록 업데이트
+            updateReplyList(commentId);
+
+            // 답글 등록 버튼에 commentId 설정
+            $("#reply-submit").data("comment-id", commentId);
+        });
+
+        // 답글 등록 취소 버튼 클릭 시
+        $("#reply-cancel").click(function() {
+            $("#reply-textarea").val("");
+            $("#reply-form-container").hide();
+            $(".reply-button").show();
         });
     });
 
-    // 초기 댓글 목록 로드
-    let seqno = $("#seqno").val();
-    updateCommentList(seqno);
+    function updateCommentList(seqno) {
+        $.ajax({
+            url: "/getComments",
+            type: "GET",
+            data: {
+                seqno: seqno
+            },
+            success: function(response) {
+                let commentList = $("#commentList");
+                commentList.empty();
 
-    // 이전 코드와 동일
-});
+                if (response && response.length > 0) {
+                    for (let i = 0; i < response.length; i++) {
+                        let comment = response[i];
+                        let listItem = $("<li>");
+                        listItem.append(comment.writer + "<br>");
+                        listItem.append(comment.content + "<br>");
+                        listItem.append(comment.created + "<br>");
 
-// function updateCommentList(seqno) {
-//     // 댓글 목록을 가져와서 화면에 업데이트하는 함수
-//     $.ajax({
-//         url: "/getComments",
-//         type: "GET",
-//         data: {
-//             seqno: seqno
-//         },
-//         success: function(response) {
-//             // 댓글 목록을 업데이트
-//             $("#commentList").html(response);
-//         },
-//         error: function(xhr, status, error) {
-//             console.error("댓글 목록 로드 오류:", error);
-//         }
-//     });
-// };
+                        let replyButton = $("<button>")
+                            .text("답글 달기")
+                            .addClass("reply-button")
+                            .data("comment-id", comment.seqno);
+                        listItem.append(replyButton);
 
-$(document)
-.on('click', '#btnDelete', function() {
-    if (!confirm('정말로 지울까요?')) return false;
-    let seqno = $("#seqno").val();
-    document.location = '/delete?seqno=' + seqno;
-    return false;
-})
-.on('click', '#btnUpdate', function() {
-		let seqno = $("#seqno").val();
-		console.log(seqno);
-    document.location = '/update?seqno=' + seqno;
-    return false;
-});
+                        // 답글 목록을 표시할 위치 설정
+                        let replyList = $("<ul>").addClass("reply-list");
+                        listItem.append(replyList);
+
+                        commentList.append(listItem);
+
+                        // 답글 목록 업데이트
+                        updateReplyList(comment.seqno, replyList);
+                    }
+                } else {
+                    commentList.append("<li>댓글이 없습니다.</li>");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("댓글 목록 로드 오류:", error);
+            }
+        });
+    }
+
+    function updateReplyList(commentId, replyListElement) {
+        $.ajax({
+            url: "/getReplies",
+            type: "GET",
+            data: {
+                parentID: commentId
+            },
+            success: function(response) {
+                if (response && response.length > 0) {
+                    for (let i = 0; i < response.length; i++) {
+                        let reply = response[i];
+                        let listItem = $("<li>");
+                        listItem.append(reply.writer + "<br>");
+                        listItem.append(reply.content + "<br>");
+                        listItem.append(reply.created + "<br>");
+
+                        replyListElement.append(listItem);
+                    }
+                } else {
+//                     replyListElement.append("<li>답글이 없습니다.</li>");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("답글 목록 로드 오류:", error);
+            }
+        });
+    }
+
+    $(document)
+        .on('click', '#btnDelete', function() {
+            if (!confirm('정말로 지울까요?')) return false;
+            let seqno = $("#seqno").val();
+            document.location = '/delete?seqno=' + seqno;
+            return false;
+        })
+        .on('click', '#btnUpdate', function() {
+            let seqno = $("#seqno").val();
+            document.location = '/update?seqno=' + seqno;
+            return false;
+        });
+
+    // 답글 등록 버튼 클릭 시
+    $("#reply-submit").click(function() {
+        let writer = $("#reply-writer").val();
+        let commentId = $(this).data("comment-id"); // 답글을 작성하는 댓글의 ID를 가져옴
+        let content = $("#reply-textarea").val();
+
+        console.log("답글 등록 commentId=" + commentId);
+        $.ajax({
+            url: "/addReply",
+            type: "POST",
+            data: {
+                writer: writer,
+                parentID: commentId,
+                content: content
+            },
+            success: function(response) {
+                $("#reply-textarea").val("");
+                $("#reply-form-container").hide();
+                updateReplyList(commentId);
+
+                $(".reply-button").show();
+            },
+            error: function(xhr, status, error) {
+                console.error("답글 추가 오류:", error);
+            }
+        });
+    });
 </script>
 </html>

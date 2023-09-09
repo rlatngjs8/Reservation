@@ -38,14 +38,21 @@
 </delete>
 
 <select id="view" resultType="com.himedia.springboot.BoardDTO">
-	select seqno, title, content, writer, hit, created, updated, comment from board
+	select seqno, title, content, writer, hit, created, updated from board
 	where seqno=#{param1}
 </select>
 
-<update id="comment">
-	update board set comment=#{param2} where seqno=#{param1} 
-</update>
-
+<insert id="comment" parameterType="java.util.HashMap">
+	insert into comment set parentID=#{param1}, writer=#{param2}, content=#{param3}, created=now(), updated=now() 
+</insert>
+<select id="getCommentsByParentID" parameterType="int" resultType="com.himedia.springboot.BoardDTO">
+        SELECT *
+        FROM comment
+        WHERE parentID = #{seqno};
+</select>
+<select id="getReplies" parameterType="int" resultType="com.himedia.springboot.BoardDTO">
+	SELECT * FROM comment WHERE parentID = #{param1} ORDER BY created asc;
+</select>
 <update id="update">
 	update board set title=#{param2}, content=#{param3}, updated=now() 
 	where seqno=#{param1}
@@ -76,6 +83,7 @@
 <select id="get_space" resultType="com.himedia.springboot.productDTO">
 	SELECT space_id, space_name, location, DESCRIPTION,img1,img2,img3,img4,img5,price FROM spaces
 </select>
+
 <select id="viewService" resultType="com.himedia.springboot.serviceDTO">
 	select num, terms_of_use, personal_information from service where num = #{num}
 </select>

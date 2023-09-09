@@ -103,20 +103,21 @@ font-size : 13px;
 <br><br>
 <div class="second">
     <c:forEach items="${rooms}" var="prod" varStatus="outerLoop">
-        <div class="card" id="card1_${outerLoop.index}"  onclick="window.location.href='/space?space_id=${prod.space_id}'">
+        <div class="card" id="card1_${outerLoop.index}" data-space_id="${prod.space_id}" onclick="window.location.href='/space?space_id=${prod.space_id}'">
             <a href="#" class="fimg"><img src="img/${prod.img1}" alt="이미지 6"></a>
             <br>
+<%--             <input type="hidden" name="space_id" value="${prod.space_id}"> --%>
             <a class="demo">${prod.space_name}</a>
             <br>
-          
             <a class="demo1">[${prod.location}]</a>
             <br><br>
-            <a class="demo12"><strong>${prod.price}</strong>&nbsp;시간/원</a>
-            
+            <a class="demo12"><strong>${prod.price}</strong>&nbsp;원/시간</a>
             <br>
       
         </div>
-        <div class="card" id="card2_${outerLoop.index}" style="display: none;" onclick="window.location.href='/space?space_id=${prod.space_id}'">
+    </c:forEach>
+    <c:forEach items="${rooms}" var="prod" varStatus="outerLoop">
+		    <div class="card" id="card2_${outerLoop.index}" data-space_id="${prod.space_id}" onclick="window.location.href='/space?space_id=${prod.space_id}'">
 				</div>
         <c:if test="${outerLoop.index % 3 == 2}">
             <div style="flex-basis: 100%; height: 0;"></div>
@@ -131,40 +132,47 @@ font-size : 13px;
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 //카테고리를 클릭할 때 Ajax를 사용하여 해당 카테고리에 해당하는 상품들을 불러옵니다.
-      $(document).ready(function() {
-        // 쿼리 매개변수를 파싱하여 선택된 카테고리를 확인합니다.
-        const urlParams = new URLSearchParams(window.location.search);
-        const selectedCategory = urlParams.get("category");
+     $(document).ready(function() {
+    // 쿼리 매개변수를 파싱하여 선택된 카테고리를 확인합니다.
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedCategory = urlParams.get("category");
 
-        // 초기에는 card1을 표시합니다.
-        $(".card").css("display", "block");
-        $(".card[id^='card2']").css("display", "none");
+    // 초기에는 card1을 표시합니다.
+    $(".card").css("display", "block");
+    $(".card[id^='card2']").css("display", "none");
 
-        // 선택된 카테고리에 따라 해당 카테고리의 효과를 활성화합니다.
-        if (selectedCategory) {
-            activateCategory(selectedCategory);
-        }
+    // 선택된 카테고리에 따라 해당 카테고리의 효과를 활성화합니다.
+    if (selectedCategory) {
+        activateCategory(selectedCategory);
+    }
 
-        // 카테고리 링크에 대한 클릭 이벤트 핸들러를 추가합니다.
-        $(".cate a").click(function(e) {
-            e.preventDefault();
+    // 카테고리 링크에 대한 클릭 이벤트 핸들러를 추가합니다.
+    $(".cate a").click(function(e) {
+        e.preventDefault();
 
-            // 선택된 카테고리를 확인합니다.
-            const category = $(this).data("category");
+        // 선택된 카테고리를 확인합니다.
+        const category = $(this).data("category");
 
-            // 해당 카테고리의 효과를 활성화합니다.
-            activateCategory(category);
-            
-            $(".cate a").css("text-decoration", "none");
-            
-            $(this).css({"text-decoration":"underline",
-            			 "text-underline-position":"under"
-            	
-            
-            });
-            
+        // 해당 카테고리의 효과를 활성화합니다.
+        activateCategory(category);
+
+        $(".cate a").css("text-decoration", "none");
+
+        $(this).css({
+            "text-decoration": "underline",
+            "text-underline-position": "under"
         });
     });
+
+    // card2 클릭 이벤트 핸들러를 추가합니다.
+    $(".card[id^='card2']").click(function(e) {
+        e.preventDefault();
+
+        // 해당 카드의 space_id 값을 가져와서 해당 페이지로 이동
+        const spaceId = $(this).data("space_id");
+       	console.log(spaceID);
+    });
+});
 
     function activateCategory(category) {
         // Ajax를 사용하여 해당 카테고리에 대한 내용을 로드합니다.
@@ -176,6 +184,7 @@ font-size : 13px;
             success: function(data) {
                 // 서버에서 받아온 데이터로 카드를 업데이트합니다.
                 console.log(data);
+                
                 if (category === "") {
                     // 카테고리가 없으면 모든 카드 표시
                     $(".card").css("display", "block");
@@ -183,15 +192,19 @@ font-size : 13px;
                     // 카테고리가 있으면 모든 카드 숨김
                     $(".card").css("display", "none");
                     for (let k = 0; k < data.length; k++) {
+                    		let spaceID = data[k].space_id;
+                    		console.log("space_id"+spaceID);
                         let cardHtml = "<a href='#' class='fimg'><img src='img/" + data[k]['img1'] + "' alt='이미지 6'></a>" + "<br>" +
                             "<a class='demo'>" + data[k]['space_name'] + "</a>" +
                             "<br>" +
                             "<a class='demo1'>" + data[k]['location'] + "</a>" +
-                             
+                            "<input type='hidden' id='space_id' name='space_id' value='" + spaceID + "'>" +
                             "<br>" +
                             "<br>"+
                             "<a class='demo12'>" +"<strong>"+data[k]['price']+"</strong>" + "원/시간</a>";
-
+                        $("#card2_" + k).attr("data-space_id", spaceID);
+                        $("#card2_" + k).attr("onclick", "window.location.href='/space?space_id=" + spaceID + "'");
+                        
                         $("#card2_" + k).html(cardHtml);
                         $("#card2_" + k).css("display", "block");
                         $("#card1_" + k).css("display", "none");

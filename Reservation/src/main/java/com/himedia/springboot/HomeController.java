@@ -19,6 +19,8 @@ public class HomeController {
 
    @Autowired
    private RoomDAO rdao;
+   @Autowired
+   private productDAO pdao;
    
    @GetMapping("/")
    public String home(HttpServletRequest req,Model model) {
@@ -33,9 +35,10 @@ public class HomeController {
          model.addAttribute("name",(String) session.getAttribute("name"));
       }
       	// 데이터베이스에서 받아서 mainhome 페이지에서 사용하기위해
-      	ArrayList<RoomDTO> alemp = rdao.get_space();
+      	ArrayList<productDTO> alemp = pdao.get_sapceNew();
       	model.addAttribute("rooms",alemp);
-      	
+      	ArrayList<productDTO> alReview = pdao.reviewProd();
+      	model.addAttribute("review",alReview);
       
       
       return "mainhome";
@@ -107,6 +110,8 @@ public class HomeController {
       s.invalidate();
       return "redirect:/";
    }
+   
+   
    // ----------------------
    // 관리자 페이지
    // 회원관리창 (회원목록, 페이지)
