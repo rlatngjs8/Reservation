@@ -7,189 +7,139 @@
   <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 </head>
 <style>
-/* 공통 스타일 */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
 
-h1 {
-    text-align: center;
-}
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #007bff;
+            margin: 20px 0;
+        }
 
-/* 예약 섹션 스타일 */
-.reservation-section {
-    background-color: #f7f7f7;
-    padding: 20px;
-    margin: 20px;
-    border: 1px solid #ddd;
-}
+        /* 섹션 스타일 */
+        .reservation-section {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 90%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-.reservation-section h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
+        .reservation-section h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-/* 예약 정보 컨테이너 스타일 */
-.reservation-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center; /* 수평 가운데 정렬 */
-    gap: 20px;
-}
+        /* 예약 정보 컨테이너 스타일 */
+        .reservation-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            white-space: pre-line;
+            
+        }
 
-/* 예약 정보 아이템 스타일 */
-.reservation-item {
-    background-color: #fff;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 300px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+        /* 예약 정보 아이템 스타일 */
+        .reservation-item {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            flex: 1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-.space-image img {
-    max-width: 100%;
-    height: auto;
-}
+        /* 서비스 동의 체크박스 스타일 */
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
 
-.total-price-row {
-    text-align: center;
-    font-size: 20px;
-    margin-top: 20px;
-}
+        input[type="checkbox"] {
+            margin-right: 10px;
+            color: #007bff;
+        }
 
-.payment-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-}
+        /* 아코디언 아이템의 헤더 스타일 */
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: #007bff;
+        }
 
-/* 서비스 동의 체크박스 스타일 */
-label {
-    display: block;
-    margin-top: 10px;
-}
+        .accordion-header label {
+            flex-grow: 1;
+        }
 
-input[type="checkbox"] {
-    margin-right: 10px;
-}
+        .accordion-icon {
+            font-size: 20px;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
 
-/* 예약공간 섹션 스타일 */
-.reservation-section {
-    text-align: center;
-    padding: 20px;
-}
+        /* 아코디언 아이콘을 회전하여 위로 향하도록 설정 */
+        .accordion-item.expanded .accordion-icon.expanded {
+            transform: rotate(180deg);
+        }
 
-/* 예약 공간 아이템 스타일 */
-.reservation-item {
-    display: flex; /* Flexbox 레이아웃 사용 */
-    justify-content: center; /* 수평 가운데 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    width: 90%; /* 최대 너비를 100%로 설정하여 부모 너비에 맞추기 */
-    box-sizing: border-box; /* 내부 패딩과 테두리 포함한 전체 너비 설정 */
-}
+        /* 아코디언 아이템의 내용을 초기에 숨김 */
+        .accordion-content {
+            display: none;
+            margin-top: 10px;
+            color: #555;
+            white-space: pre-line;
+        }
 
-.product-image img {
-    max-width: 600px; /* 이미지 최대 너비 설정 */
-    height: auto;
-    margin-right: 20px; /* 이미지와 텍스트 사이 여백 설정 */
-    margin-left: 20px
-}
+        .reservation-heading {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
 
-.product-details {
-    flex-grow: 1; /* 텍스트 영역이 남은 공간 모두 차지 */
-}
+        .reservation-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            font-size: 16px;
+            color: #333;
+        }
 
-.product-description {
-    font-style: italic;
-    word-wrap: break-word;
-	width: auto;
-	height: auto;
-}
-
-/* 제목 스타일 */
-.product-name {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* 정보 스타일 */
-.product-info {
-    font-size: 14px;
-    color: #888;
-}
-
-.description {
-    font-size: 20px; /* 텍스트 크기 */
-    line-height: 1.5; /* 행간 설정 */
-    margin: 13px; /* 하단 여백 설정 */
-    text-align: left;
-    white-space: pre-line; /* 텍스트 넘칠 시 자동 줄 바꿈 활성화 */ 
-}
-/* 아코디언 아이템의 헤더 스타일 */
-.accordion-header {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.accordion-header label {
-    flex-grow: 1;
-}
-
-.accordion-icon {
-    font-size: 20px;
-    margin-left: 10px;
-    transition: transform 0.3s ease;
-}
-
-/* 아코디언 아이콘을 회전하여 위로 향하도록 설정 */
-.accordion-item.expanded .accordion-icon {
-    transform: rotate(180deg);
-}
-
-/* 아코디언 아이템의 내용을 초기에 숨김 */
-.accordion-content {
-    display: none;
-}
-
-
-</style>
+        .reservation-list li {
+            margin-bottom: 10px;
+        }
+    </style>
 <body>
     <h1>예약 정보</h1>
 
-    <!-- 예약공간 -->
     <section class="reservation-section">
         <h2>예약공간</h2>
-		<div id="reservation_space" class="reservation-container">
-		    <!-- 예약 공간 아이템 시작 -->
-		 <!--  <div class="reservation-item">
-		        <div class="product-image">
-		            <img src="상품이미지URL" alt="상품 이미지">
-		        </div>
-		        <div class="product-details">
-		            <h3 class="product-name">상품 이름</h3>
-		            <p class="product-description"></p>
-		            <p class="product-info">공간 유형: 예약인원: </p>
-		        </div>
-		    </div>
-		    -->
-		</div>
+        <div id="reservation_space" class="reservation-container">
+            <!-- 예약 공간 아이템 시작 -->
+            <!--
+            <div class="reservation-item">
+                <div class="product-image">
+                    <img src="상품이미지URL" alt="상품 이미지">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-name">상품 이름</h3>
+                    <p class="product-description"></p>
+                    <p class="product-info">공간 유형: 예약인원: </p>
+                </div>
+            </div>
+            -->
+        </div>
     </section>
 
-    <!-- 예약정보 -->
     <section class="reservation-section">
         <h2>예약정보</h2>
         <div id="reservation_info" class="reservation-container">
@@ -197,48 +147,49 @@ input[type="checkbox"] {
         </div>
     </section>
 
-    <!-- 예약시 주의사항 -->
     <section class="reservation-section">
-        <h2>예약시 주의사항</h2>
-        <p>여기에 예약시 주의사항을 나열하세요.</p>
+        <h2 class="reservation-heading">예약시 주의사항</h2>
+        <ul class="reservation-list">
+            <li>입,퇴실 시간을 엄수해주세요. (준비시간이나 정리시간은 이용시간에 포함됩니다.)</li>
+            <li>사전 답사 시 미리 연락 부탁드립니다.</li>
+            <li>연장 시 미리 연락 부탁드립니다.</li>
+            <li>불법행위, 안전사고, 기물파손에 대한 책임은 소비자에게 있으며 추후 비용 발생 시 청구될 수 있습니다.</li>
+            <li>예약 보증금은 10만원이며, 청소비는 5만원이 별도로 청구됩니다.</li>
+        </ul>
     </section>
 
-    <!-- 서비스 동의 -->
-	<section class="reservation-section">
-	    <h2>서비스 동의</h2>
-	    <div class="accordion">
-	        <div class="accordion-item">
-	            <label for="service_agreement" class="accordion-label">
-	                <input type="checkbox" id="service_agreement" name="service_agreement">
-	                <span>위 공간의 예약조건 확인 및 결제진행 동의(필수)</span>
-	            </label>
-	        </div>
-	        <!-- 나머지 아코디언 아이템들도 동일하게 추가 -->
-	        <div class="accordion-item">
-	            <label for="third_party_agreement" class="accordion-label">
-	                <input type="checkbox" id="third_party_agreement" name="third_party_agreement">
-	                <span>개인정보 제3자 제공 동의(필수)</span>
-	                <span class="accordion-icon">&#9660;</span> <!-- 아래쪽 화살표 아이콘 -->
-	            </label>
-	            <div class="accordion-content1">
-	                <!-- 이용약관 내용을 여기에 추가 -->
-	            </div>
-	        </div>
-	        <div class="accordion-item">
-	            <label for="privacy_agreement" class="accordion-label">
-	                <input type="checkbox" id="privacy_agreement" name="privacy_agreement">
-	                <span>개인정보 수집 및 이용 동의(필수)</span>
-	                <span class="accordion-icon">&#9660;</span> <!-- 아래쪽 화살표 아이콘 -->
-	            </label>
-	            <div class="accordion-content2">
-	                <!-- 이용약관 내용을 여기에 추가 -->
-	            </div>
-	        </div>
-	    </div>
-	</section>
-
-    <p class="total-price-row">총 가격: <span id="total_price">0원</span></p>
-    <button id="payment_button" class="payment-button">결제</button>
+    <section class="reservation-section">
+        <h2>서비스 동의</h2>
+        <div class="accordion">
+            <div class="accordion-item">
+                <label for="service_agreement" class="accordion-label">
+                    <input type="checkbox" id="service_agreement" name="service_agreement">
+                    <span>위 공간의 예약조건 확인 및 결제진행 동의(필수)</span>
+                </label>
+            </div>
+            <!-- 나머지 아코디언 아이템들도 동일하게 추가 -->
+            <div class="accordion-item">
+                <label for="third_party_agreement" class="accordion-label">
+                    <input type="checkbox" id="third_party_agreement" name="third_party_agreement">
+                    <span>개인정보 제3자 제공 동의(필수)</span>
+                    <span class="accordion-icon">&#9660;</span>
+                </label>
+                <div id="terms_of_use1" class="accordion-content">
+                    <!-- 이용약관 내용을 여기에 추가 -->
+                </div>
+            </div>
+            <div class="accordion-item">
+                <label for="privacy_agreement" class="accordion-label">
+                    <input type="checkbox" id="privacy_agreement" name="privacy_agreement">
+                    <span>개인정보 수집 및 이용 동의(필수)</span>
+                    <span class="accordion-icon">&#9660;</span>
+                </label>
+                <div id="terms_of_use2" class="accordion-content">
+                    <!-- 이용약관 내용을 여기에 추가 -->
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 		
     <!-- 여기부터는 토스뱅크 API -->
@@ -249,6 +200,7 @@ input[type="checkbox"] {
     <button id="payment-button">결제하기</button>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+    let total_price;
 	
     const clientKey = "test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq"
     const customerKey = "n9F7WOOedw7z_QeYrtqoK" // 내 상점에서 고객을 구분하기 위해 발급한 고객의 고유 ID
@@ -265,7 +217,7 @@ input[type="checkbox"] {
     // https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액-옵션
     paymentWidget.renderPaymentMethods(
       "#payment-method", 
-      { value: '100000000000000' },
+      { value: 123},
       { variantKey: "DEFAULT" } // 렌더링하고 싶은 결제 UI의 variantKey
     )
 
@@ -292,60 +244,69 @@ input[type="checkbox"] {
     $(document).ready(function() {
     	get_temp_reservation();
     	get_terms_of_use();
-    	$('.read-more-label').click(function() {
+    	$('.accordion-icon').click(function() {
             var content = $(this).closest('.accordion-item').find('.accordion-content');
             if (content.is(':hidden')) {
                 // 내용이 숨겨져 있을 때 버튼을 누르면 내용을 보여줍니다.
                 content.slideDown();
+                $(this).addClass('expanded'); 
             } else {
                 // 내용이 보여져 있을 때 버튼을 누르면 내용을 숨깁니다.
                 content.slideUp();
+                $(this).removeClass('expanded');
             }
         });
+
 	});
 	    
     
-function get_temp_reservation() {
-    console.log('임시예약 데이터 불러옴');
-    $.ajax({
-        url: '/get_temp_reservation',
-        data: {},
-        type: 'post',
-        dataType: 'json',
-        success: function (data) {
-            console.log(data);
-            $("#shopping_basket").empty();
-            
-            // 변수를 초기화하여 총 가격을 저장할 변수 생성
-            let total_price = 0;
+    function get_temp_reservation() {
+        console.log('임시예약 데이터 불러옴');
+        $.ajax({
+            url: '/get_temp_reservation',
+            data: {},
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $("#shopping_basket").empty();
 
-            // 임시 예약 데이터를 HTML로 변환하여 표시
-            for (let i = 0; i < data.length; i++) {
-                const dayOfWeek = getDayOfWeek(data[i]['reservation_date']);
-                let reservationItemHtml = 
-                	 '<div class="reservation-item">' +
-                     '    <div class="product-image">' +
-                     '        <img src="img/' + data[i]['img1'] + '" alt="' + data[i]['space_name'] + ' 이미지">' +
-                     '    </div>' +
-                     '    <div class="product-details">' +
-                     '        <h3 class="product-name">' + data[i]['space_name'] + '</h3>' +
-                     '       <div class="description"> <p class="product-description">' + data[i]['description'].split('[시간 엄수]')[0] + '</p></div>' + 
-                     '        <p class="product-info">공간 유형: ' + data[i]['space_type'] + '</p>' +
-                     '    </div>' +
-                     '</div>';  
-                const reservationInfoHtml =
-                     '<div class="reservation-item">' +
-                     '    <p>예약날짜: ' + data[i]['reservation_date'] + ' (' + dayOfWeek + ') ' + data[i]['start_time'] + "시" +  ' ~ ' + data[i]['end_time'] + "시" + '</p>' +
-                     '    <p>최대인원: ' + data[i]['capacity'] + "명 </p>" + 
-                     '</div>';
-                     
-                $('#reservation_space').append(reservationItemHtml);
-                $('#reservation_info').append(reservationInfoHtml);
+                // 변수를 초기화하여 총 가격을 저장할 변수 생성
+                total_price = 0;
+
+                // 임시 예약 데이터를 HTML로 변환하여 표시
+                for (let i = 0; i < data.length; i++) {
+                    const dayOfWeek = getDayOfWeek(data[i]['reservation_date']);
+                    let reservationItemHtml =
+                        '<div class="reservation-item">' +
+                        '    <div class="product-image">' +
+                        '        <img src="img/' + data[i]['img1'] + '" alt="' + data[i]['space_name'] + ' 이미지">' +
+                        '    </div>' +
+                        '    <div class="product-details">' +
+                        '        <h3 class="product-name">' + data[i]['space_name'] + '</h3>' +
+                        '       <div class="description"> <p class="product-description">' + data[i]['description'].split('[시간 엄수]')[0] + '</p></div>' +
+                        '        <p class="product-info">공간 유형: ' + data[i]['space_type'] + '</p>' +
+                        '    </div>' +
+                        '</div>';
+                    const reservationInfoHtml =
+                        '<div class="reservation-item">' +
+                        '    <p>예약날짜: ' + data[i]['reservation_date'] + ' (' + dayOfWeek + ') ' + data[i]['start_time'] + "시" + ' ~ ' + data[i]['end_time'] + "시" + '</p>' +
+                        '    <p>최대인원: ' + data[i]['capacity'] + "명</p>" +
+                        '    <p>총 금액: ' + data[i]['total_price'] + "원</p>" +
+                        '</div>';
+
+                    $('#reservation_space').append(reservationItemHtml);
+                    $('#reservation_info').append(reservationInfoHtml);
+
+                    // 전역 total_price 변수에 누적
+                    total_price += parseInt(data[i]['total_price']);
+                }
+
+                // 예약 정보를 모두 처리한 후에 전역 total_price를 사용할 수 있음
+                console.log("전체 총 가격: " + total_price + "원");
             }
-            
-        }
-    });
-}
+        });
+    }
 
 function get_terms_of_use() {
     console.log('이용약관 불러옴');
@@ -355,17 +316,21 @@ function get_terms_of_use() {
         type: 'post',
         dataType: 'json',
         success: function (data) {
-        	console.log(data);
-            // 이용약관 내용을 가져와서 아코디언 아이템에 추가
-            for (let i = 1; i <= 2; i++) {
-                const accordionContent = data[i]['personal_information'];
-            	console.log(accordionContent);
-                const accordionItem = $("#accordion-content" + i);
-                accordionItem.empty().append("<p>" + accordionContent + "</p>");
-            }
-        }
+            console.log(data); // 받은 데이터 콘솔 출력
+            for (let i = 0; i < data.length; i++) {
+            
+            // 첫 번째 아코디언 아이템에 첫 번째 데이터 추가
+            const accordionContent1 = "<p>" + data[0]['personal_information'] + "</p>";
+            $('#terms_of_use1').empty().append(accordionContent1);
+
+            // 두 번째 아코디언 아이템에 두 번째 데이터 추가
+            const accordionContent2 = "<p>" + data[1]['personal_information'] + "</p>";
+            $('#terms_of_use2').empty().append(accordionContent2);
+        	}
+        }    
     });
 }
+
 
 
 function getDayOfWeek(dateString) {
