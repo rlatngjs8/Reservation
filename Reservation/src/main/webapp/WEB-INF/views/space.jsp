@@ -539,6 +539,49 @@ height: 21px;
 #qa_content::placeholder {
     color: #777;
 }
+#pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#pagination a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #fff; /* 흰색 배경 */
+    color: #000; /* 검정색 텍스트 */
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #000; /* 검정색 테두리 추가 */
+}
+
+#pagination a:hover {
+    background-color: #333; /* 검정색으로 변환 */
+    color: #fff; /* 흰색 텍스트 유지 */
+}
+
+#qa_pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#qa_pagination a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #fff; /* 흰색 배경 */
+    color: #000; /* 검정색 텍스트 */
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #000; /* 검정색 테두리 추가 */
+}
+
+#qa_pagination a:hover {
+    background-color: #333; /* 검정색으로 변환 */
+    color: #fff; /* 흰색 텍스트 유지 */
+}
+
+
 
 
 
@@ -703,15 +746,10 @@ height: 21px;
 		            </div>
 		        
 			
-				<div id="review">
-				    <!-- 후기 작성 내용이 들어가는 div -->
-				</div>
-				<div id="review_page_num" style="text-align: center;">
-				    <span class="page" data-page="1">1</span>
-				    <span class="page" data-page="2">2</span>
-				    <span class="page" data-page="3">3</span>
-				    <!-- 페이지 번호를 추가하고 각각의 페이지를 클릭할 때 data-page 속성으로 페이지 번호를 저장합니다. -->
-				</div>
+				<div id="review"></div> <!-- 리뷰 부분 -->
+				<div id="pagination">
+			        <!-- 페이지 번호가 여기에 추가될 것입니다. -->
+			    </div>
 			</div>
             
 		<div id="Q&A" style="border-width: 4px; height: auto;">
@@ -737,10 +775,9 @@ height: 21px;
 		    </div>
 		</div>
 		
-		<div id="qa"></div>
-		<div id="pagination">
-		    <button id="prevPage">이전 페이지</button>
-		    <button id="nextPage">다음 페이지</button>
+		<div id="qa"></div> <!-- q&a 부분  -->
+		<div id="qa_pagination"> <!-- 페이지 번호 부분 -->
+
 		</div>
         
         </section>
@@ -773,13 +810,9 @@ const db_reservations = [];
 
 
 $(document).ready(function () {
-	
-	
-	review_get();
     get_imgslide();
     get_reinfo();
     get_member_info();
-    qa_get();
    		
     
  // Datepicker 설정
@@ -1067,36 +1100,6 @@ function insert_temp_reservation() {
 }
 
 
-
-
-function review_get() { //리뷰 불러오기
-    console.log('리뷰 불러옴');
-    const space_id = $('#space_id').val();
-    $.ajax({
-        url: '/review_get',
-        data: {
-            space_id: space_id
-        },
-        type: 'post',
-        dataType: 'json',
-        success: function (data) {
-            console.log('리뷰 데이터 불러오기',data);
-            $("#review").empty();
-            for (let i = 0; i < data.length; i++) {
-                let review =
-                    "<div class='review'>" +
-                    "<h4>작성자: " + data[i]['userid'] + "</h4>" +
-                    "<p>평점: " + generateStarRating(data[i]['rating']) + "</p>" + // 수정된 부분
-                    "<p>리뷰 내용: " + data[i]['review_content'] + "</p>" +
-                    "<p>작성일: " + data[i]['created'] + "</p>" +
-                    "</div>";
-                $('#review').append(review);
-            }
-        }
-    });
-}
-
-
 function get_member_info() { //데이터 불러오기
     const userid = $("#user_id").val();
     console.log('나의 정보 불러옴');
@@ -1302,7 +1305,10 @@ $(document).ready(function () {
     });
 });
 
-function qa_get() { //리뷰 불러오기
+let qa_currentPage = 1; // 현재 페이지 번호
+const qa_PerPage = 3; // 한 페이지당 리뷰 갯수
+
+function qa_get(page) { //질문 불러오기
     console.log('qa 불러옴');
     const space_id = $('#space_id').val();
  //   const currentPage = $('#currentPage').val(); // 현재 페이지 정보를 가져옴
@@ -1310,16 +1316,15 @@ function qa_get() { //리뷰 불러오기
     $.ajax({
         url: '/qa_get',
         data: {
-            space_id: space_id
-            //currentPage: currentPage,
-            //itemsPerPage: itemsPerPage
+            space_id: space_id,
+            page: page
         },
         type: 'post',
         dataType: 'json',
         success: function (data) {
             console.log('리뷰 데이터 불러오기',data);
             $("#qa").empty();
-            for (let i = 0; i < data.length; i++) {
+            for (let i = (page - 1) * qa_PerPage; i < page * qa_PerPage && i < data.length; i++) {
                 let qa =
                     "<div class='qa'>" +
                     "<h4>작성자: " + data[i]['writer'] + "</h4>" +
@@ -1329,10 +1334,96 @@ function qa_get() { //리뷰 불러오기
                     "</div>";
                 $('#qa').append(qa);
             }
+            
+            qa_updatePagination(data.length);
         }
     });
 }
 
+function qa_updatePagination(totalqa) {
+    const totalPages = Math.ceil(totalqa / qa_PerPage);
+    let paginationHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        if (i === qa_currentPage) {
+            paginationHTML += '<span>' + i + '</span>';
+        } else {
+        	paginationHTML += "<a href='#' onclick='qa_changePage(" + i + ")'>" + i + "</a>";
+        }
+    }
+    
+    $("#qa_pagination").html(paginationHTML);
+}
+
+function qa_changePage(page) {
+	qa_currentPage = page;
+    qa_get(qa_currentPage);
+}
+
+$(document).ready(function () {
+    qa_get(qa_currentPage);
+});
+
+
+
+let review_currentPage = 1; // 현재 페이지 번호
+const reviews_PerPage = 3; // 한 페이지당 리뷰 갯수
+
+function review_get(page) {
+    console.log('리뷰 불러옴');
+    const space_id = $('#space_id').val();
+    $.ajax({
+        url: '/review_get',
+        data: {
+            space_id: space_id,
+            page: page // 페이지 번호를 서버에 전달
+        },
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            console.log('리뷰 데이터 불러오기', data);
+            $("#review").empty();
+            for (let i = (page - 1) * reviews_PerPage; i < page * reviews_PerPage && i < data.length; i++) {
+                let review =
+                    "<div class='review'>" +
+                    "<h4>작성자: " + data[i]['userid'] + "</h4>" +
+                    "<p>평점: " + generateStarRating(data[i]['rating']) + "</p>" +
+                    "<p>리뷰 내용: " + data[i]['review_content'] + "</p>" +
+                    "<p>작성일: " + data[i]['created'] + "</p>" +
+                    "</div>";
+                $('#review').append(review);
+            }
+
+            // 페이지 번호를 업데이트
+            updatePagination(data.length);
+        }
+    });
+}
+
+function updatePagination(totalReviews) {
+    const totalPages = Math.ceil(totalReviews / reviews_PerPage);
+    let paginationHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        if (i === review_currentPage) {
+            paginationHTML += '<span>' + i + '</span>';
+        } else {
+        	paginationHTML += "<a href='#' onclick='re_changePage(" + i + ")'>" + i + "</a>";
+        }
+    }
+
+    $("#pagination").html(paginationHTML);
+}
+
+function re_changePage(page) {
+	review_currentPage = page;
+    review_get(review_currentPage);
+}
+
+// 페이지 로드시 첫 번째 페이지의 리뷰를 불러옵니다.
+$(document).ready(function () {
+    review_get(review_currentPage);
+});
 
 //선택한 시간 범위 강조 표시
 function highlightTimeRange() {

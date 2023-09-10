@@ -117,6 +117,12 @@
         .reservation-list li {
             margin-bottom: 10px;
         }
+        
+        .product-image img {
+	        max-width: 700px;
+	        max-height: 400px;
+    	}
+        
     </style>
 <body>
     <h1>예약 정보</h1>
@@ -217,7 +223,7 @@
     // https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액-옵션
     paymentWidget.renderPaymentMethods(
       "#payment-method", 
-      { value: 123},
+      { value: total_price},
       { variantKey: "DEFAULT" } // 렌더링하고 싶은 결제 UI의 variantKey
     )
 
