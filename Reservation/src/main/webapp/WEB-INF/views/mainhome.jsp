@@ -20,10 +20,11 @@ body {
 	height: 60%;
 }
 .ffimg img {
+margin-top:5px;
 	width: 50px;
 	height: 44px;
 	position: relative;
-	right: 5px;
+	left:3px;
 	top: 2px;
 }
 .first {
@@ -38,6 +39,13 @@ body {
 	list-style: none;
 	justify-content: center;
 }
+
+.second13 {
+	display: flex;
+	list-style: none;
+	justify-content: center;
+}
+
 .card-container {
 	margin-left: 30px;
 	align:center;
@@ -70,7 +78,7 @@ body {
 }
 
 .card img {
-    width: 300px;
+    width: 400px;
     
     height: 100%; /* 이미지 카드의 높이에 맞추기 위해 100%로 설정 */
     border-radius: 10px;
@@ -78,14 +86,22 @@ body {
     margin-top: 15px;
 }
 
-.demo, .demo1, .demo12 {
-    font-family: 'omyu_pretty';
-    font-size: 20px;
+.demo12 {
+	text-align:right;
 }
+
+.demo {
+	font-size : 30px !important;
+}
+
+.demo1 {
+    font-size: 20px !important;
+}
+
 
 .card a {
 	font-family: 'omyu_pretty';
-	font-size: 20px;
+	font-size: 25px;
 }
 
 @font-face {
@@ -117,12 +133,13 @@ h3 {
 }
 
 .newleft {
-	text-align: left;
-	margin-left: 16%;
-	font-family: 'Cafe24Supermagic-Bold-v1.0';
-	font-size: 40px;
-	text-decoration: underline;
-	text-underline-position: under;
+    text-align: left;
+    margin-left: 16%;
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    font-size: 40px;
+    text-decoration: underline;
+    text-underline-position: under;
+
 }
 .banner {
 	background-color: #E0F8F7;
@@ -294,17 +311,22 @@ h3 {
 }
 
 .cDiv a {
-	font-family: 'BMJUA', sans-serif;
+    font-family: 'BMJUA', sans-serif;
+    font-size: 20px; /* 폰트 크기 증가 */
+    font-weight: bold; /* 텍스트를 두껍게 표시 */
+    text-decoration: underline; /* 밑줄 추가 */
+    text-underline-position: under;
 }
 
 .saleEvent {
-	font-size: 23px;
+    font-size: 23px;
+    font-weight: bold; 
+    color: #FF5733; 
 }
 
 .all {
 	position: relative;
-	right: 8px;
-	top: 4px;
+	top: 7px;
 }
 
 .hidden {
@@ -334,6 +356,14 @@ h3 {
 
 
 
+.rating-container {
+    font-size: 30px;
+    color: #FFD700; 
+}
+
+.review2{
+	text-align:right;
+}
 
 </style>
 <body>
@@ -406,11 +436,8 @@ h3 {
         <div class="card" id="card1_${outerLoop.index}" space_id="${prod.space_id}" onclick="window.location.href='/space?space_id=${prod.space_id}'">
             <a href="#" class="fimg"><img src="img/${prod.img1}" alt="이미지 6"  style="height: 200px;"></a>
             
-             <c:if test="${outerLoop.index > 0}">
-                <br>
-            </c:if>
-            
-            
+             <br>
+   
             
             <a class="demo">${prod.space_name}</a>
             <br>
@@ -432,22 +459,24 @@ h3 {
 	</div>
 	
 	
-	<div class="second1">
+	<div class="second13">
     <c:forEach items="${review}" var="review" varStatus="outerLoop">
         <c:if test="${outerLoop.index % 3 == 0}">
             <div class="card-container">
         </c:if>
 
-        <div class="card" id="card2_${outerLoop.index}" space_id="${review.space_id}" onclick="window.location.href='/space?space_id=${review.space_id}'">
-            <a href="#" class="fimg"><img src="img/${review.img1}" alt="이미지 6"></a>
+        <div class="card" style="height: 500px;" id="card2_${outerLoop.index}" space_id="${review.space_id}" onclick="window.location.href='/space?space_id=${review.space_id}'">
+            <a href="#" class="fimg"><img src="img/${review.img1}" alt="이미지 6" style="height: 200px; width: 300px !important;"></a>
             <br>
             <a class="demo">${review.space_name}</a>
             <br>
             <!-- 레이팅을 별로 바꿔야함 -->
-            <a class="review1">${review.rating}</a><a class="review2">${review.price}원/시간</a>
-            <br><br>
+             <div class="rating-container" data-rating="${review.rating}"></div>
+        
+             <a class="review2">${review.price}원/시간</a>
+            
             <p class="review3">${review.review_content}</p>
-            <br>
+          
         </div>
 
         <c:if test="${outerLoop.index % 3 == 2 || outerLoop.last}">
@@ -455,7 +484,9 @@ h3 {
         </c:if>
     </c:forEach>
 </div>
-
+<br><br><br><br>
+&copy; 2023 Share Place
+<br>
 	<%@include file="footer.jsp"%>
 
 </body>
@@ -463,6 +494,42 @@ h3 {
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 	$(document).ready(function() {
+		
+		
+		
+		  function drawRatingStars(container, rating) {
+		        const maxRating = 5; // 최대
+		        const filledStar = "★";
+		        const emptyStar = "☆"; 
+
+		        let stars = '';
+		        for (let i = 0; i < maxRating; i++) {
+		            if (i < rating) {
+		                stars += filledStar;
+		            } else {
+		                stars += emptyStar;
+		            }
+		        }
+
+		        container.innerHTML = stars;
+		    }
+
+		  
+		    const ratingContainers = document.querySelectorAll('.rating-container');
+		    ratingContainers.forEach(container => {
+		        const rating = parseInt(container.getAttribute('data-rating'));
+		        drawRatingStars(container, rating);
+		    });
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		$(window).scroll(function() {
 			$('.card12').each(function(i) {
 				var bottom = $(this).offset().top + $(this).outerHeight();

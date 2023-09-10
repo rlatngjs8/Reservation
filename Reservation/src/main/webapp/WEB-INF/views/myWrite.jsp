@@ -197,5 +197,7 @@ $(document).ready(function() {
         $("#btnWrite").hide();
     }
 }    
+
+<%@include file="footer.jsp" %>
 </script>
 </html>

@@ -53,7 +53,7 @@
   
   
   
-  h1 {
+.foradh1  h1 {
   	margin-top: 60px;
   	font-family: 'TmonMonsori';
 	font-size : 300%;
@@ -106,7 +106,10 @@ button {
 </style>
 </head>
 <body>
-<h1 align=center>관리자 페이지</h1>
+<%@include file="header.jsp"%>
+<br><br><br><br><br>
+
+<h1 align=center class="foradh1">관리자 페이지</h1>
 
 
 

@@ -10,51 +10,51 @@
 </head>
 <style>
 ul.sub_mobile {
-  display: none;
+  display: none !important;
   
 
  
 }
 
 .welcome3 {
-	font-family: 'HakgyoansimWoojuR'
+	font-family: 'HakgyoansimWoojuR !important'
 }
 
 .sub_mobile li:hover{
 
-	background-color:#ccc;
-	padding-right: 40px;
+	background-color:#ccc !important;
+	padding-right: 40px !important;
 }	
 
 
 
 
 #menu.open { 
-  left: 0px;
-  width:205px;
+  left: 0px !important;
+  width:205px !important;
 
 }
 
 
 
 .page_cover.open {
-  display: block;
+  display: block !important;
 }
 
 .headerbtn {
 
-  width: 50px;
-  height: 50px;
-  background-image: url("http://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/menu.png");
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  width: 50px !important;
+  height: 50px !important;
+  background-image: url("http://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/menu.png") !important;
+  background-size: 50% !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
   
-  position:relative;
+  position:fixed !important;
   
-  bottom:80px;
+  bottom:890px !important;
   
   
 
@@ -65,108 +65,108 @@ ul.sub_mobile {
 
 
 .close {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  background-image: url("http://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/close.png");
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
+  width: 50px !important;
+  height: 50px !important;
+  position: absolute !important;
+  left: 0px !important;
+  top: 0px !important;
+  background-image: url("http://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/close.png") !important;
+  background-size: 50% !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  cursor: pointer !important;
   
   
 }
 
 #menu {   
-  width: 150px;
-  height: 100%;
-  position: fixed;
-  top: 0px;
-  left: -202px;
-  z-index: 10;
-  border: 1px solid #c9c9c9;
-  background-color: white;
-  text-align: center;
-  font-weight: bold;
-  transition: All 0.2s ease;
-  -webkit-transition: All 0.2s ease;
-  -moz-transition: All 0.2s ease;
-  -o-transition: All 0.2s ease;
-  padding-top: 50px;
-  padding-left: 0px;
-  padding-right: 40px;
-   background-color: white;
+  width: 150px !important;
+  height: 100% !important;
+  position: fixed !important;
+  top: 0px !important;
+  left: -202px !important;
+  z-index: 10 !important;
+  border: 1px solid #c9c9c9 !important;
+  background-color: white !important;
+  text-align: center !important;
+  font-weight: bold !important;
+  transition: All 0.2s ease !important;
+  -webkit-transition: All 0.2s ease !important;
+  -moz-transition: All 0.2s ease !important;
+  -o-transition: All 0.2s ease !important;
+  padding-top: 50px !important;
+  padding-left: 0px !important;
+  padding-right: 40px !important;
+   background-color: white !important;
   
 
 }
 
 #menu a {
-  padding: 0;
-  text-decoration: none;
-  font-size: 18px;
-  color: #A9F5E1;
-  display: block;
-  transition: 0.3s;
-  align: center; /* 텍스트를 가운데 정렬합니다. */
-  line-height: 5px; /* 수직 가운데 정렬을 위해 line-height 추가 */
+  padding: 0 !important;
+  text-decoration: none !important;
+  font-size: 18px !important;
+  color: #A9F5E1 !important;
+  display: block !important;
+  transition: 0.3s !important;
+  align: center !important; /* 텍스트를 가운데 정렬합니다. */
+  line-height: 5px !important; /* 수직 가운데 정렬을 위해 line-height 추가 */
   
-  position:relative;
-  left:21px;
+  position:relative !important;
+  left:21px !important;
   
-  cursor:pointer;
+  cursor:pointer !important;
 }
 
 
 
 
 .page_cover {
-  width: 400%;
-  height: 100%;
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 4;
-  display: none;
+  width: 400% !important;
+  height: 100% !important;
+  position: fixed !important;
+  top: 0px !important;
+  right: 0px v;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  z-index: 4 !important;
+  display: none !important;
 }
 
 #menu ul { 
-    width:100%; 
-    margin:0; 
-    padding:0;
+    width:100% !important; 
+    margin:0 !important; 
+    padding:0 !important;
     
-    align:center;
+    align:center !important;
     }
     
 
   #menu ul.nav li {
-  width: 100%;
-  list-style-type: none;
-  font-size: 1px;
+  width: 100% !important;
+  list-style-type: none !important;
+  font-size: 1px !important;
 
-  margin-bottom: 10px; /* sub_mobile 항목들 사이의 간격 조절 */
+  margin-bottom: 10px !important; /* sub_mobile 항목들 사이의 간격 조절 */
 
   
 }
 
 
 #menu ul.nav li a {
-  display: block;
-  width: 100%;
-  height: 50px; /* 높이를 변경 */
-  line-height: 50px;
-  text-align: center;
-  color: black;
+  display: block !important;
+  width: 100% !important;
+  height: 50px !important; /* 높이를 변경 */
+  line-height: 50px !important;
+  text-align: center !important;
+  color: black !important;
   
-  text-decoration: none;
+  text-decoration: none !important;
 
   
-  align:center;
-  text-align:center;
+  align:center !important;
+  text-align:center !important;
   
-   font-family: 'HakgyoansimWoojuR';
+   font-family: 'HakgyoansimWoojuR' !important;
   
 }
     
@@ -176,78 +176,81 @@ ul.sub_mobile {
 
 
 #menu {
-   background-color: #F7F0E0;
-   color: #25a4cd;
-   border: 1px solid #c9c9c9;
+   background-color: #F7F0E0 !important;
+   color: #25a4cd !important;
+   border: 1px solid #c9c9c9 !important;
    
-     align:center;
-  text-align:center;
+     align:center !important;
+  text-align:center !important;
 }
 
 a {
-  text-decoration: none;
-  color:black;
+  text-decoration: none !important;
+  color:black !important;
 }
 
 .button12 {
-  width: 70px;
-  height: 30px;
-  font-size: 14px;
+  width: 70px !important;
+  height: 30px !important;
+  font-size: 14px !important;
   
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #000;
-  background-color: #fff;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
+  text-transform: uppercase !important;
+  letter-spacing: 2.5px !important;
+  font-weight: 500 !important;
+  color: #000 !important;
+  background-color: #fff !important;
+  border: none !important;
+  border-radius: 5px !important;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease 0s !important;
+  cursor: pointer !important;
+  outline: none !important;
   
-  position:relative;
+  position:relative !important;
   
-  left:10px;
+  left:10px !important;
   }
 
 .button:hover{
-	background-color: #BDBDBD;
+	background-color: #BDBDBD !important;
 }
 
 
 .button1{
-	width: 90px;
-  height: 30px;
+	width: 90px !important;
+  height: 30px !important;
+  font-family: 'HakgyoansimWoojuR' !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2.5px !important;
+  font-weight: 500 !important;
+  color: #000 !important;
+  background-color: #fff !important;
+  border: none !important;
+  border-radius: 5px !important;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease 0s !important;
+  cursor: pointer !important;
+  outline: none !important;
+  
+
+  text-align:right !important;
+  
+  position:relative !important;
+  
+  left:30px !important;
+
+}
+
+
+
+
+.top a {
   font-family: 'HakgyoansimWoojuR';
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #000;
-  background-color: #fff;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-  
-
-  text-align:right;
-  
-  position:relative;
-  
-  left:20px;
-
+  font-weight: bold; /* 폰트 가중치를 추가합니다. */
+  font-size : 50px;
 }
 
-
-
-
-a {
-	font-family: 'HakgyoansimWoojuR';
-}
  
 @font-face {
     font-family: 'KIMM_Bold';
@@ -274,6 +277,7 @@ a {
 
 
 .top-container {
+position: fixed; 
   justify-content: space-between;
   align-items: center;
   position: fixed;
@@ -333,6 +337,7 @@ font-family: 'HakgyoansimWoojuR';
     align-items: center; /* 세로 중앙 정렬을 위해 추가 */
         font-family: 'HakgyoansimWoojuR';
         word-break:break-all;
+        
 }	
 
 .welcome1 li:hover {
@@ -462,8 +467,7 @@ font-family: 'HakgyoansimWoojuR';
 
 <!-- 로그인 하지 않은 상태로 다른 페이지로 이동시, userid에 빈 문자열이 들어가서 수정했습니다. -->
 
-<c:set var="userid" value="${sessionScope.userid}" /> <!-- 세션에서 userid 값을 가져옴 -->
-<c:set var="member" value="${rdao.getListOne(userid)}" /> <!-- RoomDAO를 사용하여 사용자 이름을 가져옴 -->
+
 
 
 
@@ -494,7 +498,7 @@ font-family: 'HakgyoansimWoojuR';
                             <c:otherwise>
                             <div class="welcome1">
                                 <a><span class="name">${name}</span> 님 환영합니다</a>
-                       
+                       			
                                 <button id="btnLogout" class="button1">로그아웃</button>
                                  </div>
                                  

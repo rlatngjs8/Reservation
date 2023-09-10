@@ -11,12 +11,11 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
+
    
 }
 
-header {
+.hd {
     background-color: #007bff;
     color: white;
     padding: 20px 0;
@@ -108,7 +107,7 @@ font-family: 'TheJamsil5Bold';
 <%@include file="header.jsp" %>
 <br><br><br><br><br>
 
-<header>
+<header class="hd">
     <h1 class="faqh1">쉐어플레이스 자주묻는질문 FAQ</h1>
 </header>
 <div class="container">

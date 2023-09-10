@@ -7,17 +7,21 @@
 <meta charset="UTF-8">
 <title>사이드바 메뉴</title>
 <style>
+
+
+   .gomain a {
+    	margin-top: 60px;
+    	color:black !important;
+    }
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 예쁜 글꼴 사용 */
+		
         background-color: #f2f2f2;
-        margin: 0;
-        padding: 0;
-        text-align: center; /* 내용물 가운데 정렬 */
+    
     }
 
     .sidebar {
         height: 100%;
-        width: 250px;
+        width: 240px;
         position: fixed;
         top: 0;
         left: 0;
@@ -57,9 +61,10 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         max-width: 1000px; /* 최대 너비 제한 */
         text-align: left; /* 내용물 왼쪽 정렬 */
+        
     }
 
-    h2 {
+    .container h2 {
         text-align: center;
         color: #3498db;
     }
@@ -67,6 +72,7 @@
     .form-group {
         margin-bottom: 15px;
         margin-left: 5%;
+        font-family: 'TheJamsil5Bold';
     }
 
     label {
@@ -85,14 +91,18 @@
         border-radius: 3px;
     }
 
-    button {
+#checkPasscodeButton, 
+#edit,
+#btnWrite,
+#delCheckPasscodeButton{
         background-color: #3498db;
         color: #fff;
         border: none;
         padding: 10px 20px;
-        border-radius: 3px;
+      
         cursor: pointer;
         margin-top: 10px; /* 버튼과 입력란 사이 간격 조정 */
+        	border-radius: 10px;
     }
 
     .hidden {
@@ -128,9 +138,7 @@
     		width: 80px;
     }
 	
-	button {
-		border-radius: 10px;
-	}
+
     /* 비밀번호 확인 입력란 스타일 추가 */
     #passcodeCheck {
         width: 60%; /* 입력란 넓이 조정 */
@@ -138,24 +146,36 @@
     
     
     
-    @font-face {
-    font-family: 'CookieRun-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
-    font-weight: normal;
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
     font-style: normal;
-		}
+}
 
 		a,label,button,h2,th,td {
-		font-family: 'CookieRun-Regular';
+		 font-family: 'TheJamsil5Bold';
 		}
 		
-		h3{
+		
+		.form-group h3{
 			display:inline;
+			font-family: 'TheJamsil5Bold';
+			font-size : 20px;
+		}
+		
+		.delReason h3{
+			display:inline;
+			font-family: 'TheJamsil5Bold';
 		}
     
+ 
 </style>
 </head>
 <body>
+<%@include file="header.jsp"%>
+<br><br><br><br><br><br>
+
 <!-- 헤더랑 바텀 넣고 -->
 <div class="sidebar">
     <ul>
@@ -165,7 +185,7 @@
         <li><a href="#" onclick="showSection('myQuestions')">나의 문의내역</a></li>
         <li><a href="#" onclick="showSection('userDelete')">서비스탈퇴</a></li>
         <!-- 메인화면은 아래로 따로 내려서 티나도록 -->
-        <li><a href="/" onclick="goHome">메인 화면으로</a></li>
+        <li class="gomain"><a href="/" onclick="goHome">메인 화면으로</a></li>
     </ul>
 </div>
 
@@ -174,27 +194,28 @@
     <h2>나의 정보</h2>
     <hr/>
     <br>
+    
     <c:forEach items="${member}" var="member">
         <div class="form-group">
-            <h3>ID:</h3><a> ${member.userid}</a>
+            <h3>ID:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.userid}</a>
         </div>
         <div class="form-group">
-            <h3>이름:</h3><a> ${member.name}</a>
+            <h3>이름:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.name}</a>
         </div>
         <div class="form-group">
-            <h3>생년월일:</h3><a> ${member.birthday}</a>
+            <h3>생년월일:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.birthday}</a>
         </div>
         <div class="form-group">
-            <h3>주소:</h3> <a>${member.address}</a>
+            <h3>주소:</h3> <a style=" font-family: 'TheJamsil5Bold';">${member.address}</a>
         </div>
         <div class="form-group">
-            <h3>이메일:</h3><a> ${member.email}</a>
+            <h3>이메일:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.email}</a>
         </div>
         <div class="form-group">
-            <h3>휴대전화:</h3><a> ${member.mobile}</a>
+            <h3>휴대전화:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.mobile}</a>
         </div>
         <div class="form-group">
-            <h3>가입일:</h3><a> ${member.created.substring(0,10)}</a>
+            <h3>가입일:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.created.substring(0,10)}</a>
         </div>
     </c:forEach>
 </div>
@@ -312,12 +333,16 @@
         	</div>
         	<p>서비스 탈퇴동의는 필수입니다.</p>
         </div>
-        <div>
+        <div class="canc">
         <a href="/myPage">취소</a>
         <input type="submit" id="subDelete" value="서비스탈퇴" style="background-color: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 3px; cursor: pointer;">
         </div>
     </form>
 </div>
+
+<br><br><br><br><br>
+<%@include file="footer.jsp"%>
+
 <script src="http://code.jquery.com/jquery-Latest.js"></script>
 <script>
 
@@ -325,6 +350,9 @@
 
 
     $(document).ready(function() {
+    	
+    
+    	
         $("#checkPasscodeButton").click(function(e) {
             e.preventDefault(); // 폼 제출 막
 

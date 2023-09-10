@@ -25,7 +25,7 @@
       }
       
       .big {
-       margin-left : 45px;
+
       }
       
       
