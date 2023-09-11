@@ -14,7 +14,7 @@ public interface ReservationDAO {
 		
 		ArrayList<ReservationDTO> selectList(String userid);
 	
-		ReservationDTO payCom(int totalPrice, String userid);
+		ArrayList<ReservationDTO> payCom(int totalPrice, String userid);
 		
 		ArrayList<ReservationDTO> sales(String start, String end);
 		// 추가부분
