@@ -135,37 +135,8 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 
-$(document).ready(function(){
-    let name = "${userid}";
-    console.log(name);
-})
 
 
-
-
-
-.on('submit', '#frmComment', function(){
-   
-    if ($('#comment').val() == '') {
-        alert('내용을 입력하세요.');
-        return false;
-    }
-    
-    $.ajax({
- 		url:'/EventComment',
- 		data:{
- 			userid:$('#userid').val(),
- 			comment:$('#comment').val(),
- 		},
- 		type:'post',
- 		dataType:'text',
- 			success: function(data){
- 				alert('성공적으로 작성되었습니다.');
- 				window.location.href ='/event2';
- 		}
- 	})
- 	return false;
-});
 
 
 
