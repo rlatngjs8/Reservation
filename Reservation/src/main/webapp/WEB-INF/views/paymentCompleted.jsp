@@ -52,8 +52,8 @@ span {
 <input type="hidden" name="userid" id="userid" value="${userid}">
 <input type="hidden" name="total_price" id="total_price" value="">
 <input type="hidden" name="purchaseTime" id="purchaseTime" value="${purchaseTime}">
-    <div class="reservation-container">
-    <c:forEach items="${pay}" var="pay">
+    <div id="reservation-container" class="reservation-container">
+<%--     <c:forEach items="${pay}" var="pay">
         <h1>예약이 완료되었습니다!</h1>
         <p>예약 번호: <span id="seqno">${pay.seqno}</span></p>
         <p>아이디: <span id="userid">${pay.userid}</span></p>
@@ -64,8 +64,8 @@ span {
         <p>이용시간: <span id="usetime">${pay.startTime}시 ~ ${pay.endTime}시</span></p>
         <p>결제금액: <span id="totalPrice">${pay.totalPrice}원</span></p>
         <p>결제시각: <span id="purchaseTime">${pay.purchaseTime}</span></p>
+    </c:forEach> --%>
     </div>
-    </c:forEach>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -89,6 +89,10 @@ $(document).ready(function () {
         }
         return params;
     }
+    
+    
+    
+    
     
   //현재 URL 가져오기
     var currentUrl = window.location.href;
@@ -114,12 +118,39 @@ $(document).ready(function () {
     console.log("userid:", userid);
     console.log("total_price 값: " + total_price_value);
     console.log("amount 값:", amountValue);
-    
-
-
-
-    
+    get_re_info();
 });
+
+function get_re_info() {
+    console.log('에약 데이터 한개}');
+    const userid = $("#userid").val();
+    var total_price_value = $("#total_price").val();
+    $.ajax({
+        url: '/get_re_info',
+        data: {userid: userid,
+        		totalPrice: total_price_value},
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            console.log(data); // 받은 데이터 콘솔 출력
+            $("#reservation-container").empty();
+            for (let i = 0; i < data.length; i++) {
+            	let content = 
+            	    '<h1>예약이 완료되었습니다!</h1>' +
+            	    '<p>예약 번호: <span id="seqno">' + data[i]['seqno'] + '</span></p>' +
+            	    '<p>아이디: <span id="userid">' + data[i]['userid'] + '</span></p>' +
+            	    '<p>성함: <span id="name">' + data[i]['name'] + '</span></p>' +
+            	    '<p>전화번호: <span id="mobile">' + data[i]['mobile'] + '</span></p>' +
+            	    '<p>상품명: <span id="space_name">' + data[i]['space_name'] + '</span></p>' +
+            	    '<p>이용일자: <span id="useday">' + data[i]['useday'] + '</span></p>' +
+            	    '<p>이용시간: <span id="usetime">' + data[i]['startTime'] + '시 ~ ' + data[i]['endTime'] + '시</span></p>' +
+            	    '<p>결제금액: <span id="totalPrice">' + data[i]['totalPrice'] + '</span></p>' +
+            	    '<p>결제시각: <span id="purchaseTime">' + data[i]['purchaseTime'] + '</span></p>';
+            	$('#reservation-container').append(content);
+        	}
+        }    
+    });
+}
 
 
 

@@ -266,26 +266,48 @@ public class YoonController {
 		System.out.println("asdasd="+purchaseTime);
 		model.addAttribute("purchaseTime", purchaseTime);
 		resdao.re_insert (useday, startTime, endTime, totalPrice, userid, space_name, purchaseTime );
-
 		//HttpSession session= req.getSession();
 		//String userid = (String) session.getAttribute("userid");
 		//String purchaseTime = req.getParameter("purchaseTime"); 
       //System.out.println("Time " + purchaseTime);
-		ArrayList<ReservationDTO> alReser = resdao.payCom(totalPrice, userid);
-		if (!alReser.isEmpty()) {
-		    // 리스트가 비어있지 않으면 값이 들어왔음을 확인할 수 있습니다.
-		    // 예를 들어, 리스트 크기 출력
-		    System.out.println("예약 정보 개수: " + alReser.size()); //size 1개 잘나옴
-		} else {
-		    // 리스트가 비어있을 때의 처리
-		    System.out.println("예약 정보가 없습니다.");
+//		ArrayList<ReservationDTO> alReser = resdao.payCom(totalPrice, userid);
+//		if (!alReser.isEmpty()) {
+//		    // 리스트가 비어있지 않으면 값이 들어왔음을 확인할 수 있습니다.
+//		    // 예를 들어, 리스트 크기 출력
+//		    System.out.println("예약 정보 개수: " + alReser.size()); //size 1개 잘나옴
+//		} else {
+//		    // 리스트가 비어있을 때의 처리
+//		    System.out.println("예약 정보가 없습니다.");
+//		}
+//
+//		model.addAttribute("pay", alReser);
+//		
+		return "";
+		}
+//        
+		
+		@PostMapping("/get_re_info")
+		@ResponseBody
+		public String get_re_info(HttpServletRequest req) {
+		    String userid = req.getParameter("userid");
+		    int totalPrice = Integer.parseInt(req.getParameter("totalPrice"));
+		    ArrayList<ReservationDTO> alReser = resdao.payCom(totalPrice, userid);
+		    JSONArray ja = new JSONArray();
+		    for (int i = 0; i < alReser.size(); i++) {
+		        JSONObject jo = new JSONObject();
+		        jo.put("seqno", alReser.get(i).getSeqno()); // 수정된 부분
+		        jo.put("userid", alReser.get(i).getUserid());
+		        jo.put("name", alReser.get(i).getName());
+		        jo.put("mobile", alReser.get(i).getMobile());
+		        jo.put("space_name", alReser.get(i).getSpace_name());
+		        jo.put("useday", alReser.get(i).getUseday());
+		        jo.put("startTime", alReser.get(i).getStartTime());
+		        jo.put("endTime", alReser.get(i).getEndTime());
+		        jo.put("totalPrice", alReser.get(i).getTotalPrice());
+		        jo.put("purchaseTime", alReser.get(i).getPurchaseTime());
+		        ja.add(jo);
+		    }
+		    return ja.toJSONString();
 		}
 
-		model.addAttribute("pay", alReser);
-		
-		return "";
-//        
-	
-	
-	}
 }
