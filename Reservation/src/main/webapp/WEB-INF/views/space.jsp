@@ -582,17 +582,14 @@ height: 21px;
 }
 
 
-
-
-
 </style>
 </head> <!-- 나는 바보 -->
 <body>
-	<%@include file="header.jsp" %>
-	<div id="duplicateAlert" class="alert-box">
-    중복된 예약이 있습니다. 예약 시간을 다시 확인해주세요.
-	</div>
-	<!--  <input type='hidden' id='username' value="">-->
+    <%@include file="header.jsp" %>
+    <div id="duplicateAlert" class="alert-box">
+        중복된 예약이 있습니다. 예약 시간을 다시 확인해주세요.
+    </div>
+
     <input type='hidden' id='user_id' value="${sessionScope.userid}">
     <input type="hidden" id="space_id" name="space_id" value="${space.space_id }">
 
@@ -603,21 +600,11 @@ height: 21px;
             <div id="wrapper">
                 <!-- 상품이미지 -->
                 <div class="bxslider">
-                    <div>
-                        <img src="img/${space.img1}" title="slider 1">
-                    </div>
-                    <div>
-                        <img src="img/${space.img2}" title="slider 2">
-                    </div>
-                    <div>
-                        <img src="img/${space.img3}" title="slider 3">
-                    </div>
-                    <div>
-                        <img src="img/${space.img4}" title="slider 4">
-                    </div>
-                    <div>
-                        <img src="img/${space.img5}" title="slider 5">
-                    </div>
+                    <div><img src="img/${space.img1}" title="slider 1"></div>
+                    <div><img src="img/${space.img2}" title="slider 2"></div>
+                    <div><img src="img/${space.img3}" title="slider 3"></div>
+                    <div><img src="img/${space.img4}" title="slider 4"></div>
+                    <div><img src="img/${space.img5}" title="slider 5"></div>
                 </div>
             </div>
 
@@ -628,10 +615,10 @@ height: 21px;
                 <p style="margin-right: 20px;">최대 인원수: ${space.capacity} 명</p>
                 <img src="img/wide.png" style="width: 50px; height: 50px; margin-right: 10px;">
                 <p>${space.extent}m²</p>
-                <h3 style="margin-left: auto;">시간당 가격:${space.price }원</h3>
+                <h3 style="margin-left: auto;">시간당 가격: ${space.price}원</h3>
             </div>
 
-            <!-- -@@@@@@@@@@@@@@@@@@@@예약 진행 -->
+            <!-- 예약 진행 -->
             <div class="reservation-window" id="reservationWindow">
                 <h2>예약 진행</h2>
                 <h3>날짜 선택</h3>
@@ -663,22 +650,20 @@ height: 21px;
                             <td class="time-cell">22:00</td>
                         </tr>
                     </table>
-                    <!--  -->
                     <div id="addedSlots"></div>
-                    <!-- 추가버튼을 누르면 들어가는 곳  -->
                 </div>
 
                 <br>
                 <div id="reservationInfo"> 
-                 <!-- 예약일시들어가는곳 -->  
+                    <!-- 예약일시들어가는곳 -->  
                 </div>
                 
                 <div class="price-text" id="totalPrice">총 가격: 0원</div>
-                <!--  로그인했을때 버튼 -->
+                <!-- 로그인했을 때 버튼 -->
                 <c:if test="${not empty sessionScope.userid}">
                     <button id="btnReT">예약 신청하기</button>
                 </c:if>
-                <!-- 로그인안했을때 버튼 -->
+                <!-- 로그인 안했을 때 버튼 -->
                 <c:if test="${empty sessionScope.userid}">
                     <button id="btnReF">예약 신청하기</button>
                 </c:if>
@@ -702,7 +687,7 @@ height: 21px;
                 <script>
                     var container = document.getElementById('map');
                     var options = {
-                        center: new kakao.maps.LatLng(37.511591207849, 127.03299413456), // 지도 중심 좌표
+                        center: new kakao.maps.LatLng(37.511591207849, 127.03299413456), // 지도 중심 좌표 (실제 좌표는 구현하지않음)
                         level: 3
                     };
                     var map = new kakao.maps.Map(container, options);
@@ -711,83 +696,72 @@ height: 21px;
                 <p>전화번호: ${space.mobile}</p>
             </div>
 
-            <!-- -------------------------------------------------------------------- -->
             <!-- 리뷰 영역 -->
             <div id="reviews" style="border-width: 4px;">
                 <h3>리뷰</h3>
-                <!-- 로그인 했을때 동작함 -->
+                <!-- 로그인 했을 때 동작함 -->
                 <c:if test="${not empty sessionScope.userid}">
                     <button id="open-dialog-button">리뷰 작성하기</button>
                 </c:if>
-                <!--  로그인 안했을 떄  동작함 -->
+                <!-- 로그인 안했을 때 동작함 -->
                 <c:if test="${empty sessionScope.userid}">
-                    <button id="not_login" >리뷰 작성하기</button>
+                    <button id="not_login">리뷰 작성하기</button>
                 </c:if>
-		            <div id="dialog-form" title="Write a Review" style="width: 90%; height: 90%;">
-		                <div class="dialog-content" >
-		                    <div class="star-widget">
-		                        <div class="review-header" style="text-align: center" >리뷰 작성하기</div>
-		                        <input type="radio" name="rate" id="rate-5" value="5">
-		                        <label for="rate-5" class="fas fa-star"></label>
-		                        <input type="radio" name="rate" id="rate-4" value="4">
-		                        <label for="rate-4" class="fas fa-star"></label>
-		                        <input type="radio" name="rate" id="rate-3" value="3">
-		                        <label for="rate-3" class="fas fa-star"></label>
-		                        <input type="radio" name="rate" id="rate-2" value="2">
-		                        <label for="rate-2" class="fas fa-star"></label>
-		                        <input type="radio" name="rate" id="rate-1" value="1">
-		                        <label for="rate-1" class="fas fa-star"></label>
-		                    </div>
-		                    <br><br><br>
-		                    <div class="textarea" style="text-align: center;">
-		                        <textarea id="review_content" cols="20" rows="18" placeholder="리뷰를 작성하세요"></textarea>
-		                    </div>
-		                </div>
-		            </div>
-		        
-			
-				<div id="review"></div> <!-- 리뷰 부분 -->
-				<div id="pagination">
-			        <!-- 페이지 번호가 여기에 추가될 것입니다. -->
-			    </div>
-			</div>
+                <div id="dialog-form" title="Write a Review" style="width: 90%; height: 90%;">
+                    <div class="dialog-content" >
+                        <div class="star-widget">
+                            <div class="review-header" style="text-align: center" >리뷰 작성하기</div>
+                            <input type="radio" name="rate" id="rate-5" value="5">
+                            <label for="rate-5" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-4" value="4">
+                            <label for="rate-4" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-3" value="3">
+                            <label for="rate-3" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-2" value="2">
+                            <label for="rate-2" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-1" value="1">
+                            <label for="rate-1" class="fas fa-star"></label>
+                        </div>
+                        <br><br><br>
+                        <div class="textarea" style="text-align: center;">
+                            <textarea id="review_content" cols="20" rows="18" placeholder="리뷰를 작성하세요"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div id="review"></div> <!-- 리뷰 부분 -->
+                <div id="pagination">
+                    <!-- 페이지 번호가 여기에 추가될 것입니다. -->
+                </div>
+            </div>
             
-		<div id="Q&A" style="border-width: 4px; height: auto;">
-			<h3>리뷰</h3>
-            <c:if test="${not empty sessionScope.userid}">
-				<button id="open-qa-dialog-button">Q&A 작성</button>
-            </c:if>
-            <!--  로그인 안했을 떄  동작함 -->
-            <c:if test="${empty sessionScope.userid}">
-                <button id="not_login" >Q&A 작성</button>
-            </c:if>
-		    <!-- Q&A 작성 다이얼로그 폼 -->
-		    <div id="qa-dialog-form" title="Q&A 작성" style="height: auto;">
-		        <form>
-		        	<div class="qa-header" style="text-align: center" >질문 작성하기</div>
-		        	<div class="qa-textarea" style="text-align: center;">
-		        	<textarea id="qa_title" cols="0" rows="10" style= "border: 1px solid #333; " placeholder="제목을 작성하세요"></textarea>
-		        	</div>
-					<div class="qa-textarea" style="text-align: center;">
-					<textarea id="qa_content" cols="20" rows="18" placeholder="질문을 작성하세요"></textarea>
-                   	</div>
-		        </form>
-		    </div>
-		</div>
-		
-		<div id="qa"></div> <!-- q&a 부분  -->
-		<div id="qa_pagination"> <!-- 페이지 번호 부분 -->
-
-		</div>
-        
+            <div id="Q&A" style="border-width: 4px; height: auto;">
+                <h3>Q&A</h3>
+                <c:if test="${not empty sessionScope.userid}">
+                    <button id="open-qa-dialog-button">Q&A 작성</button>
+                </c:if>
+                <!-- 로그인 안했을 때 동작함 -->
+                <c:if test="${empty sessionScope.userid}">
+                    <button id="not_login">Q&A 작성</button>
+                </c:if>
+                <!-- Q&A 작성 다이얼로그 폼 -->
+                <div id="qa-dialog-form" title="Q&A 작성" style="height: auto;">
+                    <form>
+                        <div class="qa-header" style="text-align: center" >질문 작성하기</div>
+                        <div class="qa-textarea" style="text-align: center;">
+                            <textarea id="qa_title" cols="0" rows="10" style= "border: 1px solid #333; " placeholder="제목을 작성하세요"></textarea>
+                        </div>
+                        <div class="qa-textarea" style="text-align: center;">
+                            <textarea id="qa_content" cols="20" rows="18" placeholder="질문을 작성하세요"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="qa"></div> <!-- q&a 부분  -->
+            <div id="qa_pagination"> <!-- 페이지 번호 부분 -->
+            </div>
         </section>
     </main>
-    <footer>
-        <p>Contact us at example@example.com for inquiries.</p>
-        <p>
-            <a href='/board'>1대1 문의하기 </a>
-        </p>
-    </footer>
+    <%@include file="footer.jsp"%>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -1356,7 +1330,17 @@ function qa_updatePagination(totalqa) {
 }
 
 function qa_changePage(page) {
-	qa_currentPage = page;
+    qa_currentPage = page;
+    
+    // 스크롤을 아래로 내리고 QA 창을 보이게 하기 위한 코드
+    const qaElement = $('#qa'); // QA 창 요소를 jQuery로 선택
+    const qaOffset = qaElement.offset().top; // QA 창 요소의 상단 위치
+    
+    // 페이지를 변경할 때 스크롤을 아래로 내리고 QA 창을 보이게 함
+    $('html, body').animate({
+        scrollTop: qaOffset // 상단 위치로 스크롤
+    }, 'slow'); // 부드러운 스크롤 효과 적용 (빠르게 하려면 'fast' 사용 가능)
+    
     qa_get(qa_currentPage);
 }
 
