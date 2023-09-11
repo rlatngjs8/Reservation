@@ -9,7 +9,7 @@
 <style>
 
 .hall{
-
+ font-family: 'HakgyoansimWoojuR';
 	font-size:20px;
 }
 
@@ -25,24 +25,9 @@
 .cboa {
 	font-family: 'HakgyoansimWoojuR';
 	text-decoration : underline;
+	margin-top:10px;
 }
 
-textarea.area {
-  font-family: 'HakgyoansimWoojuR'; /* 원하는 폰트 이름으로 변경 */
-}
-
-.area {
-
-  border: 1px solid black;
-  background-color: white;
-  color: black;
-  line-height: 1.5;
-  resize: none; /* 크기 조절 비활성화 */
-  outline: none; /* 포커스 효과 제거 */
-  
-  width:300px;
-  height:50px;
-}
 
 
 
@@ -82,7 +67,7 @@ font-size: 24px;
 
 
 
-.inp, .hall, .cboa, .hover4{
+.inp,.cboa, .hover4{
  width: 20%;
     height: 48px;
     padding: 0 10px;
@@ -140,6 +125,8 @@ border-radius: 6px;
     
     .cboa2{
     font-family: 'HakgyoansimWoojuR';
+    color:black;
+    margin-top:10px;
     
     }
     
@@ -230,6 +217,7 @@ border-radius: 6px;
 .cboa{
 	font-size : 14px;
 	color:black;
+	
 }    
 
 
@@ -256,10 +244,30 @@ border-radius: 6px;
     font-style: normal;
 }
 
+.movet{
+	margin-top:10px;
+	margin-left:10px;
+}
 
 
+  /* 체크박스를 가로로 정렬하는 스타일 */
+  .check-container {
+    display: flex;
+    flex-direction: row; /* 가로 방향으로 배치 */
+    align-items: center; /* 세로 가운데 정렬 */
+    margin-bottom: 4px; /* 체크박스 컨테이너 간 여백 설정 */
+    width:2000px;
+   margin-left:710px;
+  }
 
+  /* 각 체크박스 요소의 스타일 (여기서는 여백을 추가) */
+  .check {
+    margin-right: 10px; /* 체크박스 간 여백 설정 */
+  }
 
+.movet a {
+	 font-family: 'HakgyoansimWoojuR';
+}
 
 
 
@@ -304,18 +312,30 @@ border-radius: 6px;
 <br>
 <br><br>
 
-<div class="cbox">
-<input type="checkbox" id="check-all" class="check"><a class="hall">홈페이지 이용약관 전체동의</a> 
-<br><br>
-
-<input type="checkbox" id="check1" class="check"><a class="cboa"> [필수] 이용약관 동의 </a> <a href="/service" class="cboa2">&nbsp;&nbsp;<strong>전체보기</strong> </a>
-<br>
-
-<input type="checkbox" id="check2" class="check"><a class="cboa"> [필수] 개인정보 수집 및 이용 동의 </a> <a href="/personal" class="cboa2">&nbsp;&nbsp;<strong>전체보기</strong></a>
-<br>
-
-<input type="checkbox" id="check3" class="check"><a class="cboa"> [필수] 14세 이상 회원 확인 </a>
+<div class="check-container">
+  <input type="checkbox" id="check-all" class="check">
+  <a class="hall">홈페이지 이용약관 전체동의</a>
 </div>
+
+<div class="check-container">
+  <input type="checkbox" id="check1" class="check">
+  <div class="movet"><a>[필수] 이용약관 동의</a></div>
+  <a href="/service" class="cboa2">&nbsp;&nbsp;<strong>전체보기</strong></a>
+</div>
+
+<div class="check-container">
+  <input type="checkbox" id="check2" class="check">
+  <div class="movet"><a>[필수] 개인정보 수집 및 이용 동의</a></div>
+  <a href="/personal" class="cboa2">&nbsp;&nbsp;<strong>전체보기</strong></a>
+</div>
+
+<div class="check-container">
+  <input type="checkbox" id="check3" class="check">
+  <div class="movet">
+ <a>[필수] 14세 이상 회원 확인</a>
+  </div>
+</div>
+
 
 <div>
 	<br><br>
