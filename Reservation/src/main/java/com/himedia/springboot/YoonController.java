@@ -254,8 +254,8 @@ public class YoonController {
         Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String purchaseTime = dateFormat.format(currentDate);
-
 		int totalPrice = Integer.parseInt(req.getParameter("total_price"));
+		
 		String email = req.getParameter("email");
 		String name = req.getParameter("name");
 		String space_name = req.getParameter("space_name");
@@ -267,12 +267,22 @@ public class YoonController {
 		model.addAttribute("purchaseTime", purchaseTime);
 		resdao.re_insert (useday, startTime, endTime, totalPrice, userid, space_name, purchaseTime );
 
-//		HttpSession session= req.getSession();
-//		String userid = (String) session.getAttribute("userid");
-//		String purchaseTime = req.getParameter("purchaseTime"); 
-//      System.out.println("Time " + purchaseTime);
-//		ArrayList<ReservationDTO> alReser = resdao.payCom(purchaseTime, userid);
-//		model.addAttribute("pay", alReser);
+		//HttpSession session= req.getSession();
+		//String userid = (String) session.getAttribute("userid");
+		//String purchaseTime = req.getParameter("purchaseTime"); 
+      //System.out.println("Time " + purchaseTime);
+		ArrayList<ReservationDTO> alReser = resdao.payCom(totalPrice, userid);
+		if (!alReser.isEmpty()) {
+		    // 리스트가 비어있지 않으면 값이 들어왔음을 확인할 수 있습니다.
+		    // 예를 들어, 리스트 크기 출력
+		    System.out.println("예약 정보 개수: " + alReser.size()); //size 1개 잘나옴
+		} else {
+		    // 리스트가 비어있을 때의 처리
+		    System.out.println("예약 정보가 없습니다.");
+		}
+
+		model.addAttribute("pay", alReser);
+		
 		return "";
 //        
 	

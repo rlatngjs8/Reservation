@@ -16,8 +16,13 @@
 	select * from re_info where userid=#{userid} order by purchaseTime desc
 </select>
 <select id="payCom" resultType="com.himedia.springboot.ReservationDTO"> <!-- 결제완료부분 -->
-	select a.seqno, b.userid, b.name, b.mobile, c.space_name, a.useday, a.startTime, a.endTime, a.totalPrice, a.purchaseTime
-		from re_info a inner join members b on a.userid = b.userid inner join spaces c on a.space_name = c.space_name where a.purchaseTime=#{param1} and a.userid=#{param2}
+	SELECT a.seqno, b.userid, b.name, b.mobile, c.space_name, a.useday, a.startTime, a.endTime, a.totalPrice, a.purchaseTime
+	FROM re_info a
+	INNER JOIN members b ON a.userid = b.userid
+	INNER JOIN spaces c ON a.space_name = c.space_name
+	WHERE a.totalPrice = #{param1} AND a.userid = #{param2}
+	ORDER BY a.purchaseTime DESC
+	LIMIT 1;
 </select>
 <select id="sales" resultType="com.himedia.springboot.ReservationDTO">
     SELECT seqno, purchaseTime, totalPrice FROM re_info WHERE purchaseTime BETWEEN #{param1} AND #{param2} ORDER BY purchaseTime DESC

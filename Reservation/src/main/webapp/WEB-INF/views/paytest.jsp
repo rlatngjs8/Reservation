@@ -312,6 +312,7 @@
         type: 'post',
         data: reData,
         success: function (data) {
+        	console.log(data);
             if (data === '0') {
                 console.error("예약 실패:", data);                        		
             } else {
@@ -372,6 +373,8 @@
                     startTime = data[i]['start_time'];
                     endTime = data[i]['end_time'];
                     userid = data[i]['userid'];
+                    console.log(startTime);
+                    
                     
                     
                     console.log(email);

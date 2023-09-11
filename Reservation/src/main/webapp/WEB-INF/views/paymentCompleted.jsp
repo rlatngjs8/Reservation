@@ -50,6 +50,7 @@ span {
 </style>
 <body>
 <input type="hidden" name="userid" id="userid" value="${userid}">
+<input type="hidden" name="total_price" id="total_price" value="">
 <input type="hidden" name="purchaseTime" id="purchaseTime" value="${purchaseTime}">
     <div class="reservation-container">
     <c:forEach items="${pay}" var="pay">
@@ -70,41 +71,56 @@ span {
 <script>
 
 $(document).ready(function () {
-    var userid = $("#userid").val();
-    var purchaseTime = $("#purchaseTime").val();
-
-    console.log("userid:", userid);
-    console.log("purchaseTime:", purchaseTime);
-});
-
-//현재 URL 가져오기
-var currentUrl = window.location.href;
-
-// URL을 파싱하여 매개변수를 객체로 추출하는 함수 정의
-function parseUrlParams(url) {
-    var params = {};
-    var urlParts = url.split("?");
-    if (urlParts.length > 1) {
-        var queryString = urlParts[1];
-        var paramPairs = queryString.split("&");
-        for (var i = 0; i < paramPairs.length; i++) {
-            var paramPair = paramPairs[i].split("=");
-            if (paramPair.length === 2) {
-                var paramName = decodeURIComponent(paramPair[0]);
-                var paramValue = decodeURIComponent(paramPair[1]);
-                params[paramName] = paramValue;
+	
+    function parseUrlParams(url) {
+        var params = {};
+        var urlParts = url.split("?");
+        if (urlParts.length > 1) {
+            var queryString = urlParts[1];
+            var paramPairs = queryString.split("&");
+            for (var i = 0; i < paramPairs.length; i++) {
+                var paramPair = paramPairs[i].split("=");
+                if (paramPair.length === 2) {
+                    var paramName = decodeURIComponent(paramPair[0]);
+                    var paramValue = decodeURIComponent(paramPair[1]);
+                    params[paramName] = paramValue;
+                }
             }
         }
+        return params;
     }
-    return params;
-}
+    
+  //현재 URL 가져오기
+    var currentUrl = window.location.href;
 
-// URL에서 amount 매개변수 추출
-var urlParams = parseUrlParams(currentUrl);
-var amountValue = urlParams["amount"];
+    // URL을 파싱하여 매개변수를 객체로 추출하는 함수 정의
 
-// amount 값을 사용하려면 변수 amountValue를 사용합니다.
-console.log("amount 값:", amountValue);
+
+    // URL에서 amount 매개변수 추출
+    var urlParams = parseUrlParams(currentUrl);
+    var amountValue = urlParams["amount"];
+
+    //total_price_input의 값을 amountValue로 설정합니다.
+    var amountValue = urlParams["amount"]; // 여기서 urlParams는 어떻게 정의되었는지에 따라 다를 수 있습니다.
+    $("#total_price").val(amountValue);
+
+    // amount 값을 사용하려면 변수 amountValue를 사용합니다.
+    console.log("amount 값:", amountValue);
+
+    
+    var userid = $("#userid").val();
+    var purchaseTime = $("#purchaseTime").val();
+    var total_price_value = $("#total_price").val();
+    console.log("userid:", userid);
+    console.log("total_price 값: " + total_price_value);
+    console.log("amount 값:", amountValue);
+    
+
+
+
+    
+});
+
 
 
 </script>
