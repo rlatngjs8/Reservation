@@ -341,13 +341,13 @@ public class KimController {
 	 }
 	 
 	@GetMapping("/paymentCompleted")
-	public String payCom(HttpServletRequest req, Model model) {
+	public String payCom() {
+		
 //			HttpSession session= req.getSession();
 //			String userid = req.getParameter("userid");
 //			String totalPrice = req.getParameter("total_price");
 //			ArrayList<ReservationDTO> alReser = redao.payCom(totalPrice, userid);
 //			model.addAttribute("pay", alReser);
-
 			return "paymentCompleted";
 	}
 	
