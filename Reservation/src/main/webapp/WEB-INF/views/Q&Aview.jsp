@@ -414,6 +414,7 @@
                 console.error("답글 추가 오류:", error);
             }
         });
+        window.location.href = "/Q&Aview?seqno=" + $('#seqno').val();
     });
 </script>
 </html>

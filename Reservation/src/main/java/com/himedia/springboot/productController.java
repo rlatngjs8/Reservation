@@ -226,8 +226,9 @@ public class productController {
 	@GetMapping("/space")
 	public String space(HttpServletRequest req, Model model) {
 		HttpSession session= req.getSession();
-		
+				 System.out.println("space_id=="+req.getParameter("space_id"));
 	    int space_id = Integer.parseInt(req.getParameter("space_id"));
+	    System.out.println("space_id="+space_id);
 	    productDTO pdto = pdao.get_one_space(space_id);
 	    model.addAttribute("space", pdto);
 	    String userid = (String) session.getAttribute("userid");

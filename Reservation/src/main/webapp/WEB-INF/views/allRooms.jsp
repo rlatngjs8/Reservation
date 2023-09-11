@@ -83,6 +83,9 @@
 font-size : 13px;
 }
 
+.all{
+	font-size: 23px;
+}
 
 </style>
 </head>
@@ -92,15 +95,18 @@ font-size : 13px;
 <%@include file="header.jsp" %>
 <h1 class="title">전체보기</h1>
 <br>
-<div class="cate">
+<div class="cate">		
     <a href="#" class="froom" data-category="party">파티룸</a>&nbsp;&nbsp;&nbsp;
     <a href="#" class="sroom" data-category="conference">세미나/회의실</a>&nbsp;&nbsp;&nbsp;
     <a href="#" class="troom" data-category="study" >강의실/스터디룸</a>&nbsp;&nbsp;&nbsp;
     <a href="#" class="foroom" data-category="studio" >스튜디오/방송</a>&nbsp;&nbsp;&nbsp;
     <a href="#" class="foroom" data-category="practice" >연습실</a>
 </div>
-
 <br><br>
+<div class="all">
+	<a href="allRooms">[전체목록보기]</a>
+</div>
+<br><br><hr style="width: 70%"/><br><br>
 <div class="second">
     <c:forEach items="${rooms}" var="prod" varStatus="outerLoop">
         <div class="card" id="card1_${outerLoop.index}" data-space_id="${prod.space_id}" onclick="window.location.href='/space?space_id=${prod.space_id}'">
@@ -131,8 +137,7 @@ font-size : 13px;
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
-//카테고리를 클릭할 때 Ajax를 사용하여 해당 카테고리에 해당하는 상품들을 불러옵니다.
-     $(document).ready(function() {
+$(document).ready(function() {
     // 쿼리 매개변수를 파싱하여 선택된 카테고리를 확인합니다.
     const urlParams = new URLSearchParams(window.location.search);
     const selectedCategory = urlParams.get("category");
@@ -156,6 +161,7 @@ font-size : 13px;
         // 해당 카테고리의 효과를 활성화합니다.
         activateCategory(category);
 
+        // 모든 카테고리의 효과 제거
         $(".cate a").css("text-decoration", "none");
 
         $(this).css({
@@ -164,60 +170,59 @@ font-size : 13px;
         });
     });
 
-    // card2 클릭 이벤트 핸들러를 추가합니다.
-    $(".card[id^='card2']").click(function(e) {
+    // "전체" 링크 클릭 이벤트 핸들러
+    $(".aroom").click(function(e) {
         e.preventDefault();
 
-        // 해당 카드의 space_id 값을 가져와서 해당 페이지로 이동
-        const spaceId = $(this).data("space_id");
-       	console.log(spaceID);
+        // 모든 카드를 표시
+        $(".card").css("display", "block");
+
+        // 모든 카테고리의 효과 제거
+        $(".cate a").css("text-decoration", "none");
     });
 });
 
-    function activateCategory(category) {
-        // Ajax를 사용하여 해당 카테고리에 대한 내용을 로드합니다.
-        $.ajax({
-            type: "post",
-            url: "/categoryRooms", // 카테고리 별로 필터링하는 서버 엔드포인트를 설정해야 합니다.
-            data: {category: category},
-            dataType: 'json',
-            success: function(data) {
-                // 서버에서 받아온 데이터로 카드를 업데이트합니다.
-                console.log(data);
-                
-                if (category === "") {
-                    // 카테고리가 없으면 모든 카드 표시
-                    $(".card").css("display", "block");
-                } else {
-                    // 카테고리가 있으면 모든 카드 숨김
-                    $(".card").css("display", "none");
-                    for (let k = 0; k < data.length; k++) {
-                    		let spaceID = data[k].space_id;
-                    		console.log("space_id"+spaceID);
-                        let cardHtml = "<a href='#' class='fimg'><img src='img/" + data[k]['img1'] + "' alt='이미지 6'></a>" + "<br>" +
-                            "<a class='demo'>" + data[k]['space_name'] + "</a>" +
-                            "<br>" +
-                            "<a class='demo1'>" + data[k]['location'] + "</a>" +
-                            "<input type='hidden' id='space_id' name='space_id' value='" + spaceID + "'>" +
-                            "<br>" +
-                            "<br>"+
-                            "<a class='demo12'>" +"<strong>"+data[k]['price']+"</strong>" + "원/시간</a>";
-                        $("#card2_" + k).attr("data-space_id", spaceID);
-                        $("#card2_" + k).attr("onclick", "window.location.href='/space?space_id=" + spaceID + "'");
-                        
-                        $("#card2_" + k).html(cardHtml);
-                        $("#card2_" + k).css("display", "block");
-                        $("#card1_" + k).css("display", "none");
-                    }
-                }
-            },
-            error: function() {
-                alert("데이터를 불러오는 동안 오류가 발생했습니다.");
-            }
-        });
-    }
-	
+function activateCategory(category) {
+    // Ajax를 사용하여 해당 카테고리에 대한 내용을 로드합니다.
+    $.ajax({
+        type: "post",
+        url: "/categoryRooms", // 카테고리 별로 필터링하는 서버 엔드포인트를 설정해야 합니다.
+        data: {category: category},
+        dataType: 'json',
+        success: function(data) {
+            // 서버에서 받아온 데이터로 카드를 업데이트합니다.
+            console.log(data);
 
-	
+            if (category === "") {
+                // 카테고리가 없으면 모든 카드 표시
+                $(".card").css("display", "block");
+            } else {
+                // 카테고리가 있으면 모든 카드 숨김
+                $(".card").css("display", "none");
+                for (let k = 0; k < data.length; k++) {
+                    let spaceID = data[k].space_id;
+                    console.log("space_id" + spaceID);
+                    let cardHtml = "<a href='#' class='fimg'><img src='img/" + data[k]['img1'] + "' alt='이미지 6'></a>" + "<br>" +
+                        "<a class='demo'>" + data[k]['space_name'] + "</a>" +
+                        "<br>" +
+                        "<a class='demo1'>" + data[k]['location'] + "</a>" +
+                        "<input type='hidden' id='space_id' name='space_id' value='" + spaceID + "'>" +
+                        "<br>" +
+                        "<br>" +
+                        "<a class='demo12'>" + "<strong>" + data[k]['price'] + "</strong>" + "원/시간</a>";
+                    $("#card2_" + k).attr("data-space_id", spaceID);
+                    $("#card2_" + k).attr("onclick", "window.location.href='/space?space_id=" + spaceID + "'");
+
+                    $("#card2_" + k).html(cardHtml);
+                    $("#card2_" + k).css("display", "block");
+                    $("#card1_" + k).css("display", "none");
+                }
+            }
+        },
+        error: function() {
+            alert("데이터를 불러오는 동안 오류가 발생했습니다.");
+        }
+    });
+}
 </script>
 </html>

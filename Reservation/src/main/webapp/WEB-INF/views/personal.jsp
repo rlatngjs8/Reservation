@@ -15,20 +15,21 @@
             word-wrap: break-word;
             white-space: pre-line;
             width: 50%;
-            margin: 70px auto 0; /* 20px 천장에서 떨어지게 설정 */
+            margin: 120px auto 0; /* 20px 천장에서 떨어지게 설정 */
             padding: 20px;
             border: 1px solid #ccc;
             background-color: #f9f9f9;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
-        h3 {
+        h2 {
             text-align: center;
             color: #333;
         }
     </style>
 </head>
 <body>
+<%@include file="header.jsp" %>
     <div>
         <div class="container">
         <h3>개인정보 처리방침</h3>
@@ -36,5 +37,7 @@
             <c:out value="${personal.personal_information}" />
         </div>
     </div>
+    <br><br><br><br><br>
+<%@include file="footer.jsp" %>
 </body>
 </html>

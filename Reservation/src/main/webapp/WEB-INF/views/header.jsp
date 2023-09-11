@@ -467,65 +467,55 @@ font-family: 'HakgyoansimWoojuR';
 
 <!-- 로그인 하지 않은 상태로 다른 페이지로 이동시, userid에 빈 문자열이 들어가서 수정했습니다. -->
 
-
-
-
-
-
-
 </div>
-
-
-
 <div onclick="history.back();" class="page_cover"></div>
-
-
-
 <div id="menu">
     <ul class="nav">
         <li>
+           <c:choose>
            
-               
-                        <c:choose>
-                        
-                            <c:when test="${empty userid}">
-                             <!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
-                             <div class="pright">
-                             <button id="btnLogin" class="button12">로그인</button>
-                             <button id="btnSignup" class="button12" >회원가입</button>
-                             </div>                         
-                            </c:when>
-                            <c:otherwise>
-                            <div class="welcome1">
-                                <a><span class="name">${name}</span> 님 환영합니다</a>
-                       			
-                                <button id="btnLogout" class="button1">로그아웃</button>
-                                 </div>
-                                 
-                                <li>
-                            	<div class="welcome23">
-                                <a href='/myPage' style="color:black;" class="mine" font-family ='HakgyoansimWoojuR'>마이페이지</a>
-                                </div>
-                                </li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
-                                
-                            </c:otherwise>
-                        </c:choose>
+               <c:when test="${empty userid}">
+                <!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
+                <div class="pright">
+                <button id="btnLogin" class="button12">로그인</button>
+                <button id="btnSignup" class="button12" >회원가입</button>
+                </div>                         
+               </c:when>
+               <c:otherwise>
+               <div class="welcome1">
+                   <a><span class="name">${name}</span> 님 환영합니다</a>
+          			
+                   <button id="btnLogout" class="button1">로그아웃</button>
+                    </div>
+                    
+                   <li>
+               	<div class="welcome23">
+                   <a href='/myPage' style="color:black;" class="mine" font-family ='HakgyoansimWoojuR'>마이페이지</a>
+                   </div>
+                   </li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
                    
-                
-           
+               </c:otherwise>
+           </c:choose>
         </li>
-
-	
    <div class="welcome">
    <!-- 1대1문의 로그인이 안되어있으면 로그인창으로,로그인되어있으면 myWrite -->
-   
-
 		
-  <li><a href="/myWrite" style="color: black" id="one">1:1문의</a></li>
+ 	<li>
+  	<c:choose>
+       <c:when test="${empty userid}">
+           <!-- 로그인이 안되어 있으면 /login 페이지로 이동 -->
+           <a href="/login" style="color: black">1:1문의</a>
+       </c:when>
+       <c:otherwise>
+           <!-- 로그인이 되어 있으면 /myWrite 페이지로 이동 -->
+           <a href="/myWrite" style="color: black" id="one">1:1문의</a>
+       </c:otherwise>
+   	</c:choose>
+	</li>
 
    <li><a href="/FAQ"  style="color: black">자주묻는질문</a></li>
 
-   <li><a href="/#" style="color: black">공지사항</a></li>
+<!--    <li><a href="/#" style="color: black">공지사항</a></li> -->
    
   
 	</div>    
@@ -539,7 +529,9 @@ font-family: 'HakgyoansimWoojuR';
       </c:when>
       
       <c:when test="${userid =='xaexal'}">
+      <div class="welcome3">
       <li><a href="/manager">관리자페이지</a></li>
+      </div>
       </c:when>
       
    		<c:when test="${userid =='hwan'}">
@@ -558,8 +550,6 @@ font-family: 'HakgyoansimWoojuR';
      
     <li><a style="color:black;  font-family: 'HakgyoansimWoojuR';">더보기</a>
 	    <ul class="sub_mobile">
-	    <!-- 리뷰삭제. 연결할만한 곳이 없어요 -->
-	
 		
 		    <li><a href="event" style="color:black;">이벤트</a></li>
 		
@@ -590,45 +580,27 @@ $(document).on('click','#btnLogin',function(){
     window.location.href = "/signup";
  })
 
-
- 
- 
-
-
-
-
-
-
 $(document).ready(function() {
-	
 	console.log(${empty userid});
-	
 	var a = "${empty userid}";
 	console.log(a);
 	
-	
-	  $("#one").click(function(e) {
+$("#one").click(function(e) {
 		    // userid가 비어 있는 경우
 		    if (!a) {
 		      e.preventDefault(); 
 		      alert("로그인이 필요한 기능입니다.");
+		      window.location.href = "/login";
 		    } 
-		  });
-	
-	
-	
-	
-	
+		});
   var menuOpen = false; 
 
 
   $(".headerbtn").click(function() {
     if (!menuOpen) {
-     
       $("#menu,.page_cover,html").addClass("open");
       window.location.hash = "#open";
     } else {
-    
       $("#menu,.page_cover,html").removeClass("open");
       window.location.hash = "";
     }
@@ -658,10 +630,9 @@ $(document).ready(function() {
 
 
 $("#menu ul.nav li").click(function(){
-$("ul",this).slideToggle("fast");
-})
+		$("ul",this).slideToggle("fast");
+});
 
-;
 
 
 

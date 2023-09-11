@@ -580,6 +580,9 @@ height: 21px;
     background-color: #333; /* 검정색으로 변환 */
     color: #fff; /* 흰색 텍스트 유지 */
 }
+.qa{
+	cursor: pointer;
+}
 
 
 </style>
@@ -1282,11 +1285,31 @@ $(document).ready(function () {
 let qa_currentPage = 1; // 현재 페이지 번호
 const qa_PerPage = 3; // 한 페이지당 리뷰 갯수
 
-function qa_get(page) { //질문 불러오기
+//Q&A div 클릭 이벤트 핸들러
+$("#qa").on("click", ".qa", function() {
+    // 현재 로그인한 사용자 아이디
+    const currentUserID = "${sessionScope.userid}"; // 여기에 현재 세션에 저장된 사용자 아이디를 가져오는 코드를 넣으세요
+
+    // 클릭한 Q&A의 작성자 아이디
+    const writerID = $(this).find("#writer").val(); // 이 부분을 작성자 아이디를 가져오는 방식으로 변경하세요
+    console.log("writer="+writer);
+
+    // 작성자와 현재 사용자 아이디를 비교
+    if (currentUserID === writerID) {
+        // 작성자와 현재 사용자 아이디가 일치하는 경우 페이지 이동
+        const seqno = $(this).find("#seqno").val(); // seqno 값을 가져오는 방식으로 변경하세요
+        console.log("seqno="+seqno);
+        window.location.href = "Q&Aview?seqno=" + seqno; // 페이지 이동 URL을 수정하세요
+    } else {
+        // 작성자와 현재 사용자 아이디가 일치하지 않는 경우 경고 메시지 표시
+        alert("작성자만 상세문의내용 조회가 가능합니다.");
+    }
+});
+
+// Q&A 불러오기 함수
+function qa_get(page) {
     console.log('qa 불러옴');
     const space_id = $('#space_id').val();
- //   const currentPage = $('#currentPage').val(); // 현재 페이지 정보를 가져옴
-   // const itemsPerPage = $('#itemsPerPage').val(); // 페이지당 아이템 수 정보를 가져옴
     $.ajax({
         url: '/qa_get',
         data: {
@@ -1295,20 +1318,22 @@ function qa_get(page) { //질문 불러오기
         },
         type: 'post',
         dataType: 'json',
-        success: function (data) {
-            console.log('리뷰 데이터 불러오기',data);
+        success: function(data) {
+            console.log('리뷰 데이터 불러오기', data);
             $("#qa").empty();
             for (let i = (page - 1) * qa_PerPage; i < page * qa_PerPage && i < data.length; i++) {
                 let qa =
                     "<div class='qa'>" +
                     "<h4>작성자: " + data[i]['writer'] + "</h4>" +
+                    "<input type='hidden' id='writer' name='writer' value='" + data[i]['writer'] + "'>" +
+                    "<input type='hidden' id='seqno' name='seqno' value='" + data[i]['seqno'] + "'>" +
                     "<p>제목 " + data[i]['title'] + "</p>" + // 수정된 부분
                     "<p>리뷰 내용: " + data[i]['content'] + "</p>" +
                     "<p>작성일: " + data[i]['created'] + "</p>" +
                     "</div>";
                 $('#qa').append(qa);
             }
-            
+
             qa_updatePagination(data.length);
         }
     });

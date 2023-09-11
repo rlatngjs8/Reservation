@@ -425,7 +425,7 @@ h3 {
 			</div>
 		</div>
 	</div>
-	<hr />
+	<hr style="width: 70%" />
 	<div>
 		<br> <br> <br> <br> <br>
 		<a href="/newrooms"><h3 class="newleft">새로 등록했어요</h3></a>

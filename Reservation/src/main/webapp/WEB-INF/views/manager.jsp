@@ -16,11 +16,7 @@
         border-radius: 5px;
         padding: 20px;
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-        
-        
     }
-    
-    
     @font-face {
     font-family: 'KOTRA_BOLD-Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff') format('woff');
@@ -56,9 +52,8 @@
 .foradh1  h1 {
   	margin-top: 60px;
   	font-family: 'TmonMonsori';
-	font-size : 300%;
+		font-size : 300%;
   }
-  
   
 .prev {
 	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
@@ -96,11 +91,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
-button {
-
-}
- 
   
   
 </style>

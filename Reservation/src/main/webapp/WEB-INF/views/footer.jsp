@@ -144,17 +144,17 @@ li,span,p,a {
   <!-- menu1 이라는 class name을 menu로 변경 -->
     <ul class="menu">
       <li><a href="/personal">개인정보처리방침</a></li>
-      <li><a href="javascript:void(0)">영상정보처리기기 운영관리 방침</a></li>
-      <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>
-      <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
+      <li><a href="#">영상정보처리기기 운영관리 방침</a></li>
+      <li><a href="#">홈페이지 이용약관</a></li>
+      <li><a href="#">위치정보 이용약관</a></li>
       <li><a href="/service">이용약관</a></li>
-      <li><a href="javascript:void(0)">핫라인</a></li>
+      <li><a href="#">핫라인</a></li>
     </ul>
 
     <div class="btn-group">
-      <a href="javascript:void(0)" class="btn btn--white">찾아오시는 길</a>
-      <a href="javascript:void(0)" class="btn btn--white">신규입점제의</a>
-      <a href="javascript:void(0)" class="btn btn--white">사이트 맵</a>
+      <a href="#" class="btn btn--white">찾아오시는 길</a>
+      <a href="#" class="btn btn--white">신규입점제의</a>
+      <a href="#" class="btn btn--white">사이트 맵</a>
     </div>
     
     <div class="info">

@@ -136,16 +136,15 @@
 				    margin-left: 60px;
 				}
 				.data{
-					font-size: 25px; 
-					font-family: 'HakgyoansimWoojuR';
-					text-decoration: underline;
+					font-size: 23px; 
+					font-family: 'TheJamsil5Bold';
 					font-weight: bold;
+					text-decoration: underline;
 				}
-				.p3{
+				.p3, .q3{
 					font-size: 20px;
-				}
-				.q3{
-					font-size: 20px;
+			    font-family: 'HakgyoansimWoojuR';
+			    font-weight: bold;
 				}
 				
 				.btnSubmit,.btnsignup {
@@ -184,7 +183,7 @@
     font-style: normal;
 }
 
-.hover4{
+.hover4,.hover5{
 	position:relative;
 	left:200px;
 	font-family: 'TheJamsil5Bold';
@@ -408,7 +407,7 @@
                     $('#p1').hide();
                     $('#p2').hide();
                     i = "<span class='p3'>회원님의 아이디는 </span><span class='data'>" + data + "</span><span class='p3'> 입니다</span><br>" +
-                        "<button type='button' id='rollbackID1' class='hover5'>닫기</button>";
+                        "<br><button type='button' id='rollbackID1' class='hover5'>닫기</button>";
                     console.log(i);
                     $("#serchID").append(i);
                     $('#rollbackID1').click(function () {
@@ -445,8 +444,8 @@
                     $('#serchPW').empty();
                     $('#q1').hide();
                     $('#q2').hide();
-                    j = "<span class='q3'>회원님의 비밀번호는 </span><span class='data'>" + data + "</span><span class=q3'> 입니다</span><br>" +
-                        "<button type='button' id='rollbackPW1' class='hover5'>닫기</button>";
+                    j = "<span class='q3'>회원님의 비밀번호는 </span><span class='data'>" + data + "</span><span class=q3> 입니다</span><br>" +
+                        "<br><button type='button' id='rollbackPW1' class='hover5'>닫기</button>";
                     console.log(j);
                     $('#serchPW').append(j);
                     $('#rollbackPW1').click(function () {

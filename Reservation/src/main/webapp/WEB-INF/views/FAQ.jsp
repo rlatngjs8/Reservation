@@ -20,6 +20,9 @@ body {
     color: white;
     padding: 20px 0;
     text-align: center;
+    width: 44.4%;
+    margin-left: 27.8%;
+    border-radius: 5px;
 }
 
 h1 {
@@ -27,7 +30,7 @@ h1 {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 42.2%;
     margin: 0 auto;
     padding: 20px;
     background-color: white;
@@ -68,12 +71,12 @@ font-family: 'SUITE-Regular';
 }
 
 .toggle-button::before {
-    content: "▼";
+    content: "▶";
     margin-right: 5px;
 }
 
 .open .toggle-button::before {
-    content: "▲";
+    content: "▼";
 }
 
 @font-face {

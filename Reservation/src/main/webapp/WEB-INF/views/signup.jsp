@@ -308,32 +308,19 @@ border-radius: 6px;
 <input type="checkbox" id="check-all" class="check"><a class="hall">홈페이지 이용약관 전체동의</a> 
 <br><br>
 
-<input type="checkbox" id="check" class="check"><a class="cboa"> [필수] 이용약관 동의 </a> <a href="/service" class="cboa2">&nbsp;&nbsp;<strong>전체보기</strong> </a>
+<input type="checkbox" id="check1" class="check"><a class="cboa"> [필수] 이용약관 동의 </a> <a href="/service" class="cboa2">&nbsp;&nbsp;<strong>전체보기</strong> </a>
 <br>
 
-<input type="checkbox" id="check" class="check"><a class="cboa"> [필수] 개인정보 수집 및 이용 동의 </a> <a href="/personal" class="cboa2">&nbsp;&nbsp;<strong>전체보기</strong></a>
+<input type="checkbox" id="check2" class="check"><a class="cboa"> [필수] 개인정보 수집 및 이용 동의 </a> <a href="/personal" class="cboa2">&nbsp;&nbsp;<strong>전체보기</strong></a>
 <br>
 
-<input type="checkbox" id="check" class="check"><a class="cboa"> [필수] 14세 이상 회원 확인 </a> <a href="#" class="cboa2">&nbsp;&nbsp;<strong>전체보기</strong></a>
+<input type="checkbox" id="check3" class="check"><a class="cboa"> [필수] 14세 이상 회원 확인 </a>
 </div>
 
-
-
-<!-- 전체동의 -->
-<!--[필수]이용약관 동의      전체보기(링크) -->
-<!-- 쪼그만한 박스드래그해서 이용약관 쪼로록 나오고 -->
-<!-- [필수] 개인정보 수집 및 이용 동의       전체보기(링크) -->
-<!-- 쪼그만한 박스드래그해서 이용약관 쪼로록 나오고 -->
-
-<!-- 여기에 숨어있다가 입력안한거 있으면 입력하라고 빨간글씨. 그러고 입력안한칸 라벨이 빨간글씨로 변하게 -->
-
 <div>
-	<!-- 취소는 하얀색, 완료는 검은색?	 -->
-	
-	
 	<br><br>
 	<button id="home" class="hover5">취소</button>
-	<input type="submit" value="완료" class="hover4">&nbsp;
+	<input type="submit" id="btnSubmit" value="완료" class="hover4">&nbsp;
 	</div>
 	
 	
@@ -352,80 +339,93 @@ border-radius: 6px;
 
 <script src='http://code.jquery.com/jquery-Latest.js'></script>
 <script>
- $(document)
- .on('click','#home',function(){
-	 window.location.href="/";
-	 return false;
- })
- 
- .on('click','#check-all',function(){
-	 
-	 $('.check').prop('checked', this.checked);
- })
- 
- .on('click','#check',function(){
-	  if($('.check:checked').length == $('.check').length){
-		  $('#check-all').prop('checked', true);
+$(document).ready(function() {
+	  $('#check1, #check2, #check3').on('click', function() {
+	    if ($('#check1:checked').length == 1 && $('#check2:checked').length == 1 && $('#check3:checked').length == 1) {
+	      $('#check-all').prop('checked', true);
 	    } else {
 	      $('#check-all').prop('checked', false);
 	    }
-	 
- })
- 
- 
- 
- 
- .on('submit','#frmMember',function(){
-	 if ($('#passcode').val() !== $('#passcode1').val()) {
-		alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
- 		return false;
-	} else if($('#userid').val()==''){
-		alert('아이디를 입력하세요.');
- 		return false;
- 	} else if($('#passcode').val()=='' || $('#passcode1').val() == ''){
-		alert('비밀번호를 입력하세요.');
- 		return false;
- 	}
- 	if($('#name').val()=='') {
- 		alert('실명을 입력하세요.');
- 		return false;
- 	}
- 	if($('#birthday').val()=='') {
- 		alert('생년월일을 선택하세요.');
- 		return false;
- 	}
- 	if($('#address').val() == ''){
- 		alert('주소를 입력하세요.');
- 		return false;
- 	}
- 	if($('#email').val() == ''){
- 		alert('이메일을 입력하세요.');
- 		return false;
- 	}
- 	if($('#mobile').val()=='') {
- 		alert('모바일번호를 입력하세요.');
- 		return false;
- 	}
- 	$.ajax({
- 		url:'/dosignup',
- 		data:{
- 			userid:$('#userid').val(),
- 			passcode:$('#passcode').val(),
- 			name:$('#name').val(),
- 			birthday:$('#birthday').val(), 
- 			address:$('#address').val(),
-			email:$('#email').val(),
- 			mobile:$('#mobile').val()
- 		},
- 		type:'post',
- 		dataType:'text',
- 			success: function(data){
- 				alert('가입이 완료되었습니다');
- 				window.location.href = '/login';
- 		}
- 	})
- 	return false;
- })
+	  });
+	});
+$(document)
+.on('click', '#home', function () {
+  window.location.href = "/";
+  return false;
+})
+
+.on('click', '#check-all', function () {
+  $('.check').prop('checked', this.checked);
+})
+
+
+.on('click', '.check', function () {
+  if ($('.check:checked').length == $('.check').length) {
+    $('#check-all').prop('checked', true);
+  } else {
+    $('#check-all').prop('checked', false);
+  }
+})
+
+.on('submit', '#frmMember', function () {
+  if ($('#passcode').val() !== $('#passcode1').val()) {
+    alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+    return false;
+  } else if ($('#userid').val() == '') {
+    alert('아이디를 입력하세요.');
+    return false;
+  } else if ($('#passcode').val() == '' || $('#passcode1').val() == '') {
+    alert('비밀번호를 입력하세요.');
+    return false;
+  }
+  if ($('#name').val() == '') {
+    alert('실명을 입력하세요.');
+    return false;
+  }
+  if ($('#birthday').val() == '') {
+    alert('생년월일을 선택하세요.');
+    return false;
+  }
+  if ($('#address').val() == '') {
+    alert('주소를 입력하세요.');
+    return false;
+  }
+  if ($('#email').val() == '') {
+    alert('이메일을 입력하세요.');
+    return false;
+  }
+  if ($('#mobile').val() == '') {
+    alert('모바일번호를 입력하세요.');
+    return false;
+  }
+  if ($('#check1:checked').length == 0 || $('#check2:checked').length == 0 || $('#check3:checked').length == 0) {
+    alert('모든 이용약관에 동의해야 가입이 가능합니다.');
+    return false; // 폼 제출을 막음
+  }
+  $.ajax({
+    url: '/dosignup',
+    data: {
+      userid: $('#userid').val(),
+      passcode: $('#passcode').val(),
+      name: $('#name').val(),
+      birthday: $('#birthday').val(),
+      address: $('#address').val(),
+      email: $('#email').val(),
+      mobile: $('#mobile').val()
+    },
+    type: 'post',
+    dataType: 'text',
+    success: function (data) {
+      alert('가입이 완료되었습니다');
+      window.location.href = '/login';
+    }, error : function(error){
+    	alert('중복되는 아이디가 있습니다');
+    } 
+  })
+  return false;
+});
+
+
  
 </script>
 
