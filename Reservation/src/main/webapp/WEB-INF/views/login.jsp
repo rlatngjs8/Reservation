@@ -6,6 +6,14 @@
     <meta charset="UTF-8">
     <title>로그인</title>
     <style>
+    @font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+    
         body {
             font-size: 14px;
            
@@ -123,7 +131,7 @@
 	        color: black;
 	        display: inline-block; /* 인라인 요소를 블록 요소로 변경하여 중앙 정렬 적용 */
 	        
-	        font-family: 'HakgyoansimWoojuR';
+	       
 	        
 	        
 	        
@@ -137,7 +145,7 @@
 				}
 				.data{
 					font-size: 23px; 
-					font-family: 'TheJamsil5Bold';
+					font-family: 'HakgyoansimWoojuR';
 					font-weight: bold;
 					text-decoration: underline;
 				}
@@ -186,7 +194,7 @@
 .hover4,.hover5{
 	position:relative;
 	left:200px;
-	font-family: 'TheJamsil5Bold';
+	font-family: 'HakgyoansimWoojuR';
 	font-weight : bold;
 	
 	width:80px;

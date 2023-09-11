@@ -8,8 +8,16 @@
 <title>Insert title here</title>
 </head>
 <style>
+
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'HakgyoansimWoojuR';
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;

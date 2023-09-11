@@ -9,10 +9,17 @@
 
  <style>
  
+ @font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+ 
 
  
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'HakgyoansimWoojuR';
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
@@ -47,7 +54,7 @@
 }
         
         h1 {
-        	font-family: 'Giants-Bold';
+        	font-family: 'HakgyoansimWoojuR';
         	font-weight : bold
         }
         
@@ -60,7 +67,7 @@
 }
 
 p,a {
-font-family: 'MBC1961GulimM';
+font-family: 'HakgyoansimWoojuR';
 }
         
         
@@ -72,16 +79,16 @@ font-family: 'MBC1961GulimM';
 }
 h3 {
 	color: #2E2E2E;
-	font-family: 'CookieRun-Regular';
+	font-family: 'HakgyoansimWoojuR';
 }        
 
 h2 {
 color: #2E2E2E;
-	font-family: 'CookieRun-Regular';
+	font-family: 'HakgyoansimWoojuR';
 }
         
 li {
-	font-family: 'CookieRun-Regular';
+	font-family: 'HakgyoansimWoojuR';
 }        
     </style>
 

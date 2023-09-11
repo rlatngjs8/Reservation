@@ -13,8 +13,16 @@
 <title>${space.space_name}</title>
 <style>
 	/* 기본 스타일 초기화 */
+	
+	@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: Arial, sans-serif;
+   font-family: 'HakgyoansimWoojuR';
     margin: 0;
     padding: 0;
 }
@@ -589,6 +597,7 @@ height: 21px;
 </head> <!-- 나는 바보 -->
 <body>
     <%@include file="header.jsp" %>
+    <br><br><br><br><br><br>
     <div id="duplicateAlert" class="alert-box">
         중복된 예약이 있습니다. 예약 시간을 다시 확인해주세요.
     </div>

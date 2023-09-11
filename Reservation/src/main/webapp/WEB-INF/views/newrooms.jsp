@@ -9,6 +9,15 @@
 </head>
 
 <style>
+
+
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 		img{
 		height:333.33px;
 		width: 400px;
@@ -19,7 +28,7 @@
 
 
 .ra1{
-	  font-family: 'GyeonggiBatang', sans-serif; 
+	  font-family: 'HakgyoansimWoojuR';
 	  position:relative;
 	  right:120px;
 	  top:12px;
@@ -36,7 +45,7 @@
 }
 
 .nh{
-font-family: 'omyu_pretty';
+font-family: 'HakgyoansimWoojuR';
 
 margin-right: 22px;
 }

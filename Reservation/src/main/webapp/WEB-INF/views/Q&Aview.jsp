@@ -19,7 +19,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+             font-family: 'HakgyoansimWoojuR';
             text-align: center;
             margin: 50px auto;
             background-color: #f5f5f5;

@@ -21,7 +21,7 @@
 	}
 
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'HakgyoansimWoojuR';
         text-align: center;
         margin: 50px auto;
         background-color: #f5f5f5;
@@ -42,7 +42,7 @@
         text-align: left;
     }
 
-    h1 {
+  .container h1 {
         text-align: center;
         background-color: #25a4cd;
         color: #fff;
@@ -136,6 +136,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
+
 <div class="container">
 	<h1>상세문의작성</h1><br>
 	<!-- 목록으로 css -->

@@ -5,6 +5,14 @@
 <meta charset="UTF-8">
 <title>Manager Menu</title>
 <style>
+
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
     body {
         background-color: #f5f5f5;
     }
@@ -34,7 +42,7 @@
         border-radius: 5px;
         transition: background-color 0.3s ease;
         text-align : center;
-        font-family: 'KOTRA_BOLD-Bold';
+        font-family: 'HakgyoansimWoojuR';
     }
     #menu-container a:hover {
         background-color: #B5B5B5;
@@ -51,7 +59,7 @@
   
 .foradh1  h1 {
   	margin-top: 60px;
-  	font-family: 'TmonMonsori';
+  	font-family: 'HakgyoansimWoojuR';
 		font-size : 300%;
   }
   
@@ -63,17 +71,17 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#3a8a9e;
-	font-family:Arial;
+	font-family: 'HakgyoansimWoojuR';
 	font-size:16px;
 	padding:7px 15px;
 	text-decoration:none;
 	
 
-	font-family: 'CookieRun-Regular';
+	font-family: 'HakgyoansimWoojuR';
 	
 	position:relative;
 	
-	left:91px;
+	left:100px;
 	
 }
 .prev:hover {

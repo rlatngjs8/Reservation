@@ -6,8 +6,17 @@
 <meta charset="UTF-8">
 <title>회원관리</title>
 <style>
+
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'HakgyoansimWoojuR';
     background-color: #f7f7f7;
     margin: 0;
     padding: 0;
@@ -23,7 +32,7 @@
   h1 {
     text-align: center;
     margin-top: 20px;
-    font-family: 'SBAggroB';
+   font-family: 'HakgyoansimWoojuR';
   }
   #header {
     display: flex; /* flex 속성 추가 */
@@ -41,7 +50,7 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
+	font-family: 'HakgyoansimWoojuR';
 	font-size:12px;
 	padding:6px 8px;
 	text-decoration:none;
@@ -67,7 +76,7 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
+	font-family: 'HakgyoansimWoojuR';
 	font-size:12px;
 	padding:6px 8px;
 	text-decoration:none;
@@ -102,7 +111,7 @@
   }
   
   	@font-face {
-    font-family: 'GmarketSansMedium';
+    font-family: 'HakgyoansimWoojuR';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -114,7 +123,7 @@
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #ddd;
-    font-family: 'GmarketSansMedium';
+   font-family: 'HakgyoansimWoojuR';
   }
   th {
     background-color: #f2f2f2;

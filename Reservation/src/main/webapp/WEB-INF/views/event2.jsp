@@ -9,116 +9,101 @@
 <title>추첨 이벤트</title>
 </head>
 <style>
-.container{
-justify-content: flex-direction: column;
-justify-content: space-evenly;
-
-}
-
-.ev img{
-	height:700px;
-}
 
 @font-face {
-    font-family: 'RixYeoljeongdo_Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/RixYeoljeongdo_Regular.woff') format('woff');
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
-.sh2{
-	font-familt : "RixYeoljeongdo_Regular";
-	font-size : 40px;
-	
-}
-.fdiv{
-background-color: #EFFBEF;
-}
+ body {
+            font-family: 'HakgyoansimWoojuR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
 
-.ev{
-	background-color: #EFFBF8;
-}
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
 
-.forTxt textarea{
-	width:575px;
-	height:90px;
-	resize:none;
-}
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+        }
 
-.EventComment {
-	box-shadow: 0px 1px 0px 0px #f0f7fa;
-	background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
-	background-color:#33bdef;
-	border-radius:6px;
-	border:1px solid #057fd0;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px -1px 0px #5b6178;
-	
-	position:relative;
-}
-.EventComment:hover {
-	background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
-	background-color:#019ad2;
-}
-.EventComment:active {
-	position:relative;
-	top:1px;
-}
+        .event-image {
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-family: 'RixYeoljeongdo_Regular', sans-serif;
+            font-size: 40px;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .event-description {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+         hr {
+            border: none;
+            border-top: 2px dashed #ddd;
+            width: 80%;
+            margin: 20px auto;
+        }
 </style>
 
 <body>
 <%@include file="header.jsp" %>
-<br><br><br><br>
+<br><br><br><br><br><br>
+  <h2 class="section-title">Share Place에서만 드리는 혜택 !</h2>
+  
+  <hr/>
 
 
+  <div class="container">
+        <div class="ev">
+            <img src="img/추첨이벤트1.jpg" class="event-image" alt="이벤트 이미지 1">
+          
+            <p class="event-description">쇼핑 후기를 남기면, 선물을 드립니다 !</p>
+        </div>
 
+        <hr>
 
-<div class="fdiv">
-<h2 align=center class="sh2">Share Place에서만 드리는 혜택 !</h2>
-</div>
-<br><br>
+        <div class="ev">
+            <img src="img/추첨이벤트2.jpg" class="event-image" alt="이벤트 이미지 2">
+      
+        </div>
 
+        <hr>
 
+        <div class="ev">
+            <img src="img/추첨이벤트3.jpg" class="event-image" alt="이벤트 이미지 3">
+            <!-- 이벤트 3에 대한 설명 추가 -->
+        </div>
+    </div>
 
-<div class="container">
+<br><br><br>
 
-	<div class="ev" align=center>
-		<img src="img/추첨이벤트1.jpg">
-	</div>
-	
-	<br><br>
-	<div class="ev" align=center>
-		<img src="img/추첨이벤트2.jpg">
-	</div>
-	<br><br>
-	
-	<div class="ev" align=center>
-		<img src="img/추첨이벤트3.jpg">
-	</div>
-
-</div>
-
-<br><br>
-
-
-
-
-
-
-
-
-
-
-
-
-<br><br>
 <%@include file="footer.jsp" %>
 
 

@@ -24,6 +24,7 @@ footer .menu {
   display: flex;
   justify-content: center;
   list-style: none;
+  margin-right:100px;
 }
 
 
@@ -56,6 +57,7 @@ footer .menu li a {
   font-weight: 700;
   padding: 15px;
   display: block;
+  
 
 }
 
@@ -122,9 +124,14 @@ footer .logo {
     font-style: normal;
 }
 
-li,span,p,a {
-	font-family: 'CookieRun-Regular';
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
+
+
 
 
 </style>
@@ -144,19 +151,9 @@ li,span,p,a {
   <!-- menu1 이라는 class name을 menu로 변경 -->
     <ul class="menu">
       <li><a href="/personal">개인정보처리방침</a></li>
-      <li><a href="#">영상정보처리기기 운영관리 방침</a></li>
-      <li><a href="#">홈페이지 이용약관</a></li>
-      <li><a href="#">위치정보 이용약관</a></li>
       <li><a href="/service">이용약관</a></li>
-      <li><a href="#">핫라인</a></li>
     </ul>
-
-    <div class="btn-group">
-      <a href="#" class="btn btn--white">찾아오시는 길</a>
-      <a href="#" class="btn btn--white">신규입점제의</a>
-      <a href="#" class="btn btn--white">사이트 맵</a>
-    </div>
-    
+   
     <div class="info">
       <span>사업자등록번호 213-23-12512</span>
       <span>(주)share place 대표이사 ㄱㄱㄱ</span>

@@ -78,8 +78,15 @@
 				    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 				}
 
+
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
         #loadData {
-        font-family: 'Pretendard-Regular';
+       font-family: 'HakgyoansimWoojuR';
             background-color: #007bff;
             color: #fff;
             cursor: pointer;
@@ -113,14 +120,14 @@
         }
         
         @font-face {
-    font-family: 'Pretendard-Regular';
+   font-family: 'HakgyoansimWoojuR';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
         
  .prev {
- 	font-family: 'Pretendard-Regular';
+ 	font-family: 'HakgyoansimWoojuR';
 	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
 	background-color:#ededed;
 	border:1px solid #d6bcd6;

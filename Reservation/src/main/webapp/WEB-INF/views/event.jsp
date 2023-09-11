@@ -12,72 +12,86 @@
 
 
 <style>
-
-
-
-
-
-
- body {
-         font-family: Arial, sans-serif;
-
-
-      }
-      
-      .big {
-
-      }
-      
-      
-      .bigDiv {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         min-height: 100vh;
-         justify-content: space-around;
-         
-         
-         
-      }
-      .banner {
-         background-color: #f2f2f2;
-         padding: 10px;
-         text-align: center;
-         color: #333;
-         margin-bottom: 50px;
-         border-radius: 5px;
-      }
-      .bn {
-         background-color: #FFF8DC;
-         padding: 10px;
-      }
-
+  /* 페이지 전체 스타일 */
+  
+  
 @font-face {
-    font-family: 'Cafe24Ssurround';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
-
-.bn > a,p{
-	 font-family: 'Cafe24Ssurround';
-}
-
-@font-face {
-    font-family: 'GongGothicMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-h2{
-	 font-family: 'GongGothicMedium';
-}
+  
+  
+  body {
+    font-family: 'HakgyoansimWoojuR', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  }
 
 
+  #header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
 
 
+  .eh {
+    font-size: 36px;
+    text-transform: uppercase;
+  }
+
+
+  .banner {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    height: 150px;
+    margin: 0 auto; /* 가운데 정렬을 위한 추가 */
+  }
+
+
+  .banner h2 {
+    font-size: 24px;
+    font-family: 'GongGothicMedium', sans-serif;
+  }
+
+
+  .bn {
+    font-size: 18px;
+    font-family: 'HakgyoansimWoojuR', sans-serif;
+    color: #555; /* 텍스트 색상 추가 */
+  }
+
+
+  .bn a {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-family: 'HakgyoansimWoojuR', sans-serif;
+  }
+
+  .bn a:hover {
+    background-color: #555;
+  }
+
+
+  .big {
+    text-align: center;
+  }
 </style>
+
 <body>
 
  	
@@ -93,11 +107,13 @@ h2{
  <div class="big">		 
  		   
   	<h2 align=center class="eh"> 이벤트 </h2>
-<br>
+
 
   	<p class="ep" align=center> 진행중인 이벤트 목록</p>
   	
-  	<br><br>
+  	<br>
+  	<hr/>
+  	<br><br><br>
   	
   	
   	<section>
@@ -106,28 +122,30 @@ h2{
   		
   			<article><h2>마일리지 적립 이벤트</h2></article>
   			
+  			<br>
   			<div class="bn">
   			
-  			<br>
+  	
   				<a href="event2">신규 고객 30% 추가 적립</a>
-  				<br>
+  		
   									
   			</div>
   			
   		</div>
-  		
+  		<br><br><br><br>
   		
   	<div>
   	
   		<div class="banner" id="ban"> 
   		
   			<article><h2>설문조사 참여 이벤트</h2></article>
-  			
+  				
+  				<br>
   			<div class="bn">
   			
-  			<br>
+  		
   				<a href="event1">설문조사 참여하고 최대 2,000p 받기 !</a>
-  				<br>
+  			
   									
   			</div>
   			
@@ -144,7 +162,7 @@ h2{
 	
 	
 
-
+<br><br><br><br><br>
 	
 	
 

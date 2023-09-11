@@ -10,7 +10,7 @@
 </head>
 <style>
 ul.sub_mobile {
-  display: none !important;
+
   
 
  
@@ -38,15 +38,15 @@ ul.sub_mobile {
 
 
 .page_cover.open {
-  display: block !important;
+  display: block;
 }
 
 .headerbtn {
 
-  width: 50px !important;
-  height: 50px !important;
+  width: 50px ;
+  height: 50px ;
   background-image: url("http://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/menu.png") !important;
-  background-size: 50% !important;
+  background-size: 50% ;
   background-repeat: no-repeat !important;
   background-position: center !important;
   cursor: pointer !important;
@@ -54,7 +54,8 @@ ul.sub_mobile {
   
   position:fixed !important;
   
-  bottom:890px !important;
+  bottom:880px !important;
+  left: 250px;
   
   
 
@@ -107,7 +108,7 @@ ul.sub_mobile {
   text-decoration: none !important;
   font-size: 18px !important;
   color: #A9F5E1 !important;
-  display: block !important;
+  display: block;
   transition: 0.3s !important;
   align: center !important; /* 텍스트를 가운데 정렬합니다. */
   line-height: 5px !important; /* 수직 가운데 정렬을 위해 line-height 추가 */
@@ -128,8 +129,8 @@ ul.sub_mobile {
   top: 0px !important;
   right: 0px v;
   background-color: rgba(0, 0, 0, 0.4) !important;
-  z-index: 4 !important;
-  display: none !important;
+  z-index: 4;
+  display: none;
 }
 
 #menu ul { 
@@ -153,7 +154,7 @@ ul.sub_mobile {
 
 
 #menu ul.nav li a {
-  display: block !important;
+  display: block;
   width: 100% !important;
   height: 50px !important; /* 높이를 변경 */
   line-height: 50px !important;
@@ -184,10 +185,7 @@ ul.sub_mobile {
   text-align:center !important;
 }
 
-a {
-  text-decoration: none !important;
-  color:black !important;
-}
+
 
 .button12 {
   width: 70px !important;
@@ -249,16 +247,18 @@ a {
   font-family: 'HakgyoansimWoojuR';
   font-weight: bold; /* 폰트 가중치를 추가합니다. */
   font-size : 50px;
+    text-decoration: none !important;
+    color:black;
+
 }
 
  
 @font-face {
-    font-family: 'KIMM_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
-    font-weight: 700;
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
     font-style: normal;
 }
-
 
 @font-face {
     font-family: 'CookieRun-Regular';
@@ -267,30 +267,31 @@ a {
     font-style: normal;
 }
 
+a {
+	  text-decoration: none !important;
+
+}
 
 
 .top {
   text-align: center;
- font-family: 'CookieRun-Regular';
+font-family: 'HakgyoansimWoojuR;
   background-color: transparent; /* 배경색 투명으로 설정 */
 }
 
 
 .top-container {
-position: fixed; 
+  position: fixed;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height:9.1%;
+  width: 100%; /* 99%에서 100%로 수정 */
+  height: 9.1%;
   background-color: white;
-  margin-left: 247px;
-   overflow: hidden;
-   
-   z-index: 999; /* 다른 요소 위에 표시되도록 설정 */
-
+  overflow: hidden;
+  z-index: 2;
 }
 
 @font-face {
@@ -399,7 +400,7 @@ font-family: 'HakgyoansimWoojuR';
   position: fixed;
   top: 3px;
   right: 0;
-  margin-right: 19%;
+  margin-right: 13%;
   margin-top: 1%;
 }
 
@@ -435,7 +436,9 @@ font-family: 'HakgyoansimWoojuR';
 }
 	
 
-
+#menu.open + .top-container {
+  z-index: 1001;
+}
 
 </style>
 
@@ -447,7 +450,7 @@ font-family: 'HakgyoansimWoojuR';
 
 <!-- 클릭시, 메인 페이지로 이동. -->
 <div class="top-container">
-<h1 class="top"  style="margin-right: 495px;"><a href="/">Share Place</a></h1> 
+<h1 class="top"><a href="/">Share Place</a></h1> 
 
 <div class="headerbtn"></div>
 
@@ -467,55 +470,65 @@ font-family: 'HakgyoansimWoojuR';
 
 <!-- 로그인 하지 않은 상태로 다른 페이지로 이동시, userid에 빈 문자열이 들어가서 수정했습니다. -->
 
+
+
+
+
+
+
 </div>
+
+
+
 <div onclick="history.back();" class="page_cover"></div>
+
+
+
 <div id="menu">
     <ul class="nav">
         <li>
-           <c:choose>
            
-               <c:when test="${empty userid}">
-                <!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
-                <div class="pright">
-                <button id="btnLogin" class="button12">로그인</button>
-                <button id="btnSignup" class="button12" >회원가입</button>
-                </div>                         
-               </c:when>
-               <c:otherwise>
-               <div class="welcome1">
-                   <a><span class="name">${name}</span> 님 환영합니다</a>
-          			
-                   <button id="btnLogout" class="button1">로그아웃</button>
-                    </div>
-                    
-                   <li>
-               	<div class="welcome23">
-                   <a href='/myPage' style="color:black;" class="mine" font-family ='HakgyoansimWoojuR'>마이페이지</a>
-                   </div>
-                   </li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
+               
+                        <c:choose>
+                        
+                            <c:when test="${empty userid}">
+                             <!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
+                             <div class="pright">
+                             <button id="btnLogin" class="button12">로그인</button>
+                             <button id="btnSignup" class="button12" >회원가입</button>
+                             </div>                         
+                            </c:when>
+                            <c:otherwise>
+                            <div class="welcome1">
+                                <a><span class="name">${name}</span> 님 환영합니다</a>
+                       			
+                                <button id="btnLogout" class="button1">로그아웃</button>
+                                 </div>
+                                 
+                                <li>
+                            	<div class="welcome23">
+                                <a href='/myPage' style="color:black;" class="mine" font-family ='HakgyoansimWoojuR'>마이페이지</a>
+                                </div>
+                                </li> <!-- 로그인 상태일 때 회원정보 수정 메뉴 보이기 -->
+                                
+                            </c:otherwise>
+                        </c:choose>
                    
-               </c:otherwise>
-           </c:choose>
+                
+           
         </li>
+
+	
    <div class="welcome">
    <!-- 1대1문의 로그인이 안되어있으면 로그인창으로,로그인되어있으면 myWrite -->
+   
+
 		
- 	<li>
-  	<c:choose>
-       <c:when test="${empty userid}">
-           <!-- 로그인이 안되어 있으면 /login 페이지로 이동 -->
-           <a href="/login" style="color: black">1:1문의</a>
-       </c:when>
-       <c:otherwise>
-           <!-- 로그인이 되어 있으면 /myWrite 페이지로 이동 -->
-           <a href="/myWrite" style="color: black" id="one">1:1문의</a>
-       </c:otherwise>
-   	</c:choose>
-	</li>
+  <li><a href="/myWrite" style="color: black" id="one">1:1문의</a></li>
 
    <li><a href="/FAQ"  style="color: black">자주묻는질문</a></li>
 
-<!--    <li><a href="/#" style="color: black">공지사항</a></li> -->
+   <li><a href="/#" style="color: black">공지사항</a></li>
    
   
 	</div>    
@@ -529,9 +542,7 @@ font-family: 'HakgyoansimWoojuR';
       </c:when>
       
       <c:when test="${userid =='xaexal'}">
-      <div class="welcome3">
       <li><a href="/manager">관리자페이지</a></li>
-      </div>
       </c:when>
       
    		<c:when test="${userid =='hwan'}">
@@ -550,6 +561,8 @@ font-family: 'HakgyoansimWoojuR';
      
     <li><a style="color:black;  font-family: 'HakgyoansimWoojuR';">더보기</a>
 	    <ul class="sub_mobile">
+	    <!-- 리뷰삭제. 연결할만한 곳이 없어요 -->
+	
 		
 		    <li><a href="event" style="color:black;">이벤트</a></li>
 		
@@ -580,27 +593,47 @@ $(document).on('click','#btnLogin',function(){
     window.location.href = "/signup";
  })
 
+
+ 
+ 
+
+
+
+
+
+
 $(document).ready(function() {
+	
+	$(".sub_mobile").hide();
+	
 	console.log(${empty userid});
+	
 	var a = "${empty userid}";
 	console.log(a);
 	
-$("#one").click(function(e) {
+	
+	  $("#one").click(function(e) {
 		    // userid가 비어 있는 경우
 		    if (!a) {
 		      e.preventDefault(); 
 		      alert("로그인이 필요한 기능입니다.");
-		      window.location.href = "/login";
 		    } 
-		});
+		  });
+	
+	
+	
+	
+	
   var menuOpen = false; 
 
 
   $(".headerbtn").click(function() {
     if (!menuOpen) {
+     
       $("#menu,.page_cover,html").addClass("open");
       window.location.hash = "#open";
     } else {
+    
       $("#menu,.page_cover,html").removeClass("open");
       window.location.hash = "";
     }
@@ -630,9 +663,10 @@ $("#one").click(function(e) {
 
 
 $("#menu ul.nav li").click(function(){
-		$("ul",this).slideToggle("fast");
-});
+$("ul",this).slideToggle("fast");
+})
 
+;
 
 
 

@@ -25,7 +25,7 @@ margin-top:5px;
 	height: 44px;
 	position: relative;
 	left:3px;
-	top: 2px;
+	
 }
 .first {
 	display: flex;
@@ -47,11 +47,12 @@ margin-top:5px;
 }
 
 .card-container {
-	margin-left: 30px;
+	margin-left: 60px;
 	align:center;
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* 카드 간격 조절 (원하는 값으로 조절 가능) */
+    
   }
 .second {
     display: flex;
@@ -72,13 +73,14 @@ margin-top:5px;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-  	width:400px;
+  	width:360px;
     height: 400px;
     margin-bottom: 20px; /* 아래 여백 추가 */
+  
 }
 
 .card img {
-    width: 400px;
+    width: 350px;
     
     height: 100%; /* 이미지 카드의 높이에 맞추기 위해 100%로 설정 */
     border-radius: 10px;
@@ -100,21 +102,18 @@ margin-top:5px;
 
 
 .card a {
-	font-family: 'omyu_pretty';
+	font-family: 'HakgyoansimWoojuR';
 	font-size: 25px;
 }
 
 @font-face {
-	font-family: 'omyu_pretty';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2')
-		format('woff2');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
-
 .card p {
-	font-family: 'omyu_pretty';
+	font-family: 'HakgyoansimWoojuR';
 	font-size: 26px;
 	font-weight: bold;
 }
@@ -135,7 +134,7 @@ h3 {
 .newleft {
     text-align: left;
     margin-left: 16%;
-    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    font-family: 'HakgyoansimWoojuR';
     font-size: 40px;
     text-decoration: underline;
     text-underline-position: under;
@@ -156,7 +155,7 @@ h3 {
 }
 
 .card1 p {
-	font-family: 'omyu_pretty';
+	font-family: 'HakgyoansimWoojuR';
 	font-size: 25px;
 }
 .card1 img {
@@ -195,7 +194,7 @@ h3 {
 }
 
 .card12 p {
-	font-family: 'omyu_pretty';
+	font-family: 'HakgyoansimWoojuR';
 	font-size: 25px;
 }
 .card12 img {
@@ -283,12 +282,11 @@ h3 {
 	display: inline-block;
 	cursor: pointer;
 	color: #3a8a9e;
-	font-family: Arial;
+	font-family: 'HakgyoansimWoojuR';
 	font-size: 12px;
 	padding: 7px 15px;
 	text-decoration: none;
 	margin-left: 53px;
-	font-family: 'yg-jalnan';
 }
 
 .load:hover {
@@ -311,7 +309,7 @@ h3 {
 }
 
 .cDiv a {
-    font-family: 'BMJUA', sans-serif;
+    font-family: 'HakgyoansimWoojuR';
     font-size: 20px; /* 폰트 크기 증가 */
     font-weight: bold; /* 텍스트를 두껍게 표시 */
     text-decoration: underline; /* 밑줄 추가 */
@@ -324,9 +322,20 @@ h3 {
     color: #FF5733; 
 }
 
+.saleEvent {
+	  text-decoration: none important;
+}
+
+.saleEvent a {
+    text-decoration: none !important;
+      color:black;
+}
+
+
+
 .all {
 	position: relative;
-	top: 7px;
+	top: 3px;
 }
 
 .hidden {
@@ -349,7 +358,7 @@ h3 {
 }
 
 #demot {
-	font-family: 'GmarketSansMedium';
+	font-family: 'HakgyoansimWoojuR';
 	text-decoration: underline;
 	text-underline-position: under;
 }
@@ -425,7 +434,7 @@ h3 {
 			</div>
 		</div>
 	</div>
-	<hr style="width: 70%" />
+	<hr />
 	<div>
 		<br> <br> <br> <br> <br>
 		<a href="/newrooms"><h3 class="newleft">새로 등록했어요</h3></a>
@@ -459,31 +468,29 @@ h3 {
 	</div>
 	
 	
-	<div class="second13">
-    <c:forEach items="${review}" var="review" varStatus="outerLoop">
-        <c:if test="${outerLoop.index % 3 == 0}">
-            <div class="card-container">
-        </c:if>
-
-        <div class="card" style="height: 500px;" id="card2_${outerLoop.index}" space_id="${review.space_id}" onclick="window.location.href='/space?space_id=${review.space_id}'">
-            <a href="#" class="fimg"><img src="img/${review.img1}" alt="이미지 6" style="height: 200px; width: 300px !important;"></a>
-            <br>
-            <a class="demo">${review.space_name}</a>
-            <br>
-            <!-- 레이팅을 별로 바꿔야함 -->
-             <div class="rating-container" data-rating="${review.rating}"></div>
-        
-             <a class="review2">${review.price}원/시간</a>
-            
-            <p class="review3">${review.review_content}</p>
-          
-        </div>
-
-        <c:if test="${outerLoop.index % 3 == 2 || outerLoop.last}">
+	<div class="second">
+    <div class="card-container">
+        <c:forEach items="${review}" var="review" varStatus="outerLoop">
+            <div class="card" style="height: 500px;" id="card2_${outerLoop.index}" space_id="${review.space_id}" onclick="window.location.href='/space?space_id=${review.space_id}'">
+                <a href="#" class="fimg"><img src="img/${review.img1}" alt="이미지 6" style="height: 200px; width: 300px !important;"></a>
+                <br>
+                <a class="demo">${review.space_name}</a>
+                <br>
+                <!-- 레이팅을 별로 바꿔야함 -->
+                <div class="rating-container" data-rating="${review.rating}"></div>
+                <a class="review2">${review.price}원/시간</a>
+                <p class="review3">${review.review_content}</p>
             </div>
-        </c:if>
-    </c:forEach>
+            
+         
+            <c:if test="${outerLoop.index % 3 == 2 || outerLoop.last}">
+                <div style="clear: both;"></div>
+            </c:if>
+        </c:forEach>
+    </div>
 </div>
+
+
 <br><br><br><br>
 &copy; 2023 Share Place
 <br>

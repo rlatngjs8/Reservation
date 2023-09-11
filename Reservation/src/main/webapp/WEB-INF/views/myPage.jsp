@@ -9,6 +9,13 @@
 <style>
 
 
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
    .gomain a {
     	margin-top: 60px;
     	color:black !important;
@@ -72,7 +79,7 @@
     .form-group {
         margin-bottom: 15px;
         margin-left: 5%;
-        font-family: 'TheJamsil5Bold';
+         font-family: 'HakgyoansimWoojuR';
     }
 
     label {
@@ -154,19 +161,19 @@
 }
 
 		a,label,button,h2,th,td {
-		 font-family: 'TheJamsil5Bold';
+		  font-family: 'HakgyoansimWoojuR';
 		}
 		
 		
 		.form-group h3{
 			display:inline;
-			font-family: 'TheJamsil5Bold';
+			 font-family: 'HakgyoansimWoojuR';
 			font-size : 20px;
 		}
 		
 		.delReason h3{
 			display:inline;
-			font-family: 'TheJamsil5Bold';
+			 font-family: 'HakgyoansimWoojuR';
 		}
     
  
@@ -179,6 +186,7 @@
 <!-- 헤더랑 바텀 넣고 -->
 <div class="sidebar">
     <ul>
+    <br><br><br>
         <li><a href="#" onclick="showSection('userInfo')">나의 정보</a></li>
         <li><a href="#" onclick="showSection('userEdit')">회원정보 수정</a></li>
         <li><a href="#" onclick="showSection('purchaseHistory')">구매내역</a></li>
@@ -197,25 +205,25 @@
     
     <c:forEach items="${member}" var="member">
         <div class="form-group">
-            <h3>ID:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.userid}</a>
+            <h3>ID:</h3><a style="  font-family: 'HakgyoansimWoojuR';"> ${member.userid}</a>
         </div>
         <div class="form-group">
-            <h3>이름:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.name}</a>
+            <h3>이름:</h3><a style="  font-family: 'HakgyoansimWoojuR';"> ${member.name}</a>
         </div>
         <div class="form-group">
-            <h3>생년월일:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.birthday}</a>
+            <h3>생년월일:</h3><a style="  font-family: 'HakgyoansimWoojuR';"> ${member.birthday}</a>
         </div>
         <div class="form-group">
-            <h3>주소:</h3> <a style=" font-family: 'TheJamsil5Bold';">${member.address}</a>
+            <h3>주소:</h3> <a style="  font-family: 'HakgyoansimWoojuR';">${member.address}</a>
         </div>
         <div class="form-group">
-            <h3>이메일:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.email}</a>
+            <h3>이메일:</h3><a style="  font-family: 'HakgyoansimWoojuR';"> ${member.email}</a>
         </div>
         <div class="form-group">
-            <h3>휴대전화:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.mobile}</a>
+            <h3>휴대전화:</h3><a style="  font-family: 'HakgyoansimWoojuR';"> ${member.mobile}</a>
         </div>
         <div class="form-group">
-            <h3>가입일:</h3><a style=" font-family: 'TheJamsil5Bold';"> ${member.created.substring(0,10)}</a>
+            <h3>가입일:</h3><a style="  font-family: 'HakgyoansimWoojuR';"> ${member.created.substring(0,10)}</a>
         </div>
     </c:forEach>
 </div>
