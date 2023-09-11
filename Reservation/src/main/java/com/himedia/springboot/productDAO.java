@@ -41,4 +41,5 @@ public interface productDAO {
 		ArrayList<BoardDTO> qa_get(int space_id);
 		
 		
+		
 }

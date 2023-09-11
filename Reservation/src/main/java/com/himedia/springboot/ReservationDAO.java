@@ -14,7 +14,7 @@ public interface ReservationDAO {
 		
 		ArrayList<ReservationDTO> selectList(String userid);
 	
-		ArrayList<ReservationDTO> payCom(int seqno);
+		ArrayList<ReservationDTO> payCom(String purchaseTime, String userid);
 		
 		ArrayList<ReservationDTO> sales(String start, String end);
 		// 추가부분
@@ -23,6 +23,7 @@ public interface ReservationDAO {
 		int delete_temp_reservation(String userid);
 		ArrayList<ReservationDTO> get_reinfo(int space_id);
 		ArrayList<serviceDTO> get_terms_of_use();
+		int re_insert(String useday, int startTime, int endTime, int totalPrice, String userid, String space_name, String purchaseTime);
 		
 		
 }

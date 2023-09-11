@@ -29,7 +29,7 @@
             border: 1px solid #ddd;
             border-radius: 10px;
             margin: 20px auto;
-            width: 90%;
+            width: 70%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -122,6 +122,10 @@
 	        max-width: 700px;
 	        max-height: 400px;
     	}
+    	/* 필수 항목 빨간 글씨로 스타일링 */
+		.accordion-label span.required {
+		    color: red;
+		}
         
     </style>
 <body>
@@ -170,14 +174,14 @@
             <div class="accordion-item">
                 <label for="service_agreement" class="accordion-label">
                     <input type="checkbox" id="service_agreement" name="service_agreement">
-                    <span>위 공간의 예약조건 확인 및 결제진행 동의(필수)</span>
+                    <span>위 공간의 예약조건 확인 및 결제진행 동의 <span class="required">(필수)</span></span>
                 </label>
             </div>
             <!-- 나머지 아코디언 아이템들도 동일하게 추가 -->
             <div class="accordion-item">
                 <label for="third_party_agreement" class="accordion-label">
                     <input type="checkbox" id="third_party_agreement" name="third_party_agreement">
-                    <span>개인정보 제3자 제공 동의(필수)</span>
+                    <span>개인정보 제3자 제공 동의 <span class="required">(필수)</span></span>
                     <span class="accordion-icon">&#9660;</span>
                 </label>
                 <div id="terms_of_use1" class="accordion-content">
@@ -187,7 +191,7 @@
             <div class="accordion-item">
                 <label for="privacy_agreement" class="accordion-label">
                     <input type="checkbox" id="privacy_agreement" name="privacy_agreement">
-                    <span>개인정보 수집 및 이용 동의(필수)</span>
+                    <span>개인정보 수집 및 이용 동의 <span class="required">(필수)</span></span>
                     <span class="accordion-icon">&#9660;</span>
                 </label>
                 <div id="terms_of_use2" class="accordion-content">
@@ -196,20 +200,72 @@
             </div>
         </div>
     </section>
-</body>
-		
-    <!-- 여기부터는 토스뱅크 API -->
-    <!-- 결제위젯, 이용약관 영역 -->
+    
+    <section class="reservation-section">
+    
     <div id="payment-method"></div>
     <div id="agreement"></div>
     <!-- 결제하기 버튼 -->
     <button id="payment-button">결제하기</button>
+    </section>
+    
+</body>
+		
+    <!-- 여기부터는 토스뱅크 API -->
+    <!-- 결제위젯, 이용약관 영역 -->
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+/*     $(document).on('click', '#payment-button', function () {
+        const reData = {
+            total_price: total_price,
+            email: email,
+            name: name,
+            space_name: space_name,
+            useday: useday,
+            startTime: startTime,
+            endTime: endTime,
+            userid: userid
+        };
+        console.log("reData :" ,reData)
+        console.log('에이잭스 갑니다');
+        function re_insert() {
+        // 사용자의 아이디를 가져옵니다.
+
+        // 서버로 삭제 요청을 보냅니다.
+        console.log('결제 성공 이동중');
+        $.ajax({	
+            url: "/delete_temp_reservation",
+            data: ㄱ,
+            type: 'post',
+            success: function (data) {
+                if (data === '0') {
+                    console.error("결제 실패:", data);                        		
+                } else {
+                    console.log("결제 성공");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("결제 실패:", error);
+            }
+        });
+    }
+ 
+            }
+        });
+    }); */
+
     let total_price;
-	
-    const clientKey = "test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq"
-    const customerKey = "n9F7WOOedw7z_QeYrtqoK" // 내 상점에서 고객을 구분하기 위해 발급한 고객의 고유 ID
+    let email;
+    let name;
+    let space_name;
+    let useday
+    let startTime;
+    let endTime;
+    let userid;
+    
+    const clientKey = "test_ck_Gv6LjeKD8aENx9WYLbk8wYxAdXy1"
+    const customerKey = "rotoRL_9980" // 내 상점에서 고객을 구분하기 위해 발급한 고객의 고유 ID
     const button = document.getElementById("payment-button")
 
     // ------  결제위젯 초기화 ------ 
@@ -221,13 +277,7 @@
     // 결제수단 UI를 렌더링할 위치를 지정합니다. `#payment-method`와 같은 CSS 선택자와 결제 금액 객체를 추가하세요.
     // DOM이 생성된 이후에 렌더링 메서드를 호출하세요.
     // https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액-옵션
-    paymentWidget.renderPaymentMethods(
-      "#payment-method", 
-      { value: total_price},
-      { variantKey: "DEFAULT" } // 렌더링하고 싶은 결제 UI의 variantKey
-    )
-
-    // ------  이용약관 렌더링 ------
+     // ------  이용약관 렌더링 ------
     // 이용약관 UI를 렌더링할 위치를 지정합니다. `#agreement`와 같은 CSS 선택자를 추가하세요.
     // https://docs.tosspayments.com/reference/widget-sdk#renderagreement선택자
     paymentWidget.renderAgreement('#agreement')
@@ -236,15 +286,47 @@
     // 더 많은 결제 정보 파라미터는 결제위젯 SDK에서 확인하세요.
     // https://docs.tosspayments.com/reference/widget-sdk#requestpayment결제-정보
     button.addEventListener("click", function () {
-      paymentWidget.requestPayment({
-        orderId: "txx-WJ69l6_ui2c_gRcI-",            // 주문 ID(직접 만들어주세요)
-        orderName: "때려치자~",                 // 주문명
-        successUrl: "https://my-store.com/success",  // 결제에 성공하면 이동하는 페이지(직접 만들어주세요)
+    paymentWidget.requestPayment({
+        orderId: "kkkkkk23",            // 주문 ID(직접 만들어주세요)
+        orderName: space_name,                 // 주문명
+        successUrl: "http://localhost:8080/paymentCompleted",  // 결제에 성공하면 이동하는 페이지(직접 만들어주세요)
         failUrl: "https://my-store.com/fail",        // 결제에 실패하면 이동하는 페이지(직접 만들어주세요)
-        customerEmail: "customer123@gmail.com",
-        customerName: "김토스"
-      })
-    })
+        customerEmail: email,
+        customerName: name
+    });
+
+    const reData = {
+        total_price: total_price,
+        email: email,
+        name: name,
+        space_name: space_name,
+        useday: useday,
+        startTime: startTime,
+        endTime: endTime,
+        userid: userid
+    };
+
+    console.log('에이잭스 갑니다');
+    $.ajax({
+        url: '/re_insert',
+        type: 'post',
+        data: reData,
+        success: function (data) {
+            if (data === '0') {
+                console.error("예약 실패:", data);                        		
+            } else {
+                console.log("예약 성공");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("예약 실패:", error);
+        }
+    });
+});
+   
+    
+    
+  
     
     
     $(document).ready(function() {
@@ -283,6 +365,17 @@
                 // 임시 예약 데이터를 HTML로 변환하여 표시
                 for (let i = 0; i < data.length; i++) {
                     const dayOfWeek = getDayOfWeek(data[i]['reservation_date']);
+                    name = data[i]['name']
+                    email = data[i]['email']
+                    space_name = data[i]['space_name']
+                    useday = data[i]['reservation_date'];
+                    startTime = data[i]['start_time'];
+                    endTime = data[i]['end_time'];
+                    userid = data[i]['userid'];
+                    
+                    
+                    console.log(email);
+                    console.log(name);
                     let reservationItemHtml =
                         '<div class="reservation-item">' +
                         '    <div class="product-image">' +
@@ -305,11 +398,17 @@
                     $('#reservation_info').append(reservationInfoHtml);
 
                     // 전역 total_price 변수에 누적
-                    total_price += parseInt(data[i]['total_price']);
+                    total_price = parseInt(data[i]['total_price']);
                 }
 
                 // 예약 정보를 모두 처리한 후에 전역 total_price를 사용할 수 있음
                 console.log("전체 총 가격: " + total_price + "원");
+                paymentWidget.renderPaymentMethods(
+                	      "#payment-method", 
+                	      { value: total_price},
+                	      { variantKey: "DEFAULT" } // 렌더링하고 싶은 결제 UI의 variantKey
+                	    )
+
             }
         });
     }

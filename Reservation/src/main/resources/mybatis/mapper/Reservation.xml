@@ -15,9 +15,9 @@
 <select id="selectList" resultType="com.himedia.springboot.ReservationDTO">
 	select * from re_info where userid=#{userid} order by purchaseTime desc
 </select>
-<select id="payCom" resultType="com.himedia.springboot.ReservationDTO">
+<select id="payCom" resultType="com.himedia.springboot.ReservationDTO"> <!-- 결제완료부분 -->
 	select a.seqno, b.userid, b.name, b.mobile, c.space_name, a.useday, a.startTime, a.endTime, a.totalPrice, a.purchaseTime
-		from re_info a inner join members b on a.userid = b.userid inner join spaces c on a.space_name = c.space_name where seqno=#{seqno}
+		from re_info a inner join members b on a.userid = b.userid inner join spaces c on a.space_name = c.space_name where a.purchaseTime=#{param1} and a.userid=#{param2}
 </select>
 <select id="sales" resultType="com.himedia.springboot.ReservationDTO">
     SELECT seqno, purchaseTime, totalPrice FROM re_info WHERE purchaseTime BETWEEN #{param1} AND #{param2} ORDER BY purchaseTime DESC
@@ -28,10 +28,12 @@
 </insert>
 
 <select id="select_temp_reservation">
-	SELECT tr.*, s.*
+	SELECT tr.*, s.*, m.*
 	FROM temp_reservation AS tr
 	INNER JOIN spaces AS s ON tr.space_id = s.space_id
-	WHERE userid=#{param1};
+	INNER JOIN members AS m ON tr.userid = m.userid
+	WHERE tr.userid = #{param1};
+
 </select>
 
 <delete id="delete_temp_reservation" parameterType="java.util.HashMap">
@@ -48,5 +50,9 @@
 <select id="get_terms_of_use">
 	SELECT * FROM service WHERE num = 3 OR num = 4;
 </select>
+
+<insert id="re_insert" parameterType="java.util.HashMap">
+	insert into re_info set useday=#{param1}, startTime=#{param2}, endTime=#{param3}, totalPrice=#{param4}, userid=#{param5}, space_name=#{param6}, purchaseTime= #{param7}
+</insert>
 
 </mapper>

@@ -1,6 +1,8 @@
 package com.himedia.springboot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.stream.events.Comment;
@@ -337,18 +339,20 @@ public class KimController {
 
 	 		return "reviewManage/review";
 	 }
+	 
 	@GetMapping("/paymentCompleted")
 	public String payCom(HttpServletRequest req, Model model) {
-			HttpSession session= req.getSession();
-//			int seqno = (int) session.getAttribute("seqno");
-			int seqno = 4;
-			ArrayList<ReservationDTO> alReser = redao.payCom(seqno);
-			 
-			model.addAttribute("seqno",seqno);
-			model.addAttribute("pay", alReser);
-			
+//			HttpSession session= req.getSession();
+//			String userid = (String) session.getAttribute("userid");
+//			String purchaseTime = req.getParameter("purchaseTime"); 
+//	        System.out.println("Time " + purchaseTime);
+//			ArrayList<ReservationDTO> alReser = redao.payCom(purchaseTime, userid);
+//			model.addAttribute("pay", alReser);
+//			
 			return "paymentCompleted";
 	}
+	
+	
 	@GetMapping("/sales")
 	public String sales() {	
 		return "sales";

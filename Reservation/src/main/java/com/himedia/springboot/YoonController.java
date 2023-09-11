@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class YoonController {
@@ -112,6 +114,9 @@ public class YoonController {
 			jo.put("mobile", temp_reservation.get(i).getMobile());
 			jo.put("description", temp_reservation.get(i).getDescription());
 			jo.put("capacity", temp_reservation.get(i).getCapacity());
+			jo.put("email", temp_reservation.get(i).getEmail());
+			jo.put("name", temp_reservation.get(i).getName());
+			
 			ja.add(jo);
 		}  
 		return ja.toJSONString();
@@ -240,5 +245,37 @@ public class YoonController {
 	public String ttest() {
 		return "ttest";
 				
+	}
+	
+	@PostMapping("/re_insert")
+	@ResponseBody
+	public String re_insert(HttpServletRequest req, Model model) {
+		 // 현재 날짜와 시간을 얻습니다.
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String purchaseTime = dateFormat.format(currentDate);
+
+		int totalPrice = Integer.parseInt(req.getParameter("total_price"));
+		String email = req.getParameter("email");
+		String name = req.getParameter("name");
+		String space_name = req.getParameter("space_name");
+		String useday = req.getParameter("useday");
+		int startTime = Integer.parseInt(req.getParameter("startTime"));
+		int endTime = Integer.parseInt(req.getParameter("endTime"));
+		String userid = req.getParameter("userid");
+		System.out.println("asdasd="+purchaseTime);
+		model.addAttribute("purchaseTime", purchaseTime);
+		resdao.re_insert (useday, startTime, endTime, totalPrice, userid, space_name, purchaseTime );
+
+//		HttpSession session= req.getSession();
+//		String userid = (String) session.getAttribute("userid");
+//		String purchaseTime = req.getParameter("purchaseTime"); 
+//      System.out.println("Time " + purchaseTime);
+//		ArrayList<ReservationDTO> alReser = resdao.payCom(purchaseTime, userid);
+//		model.addAttribute("pay", alReser);
+		return "";
+//        
+	
+	
 	}
 }

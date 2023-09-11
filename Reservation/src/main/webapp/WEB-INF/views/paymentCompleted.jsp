@@ -49,11 +49,12 @@ span {
 }
 </style>
 <body>
-<input type="hidden" name="userid" value="${userid}">
+<input type="hidden" name="userid" id="userid" value="${userid}">
+<input type="hidden" name="purchaseTime" id="purchaseTime" value="${purchaseTime}">
     <div class="reservation-container">
     <c:forEach items="${pay}" var="pay">
         <h1>예약이 완료되었습니다!</h1>
-        <p>예약 번호: <span id="seqno">${seqno}</span></p>
+        <p>예약 번호: <span id="seqno">${pay.seqno}</span></p>
         <p>아이디: <span id="userid">${pay.userid}</span></p>
         <p>성함: <span id="name">${pay.name}</span></p>
         <p>전화번호: <span id="mobile">${pay.mobile}</span></p>
@@ -65,4 +66,46 @@ span {
     </div>
     </c:forEach>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+$(document).ready(function () {
+    var userid = $("#userid").val();
+    var purchaseTime = $("#purchaseTime").val();
+
+    console.log("userid:", userid);
+    console.log("purchaseTime:", purchaseTime);
+});
+
+//현재 URL 가져오기
+var currentUrl = window.location.href;
+
+// URL을 파싱하여 매개변수를 객체로 추출하는 함수 정의
+function parseUrlParams(url) {
+    var params = {};
+    var urlParts = url.split("?");
+    if (urlParts.length > 1) {
+        var queryString = urlParts[1];
+        var paramPairs = queryString.split("&");
+        for (var i = 0; i < paramPairs.length; i++) {
+            var paramPair = paramPairs[i].split("=");
+            if (paramPair.length === 2) {
+                var paramName = decodeURIComponent(paramPair[0]);
+                var paramValue = decodeURIComponent(paramPair[1]);
+                params[paramName] = paramValue;
+            }
+        }
+    }
+    return params;
+}
+
+// URL에서 amount 매개변수 추출
+var urlParams = parseUrlParams(currentUrl);
+var amountValue = urlParams["amount"];
+
+// amount 값을 사용하려면 변수 amountValue를 사용합니다.
+console.log("amount 값:", amountValue);
+
+
+</script>
 </html>
