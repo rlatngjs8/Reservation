@@ -358,14 +358,11 @@
 
 
     $(document).ready(function() {
-<<<<<<< HEAD
     	
     	$('#gotohome').click(function(){
     		console.log("취소")
     		window.location.href="/myPage"
     	})
-=======
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
     
     	
         $("#checkPasscodeButton").click(function(e) {

@@ -217,7 +217,11 @@
         <tbody>
         </tbody>
     </table>
-    
+    <br><br><br><br>
+&copy; 2023 Share Place
+<br>
+	<%@include file="footer.jsp"%>
+    </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
 $(document).ready(function () {
@@ -313,5 +317,5 @@ $(document).on('click','#prev',function(){
 	window.location.href = "/manager";
 })
 </script>
-</body>
+
 </html>

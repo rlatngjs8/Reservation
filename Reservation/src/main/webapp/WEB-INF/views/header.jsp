@@ -420,7 +420,7 @@ font-family: 'HakgyoansimWoojuR';
 
 #search-icon {
   position: absolute;
-  top: 50%; /* 아이콘을 수직 가운데 정렬 */
+  top: 58%; /* 아이콘을 수직 가운데 정렬 */
   right: 10px; /* 아이콘을 오른쪽에 정렬 */
   transform: translateY(-50%); /* 아이콘을 수직 가운데 정렬 */
   width: 20px;
@@ -463,7 +463,7 @@ font-family: 'HakgyoansimWoojuR';
 <!-- 검색기능 -->
 <div id="search-container">
 
-  <form action="/allRooms" method="GET">
+  <form action="/allRooms" method="GET" style="margin-top: 3%">
     <input type="text" id="search-input" name="keyword" placeholder="검색어를 입력하세요">
 	<img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" id="search-icon">
 

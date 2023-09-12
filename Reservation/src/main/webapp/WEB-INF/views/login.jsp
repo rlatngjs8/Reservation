@@ -204,20 +204,20 @@
 
 
 
-input[type="checkbox"] {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    border: 1px solid #999;
-    appearance: none;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
+/* input[type="checkbox"] { */
+/*     width: 1rem; */
+/*     height: 1rem; */
+/*     border-radius: 50%; */
+/*     border: 1px solid #999; */
+/*     appearance: none; */
+/*     cursor: pointer; */
+/*     transition: background 0.2s; */
+/*   } */
 
-  input[type="checkbox"]:checked {
-    background: black;
-    border: none;
-  }
+/*   input[type="checkbox"]:checked { */
+/*     background: black; */
+/*     border: none; */
+/*   } */
 
 
 
