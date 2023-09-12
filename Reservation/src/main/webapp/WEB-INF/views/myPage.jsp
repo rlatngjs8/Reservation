@@ -190,14 +190,13 @@
     <br><br><br>
         <li><a href="#" onclick="showSection('userInfo')">나의 정보</a></li>
         <li><a href="#" onclick="showSection('userEdit')">회원정보 수정</a></li>
-        <li><a href="#history" onclick="showSection('purchaseHistory')">구매내역</a></li>
+        <li><a href="#" onclick="showSection('purchaseHistory')">구매내역</a></li>
         <li><a href="#" onclick="showSection('myQuestions')">나의 문의내역</a></li>
         <li><a href="#" onclick="showSection('userDelete')">서비스탈퇴</a></li>
         <!-- 메인화면은 아래로 따로 내려서 티나도록 -->
         <li class="gomain"><a href="/" onclick="goHome">메인 화면으로</a></li>
     </ul>
 </div>
-
 
 <div class="container" id="userInfo">
     <h2>나의 정보</h2>
@@ -271,19 +270,20 @@
     <!-- 전부다 줄 긋고 (나의정보)버튼만들어서 myPage로 링크(나의정보 바로감)	 -->
 </div>
 <div class="container" id="purchaseHistory" style="display: none;">
-    <h2>구매내역</h2>
+    <h2 id="history">구매내역</h2>
     <hr/>
     <br>
     <table>
         <thead>
         <tr>
-            <th>번호</th><th>상품명</th><th>이용일자</th><th>이용시간</th><th>결제금액</th><th>결제시각</th>
+            <th style="width: 7%">예약번호</th><th>상품명</th><th>이용일자</th><th>이용시간</th><th>결제금액</th><th>결제시각</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${relist}" var="re" varStatus="loop">
             <tr>
-                <td>${loop.index+1}</td>
+<%--                 <td>${loop.index+1}</td> --%>
+                <td>${re.seqno+1}</td>
                 <td>${re.space_name}</td>
                 <td>${re.useday.substring(0,10)}</td>
                 <td>${re.startTime}시 ~ ${re.endTime}시</td>
@@ -348,7 +348,6 @@
         </div>
     </form>
 </div>
-
 <br><br><br><br><br>
 <%@include file="footer.jsp"%>
 
@@ -359,7 +358,6 @@
 
 
     $(document).ready(function() {
-    	
     
     	
         $("#checkPasscodeButton").click(function(e) {
@@ -485,14 +483,33 @@
     	window.location.href="/myWrite";
     })
     
-    $(document).ready(function() {
-    // #btnHistory 클릭 시 history 섹션을 표시합니다.
-    $('#btnHistory').on('click', function() {
-        showSection('purchaseHistory'); // 해당 섹션을 표시하는 함수 호출
-    });
+    
+     $(document).ready(function () {
+            // 페이지 로드 시 초기 해시값 검사
+            checkHash();
 
-    // 기타 이벤트 핸들러 또는 다른 JavaScript 코드 추가 가능
-});
+            // URL 해시가 변경될 때 호출되는 함수
+            $(window).on('hashchange', function () {
+                checkHash();
+            });
+        });
+
+        function checkHash() {
+            // 현재 URL 해시값 가져오기
+            var hash = window.location.hash;
+
+            // 만약 #purchaseHistory로 이동하려는 경우
+            if (hash === '#purchaseHistory') {
+                // #purchaseHistory 섹션을 표시
+                $('#userInfo').hide();
+                $('#purchaseHistory').show();
+                
+                
+                
+            }
+        }
+    
+   
 </script>
 </body>
 </html>
