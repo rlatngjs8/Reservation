@@ -19,6 +19,7 @@
    .gomain a {
     	margin-top: 60px;
     	color:black !important;
+    	font-weight: bold;
     }
     body {
 		
@@ -189,7 +190,7 @@
     <br><br><br>
         <li><a href="#" onclick="showSection('userInfo')">나의 정보</a></li>
         <li><a href="#" onclick="showSection('userEdit')">회원정보 수정</a></li>
-        <li><a href="#" onclick="showSection('purchaseHistory')">구매내역</a></li>
+        <li><a href="#history" onclick="showSection('purchaseHistory')">구매내역</a></li>
         <li><a href="#" onclick="showSection('myQuestions')">나의 문의내역</a></li>
         <li><a href="#" onclick="showSection('userDelete')">서비스탈퇴</a></li>
         <!-- 메인화면은 아래로 따로 내려서 티나도록 -->
@@ -394,6 +395,7 @@
         $("#delCheckPasscodeButton").click(function(e) {
             e.preventDefault(); // 폼 제출 막
 
+            
             var userid = $("#useridCheck1").val();
             var passcode = $("#passcodeCheck1").val();
 
@@ -436,6 +438,16 @@
     })
 
     $(document).on('click','#subDelete',function(){
+    	
+    		// 체크박스 상태 확인
+        var isAgreed = $("input[type='checkbox']").prop('checked');
+
+        if (!isAgreed) {
+            alert("서비스 탈퇴에 동의하셔야 탈퇴가 가능합니다.");
+            return false; // 동의하지 않았으므로 함수 종료
+        }
+    	
+    	
         var Message = "탈퇴 후 수정이 불가합니다.\n정말 탈퇴하시겠습니까?";
         // 버튼 비활성화 (없으면 두번실행)
         $(this).prop('disabled', true);	
@@ -472,6 +484,15 @@
     $(document).on('click','#btnWrite',function(){
     	window.location.href="/myWrite";
     })
+    
+    $(document).ready(function() {
+    // #btnHistory 클릭 시 history 섹션을 표시합니다.
+    $('#btnHistory').on('click', function() {
+        showSection('purchaseHistory'); // 해당 섹션을 표시하는 함수 호출
+    });
+
+    // 기타 이벤트 핸들러 또는 다른 JavaScript 코드 추가 가능
+});
 </script>
 </body>
 </html>

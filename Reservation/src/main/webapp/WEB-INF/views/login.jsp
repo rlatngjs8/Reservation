@@ -137,11 +137,11 @@
 	        
         }
         #findUser{
-        	margin-left: 80px;
+        	margin-left: 28%;
     			margin-top: 20px;
         }
 				.btnSubmit {
-				    margin-left: 60px;
+				    margin-left: 21%;
 				}
 				.data{
 					font-size: 23px; 

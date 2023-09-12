@@ -8,12 +8,12 @@
 </head>
 <style>
 
-@font-face {
-    font-family: 'HakgyoansimWoojuR';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
+				@font-face {
+				    font-family: 'HakgyoansimWoojuR';
+				    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+				    font-weight: normal;
+				    font-style: normal;
+				}
 
         body {
             font-family: 'HakgyoansimWoojuR';
@@ -135,9 +135,18 @@
 		    color: red;
 		}
 		
+		.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+/* 버튼 사이의 간격을 조정 */
+.button-container button {
+    margin-right: 10px;
+}
+		
 		/* 활성화된 버튼 스타일 */
-        #payment-button {
-            background-color: #0074e4;
+        .btn {
+            background-color: #485057;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -146,37 +155,24 @@
             cursor: pointer;
         }
         /* 활성화된 버튼 스타일 */
-        #payment-button.active {
+        .btn.active {
             background-color: #007bff;
         }
         /* 비활성화된 버튼 스타일 */
-        #payment-button.disabled {
+        .btn.disabled {
             background-color: #ccc;
             color: #666;
             cursor: not-allowed;
         }
-        
-    </style>
+</style>
 <body>
+<%@include file="header.jsp" %>
+<br><br><br><br><br><br>
     <h1>예약 정보</h1>
 
     <section class="reservation-section">
         <h2>예약공간</h2>
-        <div id="reservation_space" class="reservation-container">
-            <!-- 예약 공간 아이템 시작 -->
-            <!--
-            <div class="reservation-item">
-                <div class="product-image">
-                    <img src="상품이미지URL" alt="상품 이미지">
-                </div>
-                <div class="product-details">
-                    <h3 class="product-name">상품 이름</h3>
-                    <p class="product-description"></p>
-                    <p class="product-info">공간 유형: 예약인원: </p>
-                </div>
-            </div>
-            -->
-        </div>
+        <div id="reservation_space" class="reservation-container"></div>
     </section>
 
     <section class="reservation-section">
@@ -235,9 +231,12 @@
     <div id="payment-method"></div>
     <div id="agreement"></div>
     <!-- 결제하기 버튼 -->
-    <button id="payment-button">결제하기</button>
+    <div class="button-container">
+        <button class="btn" id="payment-button">결제하기</button>
+        <button class="btn btn-cancel" id="close">취소하기</button>
+    </div>
     </section>
-    
+<%@include file="footer.jsp" %>
 </body>
 		
     <!-- 여기부터는 토스뱅크 API -->
@@ -245,44 +244,6 @@
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-/*     $(document).on('click', '#payment-button', function () {
-        const reData = {
-            total_price: total_price,
-            email: email,
-            name: name,
-            space_name: space_name,
-            useday: useday,
-            startTime: startTime,
-            endTime: endTime,
-            userid: userid
-        };
-        console.log("reData :" ,reData)
-        console.log('에이잭스 갑니다');
-        function re_insert() {
-        // 사용자의 아이디를 가져옵니다.
-
-        // 서버로 삭제 요청을 보냅니다.
-        console.log('결제 성공 이동중');
-        $.ajax({	
-            url: "/delete_temp_reservation",
-            data: ㄱ,
-            type: 'post',
-            success: function (data) {
-                if (data === '0') {
-                    console.error("결제 실패:", data);                        		
-                } else {
-                    console.log("결제 성공");
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error("결제 실패:", error);
-            }
-        });
-    }
- 
-            }
-        });
-    }); */
 
     let total_price;
     let email;
@@ -500,8 +461,9 @@ updatePaymentButtonState();
 // 체크박스 상태가 변경될 때마다 업데이트 함수를 호출합니다.
 $checkboxes.on("change", updatePaymentButtonState);
 
-
-
+$(document).on('click', '#close', function () {
+    window.history.back();
+});
 
   </script>
 </body>
