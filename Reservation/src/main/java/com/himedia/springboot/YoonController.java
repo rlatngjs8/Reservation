@@ -42,13 +42,14 @@ public class YoonController {
 	
 	
 	@PostMapping("review_insert")
+	@ResponseBody
 	public String review_insert(HttpServletRequest req, Model model) {
 		int rating = Integer.parseInt(req.getParameter("rating"));
 		String review_content = req.getParameter("review_content");
 		String userid = req.getParameter("userid");
 		int space_id = Integer.parseInt(req.getParameter("space_id"));
 		pdao.review_insert(rating, review_content, userid, space_id);
-		return "redirect:/space";
+		return "";
 	}
 	
 	@GetMapping("/test")
@@ -171,14 +172,26 @@ public class YoonController {
 	}
 	
 	@PostMapping("/qa_insert")
+	@ResponseBody
 	public String qa_insert(HttpServletRequest req, Model model) {
 		String writer = req.getParameter("writer");
 		String content = req.getParameter("content");
 		String title = req.getParameter("title");
 		int space_id = Integer.parseInt(req.getParameter("space_id"));
 		pdao.qa_insert(content, writer, title , space_id);
-		return "redirect:/space";
+		return "";
 	}
+	
+//	@PostMapping("/delete_temp_reservation")
+//	@ResponseBody
+////	public String delete_temp_reservation(HttpServletRequest req, Model model) {
+//		HttpSession session = req.getSession();		
+//		String userid = (String)session.getAttribute("userid");
+//		model.addAttribute("userid",userid);
+//	    resdao.delete_temp_reservation(userid);
+//	    return "";
+//	}
+	
 	
 	@PostMapping("/get_member_info")
 	@ResponseBody

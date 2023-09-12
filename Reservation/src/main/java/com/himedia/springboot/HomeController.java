@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.Cookie;
@@ -43,11 +44,23 @@ public class HomeController {
       
       return "mainhome";
    }
-   @GetMapping("/login")
-   public String login(Model model) {
-         model.addAttribute("loginFailed", false);
-      return "login";
-   }
+   
+// 로그인 페이지 컨트롤러
+@GetMapping("/login")
+public String login(@RequestParam(value = "previousPage", required = false) String previousPage, Model model, HttpServletRequest req) {
+	model.addAttribute("loginFailed", false);
+	if (previousPage != null && !previousPage.isEmpty()) {
+        HttpSession session = req.getSession();
+        session.setAttribute("previousPage", previousPage);
+    }
+    return "login";
+}
+
+//   @GetMapping("/login")
+//   public String login(Model model) {
+//         model.addAttribute("loginFailed", false);
+//      return "login";
+//   }
    @GetMapping("/signup")
    public String signup() {
       return "signup";
@@ -70,40 +83,88 @@ public class HomeController {
       return ""+cnt;
    }
    
-   @PostMapping("/doLogin")      // 로그인 화면 변경. 잘모르겠음   로그인버튼 눌렀을때   
-   public String doLogin(HttpServletRequest req, HttpServletResponse response, Model model) {
-      String userid = req.getParameter("loginid");      //인풋의 name써야함
-      String passcode = req.getParameter("loginpw");// 마찬가지
-      int n = rdao.login(userid, passcode);      // xml에서 int로 받아오기때문에
-      if(n == 1) {                        // 받아온값이 1이면 (갯수가 1개라서)
-      	ArrayList<RoomDTO> member = rdao.getListOne(userid);
-      	String name = "";
-//      			model.addAttribute("member",member);
+   @PostMapping("/doLogin")
+   public String doLogin(HttpServletRequest req, HttpServletResponse response, HttpSession session, Model model) {
+       String userid = req.getParameter("loginid");
+       String passcode = req.getParameter("loginpw");
+       int n = rdao.login(userid, passcode);
+       if (n == 1) {
+           ArrayList<RoomDTO> member = rdao.getListOne(userid);
+           String name = "";
 
-      	if(!member.isEmpty()) {
-      		name = member.get(0).getName();
-      	} 
-      	HttpSession session = req.getSession();
-        session.setAttribute("userid", userid);   // 유저아이디에 로그인아이디
-        session.setAttribute("passcode", passcode);
-        session.setAttribute("name", name);
-        
-        // 쿠키 설정
-        Cookie useridCookie = new Cookie("userid", userid);
-        Cookie passcodeCookie = new Cookie("passcode", passcode);
-        // 쿠키 유효기간 설정
-        useridCookie.setMaxAge(15768000); //6개월 
-        passcodeCookie.setMaxAge(15768000); 
-        // 쿠키를 응답에 추가
-        response.addCookie(useridCookie);
-        response.addCookie(passcodeCookie);
-        
-        return "redirect:/";      // /url로 가서 메소드까지 실행하고 리턴
-      } else {
-    	  model.addAttribute("loginFailed", true);      
-    	  return "login";
-      }
+           if (!member.isEmpty()) {
+               name = member.get(0).getName();
+           }
+
+           session.setAttribute("userid", userid);
+           session.setAttribute("passcode", passcode);
+           session.setAttribute("name", name);
+
+
+           // 쿠키 설정
+           Cookie useridCookie = new Cookie("userid", userid);
+           Cookie passcodeCookie = new Cookie("passcode", passcode);
+           useridCookie.setMaxAge(15768000); // 6개월
+           passcodeCookie.setMaxAge(15768000);
+           response.addCookie(useridCookie);
+           response.addCookie(passcodeCookie);
+
+           // 이전 페이지 URL 가져오기
+           String previousPage = (String) session.getAttribute("previousPage");
+           if (previousPage != null && !previousPage.isEmpty()) {
+               session.removeAttribute("previousPage");
+               return "redirect:" + previousPage;
+           } else {
+               return "redirect:/"; // 기본 리다이렉트 페이지
+           }
+       } else {
+           model.addAttribute("loginFailed", true);
+           return "login";
+       }
    }
+
+   
+   
+   
+   
+   
+   
+   
+   
+//   @PostMapping("/doLogin")      // 로그인 화면 변경. 잘모르겠음   로그인버튼 눌렀을때   
+//   public String doLogin(HttpServletRequest req, HttpServletResponse response, Model model) {
+//      String userid = req.getParameter("loginid");      //인풋의 name써야함
+//      String passcode = req.getParameter("loginpw");// 마찬가지
+//      int n = rdao.login(userid, passcode);      // xml에서 int로 받아오기때문에
+//      if(n == 1) {                        // 받아온값이 1이면 (갯수가 1개라서)
+//      	ArrayList<RoomDTO> member = rdao.getListOne(userid);
+//      	String name = "";
+////      			model.addAttribute("member",member);
+//
+//      	if(!member.isEmpty()) {
+//      		name = member.get(0).getName();
+//      	} 
+//      	HttpSession session = req.getSession();
+//        session.setAttribute("userid", userid);   // 유저아이디에 로그인아이디
+//        session.setAttribute("passcode", passcode);
+//        session.setAttribute("name", name);
+//        
+//        // 쿠키 설정
+//        Cookie useridCookie = new Cookie("userid", userid);
+//        Cookie passcodeCookie = new Cookie("passcode", passcode);
+//        // 쿠키 유효기간 설정
+//        useridCookie.setMaxAge(15768000); //6개월 
+//        passcodeCookie.setMaxAge(15768000); 
+//        // 쿠키를 응답에 추가
+//        response.addCookie(useridCookie);
+//        response.addCookie(passcodeCookie);
+//        
+//        return "redirect:/";      // /url로 가서 메소드까지 실행하고 리턴
+//      } else {
+//    	  model.addAttribute("loginFailed", true);      
+//    	  return "login";
+//      }
+//   }
    @GetMapping("/logout")
    public String doLogout(HttpServletRequest req) {
       HttpSession s = req.getSession();

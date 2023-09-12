@@ -59,7 +59,6 @@ main {
 .qa,
 .reviews {
     margin-top: 20px;
-    border-top: 1px solid #ccc;
     padding-top: 10px;
     word-wrap: break-word;
 }
@@ -113,7 +112,7 @@ footer {
 /* 선택한 시작 시간과 끝 시간 */
 .selected-start-time,
 .selected-end-time {
-    background-color: #C8A2C8;
+    background-color: #87CEEB;
     color: #333;
 }
 
@@ -417,7 +416,7 @@ form .textarea textarea {
 
 /* 강조된 시간대 강조 스타일 */
 .highlighted-time-range {
-    background-color: #C8A2C8;
+    background-color: #87CEEB;
 }
 
 /* 질문/답변 내용 입력 플레이스홀더 스타일 */
@@ -444,8 +443,8 @@ form .textarea textarea {
 
 /* 예약 완료 스타일 */
 .reserved {
-    color: #696969;
-    background-color: #696969;
+    color: #333;
+    background-color: #333;
     pointer-events: none; /* 클릭 비활성화 */
 }
 
@@ -591,6 +590,27 @@ height: 21px;
 .qa{
 	cursor: pointer;
 }
+.custom-button-style {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
+    margin-right: 10px; /* 버튼 사이 간격 조정 */
+    text-decoration: underline; /* 밑줄 추가 */
+}
+
+.custom-button-style:last-child {
+    margin-right: 0; /* 마지막 버튼의 간격 제거 */
+}
+
+.custom-button-style:hover {
+    background-color: #fff;
+    color: #333;
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+}
 
 
 </style>
@@ -606,7 +626,7 @@ height: 21px;
     <input type="hidden" id="space_id" name="space_id" value="${space.space_id }">
 
     <main>
-        <section class="space-details" style="max-width: 70%;">
+        <section class="space-details" style="max-width: 55%; margin-left: 15%;">
             <h2>${space.space_name}</h2>
 
             <div id="wrapper">
@@ -629,6 +649,8 @@ height: 21px;
                 <p>${space.extent}m²</p>
                 <h3 style="margin-left: auto;">시간당 가격: ${space.price}원</h3>
             </div>
+            <br>
+            <hr style="width: 100%; border: 1px solid #ccc;">
 
             <!-- 예약 진행 -->
             <div class="reservation-window" id="reservationWindow">
@@ -691,6 +713,8 @@ height: 21px;
                     </li>
                 </ul>
             </div>
+            <br><br>
+            <hr style="width: 100%; border: 1px solid #ccc;">
 
             <div class="location-info">
                 <h3>위치</h3>
@@ -707,7 +731,9 @@ height: 21px;
                 <p>자세한 주소는 호스트 승인 후, 메시지로 문의 가능합니다.</p>
                 <p>전화번호: ${space.mobile}</p>
             </div>
-
+            <br>
+			<hr style="width:100%; border: 1px solid #ccc;">
+			<br>
             <!-- 리뷰 영역 -->
             <div id="reviews" style="border-width: 4px;">
                 <h3>리뷰</h3>
@@ -719,10 +745,10 @@ height: 21px;
                 <c:if test="${empty sessionScope.userid}">
                     <button id="not_login">리뷰 작성하기</button>
                 </c:if>
-                <div id="dialog-form" title="Write a Review" style="width: 90%; height: 90%;">
-                    <div class="dialog-content" >
-                        <div class="star-widget">
-                            <div class="review-header" style="text-align: center" >리뷰 작성하기</div>
+                <div id="dialog-form" title="Write a Review" style="width: 90%; height: 90%; background-color: #f9f9f9;">
+				    <div class="dialog-content">
+				        <div class="star-widget">
+				            <div class="review-header" style="text-align: center; font-weight: bold; font-size: 24px;">리뷰 작성하기</div>
                             <input type="radio" name="rate" id="rate-5" value="5">
                             <label for="rate-5" class="fas fa-star"></label>
                             <input type="radio" name="rate" id="rate-4" value="4">
@@ -736,7 +762,7 @@ height: 21px;
                         </div>
                         <br><br><br>
                         <div class="textarea" style="text-align: center;">
-                            <textarea id="review_content" cols="20" rows="18" placeholder="리뷰를 작성하세요"></textarea>
+           					 <textarea id="review_content" cols="20" rows="18" placeholder="리뷰를 작성하세요" style="font-size: 16px;"></textarea>
                         </div>
                     </div>
                 </div>
@@ -744,8 +770,12 @@ height: 21px;
                 <div id="pagination">
                     <!-- 페이지 번호가 여기에 추가될 것입니다. -->
                 </div>
+                <br><br>
             </div>
             
+            <hr style="width: 100%; border: 1px solid #ccc;">
+
+            <br>
             <div id="Q&A" style="border-width: 4px; height: auto;">
                 <h3>Q&A</h3>
                 <c:if test="${not empty sessionScope.userid}">
@@ -764,6 +794,9 @@ height: 21px;
                         </div>
                         <div class="qa-textarea" style="text-align: center;">
                             <textarea id="qa_content" cols="20" rows="18" placeholder="질문을 작성하세요"></textarea>
+                        </div>
+                        <div>
+                        	<!-- <button class="custom-button-style">질문하기</button> -->
                         </div>
                     </form>
                 </div>
@@ -808,7 +841,7 @@ $(document).ready(function () {
         onSelect: function (dateText, inst) {
             // 선택한 날짜를 가져옴
             const selectedDate = dateText;
-            resetTimeSelection();
+            pplresetTimeSelection();
             // 선택한 날짜와 일치하는 예약 데이터 찾기
             const reservation = findReservationByDate(selectedDate);
 
@@ -818,6 +851,7 @@ $(document).ready(function () {
                 const endTime = reservation.db_end_time;
                 reserveTimeSlots(startTime, endTime);
             } else {
+            	
 
             }
         }
@@ -950,13 +984,14 @@ $(document).ready(function () {
         buttons: [
             {
                 text: "등록하기",
+                class: "custom-button-style",
                 click: function () {
                     const rating = $("input[name='rate']:checked").val();
                     const review_content = $("#review_content").val();
                     const userid = $('#user_id').val();
                     const space_id = $('#space_id').val();
 
-                    console.log(review_content);
+                    
                     // 별점이 체크되지 않았을 경우 예외 처리
                     if (rating === undefined) {
                         alert("별점을 선택해주세요.");
@@ -969,25 +1004,31 @@ $(document).ready(function () {
                         userid: userid,
                         space_id: space_id
                     };
+                    console.log(reviewData);
 
                     $.ajax({
                         url: '/review_insert',
                         type: 'post',
                         data: reviewData,
-                        success: function (response) {
-                            console.log('리뷰 등록 성공:');
-                            // 여기에 리뷰 등록 후 작업을 추가할 수 있습니다.
+                        success: function (data) {
+                            if (data === '0') {
+                                console.error("리뷰 등록 실패:", data);                        		
+                            } else {
+                                console.log("리뷰 등록 성공");
+                                window.location.href = "/space?space_id=" + space_id
+                            }
                         },
                         error: function (error) {
                             console.error('리뷰 등록 실패:', error);
                             // 실패 시 에러 처리를 수행하거나 사용자에게 알림을 보여줄 수 있습니다.
                         }
                     });
-                    window.location.href = "/space";
+                  
                 }
             },
             {
                 text: "취소",
+                class: "custom-button-style",
                 click: function () {
                 	dialogForm.dialog("close");
                 }
@@ -1024,17 +1065,23 @@ $(document).on('click', '#btnReT', function () {
 	document.location = '/paytest';
 });
 
-$(document).on('click', '#addReF', function () { //로그인 안했을때 추가하기버튼
+$(document).on('click', '#addReF', function () { // 로그인 안했을때 추가하기 버튼
+	const space_id = $('#space_id').val();
     alert("로그인을 해주세요.");
+    window.location.href = "/login?previousPage=/space?space_id=" + space_id; // 로그인 페이지로 이동
 });
 
+
 $(document).on('click', '#not_login', function () { //로그인 안했을때 리뷰
+	const space_id = $('#space_id').val();
     alert("로그인을 해주세요.");
+    window.location.href = "/login?previousPage=/space?space_id=" + space_id; // 로그인 페이지로 이동
 });
 
 $(document).on('click', '#btnReF', function () { //로그인 안했을때 예약하기 버튼
     alert("로그인 후에 이용가능합니다.");
-//    	window.location.href = "login";
+    const space_id = $('#space_id').val();
+    window.location.href = "/login?previousPage=/space?space_id=" + space_id; // 로그인 페이지로 이동
     
 });
 
@@ -1242,9 +1289,10 @@ $(document).ready(function () {
         width: 1000,
         height: 500,
         resizable: false,
-        buttons: [
+         buttons: [
             {
                 text: "질문하기",
+                class: "custom-button-style",
                 click: function () {
                     const content = $("#qa_content").val();
                     const writer = $('#user_id').val();
@@ -1257,37 +1305,44 @@ $(document).ready(function () {
                         alert("질문을 입력해주세요.");
                         return;
                     }
-
+			
                     const qaData = {
                     	content: content,
                     	title : title,
                         writer: writer,
                         space_id: space_id
                     };
+                    
+                    console.log(qaData);
 
                     $.ajax({
                         url: '/qa_insert',
                         type: 'post',
                         data: qaData,
-                        success: function (response) {
-                            console.log('질문 등록 성공:');
-                            // 여기에 질문 등록 후 작업을 추가할 수 있습니다.
+                        success: function (data) {
+                            if (data === '0') {
+                                console.error("질문 등록 실패:", data);                        		
+                            } else {
+                                console.log("질문 등록 성공");
+                                window.location.href = "/space?space_id=" + space_id
+                            }
                         },
                         error: function (error) {
                             console.error('질문 등록 실패:', error);
                             // 실패 시 에러 처리를 수행하거나 사용자에게 알림을 보여줄 수 있습니다.
                         }
                     });
-                    window.location.href = "/space";
+
                 }
             },
             {
                 text: "취소",
+                class: "custom-button-style",
                 click: function () {
                     qaDialogForm.dialog("close");
                 }
             }
-        ]
+        ] 
     });
 });
 
@@ -1367,8 +1422,8 @@ function qa_changePage(page) {
     qa_currentPage = page;
     
     // 스크롤을 아래로 내리고 QA 창을 보이게 하기 위한 코드
-    const qaElement = $('#qa'); // QA 창 요소를 jQuery로 선택
-    const qaOffset = qaElement.offset().top; // QA 창 요소의 상단 위치
+    const qaElement = $('#pagination'); // QA 창 요소를 jQuery로 선택
+    const qaOffset = qaElement.offset().top - 100; // 100px 위로 스크롤
     
     // 페이지를 변경할 때 스크롤을 아래로 내리고 QA 창을 보이게 함
     $('html, body').animate({
@@ -1377,6 +1432,7 @@ function qa_changePage(page) {
     
     qa_get(qa_currentPage);
 }
+
 
 $(document).ready(function () {
     qa_get(qa_currentPage);
@@ -1434,9 +1490,22 @@ function updatePagination(totalReviews) {
 }
 
 function re_changePage(page) {
-	review_currentPage = page;
+    review_currentPage = page;
+
+    // 스크롤을 아래로 내리고 QA 창을 보이게 하기 위한 코드
+    const reElement = $('#reviews'); // QA 창 요소를 jQuery로 선택
+    const currentScrollTop = $(window).scrollTop(); // 현재 스크롤 위치 가져오기
+    const reOffset = reElement.offset().top - 100; // 100px 위로 스크롤
+
+    // 페이지를 변경할 때 스크롤을 아래로 내리고 QA 창을 보이게 함
+    $('html, body').animate({
+        scrollTop: reOffset // 상단 위치로 스크롤
+    }, 'slow'); // 부드러운 스크롤 효과 적용 (빠르게 하려면 'fast' 사용 가능)
+
     review_get(review_currentPage);
 }
+
+
 
 // 페이지 로드시 첫 번째 페이지의 리뷰를 불러옵니다.
 $(document).ready(function () {
@@ -1472,7 +1541,7 @@ function displayReservationInfo() {
 
     const startTimeNum = parseInt(startTime);
     const endTimeNum = parseInt(endTime);
-    const duration = endTimeNum - startTimeNum;
+    const duration = Math.abs(endTimeNum - startTimeNum);
     const dayOfWeek = getDayOfWeek(selectedDate);
     const reservationInfo = "<h4>예약일시:</h4>" +
         "<h4>" + selectedDate + " " + dayOfWeek + " " + startTime + " ~ " + endTime + " (" + duration + "시간)</h4>";
@@ -1553,6 +1622,12 @@ function reserveTimeSlots(startTime, endTime) {
     });
 
     console.log("reserveTimeSlots 함수 완료");
+}
+
+function pplresetTimeSelection() {
+    $(".time-cell").removeClass("selected-start-time selected-end-time highlighted-time-range reserved")
+    selectedStartTime = null;
+    selectedEndTime = null;
 }
 
 function resetTimeSelection() {

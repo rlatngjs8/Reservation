@@ -225,14 +225,16 @@ public class productController {
 // 승환 (상세페이지)
 	@GetMapping("/space")
 	public String space(HttpServletRequest req, Model model) {
-		HttpSession session= req.getSession();
-				 System.out.println("space_id=="+req.getParameter("space_id"));
+		HttpSession session = req.getSession();
+		String previousPage = (String) session.getAttribute("previousPage");
+		System.out.println("이전 페이지 URL: " + previousPage);
 	    int space_id = Integer.parseInt(req.getParameter("space_id"));
 	    System.out.println("space_id="+space_id);
 	    productDTO pdto = pdao.get_one_space(space_id);
 	    model.addAttribute("space", pdto);
 	    String userid = (String) session.getAttribute("userid");
 	    model.addAttribute("a", userid);
+	    
 	    
 	    return "space";
 	}
