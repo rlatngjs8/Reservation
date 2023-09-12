@@ -250,13 +250,17 @@ ul.sub_mobile {
 
 
 .top a {
-  font-family: 'IAMAPLAYER' !important;
-  font-weight: bold; /* 폰트 가중치를 추가합니다. */
-  font-size : 50px;
+    font-family: 'Poppins', sans-serif !important; /* 웹 폰트를 적용합니다. */
+    font-weight: bold;
+    font-size: 50px;
     text-decoration: none !important;
-    color:black;
-
+    color: black;
 }
+
+
+
+
+
 
  
 @font-face {
@@ -456,7 +460,7 @@ font-family: 'HakgyoansimWoojuR';
 
 <!-- 클릭시, 메인 페이지로 이동. -->
 <div class="top-container">
-<h1 class="top"><a href="/">Share Place</a></h1> 
+<h1 class="top"><a href="/">SHARE PLACE</a></h1> 
 
 <div class="headerbtn"></div>
 
