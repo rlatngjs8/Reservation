@@ -56,7 +56,7 @@ public class KimController {
 						if (pno == i) {
 								pagestr += i + "&nbsp;";
 						} else {
-								pagestr += "<a href='/ReservationManage/showReservation?pageno=" + i + "'>" + i + "</a>&nbsp;";
+								pagestr += "<a href='/showReservation?pageno=" + i + "'>" + i + "</a>&nbsp;";
 								// 안되면 주소 수정
 						}
 						System.out.println(pagestr);
