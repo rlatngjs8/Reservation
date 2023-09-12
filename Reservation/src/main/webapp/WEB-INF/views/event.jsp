@@ -90,6 +90,12 @@
   .big {
     text-align: center;
   }
+  
+  .ep {
+  	font-size: 18px;
+  	font-weight: 900;
+  } 
+  
 </style>
 
 <body>
@@ -105,13 +111,16 @@
  		 
  		 
  <div class="big">		 
- 		   
+ 		   <br><br><br>
+ 		   <div class="forfirst">
   	<h2 align=center class="eh"> 이벤트 </h2>
-
+	
 
   	<p class="ep" align=center> 진행중인 이벤트 목록</p>
   	
-  	<br>
+  	</div>
+  	
+  	<br><br><br><br>
   	<hr/>
   	<br><br><br>
   	
@@ -126,7 +135,7 @@
   			<div class="bn">
   			
   	
-  				<a href="event2">신규 고객 30% 추가 적립</a>
+  				<a href="event2">리뷰 추첨 이벤트</a>
   		
   									
   			</div>
@@ -144,7 +153,7 @@
   			<div class="bn">
   			
   		
-  				<a href="event1">설문조사 참여하고 최대 2,000p 받기 !</a>
+  				<a href="event1">신규 고객 리뷰 이벤트</a>
   			
   									
   			</div>

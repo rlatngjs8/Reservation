@@ -43,6 +43,7 @@
         transition: background-color 0.3s ease;
         text-align : center;
         font-family: 'HakgyoansimWoojuR';
+        font-weight:1000;
     }
     #menu-container a:hover {
         background-color: #B5B5B5;

@@ -11,7 +11,7 @@
 </head>
 <style>
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'HakgyoansimWoojuR';
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -51,9 +51,10 @@
     margin: 0 4px;
   }
   
-<<<<<<< HEAD
+
   .centered-button-container {
     text-align: center;
+    margin-left : 40px;
   }
   .product-list-link, .product-list-link1, .product-list-link2{
     text-decoration: none;
@@ -91,7 +92,7 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#666666;
-	font-family:Arial;
+	font-family: 'HakgyoansimWoojuR';
 	font-size:15px;
 	font-weight:bold;
 	padding:8px 14px;
@@ -123,7 +124,7 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
+	font-family: 'HakgyoansimWoojuR';
 	font-size:15px;
 	font-weight:bold;
 	padding:8px 14px;
@@ -132,7 +133,7 @@
 	
 	position:relative;
 	
-	right:94px;
+	right:83px;
 	top:40px;
 }
 .btnPrev:hover {
@@ -143,14 +144,14 @@
 
 
 @font-face {
-    font-family: 'GangwonEduPowerExtraBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff') format('woff');
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 div {
-	font-family: 'GangwonEduPowerExtraBoldA';
+	font-family: 'HakgyoansimWoojuR';
 	font-size : 20px;
 }
 
@@ -173,32 +174,30 @@ div {
 
   /* Optionally, you can set a max-height for the slider to control its size */
   .slider {
-    max-height: 400px; /* Adjust this value as needed 
+    max-height: 400px; 
 	}
 
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
+
+
 </style>
 <body>
   <header>
     <h1>상품 상세 보기</h1>
   </header><br>
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
+
+
+
   <div class="centered-button-container">
   	<a href="/manager" class="product-list-link1">관리자메뉴</a>&nbsp;&nbsp;&nbsp;
   	<a href="/productList" class="product-list-link">상품리스트</a>&nbsp;&nbsp;&nbsp;
-  	<button id="btnEdit" class="product-list-link2">상품수정</button>
-	</div><br>
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/rlatngjs8/Reservation.git
-  
+	</div><br>
+
+
+
+
   <!-- 수정된 버튼 ID 적용 -->
   <button id="btnEdit">상품수정</button>
   <button id="btnPrev" class="btnPrev">이전화면</button>
@@ -213,6 +212,7 @@ div {
       <div><img src="img/${product.img5}" alt="Image 5"></div>
     </div>
     <div>
+    <br>
     <hr/>
       <p id='spcae_id'>상품 번호: ${product.space_id}</p>
       <p>상품 이름: ${product.space_name}</p>

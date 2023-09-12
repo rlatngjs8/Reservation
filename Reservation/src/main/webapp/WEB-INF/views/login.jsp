@@ -201,6 +201,27 @@
 	height: 35px;
 	
 }
+
+
+
+input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 1px solid #999;
+    appearance: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  input[type="checkbox"]:checked {
+    background: black;
+    border: none;
+  }
+
+
+
+
 				
     </style>
 </head>
@@ -215,7 +236,8 @@
         <h2>로그인</h2>
         <input type="text" id="loginid" name="loginid" placeholder="로그인 아이디" autofocus>
         <input type="password" id="loginpw" name="loginpw" placeholder="패스워드">
-        <input type="checkbox" id="auto">로그인저장
+        <input type="checkbox" id="auto"><a class="saveid">로그인저장</a>
+        <br>
         
         <div class="btnSubmit">
         <br>

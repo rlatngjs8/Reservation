@@ -17,6 +17,11 @@
     font-style: normal;
 }
 
+.ev img{
+
+	height:800px;
+}
+
  body {
             font-family: 'HakgyoansimWoojuR', sans-serif;
             margin: 0;
@@ -49,12 +54,14 @@
         }
 
         .section-title {
-            font-family: 'RixYeoljeongdo_Regular', sans-serif;
+            font-family: 'HakgyoansimWoojuR', sans-serif;
             font-size: 40px;
             text-align: center;
-            margin-top: 30px;
+ 
             margin-bottom: 10px;
             color: #333;
+            letter-spacing: 4px;
+             font-weight:900;
         }
 
         .event-description {
@@ -62,6 +69,7 @@
             text-align: center;
             margin-bottom: 20px;
             color: #555;
+            font-weight:bold;
         }
         
          hr {
@@ -74,11 +82,13 @@
 
 <body>
 <%@include file="header.jsp" %>
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
+
+<hr/>
   <h2 class="section-title">Share Place에서만 드리는 혜택 !</h2>
   
   <hr/>
-
+<br><br><br><br>
 
   <div class="container">
         <div class="ev">

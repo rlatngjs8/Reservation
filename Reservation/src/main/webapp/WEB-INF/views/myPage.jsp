@@ -343,7 +343,7 @@
         	<p>서비스 탈퇴동의는 필수입니다.</p>
         </div>
         <div class="canc">
-        <a href="/myPage">취소</a>
+        <input type="button" id="gotohome" value="취소" style="background-color: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 3px; cursor: pointer;">
         <input type="submit" id="subDelete" value="서비스탈퇴" style="background-color: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 3px; cursor: pointer;">
         </div>
     </form>
@@ -360,6 +360,10 @@
 
     $(document).ready(function() {
     	
+    	$('#gotohome').click(function(){
+    		console.log("취소")
+    		window.location.href="/myPage"
+    	})
     
     	
         $("#checkPasscodeButton").click(function(e) {

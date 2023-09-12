@@ -8,7 +8,7 @@
 <title>상품 리스트</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'HakgyoansimWoojuR';
     background-color: #f7f7f7;
     margin: 0;
     padding: 0;
@@ -57,12 +57,11 @@
   
   
 @font-face {
-    font-family: 'MaplestoryOTFBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
-  
 
   #add-product-btn {
     background-color: #00aaff; /* 하늘색(파란색 계열) */
@@ -74,7 +73,7 @@
     font-size: 25px; /* 폰트 크기 조정 */
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
     transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
-    font-family: 'GmarketSansMedium';
+    font-family: 'HakgyoansimWoojuR';
   }
   #btnDelete{
   background-color: #FE2E2E; 
@@ -86,7 +85,7 @@
     font-size: 25px; 
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); 
     transition: background-color 0.3s ease; 
-    font-family: 'GmarketSansMedium';
+    font-family: 'HakgyoansimWoojuR';
   }
   
   #btnDelete:hover {
@@ -105,9 +104,8 @@
     transition: background-color 0.3s ease; 
     position:relative;
     margin-left: 20px;
-    font-family: 'MaplestoryOTFBold';
+    font-family: 'HakgyoansimWoojuR';
     margin-left: 3px;
-    font-family: 'GmarketSansMedium';
     font-size: 25px;
   }
   
@@ -131,7 +129,7 @@
 }
 
 h2,p {
-	font-family: 'GmarketSansMedium';
+	font-family: 'HakgyoansimWoojuR';
 }
 
 
@@ -143,7 +141,7 @@ h2,p {
 }
 
 h1 {
-font-family: 'SBAggroB';
+font-family: 'HakgyoansimWoojuR';
 }
 .button-group {
   display: flex;
@@ -210,6 +208,7 @@ font-family: 'SBAggroB';
 </style>
 </head>
 <body>
+
 <header>
   <h1>상품 리스트</h1>
 </header><br>

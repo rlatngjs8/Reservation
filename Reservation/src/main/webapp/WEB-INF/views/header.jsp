@@ -54,7 +54,7 @@ ul.sub_mobile {
   
   position:fixed !important;
   
-  bottom:880px !important;
+  bottom: 92% !important; 
   left: 250px;
   
   
@@ -241,10 +241,16 @@ ul.sub_mobile {
 }
 
 
+@font-face {
+    font-family: 'IAMAPLAYER';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/IAMAPLAYER.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 .top a {
-  font-family: 'HakgyoansimWoojuR';
+  font-family: 'IAMAPLAYER' !important;
   font-weight: bold; /* 폰트 가중치를 추가합니다. */
   font-size : 50px;
     text-decoration: none !important;
@@ -268,7 +274,7 @@ ul.sub_mobile {
 }
 
 a {
-	  text-decoration: none !important;
+	  text-decoration: none ;
 
 }
 
@@ -489,8 +495,7 @@ font-family: 'HakgyoansimWoojuR';
         <li>
            
                
-                        <c:choose>
-                        
+                        <c:choose>                    
                             <c:when test="${empty userid}">
                              <!-- login 버튼에 logout 버튼과 동일한 css 적용 -->
                              <div class="pright">
@@ -523,12 +528,14 @@ font-family: 'HakgyoansimWoojuR';
    <!-- 1대1문의 로그인이 안되어있으면 로그인창으로,로그인되어있으면 myWrite -->
    
 
-		
+		 <c:choose>                    
+           <c:when test="${!empty userid}">
   <li><a href="/myWrite" style="color: black" id="one">1:1문의</a></li>
-
+	</c:when>
+</c:choose>
    <li><a href="/FAQ"  style="color: black">자주묻는질문</a></li>
 
-   <li><a href="/#" style="color: black">공지사항</a></li>
+
    
   
 	</div>    

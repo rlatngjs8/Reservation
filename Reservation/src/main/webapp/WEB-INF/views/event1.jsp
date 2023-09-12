@@ -90,6 +90,13 @@ color: #2E2E2E;
 li {
 	font-family: 'HakgyoansimWoojuR';
 }        
+
+ hr {
+            border: none;
+            border-top: 2px dashed #ddd;
+            width: 100%;
+            margin: 20px auto;
+        }
     </style>
 
 
@@ -101,28 +108,35 @@ li {
 
 <div class="forc">
 <header>
-        <h1>설문조사 이벤트</h1>
+        <h1>신규 고객 리뷰 이벤트</h1>
     </header>
+     <br><br><br><br><br><br>
     <div class="container">
-        <h2>설문조사 참여</h2>
-        <p>기재된 이메일로 건의사항을 보내주세요! 확인 후, 500p ~ 2,000p 적립 예정!</p>
-        <a>메일 주소: 124123@gmail.com</a>
-        <p>이벤트 기간: 2023.08.28 - 추후 공지</p>
-        <p>참여 자격: Share Place에 등록된 회원 누구나!</p>
-        <br><hr/><br>
+        <h2>신규 고객 리뷰 이벤트 참여</h2>
+        <p>홈페이지에서 예약 후, 리뷰를 남겨주세요! 추첨을 통해 10,000원 환급해드립니다 !</p>
+        <p>이벤트 기간: 2023.09.01 - 추후 공지</p>
+        <p>참여 자격: 9월 이내 가입한 회원</p>
+       <hr/>
         <h3>참여 방법</h3>
    
         <ol>
-            <li>기재된 이메일로 건의사항,불편사항을 보내주세요 !</li>
-            <li>아이디 작성 필수입니다 !</li>
-            <li>자세하게 적을수록 더 많은 포인트 적립 예정 ! </li>
-            <li>최대 2,000p 지급 !</li>
+            <li>예약 후, 리뷰를 남겨주세요 !</li>
+            <br>
+            <li>신규 고객 한정 이벤트입니다 !</li>
+            <br>
+            <li>자세하게 적을수록 확률 UP !</li>
+            <br>
+            <li>다른 이벤트와 중복 참여 가능 ! </li>
+            <br>
+            <li>최대 10,000원 환급 !</li>
         </ol>
         <br>
         <p class="pst">더 많은 정보나 문의 사항은 <strong>event@example.com</strong>으로 문의</p>
     </div>
     <br><br>
 </div>
+
+<br><br><br><br><br><br><br>
 <%@include file="footer.jsp" %>
 
 

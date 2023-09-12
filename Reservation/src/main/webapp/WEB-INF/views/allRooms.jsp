@@ -95,14 +95,37 @@ font-size : 13px;
 	font-size: 23px;
 }
 
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.all a {
+	color:black;	
+	font-family: 'HakgyoansimWoojuR';
+	font-weight:bold;
+}
+
+.cate a {
+    color: black;
+    text-decoration: none;
+    font-family: 'HakgyoansimWoojuR';
+    font-weight: bold;
+}
+
+.cate a:hover {
+    text-decoration: underline;
+      text-underline-position: under;
+
 </style>
 </head>
 
 <body>
 
 <%@include file="header.jsp" %>
-<h1 class="title">전체보기</h1>
-<br>
+<br><br><br><br><br><br>
 <div class="cate">		
     <a href="#" class="froom" data-category="party">파티룸</a>&nbsp;&nbsp;&nbsp;
     <a href="#" class="sroom" data-category="conference">세미나/회의실</a>&nbsp;&nbsp;&nbsp;
@@ -145,7 +168,14 @@ font-size : 13px;
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
-$(document).ready(function() {
+$(document)
+.ready(function() {
+	
+		
+	
+
+	
+	
     // 쿼리 매개변수를 파싱하여 선택된 카테고리를 확인합니다.
     const urlParams = new URLSearchParams(window.location.search);
     const selectedCategory = urlParams.get("category");
@@ -160,24 +190,23 @@ $(document).ready(function() {
     }
 
     // 카테고리 링크에 대한 클릭 이벤트 핸들러를 추가합니다.
-    $(".cate a").click(function(e) {
-        e.preventDefault();
+   $(".cate a").click(function(e) {
+    e.preventDefault();
 
-        // 선택된 카테고리를 확인합니다.
-        const category = $(this).data("category");
+    // 선택된 카테고리를 확인합니다.
+    const category = $(this).data("category");
 
-        // 해당 카테고리의 효과를 활성화합니다.
-        activateCategory(category);
+    // 해당 카테고리의 효과를 활성화합니다.
+    activateCategory(category);
 
-        // 모든 카테고리의 효과 제거
-        $(".cate a").css("text-decoration", "none");
+    // 모든 카테고리의 효과 제거
+    $(".cate a").css("text-decoration", "none");
 
-        $(this).css({
-            "text-decoration": "underline",
-            "text-underline-position": "under"
-        });
+    $(this).css({
+        "text-decoration": "underline",
+        "text-underline-position": "under"
     });
-
+});
     // "전체" 링크 클릭 이벤트 핸들러
     $(".aroom").click(function(e) {
         e.preventDefault();

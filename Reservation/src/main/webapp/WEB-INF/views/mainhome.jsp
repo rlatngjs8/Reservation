@@ -59,7 +59,7 @@ margin-top:5px;
     list-style: none;
     justify-content: center;
     width: 1350px;
-    margin-left: 16%;
+    margin-left: 236px;
     height: 30%;
     gap: 20px; /* .card 간격 조절 */
     
@@ -374,6 +374,10 @@ h3 {
 	text-align:right;
 }
 
+.cDiv a {
+	text-decoration:none;
+}
+
 </style>
 <body>
 	<!-- header (Share Place, 좌측 상단 햄버거 모양 버튼을 header.jsp로 만들었습니다.) -->
@@ -391,10 +395,10 @@ h3 {
 		<div style="overflow: hidden">
 			<div class="slide-container">
 				<div class="slide-box">
-					<a href="event1"><img src="img/실험배너2 (1).jpg"></a>
+					<a href="event2"><img src="img/배너사진.jpg"></a>
 				</div>
 				<div class="slide-box">
-					<a href="event2"><img src="img/배너2.jpg"></a>
+					<a href="event1"><img src="img/배너2번.jpg"></a>
 				</div>
 			</div>
 			<button class="slide-button prev">
