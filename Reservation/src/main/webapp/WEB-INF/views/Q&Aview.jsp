@@ -163,6 +163,7 @@
         /* 추가된 스타일 */
         .reply-list {
             margin-left: 20px; /* 들여쓰기 스타일 지정 */
+            list-style: none;
         }
 
     </style>

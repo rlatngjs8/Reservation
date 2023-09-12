@@ -59,7 +59,7 @@ margin-top:5px;
     list-style: none;
     justify-content: center;
     width: 1350px;
-    margin-left: 236px;
+    margin-left: 16%;
     height: 30%;
     gap: 20px; /* .card 간격 조절 */
     
