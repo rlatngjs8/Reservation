@@ -525,7 +525,7 @@ font-family: 'HakgyoansimWoojuR';
 
 	
    <div class="welcome">
-   <!-- 1대1문의 로그인이 안되어있으면 로그인창으로,로그인되어있으면 myWrite -->
+   <!-- 1대1문의 로그인이 안되어있으면 로그인창으로,로그인되어있으면 myWrite --> 
    
 
 		 <c:choose>                    
