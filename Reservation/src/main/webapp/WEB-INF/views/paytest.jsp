@@ -37,7 +37,7 @@
             border: 1px solid #ddd;
             border-radius: 10px;
             margin: 20px auto;
-            width: 70%;
+            width: 55%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -134,6 +134,27 @@
 		.accordion-label span.required {
 		    color: red;
 		}
+		
+		/* 활성화된 버튼 스타일 */
+        #payment-button {
+            background-color: #0074e4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        /* 활성화된 버튼 스타일 */
+        #payment-button.active {
+            background-color: #007bff;
+        }
+        /* 비활성화된 버튼 스타일 */
+        #payment-button.disabled {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
         
     </style>
 <body>
@@ -448,7 +469,6 @@ function get_terms_of_use() {
 }
 
 
-
 function getDayOfWeek(dateString) {
     // 날짜 문자열을 Date 객체로 변환
     const date = new Date(dateString);
@@ -459,6 +479,26 @@ function getDayOfWeek(dateString) {
 
     return dayOfWeek;
 }
+
+//"결제하기" 버튼과 체크박스 요소를 선택합니다.
+const $paymentButton = $("#payment-button");
+const $checkboxes = $("input[type='checkbox']");
+
+// 체크박스 상태가 변경될 때마다 확인하는 함수를 만듭니다.
+function updatePaymentButtonState() {
+    const allChecked = $checkboxes.filter(":checked").length === $checkboxes.length;
+    if (allChecked) {
+        $paymentButton.removeClass("disabled").addClass("active").prop("disabled", false);
+    } else {
+        $paymentButton.removeClass("active").addClass("disabled").prop("disabled", true);
+    }
+}
+
+// 초기 상태에서도 확인합니다.
+updatePaymentButtonState();
+
+// 체크박스 상태가 변경될 때마다 업데이트 함수를 호출합니다.
+$checkboxes.on("change", updatePaymentButtonState);
 
 
 
