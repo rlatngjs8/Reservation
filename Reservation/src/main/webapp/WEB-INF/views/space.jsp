@@ -612,6 +612,26 @@ height: 21px;
     text-decoration: none; /* 호버 시 밑줄 제거 */
 }
 
+.kkkcontainer {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.box {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    background-color: #333;
+}
+
+.blue-box {
+    background-color: #87CEEB;
+}
+
+.text {
+    font-size: 14px; /* 글씨 크기를 조정합니다. */
+}
 
 </style>
 </head> <!-- 나는 바보 -->
@@ -688,6 +708,18 @@ height: 21px;
                 </div>
 
                 <br>
+                <div>
+                	<div class="kkkcontainer">
+					    <div class="box black-box"></div>
+					    <div class="text">예약불가</div>
+					</div>
+					<div class="kkkcontainer">
+					    <div class="box blue-box"></div>
+					    <div class="text">선택</div>
+					</div>
+                </div>
+                <br><br>
+            
                 <div id="reservationInfo"> 
                     <!-- 예약일시들어가는곳 -->  
                 </div>

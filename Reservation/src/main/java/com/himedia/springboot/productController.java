@@ -238,6 +238,9 @@ public class productController {
 	    
 	    return "space";
 	}
+	
+
+
 
 //@GetMapping("/check_login")	
 //   @ResponseBody
