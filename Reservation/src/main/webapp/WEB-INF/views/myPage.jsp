@@ -487,7 +487,7 @@
     $(document).on('click','#btnWrite',function(){
     	window.location.href="/myWrite";
     })
-    
+     
     
      $(document).ready(function () {
             // 페이지 로드 시 초기 해시값 검사
