@@ -168,7 +168,7 @@
 		
 		.form-group h3{
 			display:inline;
-			 font-family: 'HakgyoansimWoojuR';
+			 font-family: 'HakgyoansimWoojuR'; 
 			font-size : 20px;
 		}
 		
