@@ -6,13 +6,21 @@
     <meta charset="UTF-8">
     <title>리뷰 리스트</title>
     <style>
+    @font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+    
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'HakgyoansimWoojuR';
             background-color: #f7f7f7;
             margin-top:100px;
         }
         #body {
-            font-family: Arial, sans-serif;
+            font-family: 'HakgyoansimWoojuR';
             background-color: #f7f7f7;
             margin: 0;
             padding: 0;
@@ -33,7 +41,7 @@
             text-align: center;
             margin-bottom:40px;
             color: #009688;
-            font-family :"SBAggroB";
+            font-family: 'HakgyoansimWoojuR';
         }
 
         .table-container {
@@ -51,19 +59,13 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-		@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
 
         th, td {
             padding: 10px;
             text-align: center;
             border-bottom: 1px solid #ddd;
-            font-family : 'GmarketSansMedium';
+           font-family: 'HakgyoansimWoojuR';
         }
 
         th {
@@ -102,21 +104,19 @@
         
         
  .btnPrev {
-	box-shadow:inset 0px 1px 0px 0px #9fb4f2;
-	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
-	background-color:#7892c2;
-	border-radius:10px;
-	border:1px solid #4e6096;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	padding:6px 8px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #283966;
+	 display: block;       
+        padding: 10px 20px;
+        background-color: skyblue;
+        color: black;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        font-size : 20px;
+        font-weight:bold;
+        
+	
 	margin-left:200px;
-	font-family: 'CookieRun-Regular';
+	font-family: 'HakgyoansimWoojuR';
 }
 .btnPrev:hover {
 	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);

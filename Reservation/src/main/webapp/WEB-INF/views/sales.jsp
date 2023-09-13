@@ -9,7 +9,7 @@
     <!-- CSS 및 JavaScript 라이브러리를 여기에 추가하세요 -->
 </head>
 <style>
-        body {
+        .salesbo {
           
             margin: 0;
             padding: 0;
@@ -119,12 +119,15 @@
             background-color: #f2f2f2;
         }
         
+        
+        
         @font-face {
    font-family: 'HakgyoansimWoojuR';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
+        
         
  .prev {
  	font-family: 'HakgyoansimWoojuR';
@@ -157,9 +160,8 @@
         
     </style>
 </head>
-<body>
-<%@include file="header.jsp" %>
-<br><br><br><br><br><br>
+<body class="salesbo">
+<br>
 
     <h1 class="hc">매출 관리 페이지</h1>
     <button id="prev" class="prev">이전메뉴</button>
@@ -217,10 +219,8 @@
         <tbody>
         </tbody>
     </table>
-    <br><br><br><br>
-&copy; 2023 Share Place
-<br>
-	<%@include file="footer.jsp"%>
+    <br><br>
+
     </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

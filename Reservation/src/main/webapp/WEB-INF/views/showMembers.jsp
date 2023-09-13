@@ -41,57 +41,58 @@
     padding: 10px;
   }
   
+  
+  @font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+  
 .btnDelete {
-	box-shadow:inset 0px 1px 0px 0px #cf866c;
-	background:linear-gradient(to bottom, #ff3700 5%, #bc3315 100%);
-	background-color:#ff3700;
-	border-radius:10px;
-	border:1px solid #942911;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
+	 display: block;       
+        padding: 10px 20px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
 	font-family: 'HakgyoansimWoojuR';
-	font-size:12px;
-	padding:6px 8px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #854629;
-	margin-rightt:20px;
 	margin-top:10px;
+	
+	position:relative;
+	right:200px;
+	top:20px;
 }
 .btnDelete:hover {
 	background:linear-gradient(to bottom, #bc3315 5%, #ff3700 100%);
 	background-color:#bc3315;
 }
-.btnDelete:active {
-	position:relative;
-	top:1px;
-}
 
 .btnPrev {
-	box-shadow:inset 0px 1px 0px 0px #9fb4f2;
-	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
-	background-color:#7892c2;
-	border-radius:10px;
-	border:1px solid #4e6096;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
+	  display: block;       
+        padding: 10px 20px;
+        background-color: skyblue;
+        color: black;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        
 	font-family: 'HakgyoansimWoojuR';
-	font-size:12px;
-	padding:6px 8px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #283966;
-	margin-left:20px;
+
+
+
+
+	margin-left:190px;
 	margin-top:10px;
+	position:relative;
+	top:21px;
 }
 .btnPrev:hover {
 	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
 	background-color:#476e9e;
 }
-.btnPrev:active {
-	position:relative;
-	top:1px;
-}
+
 
 
 

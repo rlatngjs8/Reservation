@@ -385,6 +385,7 @@ public String showAllRooms(HttpServletRequest req,Model model) {
 	return "allRooms";
 }
 
+
 @PostMapping("/categoryRooms")
 @ResponseBody
 public String category(HttpServletRequest req) {

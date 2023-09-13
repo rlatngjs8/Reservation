@@ -147,7 +147,7 @@
   	
   		<div class="banner" id="ban"> 
   		
-  			<article><h2>설문조사 참여 이벤트</h2></article>
+  			<article><h2>신규 고객 이벤트</h2></article>
   				
   				<br>
   			<div class="bn">

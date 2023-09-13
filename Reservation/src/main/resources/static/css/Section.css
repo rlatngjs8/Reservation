@@ -1,5 +1,10 @@
 
-
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 
@@ -16,7 +21,7 @@ body {
 }
 
 .otherRoom{
-	font-family: 'omyu_pretty';
+	 font-family: 'HakgyoansimWoojuR';
 	position: relative;
 	bottom:53px;
 	left:120px;
@@ -26,7 +31,7 @@ body {
 }
 
 .otherRoom3{
-	font-family: 'omyu_pretty';
+	 font-family: 'HakgyoansimWoojuR';
 	position: relative;
 	bottom:53px;
 	left:170px;
@@ -34,7 +39,7 @@ body {
 }
 
 .otherRoom4{
-	font-family: 'omyu_pretty';
+	 font-family: 'HakgyoansimWoojuR';
 	font-size: 21px;
 	position: relative;
 	bottom:74px;
@@ -42,7 +47,7 @@ body {
 }
 
 .otherRoom5{
-		font-family: 'omyu_pretty';
+	 font-family: 'HakgyoansimWoojuR';
 	position: relative;
 	bottom:52px;
 	left:192px;
@@ -51,7 +56,7 @@ body {
 }
 
 .otherRoom6{
-	font-family: 'omyu_pretty';
+	 font-family: 'HakgyoansimWoojuR';
 	font-size: 21px;
 	position: relative;
 	bottom:74px;
@@ -67,7 +72,7 @@ body {
 }
 
 .otherRoom2{
-	font-family: 'omyu_pretty';
+	 font-family: 'HakgyoansimWoojuR';
 	font-size: 21px;
 	position: relative;
 	bottom:76px;
@@ -89,7 +94,7 @@ body {
     position:relative;
     right:110px;
     top:17px;
-    font-family: 'GyeonggiBatang', sans-serif; 
+     font-family: 'HakgyoansimWoojuR';
     font-size: 17px;
     
     overflow: hidden;
@@ -98,7 +103,7 @@ body {
 }
 
 .title{
-	font-family: 'omyu_pretty';
+	 font-family: 'HakgyoansimWoojuR';
 	font-size: 40px;
 	text-decoration: underline;
     text-underline-position: under;
@@ -178,7 +183,7 @@ body {
 .card img {
     max-width: 90%;
     height: 250px;
-    width: 300x;
+    width: 320x;
     margin-right: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
@@ -195,7 +200,7 @@ body {
 
 
 .card p {
-	font-family:'LINESeedKR-Bd';
+	 font-family: 'HakgyoansimWoojuR';
 	font-size:20px;
 	
 }
@@ -209,7 +214,7 @@ body {
 
 
 .demo{
-	font-family: 'Pretendard-Regular';
+	 font-family: 'HakgyoansimWoojuR';
 	font-weight:900;
 	font-size:20px;
 	
@@ -248,10 +253,11 @@ background-color: #EFFBF8;
 
 .demo1{
 	
-	font-family: 'TheJamsil5Bold';
+	 font-family: 'HakgyoansimWoojuR';
 	font-weight: bold;
 	align:center;
 	position:relative;
+	font-size:20px;
 	
 	top:40px;
 }
@@ -267,12 +273,6 @@ background-color: #EFFBF8;
 
 }
 
-.location img {
-    width: 30px;
-    height: 30px;
-   }
-   
-   
    
    .ta{
 	position:relative;

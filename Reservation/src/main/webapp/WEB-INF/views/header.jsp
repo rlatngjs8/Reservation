@@ -478,6 +478,8 @@ font-family: 'HakgyoansimWoojuR';
   
 </div>
 
+
+
 <!-- 로그인 하지 않은 상태로 다른 페이지로 이동시, userid에 빈 문자열이 들어가서 수정했습니다. -->
 
 
@@ -536,7 +538,11 @@ font-family: 'HakgyoansimWoojuR';
            <c:when test="${!empty userid}">
   <li><a href="/myWrite" style="color: black" id="one">1:1문의</a></li>
 	</c:when>
+		  <c:otherwise>
+		  <li><a href="/login" style="color: black" id="one">1:1문의</a></li>
+		  </c:otherwise>
 </c:choose>
+
    <li><a href="/FAQ"  style="color: black">자주묻는질문</a></li>
 
 
@@ -593,6 +599,7 @@ font-family: 'HakgyoansimWoojuR';
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
+
 
 $(document).on('click','#btnLogin',function(){
     window.location.href = "/login";

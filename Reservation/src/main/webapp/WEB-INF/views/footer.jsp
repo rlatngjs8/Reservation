@@ -12,19 +12,23 @@
 footer {
   background-color: #272727;
   border-top: 1px solid #333;
+  
+
+  
 }
 
 
 footer .inner {
-  padding: 40px 0 60px 0
+  padding: 40px 0 60px 0 !important;
+  
 }
 
 
 footer .menu {
   display: flex;
-  justify-content: center;
-  list-style: none;
-  margin-right:100px;
+  justify-content: center !important;
+  list-style: none !important;
+  margin-right:30px !important;
 }
 
 
@@ -62,8 +66,9 @@ footer .menu li a {
 }
 
 
+
 footer .menu li a.green {
-  color: #669900
+  color: #669900;
 }
 
 
@@ -145,14 +150,16 @@ footer .logo {
 <div id="footer">
 
 
-<footer>
+<footer class="forfooter">
   <div class="inner">
   
   <!-- menu1 이라는 class name을 menu로 변경 -->
+  
     <ul class="menu">
       <li><a href="/personal">개인정보처리방침</a></li>
       <li><a href="/service">이용약관</a></li>
     </ul>
+   
    
     <div class="info">
       <span>사업자등록번호 213-23-12512</span>

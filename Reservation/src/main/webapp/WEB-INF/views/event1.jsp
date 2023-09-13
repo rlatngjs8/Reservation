@@ -131,7 +131,7 @@ li {
             <li>최대 10,000원 환급 !</li>
         </ol>
         <br>
-        <p class="pst">더 많은 정보나 문의 사항은 <strong>event@example.com</strong>으로 문의</p>
+        <p class="pst">더 많은 정보나 문의 사항은 <strong>gldigh123@naver.com</strong>으로 문의</p>
     </div>
     <br><br>
 </div>

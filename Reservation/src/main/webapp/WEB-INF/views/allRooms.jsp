@@ -29,7 +29,7 @@
     }
 
     .cate {
-        font-size: 20px;
+        font-size: 25px;
     }
 
     .card a {
@@ -56,6 +56,7 @@
     border: 1px solid #ddd;
     text-align: center;
 }
+
 .card img {
     display: block;
     margin: 0 auto;
@@ -75,15 +76,13 @@
 }
 
   #card1_7 a {
-   font-size : 15px;
-   
-   
+   font-size : 17px;
    
   }
 
   #card2_7 {
    
-   font-size : 15px;
+   font-size : 17px;
   }
 
 
@@ -103,9 +102,14 @@ font-size : 13px;
 }
 
 .all a {
-	color:black;	
+	color:gray;	
 	font-family: 'HakgyoansimWoojuR';
 	font-weight:bold;
+	
+}
+
+.all a:visited {
+    color: black;
 }
 
 .cate a {
@@ -118,6 +122,14 @@ font-size : 13px;
 .cate a:hover {
     text-decoration: underline;
       text-underline-position: under;
+      }
+      
+      
+      .all a:hover {
+    color: black; 
+    text-decoration: underline;
+    text-underline-position: under;
+}
 
 </style>
 </head>
@@ -137,6 +149,7 @@ font-size : 13px;
 <div class="all">
 	<a href="allRooms">[전체목록보기]</a>
 </div>
+
 <br><br><hr style="width: 70%"/><br><br>
 <div class="second">
     <c:forEach items="${rooms}" var="prod" varStatus="outerLoop">

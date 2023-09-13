@@ -12,6 +12,16 @@
 
 
 
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
 body {
 	text-align: center;
 }
@@ -93,10 +103,12 @@ margin-top:5px;
 }
 
 .demo {
+ font-family: 'HakgyoansimWoojuR';
 	font-size : 30px !important;
 }
 
 .demo1 {
+ font-family: 'HakgyoansimWoojuR';
     font-size: 20px !important;
 }
 
@@ -441,7 +453,7 @@ h3 {
 	<hr />
 	<div>
 		<br> <br> <br> <br> <br>
-		<a href="/newrooms"><h3 class="newleft">새로 등록했어요</h3></a>
+		<a href="#"><h3 class="newleft">새로 등록했어요</h3></a>
 	</div>
 	<div class="second"> <!-- 새로등록 6개만 나오게함. xml에서 asc를 desc로 수정 -->
 	<div class="card-container">
@@ -497,7 +509,7 @@ h3 {
 
 <br><br><br><br>
 &copy; 2023 Share Place
-<br>
+<br><br><br><br>
 	<%@include file="footer.jsp"%>
 
 </body>

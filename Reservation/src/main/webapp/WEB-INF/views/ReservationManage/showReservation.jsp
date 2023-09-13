@@ -64,15 +64,27 @@
         width: 20px;
         height: 20px;
     }
+    
+      @font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+    
     #btnDelete {
-        display: block;
-        margin: 20px auto;
+        display: block;       
         padding: 10px 20px;
         background-color: #f44336;
         color: white;
         border: none;
         cursor: pointer;
         border-radius: 10px;
+       	margin-right:200px;
+       	position:relative;
+       	top:100px;
+       	font-family: 'HakgyoansimWoojuR';
     }
     #btnDelete:hover {
         background-color: #d32f2f;
@@ -106,11 +118,13 @@
     justify-content: space-between;
 		}
 		
-		.serch,
-		.btnDelete {
+		.serch
+		{
 		   margin-left:200px;
 		   top: 100px;
 		}
+
+
 
 
 .custom-select {
@@ -152,19 +166,14 @@
 	left : 200px;
 	top:60px;
 	
-	box-shadow: 0px 5px 14px -7px #276873;
-	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-	background-color:#ECE0F8;
-	border-radius:8px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family: 'CookieRun-Regular';
-	font-size:11px;
-	font-style:italic;
-	padding:5px 11px;
-	text-decoration:none;
-	text-shadow:0px 4px 0px #3d768a;
+	  display: block;       
+        padding: 10px 20px;
+        background-color: skyblue;
+        color: black;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        
 
 }
 .prevMenu:hover {

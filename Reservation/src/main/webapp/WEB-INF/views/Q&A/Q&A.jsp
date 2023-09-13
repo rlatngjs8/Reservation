@@ -16,12 +16,8 @@
 
 
 
-
-
-
-
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'HakgyoansimWoojuR';
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
