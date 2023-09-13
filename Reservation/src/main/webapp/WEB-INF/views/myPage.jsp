@@ -181,6 +181,9 @@
     	font-family: 'HakgyoansimWoojuR';
     }
     
+    span{
+    	font-weight:bold;
+    }
  
 </style>
 </head>
@@ -340,11 +343,12 @@
         <div id="delReason">
         	<h3 style="font-family: 'HakgyoansimWoojuR';">서비스 탈퇴 전에 꼭 확인하세요</h3>
         	<p style="font-family: 'HakgyoansimWoojuR';">서비스 탈퇴시 내 프로필, 예약내역 등의 모든 정보가 삭제되며 이후 복구가 불가능합니다.</p>
+        	<br>
         	<div>
         		<input type="checkbox">
-        		<span>위의 내용을 숙지했으며 서비스 탈퇴에 동의합니다.</span>
+        		<span style="font-family: 'HakgyoansimWoojuR'" >위의 내용을 숙지했으며 서비스 탈퇴에 동의합니다.</span>
         	</div>
-        	<p>서비스 탈퇴동의는 필수입니다.</p>
+        	<p style="font-family: 'HakgyoansimWoojuR';">서비스 탈퇴동의는 필수입니다.</p>
         </div>
         <div class="canc">
         <input type="button" id="gotohome" value="취소" style="background-color: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 3px; cursor: pointer;">
