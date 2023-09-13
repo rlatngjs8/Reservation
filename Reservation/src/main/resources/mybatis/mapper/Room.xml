@@ -60,7 +60,7 @@
 
 <select id="getList1" resultType="com.himedia.springboot.BoardDTO">
 	select seqno, title, content, writer, hit, created, updated from board 
-	order by updated desc limit #{param1}, #{param2}
+	order by created desc limit #{param1}, #{param2}
 </select>
 
 <select id="getTotal1" resultType="int">

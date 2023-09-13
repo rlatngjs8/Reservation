@@ -177,7 +177,7 @@
 			 font-family: 'HakgyoansimWoojuR';
 		}
     
-    .delReason p {
+    .delReason p, .delReason span {
     	font-family: 'HakgyoansimWoojuR';
     }
     
@@ -342,7 +342,7 @@
         	<p style="font-family: 'HakgyoansimWoojuR';">서비스 탈퇴시 내 프로필, 예약내역 등의 모든 정보가 삭제되며 이후 복구가 불가능합니다.</p>
         	<div>
         		<input type="checkbox">
-        		<label>위의 내용을 숙지했으며 서비스 탈퇴에 동의합니다.</label>
+        		<span>위의 내용을 숙지했으며 서비스 탈퇴에 동의합니다.</span>
         	</div>
         	<p>서비스 탈퇴동의는 필수입니다.</p>
         </div>
