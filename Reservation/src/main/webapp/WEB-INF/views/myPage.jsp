@@ -177,6 +177,10 @@
 			 font-family: 'HakgyoansimWoojuR';
 		}
     
+    .delReason p {
+    	font-family: 'HakgyoansimWoojuR';
+    }
+    
  
 </style>
 </head>
@@ -334,8 +338,8 @@
     <form action="delMember" method="post" class="hidden" id="deleteForm">
         <input type="hidden" name="delMember" value="${userid}">
         <div id="delReason">
-        	<h3>서비스 탈퇴 전에 꼭 확인하세요</h3>
-        	<p>서비스 탈퇴시 내 프로필, 예약내역 등의 모든 정보가 삭제되며 이후 복구가 불가능합니다.</p>
+        	<h3 style="font-family: 'HakgyoansimWoojuR';">서비스 탈퇴 전에 꼭 확인하세요</h3>
+        	<p style="font-family: 'HakgyoansimWoojuR';">서비스 탈퇴시 내 프로필, 예약내역 등의 모든 정보가 삭제되며 이후 복구가 불가능합니다.</p>
         	<div>
         		<input type="checkbox">
         		<label>위의 내용을 숙지했으며 서비스 탈퇴에 동의합니다.</label>

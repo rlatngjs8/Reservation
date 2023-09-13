@@ -562,7 +562,7 @@ font-family: 'HakgyoansimWoojuR';
       <li><a href="/manager">관리자페이지</a></li>
       </c:when>
       
-   		<c:when test="${userid =='hwan'}">
+   		<c:when test="${userid =='seunghwan'}">
     	<div class="welcome3">
       <li><a href="/manager" style="color:black;">관리자페이지</a></li>
       </div>
