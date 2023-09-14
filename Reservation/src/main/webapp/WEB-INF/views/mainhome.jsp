@@ -158,7 +158,7 @@ h3 {
 	padding: 40px;
 	text-align: center;
 	color: #333;
-	margin-left: 260px;
+	margin-left: 14%;
 }
 .banner a {
 	text-decoration: none;
