@@ -1562,8 +1562,8 @@ function highlightTimeRange() {
 //선택한 시간대의 예약 정보를 표시합니다.
 function displayReservationInfo() {
     const selectedDate = $("#datepicker").val();
-    const startTime = $(".selected-start-time").text();
-    const endTime = $(".selected-end-time").text();
+    let startTime = $(".selected-start-time").text();
+    let endTime = $(".selected-end-time").text();
 
     if (!selectedDate || !startTime || !endTime) {
         // 날짜, 시작 시간, 종료 시간 중 하나라도 선택되지 않았을 때 예약 정보를 숨김
@@ -1575,6 +1575,14 @@ function displayReservationInfo() {
     const endTimeNum = parseInt(endTime);
     const duration = Math.abs(endTimeNum - startTimeNum);
     const dayOfWeek = getDayOfWeek(selectedDate);
+
+    // startTime과 endTime 비교하여 endTimeNum이 더 크다면 값을 교체
+    if (startTimeNum > endTimeNum) {
+        const temp = startTime;
+        startTime = endTime;
+        endTime = temp;
+    }
+
     const reservationInfo = "<h4>예약일시:</h4>" +
         "<h4>" + selectedDate + " " + dayOfWeek + " " + startTime + " ~ " + endTime + " (" + duration + "시간)</h4>";
 
